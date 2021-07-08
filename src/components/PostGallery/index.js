@@ -14,7 +14,7 @@ import gsil4 from '../../doc/img/blog/post_gsi4.jpg';
 import gsil5 from '../../doc/img/blog/post_gsi5.jpg';
 import gsil6 from '../../doc/img/blog/post_gsi6.jpg';
 import gsil7 from '../../doc/img/blog/post_gsi7.jpg';
-import sliderImg1 from '../../doc/img/header/sider-top.jpg';
+import sliderImg1 from '../../doc/img/header/dibu.jpg';
 import sliderImg2 from '../../doc/img/header/sider-top2.jpg';
 
 import './style.scss';
@@ -23,10 +23,10 @@ const thumbs = [gsil1, gsil2, gsil3, gsil4, gsil5, gsil6, gsil7, gsil4, gsil3];
 const postSlider = [
     {
         image: sliderImg1,
-        title: 'Japan’s virus success has puzzled the world. Is its luck running out?',
-        body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020'
+        title: 'Emiliano Martínez brilló en los penales y Argentina es finalista',
+        body: 'La "albiceleste" venció desde los doce pasos a los "cafeteros" por 3-2 en el estadio Mané Garrincha, y será parte de la definición continental ante Brasil el sábado 10, tras empatar 1-1. Lautaro Martínez y el lateral, los autores de los tantos en los 90 minutos.',
+        category: 'DEPORTES',
+        date: 'julio 7, 2021'
     },
     {
         image: sliderImg2,

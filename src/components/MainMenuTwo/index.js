@@ -268,7 +268,7 @@ const MainMenuTwo = () => {
                         </nav>
                         <div className="col-lg-3 text-right align-self-center">
                             <div className="date3">
-                                <p>Thursday, March 26, 2020</p>
+                                <p>10 de Julio 2021 (@todo)</p>
                             </div>
                         </div>
                     </div>

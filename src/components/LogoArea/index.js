@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import logo from '../../doc/img/logo/logo.png';
 import logoDark from '../../doc/img/logo/footer_logo.png';
-import tp_banner from '../../doc/img/bg/banner1.png';
+import tp_banner from '../../doc/img/bg/728x90.jpg';
 
 const LogoArea = ({className, dark}) => {
     return (

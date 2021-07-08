@@ -85,7 +85,7 @@ const businessNews = [
 const HomePage = () => {
     return (
         <Fragment>
-            <PostCarousel className="fifth_bg"/>
+            {/* <PostCarousel className="fifth_bg"/> */}
             <PostGallery className="fifth_bg"/>
             <FeatureNews/>
             <div className="container">
