@@ -60,6 +60,11 @@ const menus = [
                 link: '/home-three/404',
                 linkText: '404'
             },
+            {
+                id: 25,
+                link: '/home-three/contact',
+                linkText: 'Login'
+            },
         ]
     },
     {

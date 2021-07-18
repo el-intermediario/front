@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import PrivateRoute from '../_PrivateRoute';
+import PublicRoute from '../_PublicRoute';
 import HomePage from "../HomePage";
 import HomePageTwo from "../HomePageTwo";
 import BusinessPage from "../BusinessPage";
@@ -79,6 +80,8 @@ import AudioPostOneDarkPage from "../AudioPostOneDarkPage";
 import AudioPostTwoDarkPage from "../AudioPostTwoDarkPage";
 import AudioPostThreeDarkPage from "../AudioPostThreeDarkPage";
 import PostOneLeftSidebarDarkPage from "../PostOneLeftSidebarDarkPage";
+import LoginPage from '../LoginPage';
+import FormArticlePage from '../FormArticlePage';
 // import PublicRoute from '../_PublicRoute';
 
 const Routes = () => {
@@ -90,6 +93,16 @@ const Routes = () => {
                 path="/"
                 parentClass="theme-1"
                 component={HomePage}/>
+            <PublicRoute
+                exact
+                path="/login"
+                parentClass="theme-1"
+                component={LoginPage}/>
+            <PublicRoute
+                exact
+                path="/admin/article/add"
+                parentClass="theme-2"
+                component={FormArticlePage}/>        
             <PrivateRoute
                 exact
                 path="/business"
