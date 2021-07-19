@@ -2,41 +2,62 @@ import React, { useState } from 'react';
 import BannerSection from "../../components/BannerSection";
 import FollowUs from "../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
+import CustomOption from './plugins/CustomOption';
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
-import {EditorState, convertToRaw, ContentState} from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import parseHtml from "html-react-parser";
+
 
 const FormArticlePage = () => {
-  const defaultContent = {"entityMap":{},"blocks":[{"key":"637gr","text":"Initialized from content state.","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]};
-  const html = '<p>Hey this <strong>editor</strong> rocks</p>';
+  const html = '<p>Hey this <strong>editor</strong> rocks 😀</p>';
   const contentBlock = htmlToDraft(html);
-  let contentState = null;
-  if (contentBlock) {
-    contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
-  }
-  const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState ? contentState : null));
+  const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+  
 
   const validator = new SimpleReactValidator();
   const [title, setTitle] = useState('');
   const [dropline, setDropline] = useState('');
   const [copete, setCopete] = useState('');
   const [bodyHtml, setBodyHtml] = useState('');
+  const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(false);
+  const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
 
 
   const submitHandler = () => {
 
   }
 
-  const onEditorStateChange = (value) => {
-    setEditorState(value);
-    setBodyHtml(draftToHtml(convertToRaw(value.getCurrentContent())))
+  const onEditorStateChange = (editorState) => {
+    setEditorState(editorState);
+    setBodyHtml(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+    setBodyJson(JSON.stringify(contentState, null, 4))
   }
 
-  console.log(bodyHtml);
+  const uploadImageCallBack = (file) => {
+    return new Promise(
+      (resolve, reject) => {
+        const xhr = new XMLHttpRequest(); // eslint-disable-line no-undef
+        xhr.open('POST', 'https://api.imgur.com/3/image');
+        xhr.setRequestHeader('Authorization', 'Client-ID d4ceb0c00a0cfc6');
+        const data = new FormData(); // eslint-disable-line no-undef
+        data.append('image', file);
+        xhr.send(data);
+        xhr.addEventListener('load', () => {
+          const response = JSON.parse(xhr.responseText);
+          resolve(response);
+        });
+        xhr.addEventListener('error', () => {
+          const error = JSON.parse(xhr.responseText);
+          reject(error);
+        });
+      },
+    );
+  }
+
   return (
     <>
       <div className="contact_form padding-bottom">
@@ -58,13 +79,38 @@ const FormArticlePage = () => {
                             placeholder="Titulo" />
                           {validator.message('Titulo', title, 'required')}
                         </div>
-                        <div className="col-12">
+                        <div className="col-12" id="editor">
                           <Editor
                             editorState={editorState}
                             toolbarClassName="toolbarClassName"
                             wrapperClassName="wrapperClassName"
-                            editorClassName="editorClassName"
+                            editorClassName="editor-textarea"
                             onEditorStateChange={onEditorStateChange}
+                            toolbarCustomButtons={[<CustomOption />]}
+                            hashtag={{
+                              separator: ' ',
+                              trigger: '#',
+                            }}
+                            mention={{
+                              separator: ' ',
+                              trigger: '@',
+                              suggestions: [
+                                { text: 'APPLE', value: 'apple', url: 'https://apple.com' },
+                                { text: 'BANANA', value: 'banana', url: 'banana' },
+                                { text: 'CHERRY', value: 'cherry', url: 'cherry' },
+                                { text: 'DURIAN', value: 'durian', url: 'durian' },
+                                { text: 'EGGFRUIT', value: 'eggfruit', url: 'eggfruit' },
+                                { text: 'FIG', value: 'fig', url: 'fig' },
+                                { text: 'GRAPEFRUIT', value: 'grapefruit', url: 'grapefruit' },
+                                { text: 'HONEYDEW', value: 'honeydew', url: 'honeydew' },
+                              ],
+                            }}
+                            toolbar={{
+                              image: {
+                                uploadCallback: uploadImageCallBack,
+                                alt: { present: true, mandatory: false },
+                              },
+                            }}
                           />
                         </div>
                         <div className="col-lg-6">
@@ -85,8 +131,7 @@ const FormArticlePage = () => {
                           <button className="cbtn1" type="submit">Guardar</button>
                         </div>
                         <div className="preview">
-                          {title} <br />
-                          {parseHtml(draftToHtml(convertToRaw(editorState.getCurrentContent())))}
+                          {/* {JSON.stringify(contentState, null, 4)} */}
                         </div>
                       </div>
                     </form>

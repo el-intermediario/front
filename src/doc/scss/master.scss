@@ -1936,14 +1936,20 @@ textarea {
 
 input,
 textarea {
-  padding: 15px;
+  padding: 5px 15px;
   border: none;
   margin-bottom: 10px;
-  background: $input_bg;
+  border: 1px solid $input_bg;
 
   &::placeholder {
     color: $input_color;
   }
+}
+
+.editor-textarea {
+  border: 1px solid $input_bg;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
 .border_black {
