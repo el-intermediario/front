@@ -12,18 +12,25 @@ import htmlToDraft from 'html-to-draftjs';
 
 
 const FormArticlePage = () => {
-  const html = '<p>Hey this <strong>editor</strong> rocks 😀</p>';
+  const html = '<p>Hey escribe aqui tu <strong>nota</strong> 😀</p>';
   const contentBlock = htmlToDraft(html);
   const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
   
 
   const validator = new SimpleReactValidator();
   const [title, setTitle] = useState('');
+  const [type, setType] = useState('normal');
   const [dropline, setDropline] = useState('');
+  const [source, setSource] = useState('');
   const [copete, setCopete] = useState('');
   const [bodyHtml, setBodyHtml] = useState('');
   const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(false);
+  const [suggestions, setSuggestions] = useState([
+    { text: 'Boca eliminado de la copa', value: 'boca', url: 'https://www.ole.com.ar' },
+    { text: 'BANANA', value: 'banana', url: 'banana' },
+    { text: 'CHERRY', value: 'cherry', url: 'cherry' }
+  ]);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
 
 
@@ -73,11 +80,23 @@ const FormArticlePage = () => {
                   <div className="col-12">
                     <form onSubmit={submitHandler}>
                       <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-lg-8">
                           <input name="title" value={title} onChange={e => setTitle(e.target.value)}
                             type="text"
                             placeholder="Titulo" />
                           {validator.message('Titulo', title, 'required')}
+                        </div>
+                        <div className="col-lg-4">
+                          <select>
+                            <option selectedvalue="normal">Normal</option>
+                            <option value="featured">Destacada</option>
+                            <option value="sponsor">Sponsoreada</option>
+                          </select>
+                        </div>
+                        <div className="col-lg-12">
+                          <input name="copete" value={copete} onChange={e => setCopete(e.target.value)}
+                            type="text"
+                            placeholder="Copete" />
                         </div>
                         <div className="col-12" id="editor">
                           <Editor
@@ -94,16 +113,7 @@ const FormArticlePage = () => {
                             mention={{
                               separator: ' ',
                               trigger: '@',
-                              suggestions: [
-                                { text: 'APPLE', value: 'apple', url: 'https://apple.com' },
-                                { text: 'BANANA', value: 'banana', url: 'banana' },
-                                { text: 'CHERRY', value: 'cherry', url: 'cherry' },
-                                { text: 'DURIAN', value: 'durian', url: 'durian' },
-                                { text: 'EGGFRUIT', value: 'eggfruit', url: 'eggfruit' },
-                                { text: 'FIG', value: 'fig', url: 'fig' },
-                                { text: 'GRAPEFRUIT', value: 'grapefruit', url: 'grapefruit' },
-                                { text: 'HONEYDEW', value: 'honeydew', url: 'honeydew' },
-                              ],
+                              suggestions: suggestions,
                             }}
                             toolbar={{
                               image: {
@@ -114,9 +124,9 @@ const FormArticlePage = () => {
                           />
                         </div>
                         <div className="col-lg-6">
-                          <input name="copete" value={copete} onChange={e => setCopete(e.target.value)}
+                          <input name="source" value={source} onChange={e => setSource(e.target.value)}
                             type="text"
-                            placeholder="Copete" />
+                            placeholder="Fuente" />
                         </div>
                         <div className="col-12">
                           <input name="status" 
