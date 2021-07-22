@@ -82,6 +82,8 @@ import AudioPostThreeDarkPage from "../AudioPostThreeDarkPage";
 import PostOneLeftSidebarDarkPage from "../PostOneLeftSidebarDarkPage";
 import LoginPage from '../LoginPage';
 import FormArticlePage from '../FormArticlePage';
+import FormCategoryPage from '../FormCategoryPage';
+import FormContactPage from '../FormContactPage';
 // import PublicRoute from '../_PublicRoute';
 
 const Routes = () => {
@@ -102,7 +104,17 @@ const Routes = () => {
                 exact
                 path="/admin/article/add"
                 parentClass="theme-2"
-                component={FormArticlePage}/>        
+                component={FormArticlePage}/>
+            <PublicRoute
+                exact
+                path="/admin/category/add"
+                parentClass="theme-2"
+                component={FormCategoryPage}/>
+            <PublicRoute
+                exact
+                path="/admin/contact/add"
+                parentClass= "theme-2"
+                component={FormContactPage}/>            
             <PrivateRoute
                 exact
                 path="/business"
