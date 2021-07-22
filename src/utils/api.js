@@ -5,7 +5,8 @@ const baseS3 = 'https://sanjua-app.s3.amazonaws.com';
 const version = 'api/v1';
 
 const auth = {
-  login: (dataModel, headers) => axios.post(`${baseUrl}/${version}/auth/login`, dataModel, headers)
+  login: (dataModel, headers) => axios.post(`${baseUrl}/${version}/auth/login`, dataModel, headers),
+  register: (dataModel, headers) => axios.post(`${baseUrl}/${version}/auth/register`, dataModel, headers)
 };
 
 export default {

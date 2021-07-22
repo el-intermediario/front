@@ -84,6 +84,7 @@ import LoginPage from '../LoginPage';
 import FormArticlePage from '../FormArticlePage';
 import FormCategoryPage from '../FormCategoryPage';
 import FormContactPage from '../FormContactPage';
+import RegisterPage from '../RegisterPage';
 // import PublicRoute from '../_PublicRoute';
 
 const Routes = () => {
@@ -100,6 +101,11 @@ const Routes = () => {
                 path="/login"
                 parentClass="theme-1"
                 component={LoginPage}/>
+            <PublicRoute
+                exact
+                path="/register"
+                parentClass="theme-1"
+                component={RegisterPage}/>    
             <PublicRoute
                 exact
                 path="/admin/article/add"
