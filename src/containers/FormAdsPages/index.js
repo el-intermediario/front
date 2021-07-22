@@ -115,7 +115,7 @@ const FormAdsPage = () => {
                           />
                         </div>
                         <div className="col-lg-6">
-                          <input name="source" value={copete} onChange={e => setSource(e.target.value)}
+                          <input name="source" value={source} onChange={e => setSource(e.target.value)}
                             type="text"
                             placeholder="source" />
                         </div>
