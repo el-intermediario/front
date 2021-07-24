@@ -9,6 +9,12 @@ const auth = {
   register: (dataModel, headers) => axios.post(`${baseUrl}/${version}/auth/register`, dataModel, headers)
 };
 
+const article = {
+  get: (path, headers) => axios.get(`${baseUrl}/${version}/articles/${path}`, headers),
+  add: (dataModel, headers) => axios.post(`${baseUrl}/${version}/articles`, dataModel, headers)
+};
+
 export default {
   auth,
+  article
 }

@@ -85,6 +85,7 @@ import FormArticlePage from '../FormArticlePage';
 import FormCategoryPage from '../FormCategoryPage';
 import FormContactPage from '../FormContactPage';
 import RegisterPage from '../RegisterPage';
+import ArticlePage from '../ArticlePage';
 // import PublicRoute from '../_PublicRoute';
 
 const Routes = () => {
@@ -181,6 +182,11 @@ const Routes = () => {
                 path="/post3"
                 parentClass="theme-1"
                 component={PostThreePage}/>
+            <PrivateRoute
+                exact
+                path="/san-juan-reporto-384-casos-de-covid-en-un-dia"
+                parentClass="theme-1"
+                component={ArticlePage}/>    
             <PrivateRoute
                 exact
                 path="/video_post1"

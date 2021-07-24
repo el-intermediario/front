@@ -6,6 +6,7 @@ import CustomOption from './plugins/CustomOption';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import api from "../../utils/api";
 
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
@@ -26,6 +27,7 @@ const FormArticlePage = () => {
   const [bodyHtml, setBodyHtml] = useState('');
   const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(false);
+  const [category, setCategory] = useState('local');
   const [suggestions, setSuggestions] = useState([
     { text: 'Boca eliminado de la copa', value: 'boca', url: 'https://www.ole.com.ar' },
     { text: 'BANANA', value: 'banana', url: 'banana' },
@@ -34,8 +36,33 @@ const FormArticlePage = () => {
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
 
 
-  const submitHandler = () => {
-
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    console.log('entro');
+    const data = {
+      title,
+      body: bodyHtml,
+      type,
+      dropline,
+      copete,
+      source,
+      bodyHtml,
+      bodyJson,
+      status,
+      category
+    };
+    try {
+      const response = await api.article.add(data,
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+      
+      if (response) {
+        console.log(response.data);
+        // set Message.
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const onEditorStateChange = (editorState) => {
