@@ -184,7 +184,7 @@ const Routes = () => {
                 component={PostThreePage}/>
             <PrivateRoute
                 exact
-                path="/san-juan-reporto-384-casos-de-covid-en-un-dia"
+                path="/articulo/:path"
                 parentClass="theme-1"
                 component={ArticlePage}/>    
             <PrivateRoute

@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import BreadCrumb from "../../components/BreadCrumb";
 import FontAwesome from "../../components/uiStyle/FontAwesome";
 import { Link } from "react-router-dom";
@@ -23,6 +24,8 @@ import BlogComment from "../../components/BlogComment";
 import api from "../../utils/api";
 
 const ArticlePage = () => {
+	let { path } = useParams();
+	//const url = this.props.routeParams.page;
 	const [data, setData] = useState(null);
 	useEffect(() => {
 		fetchData();
@@ -30,7 +33,6 @@ const ArticlePage = () => {
 
   const fetchData = async () => {
 		try {
-			const path = "san-juan-reporto-384-casos-de-covid-en-un-dia";
       const response = await api.article.get(path,
         { headers: { 'Content-Type': 'application/json' } }
       );
