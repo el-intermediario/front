@@ -32,7 +32,7 @@ const ArticlePage = () => {
 	}, []);
 
   const fetchData = async () => {
-		try {
+	try {
       const response = await api.article.get(path,
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -103,7 +103,7 @@ const ArticlePage = () => {
 									</div>
 									<div className="space-20" />
 								</div>
-								<img src={single_post1} alt="thumb" />
+								<img src={data && data.image} alt="thumb" />
 								<div className="padding20 white_bg">
 									<div className="space-20" />
 										{data && parse(data.body)}

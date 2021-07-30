@@ -27,7 +27,8 @@ const PrivateRoute = (props) => {
                     : props.home_style === 3 ?
                     <Fragment>
                         {/*=== home three ===*/}
-                        <LogoAreaThree/>
+                        <LogoAreaTwo/>
+                        <MainMenuTwo/>
                     </Fragment>
                     : props.home_style === 4 ?
                         <Fragment>

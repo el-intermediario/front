@@ -7,6 +7,8 @@ import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import api from "../../utils/api";
+import { css } from "@emotion/react";
+import BeatLoader from "react-spinners/BeatLoader";
 
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
@@ -16,9 +18,9 @@ const FormArticlePage = () => {
   const html = '<p>Hey escribe aqui tu <strong>nota</strong> 😀</p>';
   const contentBlock = htmlToDraft(html);
   const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
-  
 
   const validator = new SimpleReactValidator();
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [type, setType] = useState('normal');
   const [dropline, setDropline] = useState('');
@@ -28,6 +30,7 @@ const FormArticlePage = () => {
   const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(false);
   const [category, setCategory] = useState('local');
+  const [image, setImage] = useState(null);
   const [suggestions, setSuggestions] = useState([
     { text: 'Boca eliminado de la copa', value: 'boca', url: 'https://www.ole.com.ar' },
     { text: 'BANANA', value: 'banana', url: 'banana' },
@@ -49,7 +52,8 @@ const FormArticlePage = () => {
       bodyHtml,
       bodyJson,
       status,
-      category
+      category,
+      image
     };
     try {
       const response = await api.article.add(data,
@@ -92,6 +96,27 @@ const FormArticlePage = () => {
     );
   }
 
+  const imageHandler = async (event) => {
+    setLoading(true);
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('folder', 'articles');
+    formData.append('file', file);
+
+    try {
+      const response = await api.upload.post(formData, { headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
+      
+      if (response) {
+        setImage(response.data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <div className="contact_form padding-bottom">
@@ -124,6 +149,11 @@ const FormArticlePage = () => {
                           <input name="copete" value={copete} onChange={e => setCopete(e.target.value)}
                             type="text"
                             placeholder="Copete" />
+                        </div>
+                        <div className="col-lg-12">
+                          <input name="dropline" value={dropline} onChange={e => setDropline(e.target.value)}
+                            type="text"
+                            placeholder="Volanta" />
                         </div>
                         <div className="col-12" id="editor">
                           <Editor
@@ -164,6 +194,16 @@ const FormArticlePage = () => {
                           <label>Publicar</label>
                         </div>
                         <div className="col-12">
+                          <input 
+                            type="file" 
+                            name="image" 
+                            accept="image/*" 
+                            multiple={false} 
+                            onChange={imageHandler} 
+                          />
+                          <BeatLoader color="#ff0000" loading={loading} size={12} />
+                        </div>
+                        <div className="col-12">
                           <div className="space-20" />
                           <button className="cbtn1" type="submit">Guardar</button>
                         </div>
@@ -182,7 +222,6 @@ const FormArticlePage = () => {
           </div>
         </div>
       </div>
-      <BannerSection />
     </>
   );
 }
