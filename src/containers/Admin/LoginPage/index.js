@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import BannerSection from "../../components/BannerSection";
-import FontAwesome from "../../components/uiStyle/FontAwesome";
-import NewsLetter from "../../components/NewsLetter";
-import FollowUs from "../../components/FollowUs";
+import BannerSection from "../../../components/BannerSection";
+import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
-import api from "../../utils/api";
-import { userLogin } from '../../store/actions/index';
+import api from "../../../utils/api";
+import { userLogin } from '../../../store/actions/index';
 import { useDispatch} from 'react-redux';
-import { toast } from "react-toastify";
-
-import scrollIcon from '../../doc/img/icon/scroll.png';
-import black_phone from '../../doc/img/icon/black_phone.png';
 
 const LoginPage = () => {
   const dispatch = useDispatch();

@@ -6,31 +6,24 @@ import SidebarMenu from "../SidebarMenu";
 const menus = [
     {
         id: 1,
+        link: '/admin',
         linkText: 'Home',
-        child: true,
-        icon: 'angle-down',
-        submenu: [
-            {
-                id: 11,
-                link: '/',
-                linkText: 'Editar'
-            },
-            {
-                id: 12,
-                link: '/dark',
-                linkText: 'Nueva Home'
-            }
-        ]
     },
     {
         id: 2,
+        link: '/articulos',
         linkText: 'Articulos',
         child: true,
         icon: 'angle-down',
         submenu: [
             {
+                id: 20,
+                link: '/articulos',
+                linkText: 'Articulos'
+            },
+            {
                 id: 21,
-                link: '/home-two/about',
+                link: '/admin/article/add',
                 linkText: 'Nuevo'
             },
             {
@@ -42,19 +35,21 @@ const menus = [
     },
     {
         id: 3,
+        link: '/categorias',
         linkText: 'Categorias',
         child: true,
         icon: 'angle-down',
         submenu: [
             {
                 id: 31,
-                child: true,
+                link: '/admin/category/add',
                 linkText: 'Nueva',
             }
         ]
     },
     {
         id: 4,
+        link: '/contactos',
         linkText: 'Contacto',
         child: true,
         icon: 'angle-down',

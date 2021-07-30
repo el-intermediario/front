@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import BannerSection from "../../components/BannerSection";
-import FollowUs from "../../components/FollowUs";
+import BannerSection from "../../../components/BannerSection";
+import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
 import CustomOption from './plugins/CustomOption'; 
 import { Editor } from 'react-draft-wysiwyg';

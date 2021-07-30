@@ -80,13 +80,14 @@ import AudioPostOneDarkPage from "../AudioPostOneDarkPage";
 import AudioPostTwoDarkPage from "../AudioPostTwoDarkPage";
 import AudioPostThreeDarkPage from "../AudioPostThreeDarkPage";
 import PostOneLeftSidebarDarkPage from "../PostOneLeftSidebarDarkPage";
-import LoginPage from '../LoginPage';
-import FormArticlePage from '../FormArticlePage';
-import FormCategoryPage from '../FormCategoryPage';
-import FormContactPage from '../FormContactPage';
+import LoginPage from '../Admin/LoginPage';
+import FormArticlePage from '../Admin/FormArticlePage';
+import FormCategoryPage from '../Admin/FormCategoryPage';
+import FormContactPage from '../Admin/FormContactPage';
 import RegisterPage from '../RegisterPage';
 import ArticlePage from '../ArticlePage';
 import ArticlesPage from '../ArticlePage/articles';
+import AdminPage from '../Admin';
 // import PublicRoute from '../_PublicRoute';
 
 const Routes = () => {
@@ -98,15 +99,23 @@ const Routes = () => {
                 path="/"
                 parentClass="theme-1"
                 component={HomePage}/>
-            <PublicRoute
+            <PrivateRoute
                 exact
+                home_style={3}
+                path="/admin"
+                parentClass="theme-3"
+                component={AdminPage}/>    
+            <PrivateRoute
+                exact
+                home_style={3}
                 path="/login"
-                parentClass="theme-1"
+                parentClass="theme-3"
                 component={LoginPage}/>
-            <PublicRoute
+            <PrivateRoute
                 exact
+                home_style={3}
                 path="/register"
-                parentClass="theme-1"
+                parentClass="theme-3"
                 component={RegisterPage}/>    
             <PrivateRoute
                 exact
@@ -114,20 +123,23 @@ const Routes = () => {
                 path="/admin/article/add"
                 parentClass="theme-3"
                 component={FormArticlePage}/>
-            <PublicRoute
+            <PrivateRoute
                 exact
+                home_style={3}
                 path="/articulos"
-                parentClass="theme-2"
+                parentClass="theme-3"
                 component={ArticlesPage}/>    
-            <PublicRoute
+            <PrivateRoute
                 exact
+                home_style={3}
                 path="/admin/category/add"
-                parentClass="theme-2"
+                parentClass="theme-3"
                 component={FormCategoryPage}/>
-            <PublicRoute
+            <PrivateRoute
                 exact
+                home_style={3}
                 path="/admin/contact/add"
-                parentClass= "theme-2"
+                parentClass= "theme-3"
                 component={FormContactPage}/>            
             <PrivateRoute
                 exact

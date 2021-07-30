@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import BannerSection from "../../components/BannerSection";
-import FollowUs from "../../components/FollowUs";
+import BannerSection from "../../../components/BannerSection";
+import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
 
-const FormContactPage = () => {  
+const FormCategoryPage = () => {
   const validator = new SimpleReactValidator();
-  const [subject, setSubject] = useState('');
+  const [name, setName] = useState('');
+  const [color, setColor] = useState('');
 
 
   const submitHandler = () => {
@@ -22,15 +23,21 @@ const FormContactPage = () => {
               <div className="cotact_form">
                 <div className="row">
                   <div className="col-12">
-                    <h3>Crear Contact!</h3>
+                    <h3>Crear Categoria!</h3>
                   </div>
                   <div className="col-12">
                     <form onSubmit={submitHandler}>
                       <div className="row">
                         <div className="col-lg-6">
-                          <input name="subject" value={subject} onChange={e => setSubject(e.target.value)}
+                          <input name="title" value={name} onChange={e => setName(e.target.value)}
                             type="text"
-                            placeholder="subject" />
+                            placeholder="Titulo" />
+                          {validator.message('Titulo', name, 'required')}
+                        </div>
+                        <div className="col-lg-6">
+                          <input name="Date" value={color} onChange={e => setColor(e.target.value)}
+                            type="text"
+                            placeholder="color" />
                         </div>
                         <div className="col-12">
                           <div className="space-20" />
@@ -56,4 +63,4 @@ const FormContactPage = () => {
   );
 }
 
-export default FormContactPage;
+export default FormCategoryPage;

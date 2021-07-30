@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import BannerSection from "../../components/BannerSection";
-import FollowUs from "../../components/FollowUs";
+import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
 import CustomOption from './plugins/CustomOption';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import api from "../../utils/api";
+import api from "../../../utils/api";
 import { css } from "@emotion/react";
 import BeatLoader from "react-spinners/BeatLoader";
 
