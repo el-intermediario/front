@@ -88,13 +88,13 @@ import RegisterPage from '../RegisterPage';
 import ArticlePage from '../ArticlePage';
 import ArticlesPage from '../ArticlePage/articles';
 import AdminPage from '../Admin';
-// import PublicRoute from '../_PublicRoute';
+import Logout from '../Admin/Logout';
 
 const Routes = () => {
     return (
         <Switch>
             {/*home one routes*/}
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/"
                 parentClass="theme-1"
@@ -105,12 +105,17 @@ const Routes = () => {
                 path="/admin"
                 parentClass="theme-3"
                 component={AdminPage}/>    
-            <PrivateRoute
+            <PublicRoute
                 exact
                 home_style={3}
                 path="/login"
                 parentClass="theme-3"
                 component={LoginPage}/>
+            <PublicRoute
+                exact
+                path="/logout"
+                parentClass="theme-3"
+                component={Logout}/>    
             <PrivateRoute
                 exact
                 home_style={3}

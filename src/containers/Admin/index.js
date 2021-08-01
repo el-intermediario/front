@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import BannerSection from "../../components/BannerSection";
 import FollowUs from "../../components/FollowUs";
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const AdminPage = () => {
-  const dispatch = useDispatch();
+  const {user} = useSelector(state => state.user);
 
+  console.log(user);
   return (
     <>
       {/*contact form area*/}

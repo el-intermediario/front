@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import TopBar from "../../components/TopBar";
 import LogoArea from "../../components/LogoArea";
 import MainMenu from "../../components/MainMenu";
@@ -10,9 +10,13 @@ import MainMenuTwo from "../../components/MainMenuTwo";
 import FooterAreaTwo from "../../components/FooterAreaTwo";
 import LogoAreaThree from "../../components/LogoAreaThree";
 import FooterAreaThree from "../../components/FooterAreaThree";
+import { useSelector } from 'react-redux';
 
 const PrivateRoute = (props) => {
     const {component: Component, ...rest} = props;
+    const {user} = useSelector(state => state.user);
+    const redirect = '/login';
+
     return (
         <div className={props.parentClass}>
             {
@@ -50,9 +54,9 @@ const PrivateRoute = (props) => {
 
             <Route
                 {...rest}
-                render={props => (
-                    <Component {...props} />
-                )}
+                render={props =>
+                    user ? <Component {...props} /> : <Redirect to={redirect}/>
+                }
             />
 
             {props.home_style === 2 ?

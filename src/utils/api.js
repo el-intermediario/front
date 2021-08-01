@@ -22,5 +22,5 @@ const upload = {
 export default {
   auth,
   article,
-  upload
+  upload,
 }

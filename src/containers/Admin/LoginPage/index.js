@@ -4,10 +4,12 @@ import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
 import api from "../../../utils/api";
 import { userLogin } from '../../../store/actions/index';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const {user} = useSelector(state => state.user);
   const validator = new SimpleReactValidator();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -30,12 +32,14 @@ const LoginPage = () => {
 
         if (response) {
           dispatch(userLogin(response.data));
+          return <Redirect to="/admin" />
           // redirect to dashboard of notes.
         }
       }
     }
   };
 
+  console.log(user);
   return (
     <>
       {/*contact form area*/}

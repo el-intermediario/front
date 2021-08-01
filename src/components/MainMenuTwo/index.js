@@ -61,6 +61,11 @@ const menus = [
             },
         ]
     },
+    {
+        id: 5,
+        link: '/logout',
+        linkText: 'Salir',
+    },
 ];
 const MainMenuTwo = () => {
     const [sideShow, setSideShow] = useState(false);
