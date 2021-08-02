@@ -15,6 +15,20 @@ const article = {
   add: (dataModel, headers) => axios.post(`${baseUrl}/${version}/articles`, dataModel, headers)
 };
 
+const category = {
+  get: (path, headers) => axios.get(`${baseUrl}/${version}/categories/${path}`, headers),
+  getCategories: (dataModel, headers) => axios.get(`${baseUrl}/${version}/categories`, headers),
+  add: (dataModel, headers) => axios.post(`${baseUrl}/${version}/categories`, dataModel, headers)  
+}
+
+const contact = {
+  add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/contacts`, dataModel, headers) 
+}
+
+const tag = {
+  add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/tags`, dataModel, headers) 
+}
+
 const upload = {
   post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/upload`, dataModel, headers)
 };
@@ -22,5 +36,8 @@ const upload = {
 export default {
   auth,
   article,
+  category,
+  contact,
+  tag,
   upload,
 }
