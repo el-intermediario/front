@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
-import SimpleReactValidator from 'simple-react-validator';
+import SimpleReactValidator from "simple-react-validator";
 
-const FormContactPage = () => {  
+const FormContactPage = () => {
   const validator = new SimpleReactValidator();
-  const [subject, setSubject] = useState('');
-
-
-  const submitHandler = () => {
-
-  }
+  const [name, setName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    const data = {
+      name,
+      subject,
+      message,
+    };
+    try {
+      const response = await api.contact.add(data, {
+        header: { "Content-Type": "application/json" },
+      });
+      if (response) {
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -28,13 +44,37 @@ const FormContactPage = () => {
                     <form onSubmit={submitHandler}>
                       <div className="row">
                         <div className="col-lg-6">
-                          <input name="subject" value={subject} onChange={e => setSubject(e.target.value)}
+                          <input
+                            name="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             type="text"
-                            placeholder="subject" />
+                            placeholder="name"
+                          />
+                        </div>
+                        <div className="col-lg-6">
+                          <input
+                            name="subject"
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
+                            type="text"
+                            placeholder="subject"
+                          />
+                        </div>
+                        <div className="col-lg-6">
+                          <input
+                            name="message"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            type="text"
+                            placeholder="message"
+                          />
                         </div>
                         <div className="col-12">
                           <div className="space-20" />
-                          <button className="cbtn1" type="submit">Guardar</button>
+                          <button className="cbtn1" type="submit">
+                            Guardar
+                          </button>
                         </div>
                         <div className="preview">
                           {/* {JSON.stringify(contentState, null, 4)} */}
@@ -54,6 +94,6 @@ const FormContactPage = () => {
       <BannerSection />
     </>
   );
-}
+};
 
 export default FormContactPage;
