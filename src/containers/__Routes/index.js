@@ -84,6 +84,8 @@ import LoginPage from '../Admin/LoginPage';
 import FormArticlePage from '../Admin/FormArticlePage';
 import FormCategoryPage from '../Admin/FormCategoryPage';
 import FormContactPage from '../Admin/FormContactPage';
+import FormTagPage from '../Admin/FromTagsPage';
+import FromAdsPage from '../Admin/FormAdsPage';
 import RegisterPage from '../RegisterPage';
 import ArticlePage from '../ArticlePage';
 import ArticlesPage from '../ArticlePage/articles';
@@ -145,7 +147,19 @@ const Routes = () => {
                 home_style={3}
                 path="/admin/contact/add"
                 parentClass= "theme-3"
-                component={FormContactPage}/>            
+                component={FormContactPage}/>
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="../admin/FormTagPage"
+                parentClass= "theme-3"
+                component={FormTagPage}/>
+            <PrivateRoute
+                exact
+                path="business"
+                parentClass="../admin/FromAdsPage"
+                parentClass= "theme-3"
+                component={FromAdsPage}/>            
             <PrivateRoute
                 exact
                 path="/business"
