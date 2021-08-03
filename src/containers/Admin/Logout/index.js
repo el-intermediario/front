@@ -9,9 +9,14 @@ const Logout = () => {
 
   useEffect(() => {
     if(user) {
-      dispatch(userLogout(false));
+      logout();
     }
   }, [])
+
+  const logout = () => {
+    dispatch(userLogout(false));
+    return <Redirect to="/" />
+  }
 
   return (
     <></>

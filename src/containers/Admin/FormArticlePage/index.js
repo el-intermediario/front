@@ -40,7 +40,6 @@ const FormArticlePage = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log('entro');
     const data = {
       title,
       body: bodyHtml,

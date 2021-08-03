@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 const AdminPage = () => {
   const {user} = useSelector(state => state.user);
 
-  console.log(user);
   return (
     <>
       {/*contact form area*/}
