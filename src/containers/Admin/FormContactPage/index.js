@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from "simple-react-validator";
+import api from "../../../utils/api";
+
 
 const FormContactPage = () => {
   const validator = new SimpleReactValidator();
