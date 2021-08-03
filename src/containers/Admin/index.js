@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 const AdminPage = () => {
   const {user} = useSelector(state => state.user);
 
+  console.log(user);
   return (
     <>
       {/*contact form area*/}
@@ -17,7 +18,7 @@ const AdminPage = () => {
               <div className="cotact_form">
                 <div className="row">
                   <div className="col-12">
-                    <h3>Bienvenido!</h3>
+                    <h3>Bienvenido {user && user.firstName}</h3>
                   </div>
                   <div className="col-12">
                     Dashboard 

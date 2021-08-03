@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
+import api from '../../../utils/api';
 
 const FormAdsPage = () => {
-
   const validator = new SimpleReactValidator();
   const [title, setTitle] = useState('');
 
-  const submitHandler = () => {
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    const data = {
+      title
+    }
     try {
       const response = await api.category.add(data,
         { header: { 'Content-Type': 'application/json' } }
@@ -34,20 +38,17 @@ const FormAdsPage = () => {
                     <h3>Crear Categoria!</h3>
                   </div>
                   <div className="col-12">
-                    <form onSubmit={submitHandler}>
+                    <form onSubmit={(e) => submitHandler(e)}>
                       <div className="row">
                         <div className="col-lg-6">
                           <input name="title" value={title} onChange={e => setTitle(e.target.value)}
                             type="text"
                             placeholder="Titulo" />
-                          {validator.message('Titulo', name, 'required')}
+                          {validator.message('Titulo', title, 'required')}
                         </div>
                         <div className="col-12">
                           <div className="space-20" />
                           <button className="cbtn1" type="submit">Guardar</button>
-                        </div>
-                        <div className="preview">
-                          {/* {JSON.stringify(contentState, null, 4)} */}
                         </div>
                       </div>
                     </form>
