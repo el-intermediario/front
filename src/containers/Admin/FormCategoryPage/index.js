@@ -9,7 +9,6 @@ const FormCategoryPage = () => {
   const validator = new SimpleReactValidator();
   const [name, setName] = useState('');
   const [color, setColor] = useState('');
-  const [politics, setPolitics] = useState('');
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -44,10 +43,16 @@ const FormCategoryPage = () => {
                     <form onSubmit={submitHandler}>
                       <div className="row">
                         <div className="col-lg-6">
-                          <input name="title" value={name} onChange={e => setName(e.target.value)}
+                          <input name="title" value={title} onChange={e => setTitle(e.target.value)}
                             type="text"
                             placeholder="Titulo" />
                           {validator.message('Titulo', name, 'required')}
+                        </div>
+                        <div className="col-lg-6">
+                          <input name="color" value={color} onChange={e => setColor(e.target.value)}
+                            type="text"
+                            placeholder="color" />
+                          {validator.message('color', color, 'required')}
                         </div>
                         <div className="col-12">
                           <div className="space-20" />
