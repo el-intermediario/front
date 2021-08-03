@@ -2,18 +2,9 @@ import React, { useState } from 'react';
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
-import CustomOption from './plugins/CustomOption'; 
-import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
-
 
 const FormAdsPage = () => {
-  const contentBlock = htmlToDraft(html);
-  const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
-  
+
   const validator = new SimpleReactValidator();
   const [title, setTitle] = useState('');
 
