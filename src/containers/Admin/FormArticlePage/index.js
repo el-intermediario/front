@@ -8,10 +8,10 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import api from "../../../utils/api";
 import { css } from "@emotion/react";
 import BeatLoader from "react-spinners/BeatLoader";
-
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
-
+import TreeMenu from 'react-simple-tree-menu';
+import 'react-simple-tree-menu/dist/main.css';
 
 const FormArticlePage = () => {
   const html = '<p>Hey escribe aqui tu <strong>nota</strong> 😀</p>';
@@ -29,6 +29,8 @@ const FormArticlePage = () => {
   const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(false);
   const [category, setCategory] = useState('local');
+  const [categoryKey, setCategoryKey] = useState(null);
+  const [categoryParent, setCategoryParent] = useState(null);
   const [image, setImage] = useState(null);
   const [suggestions, setSuggestions] = useState([
     { text: 'Boca eliminado de la copa', value: 'boca', url: 'https://www.ole.com.ar' },
@@ -36,6 +38,97 @@ const FormArticlePage = () => {
     { text: 'CHERRY', value: 'cherry', url: 'cherry' }
   ]);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
+
+  const categories = [
+    {
+      key: 'category',
+      label: 'Selecciona una categoria',
+      nodes: [
+        {
+          key: 'politica',
+          label: 'Politica',
+          nodes: [
+            {
+              key: 'politica_nacional',
+              label: 'Politica Nacional',
+              nodes: [],
+              url: 'https://www.google.com/search?q=dog'
+            },
+            {
+              key: 'politica_regional',
+              label: 'Politica Regional',
+              nodes: [],
+              url: 'https://www.google.com/search?q=fox'
+            },
+            {
+              key: 'politica_internacional',
+              label: 'Politica Internacional',
+              nodes: [],
+              url: 'https://www.google.com/search?q=wolf'
+            }
+          ],
+          url: 'https://www.google.com/search?q=canidae'
+        },
+        {
+          key: 'interes_general',
+          label: 'Interes General',
+          nodes: [
+            {
+              key: 'sociedad',
+              label: 'Sociedad',
+              nodes: [],
+              url: 'https://www.google.com/search?q=dog'
+            },
+            {
+              key: 'economia',
+              label: 'Economia',
+              nodes: [],
+              url: 'https://www.google.com/search?q=fox'
+            },
+            {
+              key: 'policiales',
+              label: 'Policiales',
+              nodes: [],
+              url: 'https://www.google.com/search?q=wolf'
+            },
+            {
+              key: 'cultura_espectaculos',
+              label: 'Cultura y Espectaculos',
+              nodes: [],
+              url: 'https://www.google.com/search?q=wolf'
+            }
+          ],
+          url: 'https://www.google.com/search?q=canidae'
+        },
+        {
+          key: 'deportes',
+          label: 'Deportes',
+          nodes: [
+            {
+              key: 'deportes_nacionales',
+              label: 'Deportes Nacionales',
+              nodes: [],
+              url: 'https://www.google.com/search?q=dog'
+            },
+            {
+              key: 'deportes_regionales',
+              label: 'Deportes Regionales',
+              nodes: [],
+              url: 'https://www.google.com/search?q=fox'
+            },
+            {
+              key: 'deportes_internacionales',
+              label: 'Deportes Internacionales',
+              nodes: [],
+              url: 'https://www.google.com/search?q=wolf'
+            }
+          ],
+          url: 'https://www.google.com/search?q=canidae'
+        },
+      ],
+      url: 'https://www.google.com/search?q=mammal'
+    }
+  ];
 
 
   const submitHandler = async (event) => {
@@ -115,6 +208,14 @@ const FormArticlePage = () => {
     }
   }
 
+  const handleCategory = (item) => {
+    const key = item.key.split('/');
+    const currentKey = key[key.length - 1]; 
+    setCategoryKey(currentKey);
+    setCategory(item.label);
+    setCategoryParent(item.parent);
+  }
+
   return (
     <>
       <div className="contact_form padding-bottom">
@@ -142,6 +243,20 @@ const FormArticlePage = () => {
                             <option value="featured">Destacada</option>
                             <option value="sponsor">Sponsoreada</option>
                           </select>
+                        </div>
+                        <div className="col-lg-12">
+                          <TreeMenu
+                            cacheSearch
+                            data={categories}
+                            debounceTime={125}
+                            disableKeyboard={false}
+                            hasSearch={false}
+                            onClickItem={handleCategory}
+                            resetOpenNodesOnDataUpdate={false}
+                            // initialOpenNodes={[
+                            //   'category',
+                            // ]}
+                          />
                         </div>
                         <div className="col-lg-12">
                           <input name="copete" value={copete} onChange={e => setCopete(e.target.value)}
