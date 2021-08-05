@@ -32,20 +32,20 @@ const ArticlePage = () => {
 	}, []);
 
   const fetchData = async () => {
-	try {
-      const response = await api.article.get(path,
+    try {
+      const response = await api.article.get({id: path, by: 'slug'},
         { headers: { 'Content-Type': 'application/json' } }
       );
-      
+        
       if (response) {
-				setData(response.data);
+        setData(response.data);
         console.log(response.data);
         // set Message.
       }
     } catch (error) {
       console.log(error);
     }
-	}
+  }
 
 	return (
 		<Fragment>

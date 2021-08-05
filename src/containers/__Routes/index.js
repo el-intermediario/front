@@ -103,6 +103,11 @@ const Routes = () => {
                 component={HomePage}/>
             <PrivateRoute
                 exact
+                path="/articulo/:path"
+                parentClass="theme-1"
+                component={ArticlePage}/>    
+            <PrivateRoute
+                exact
                 home_style={3}
                 path="/admin"
                 parentClass="theme-3"
@@ -130,6 +135,12 @@ const Routes = () => {
                 path="/admin/article/add"
                 parentClass="theme-3"
                 component={FormArticlePage}/>
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/article/:id/edit"
+                parentClass="theme-3"
+                component={FormArticlePage}/>    
             <PrivateRoute
                 exact
                 home_style={3}
@@ -219,12 +230,7 @@ const Routes = () => {
                 exact
                 path="/post3"
                 parentClass="theme-1"
-                component={PostThreePage}/>
-            <PrivateRoute
-                exact
-                path="/articulo/:path"
-                parentClass="theme-1"
-                component={ArticlePage}/>    
+                component={PostThreePage}/>    
             <PrivateRoute
                 exact
                 path="/video_post1"
