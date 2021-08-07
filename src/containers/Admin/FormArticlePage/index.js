@@ -201,7 +201,28 @@ const FormArticlePage = () => {
     setBodyJson(JSON.stringify(contentState, null, 4))
   }
 
-  const uploadImageCallBack = (file) => {
+  const uploadImageCallBack = async (file) => {
+    const formData = new FormData();
+    formData.append('folder', 'articles');
+    formData.append('file', file);
+
+    try {
+      const response = await api.upload.post(formData, { headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
+      
+      if (response) {
+        console.log(response.data);
+        return new Promise(
+          (resolve, reject) => {
+            resolve({ data: { link: response.data, file } });
+          }
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    /*
     return new Promise(
       (resolve, reject) => {
         const xhr = new XMLHttpRequest(); // eslint-disable-line no-undef
@@ -219,7 +240,7 @@ const FormArticlePage = () => {
           reject(error);
         });
       },
-    );
+    );*/
   }
 
   const imageHandler = async (event) => {
@@ -249,6 +270,18 @@ const FormArticlePage = () => {
     setCategoryKey(currentKey);
     setCategory(item.label);
     setCategoryParent(item.parent);
+  }
+
+  const embedCallBack = (link) => {
+    if (link.indexOf("youtube") >= 0){
+        link = link.replace("watch?v=","embed/");
+        link = link.replace("/watch/", "/embed/");
+        link = link.replace("youtu.be/","youtube.com/embed/");
+    }
+    if (link.indexOf("vimeo") >= 0){
+      link = link.replace("vimeo.com","player.vimeo.com/video");
+    }
+    return link
   }
 
   return (
@@ -301,8 +334,18 @@ const FormArticlePage = () => {
                             }}
                             toolbar={{
                               image: {
+                                previewImage: true,
+                                inputAccept: 'image/gif,image/jpeg,image/jpg,image/png,image/svg',
                                 uploadCallback: uploadImageCallBack,
                                 alt: { present: true, mandatory: false },
+                              },
+                              embedded: {
+                                //icon: embedded,
+                                embedCallback: embedCallBack,
+                                defaultSize: {
+                                  height: '240px',
+                                  width: 'auto',
+                                },
                               },
                             }}
                           />
