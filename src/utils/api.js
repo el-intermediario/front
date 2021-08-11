@@ -12,6 +12,7 @@ const auth = {
 const article = {
   get: (data, headers) => axios.get(`${baseUrl}/${version}/articles/${data.id}?by=${data.by}`, headers),
   getArticles: (dataModel, headers) => axios.get(`${baseUrl}/${version}/articles`, headers),
+  getArticlesSearch: (dataModel, headers) => axios.get(`${baseUrl}/${version}/articles${dataModel}`, headers),
   add: (dataModel, headers) => axios.post(`${baseUrl}/${version}/articles`, dataModel, headers)
 };
 

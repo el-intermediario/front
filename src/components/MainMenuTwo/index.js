@@ -11,14 +11,14 @@ const menus = [
     },
     {
         id: 2,
-        link: '/articulos',
+        link: '/admin/article',
         linkText: 'Articulos',
         child: true,
         icon: 'angle-down',
         submenu: [
             {
                 id: 20,
-                link: '/articulos',
+                link: '/admin/article',
                 linkText: 'Articulos'
             },
             {

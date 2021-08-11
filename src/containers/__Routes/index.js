@@ -144,7 +144,7 @@ const Routes = () => {
             <PrivateRoute
                 exact
                 home_style={3}
-                path="/articulos"
+                path="/admin/article"
                 parentClass="theme-3"
                 component={ArticlesPage}/>    
             <PrivateRoute
