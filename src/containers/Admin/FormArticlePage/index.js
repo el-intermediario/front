@@ -188,7 +188,7 @@ const FormArticlePage = () => {
       );
       
       if (response) {
-        history.push('/articulos', {message: 'El articulo se creo correctamente.'});
+        history.push('/admin/article', {type: 'success', message: 'El articulo se creo correctamente.'});
       }
     } catch (error) {
       console.log(error);
