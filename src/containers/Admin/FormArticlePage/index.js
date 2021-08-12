@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 import CustomOption from './plugins/CustomOption';
 import { Editor } from 'react-draft-wysiwyg';
@@ -9,6 +9,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import TreeMenu from 'react-simple-tree-menu';
+import ReactTags from 'react-tag-autocomplete';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'react-simple-tree-menu/dist/main.css';
 import { useHistory, useParams } from 'react-router-dom';
@@ -41,6 +42,8 @@ const FormArticlePage = () => {
     { text: 'BANANA', value: 'banana', url: 'banana' },
     { text: 'CHERRY', value: 'cherry', url: 'cherry' }
   ]);
+  const [tags, setTags] = useState([]);
+  const reactTags = useRef(null);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
 
   const categories = [
@@ -158,6 +161,7 @@ const FormArticlePage = () => {
         setStatus(data.status);
         setImage(data.image);
         setSource(data.source);
+        setTags(data.tags);
       }
     } catch (error) {
       console.log(error);
@@ -282,6 +286,18 @@ const FormArticlePage = () => {
       link = link.replace("vimeo.com","player.vimeo.com/video");
     }
     return link
+  }
+
+  const onTagDelete = (i) => {
+    setTags(prevState => {
+      const tags = prevState.slice(0);
+      tags.splice(i, 1);
+      setTags(tags);
+    });
+  }
+
+  const onTagAddition = (tag) => {
+    setTags([...tags, tag]);
   }
 
   return (
@@ -415,6 +431,19 @@ const FormArticlePage = () => {
                 <input name="source" value={source} onChange={e => setSource(e.target.value)}
                   type="text"
                   placeholder="Fuente" />
+              </div>
+              <div className="col-12">
+                <ReactTags
+                  //ref={reactTags}
+                  tags={tags}
+                  onDelete={onTagDelete}
+                  onAddition={onTagAddition}
+                  autoresize={false}
+                  placeholderText="Nuevo tag"
+                  delimiters={['Enter', 'Tab']}
+                  allowNew={true}
+                  minQueryLength={3}
+                />
               </div>
               <div className="col-12">
                 <input name="status"

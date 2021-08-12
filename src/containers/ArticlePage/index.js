@@ -22,6 +22,7 @@ import single_post1 from '../../doc/img/blog/single_post1.jpg';
 import OurBlogSection from "../../components/OurBlogSection";
 import BlogComment from "../../components/BlogComment";
 import api from "../../utils/api";
+import RelatedTabs from '../../components/RelatedTabs';
 
 const ArticlePage = () => {
 	let { path } = useParams();
@@ -39,8 +40,6 @@ const ArticlePage = () => {
         
       if (response) {
         setData(response.data);
-        console.log(response.data);
-        // set Message.
       }
     } catch (error) {
       console.log(error);
@@ -293,7 +292,7 @@ const ArticlePage = () => {
 							<PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" />
 						</div>
 						<div className="col-md-6 col-lg-4">
-							<WidgetTab />
+							<RelatedTabs tags={data ? data.tags : null} />
 							<FollowUs title="Follow Us" />
 							<WidgetTrendingNews />
 							<div className="banner2 mb30">

@@ -38,7 +38,6 @@ const ArticlesPage = () => {
     } catch (err) {
       console.log(err);
     }
-
   };
 
   return (
