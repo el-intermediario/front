@@ -16,8 +16,8 @@ const SearchModal = ({searchShow, setSearchShow}) => {
                         <div className="v1search_form">
                             <form onSubmit={submitHandler}>
                                 <input value={search} onChange={(e) => setSearch(e.target.value)} type="search"
-                                       placeholder="Search Here..."/>
-                                <button type="submit" className="cbtn1">Search</button>
+                                       placeholder="Buscar aqui..."/>
+                                <button type="submit" className="cbtn1">Buscar</button>
                             </form>
                         </div>
                     </div>

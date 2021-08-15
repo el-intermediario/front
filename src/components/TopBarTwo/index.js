@@ -29,23 +29,14 @@ const TopBarTwo = () => {
                 <div className="row">
                     <div className="col-md-8 align-self-center">
                         <div className="trancarousel_area">
-                            <p className="trand">Tranding</p>
+                            <p className="trand">Tendencias</p>
                             <div className="trancarousel nav_style1">
                                 <Swiper getSwiper={setSwiper} className="trancarousel" {...params}>
                                     <div className="trancarousel_item">
-                                        <p><Link to="/">Top 10 Best Movies of 2018 So Far: Great Movies To Watch
-                                            Now</Link>
-                                        </p>
+                                      <p><Link to="/">Argentina gano por penales y paso a la final</Link></p>
                                     </div>
                                     <div className="trancarousel_item">
-                                        <p><Link to="/">Top 10 Best Movies of 2018 So Far: Great Movies To Watch
-                                            Now</Link>
-                                        </p>
-                                    </div>
-                                    <div className="trancarousel_item">
-                                        <p><Link to="/">Top 10 Best Movies of 2018 So Far: Great Movies To Watch
-                                            Now</Link>
-                                        </p>
+                                      <p><Link to="/">Llegaron 20000 vacunas</Link></p>
                                     </div>
                                 </Swiper>
                                 <div className="navBtns">

@@ -12,34 +12,28 @@ import thumb5 from '../../doc/img/header/widget/tab5.jpg';
 const data = [
     {
         image: thumb1,
-        title: 'Copa America: Luis Suarez from devastated US',
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020'
+        title: 'Daniela Ledesma: "Si no es una cosa, es otra, pero siempre se termina suspendiendo"',
+        category: 'Río Gallegos',
+        date: 'Julio 8, 2020'
     },
     {
         image: thumb2,
-        title: 'Nancy Zhang a Chinese busy woman and Dhaka',
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020'
+        title: 'Fuerte operativo territorial en Pico Truncado',
+        category: 'Prevencion',
+        date: 'Julio 7, 2020'
     },
     {
         image: thumb3,
-        title: 'U.S. Response subash says he will label regions by risk of…',
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020'
+        title: 'Santa Cruz registró 108 nuevos casos de coronavirus',
+        category: 'Pandemia',
+        date: 'Julio 6, 2020'
     },
     {
         image: thumb4,
-        title: 'Venezuela elan govt and opposit the property collect',
-        category: 'TECHNOLOGY',
+        title: 'Emiliano Martínez brilló en los penales y Argentina es finalista',
+        category: 'Deportes',
         date: 'March 26, 2020'
-    },
-    {
-        image: thumb5,
-        title: 'Cheap smartphone sensor could help you old food safe',
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020'
-    },
+    }
 ];
 
 const WidgetTabPane = ({arr, a_id, id, dark}) => {
@@ -91,18 +85,7 @@ const WidgetTab = ({className, dark}) => {
                             toggle('1');
                         }}
                     >
-                        RELATED
-                    </Link>
-                </NavItem>
-                <NavItem>
-                    <Link
-                        to="/"
-                        className={classnames({active: activeTab === '2'})}
-                        onClick={() => {
-                            toggle('2');
-                        }}
-                    >
-                        RELATED
+                        RELACIONADAS
                     </Link>
                 </NavItem>
                 <NavItem>
@@ -113,7 +96,7 @@ const WidgetTab = ({className, dark}) => {
                             toggle('3');
                         }}
                     >
-                        POPULAR
+                        POPULARES
                     </Link>
                 </NavItem>
             </Nav>

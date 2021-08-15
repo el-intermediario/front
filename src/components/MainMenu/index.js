@@ -8,7 +8,7 @@ import SidebarMenu from "../SidebarMenu";
 const menus = [
     {
         id: 1,
-        linkText: 'Home',
+        linkText: 'Inicio',
         child: true,
         icon: 'angle-down',
         submenu: [
@@ -35,26 +35,27 @@ const menus = [
             },
         ]
     },
+    /*
     {
         id: 2,
-        linkText: 'Pages',
+        linkText: 'Paginas',
         child: true,
         icon: 'angle-down',
         submenu: [
             {
                 id: 21,
                 link: '/about',
-                linkText: 'About'
+                linkText: 'nosotros'
             },
             {
                 id: 22,
                 link: '/archive',
-                linkText: 'Archive'
+                linkText: 'Archivo'
             },
             {
                 id: 23,
                 link: '/contact',
-                linkText: 'Contact Us'
+                linkText: 'Contactenos'
             },
             {
                 id: 24,
@@ -62,7 +63,8 @@ const menus = [
                 linkText: '404'
             },
         ]
-    },
+    },*/
+    /*
     {
         id: 3,
         linkText: 'Posts',
@@ -158,10 +160,11 @@ const menus = [
                 ],
             },
         ]
-    },
+    },*/
+    /*
     {
         id: 4,
-        linkText: 'Categories',
+        linkText: 'Categorias',
         child: true,
         icon: 'angle-down',
         submenu: [
@@ -191,22 +194,27 @@ const menus = [
                 linkText: 'Trending'
             },
         ]
-    },
+    },*/
     {
-        id: 5,
-        linkText: 'World',
+        id: 2,
+        linkText: 'Provinciales',
         link: '/world'
     },
     {
-        id: 6,
-        linkText: 'Sports',
-        link: '/sports'
+        id: 3,
+        linkText: 'Regionales',
+        link: '/world'
     },
     {
-        id: 7,
-        linkText: 'Contact',
-        link: '/contact'
+        id: 4,
+        linkText: 'Internacionales',
+        link: '/world'
     },
+    {
+        id: 5,
+        linkText: 'Deportes',
+        link: '/sports'
+    }
 ];
 const menusDark = [
     {
@@ -488,7 +496,7 @@ const MainMenu = ({className, dark}) => {
                                             <li><FontAwesome name="user-circle"/></li>
                                         </ul>
                                     </div>
-                                    <div className="lang d-none d-xl-block">
+                                    {/* <div className="lang d-none d-xl-block">
                                         <ul>
                                             <li><Link to="/">English <FontAwesome name="angle-down"/></Link>
                                                 <ul>
@@ -503,14 +511,14 @@ const MainMenu = ({className, dark}) => {
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> */}
                                     <div className="temp d-none d-lg-block">
                                         <div className="temp_wap">
                                             <div className="temp_icon">
                                                 <img src={tempIcon} alt="temp icon"/>
                                             </div>
                                             <h3 className="temp_count">13</h3>
-                                            <p>San Francisco</p>
+                                            <p>Santa Cruz</p>
                                         </div>
                                     </div>
                                 </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import PrivateRoute from '../_PrivateRoute';
+import PublicRoute from '../_PublicRoute';
 import HomePage from "../HomePage";
 import HomePageTwo from "../HomePageTwo";
 import BusinessPage from "../BusinessPage";
@@ -79,17 +80,97 @@ import AudioPostOneDarkPage from "../AudioPostOneDarkPage";
 import AudioPostTwoDarkPage from "../AudioPostTwoDarkPage";
 import AudioPostThreeDarkPage from "../AudioPostThreeDarkPage";
 import PostOneLeftSidebarDarkPage from "../PostOneLeftSidebarDarkPage";
-// import PublicRoute from '../_PublicRoute';
+import LoginPage from '../Admin/LoginPage';
+import FormArticlePage from '../Admin/FormArticlePage';
+import FormCategoryPage from '../Admin/FormCategoryPage';
+import FormContactPage from '../Admin/FormContactPage';
+import FormTagPage from '../Admin/FromTagsPage';
+import FromAdsPage from '../Admin/FormAdsPage';
+import RegisterPage from '../RegisterPage';
+import ArticlePage from '../ArticlePage';
+import ArticlesPage from '../ArticlePage/articles';
+import AdminPage from '../Admin';
+import Logout from '../Admin/Logout';
 
 const Routes = () => {
     return (
         <Switch>
             {/*home one routes*/}
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/"
                 parentClass="theme-1"
                 component={HomePage}/>
+            <PrivateRoute
+                exact
+                path="/articulo/:path"
+                parentClass="theme-1"
+                component={ArticlePage}/>    
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin"
+                parentClass="theme-3"
+                component={AdminPage}/>    
+            <PublicRoute
+                exact
+                home_style={3}
+                path="/login"
+                parentClass="theme-3"
+                component={LoginPage}/>
+            <PublicRoute
+                exact
+                path="/logout"
+                parentClass="theme-3"
+                component={Logout}/>    
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/register"
+                parentClass="theme-3"
+                component={RegisterPage}/>    
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/article/add"
+                parentClass="theme-3"
+                component={FormArticlePage}/>
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/article/:id/edit"
+                parentClass="theme-3"
+                component={FormArticlePage}/>    
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/article"
+                parentClass="theme-3"
+                component={ArticlesPage}/>    
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/category/add"
+                parentClass="theme-3"
+                component={FormCategoryPage}/>
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/contact/add"
+                parentClass= "theme-3"
+                component={FormContactPage}/>
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="../admin/FormTagPage"
+                parentClass= "theme-3"
+                component={FormTagPage}/>
+            <PrivateRoute
+                exact
+                path="business"
+                parentClass="../admin/FromAdsPage"
+                parentClass= "theme-3"
+                component={FromAdsPage}/>            
             <PrivateRoute
                 exact
                 path="/business"
@@ -149,7 +230,7 @@ const Routes = () => {
                 exact
                 path="/post3"
                 parentClass="theme-1"
-                component={PostThreePage}/>
+                component={PostThreePage}/>    
             <PrivateRoute
                 exact
                 path="/video_post1"

@@ -13,23 +13,23 @@ const FollowUs = ({className='', title}) => {
                 </Link>
                 <Link className="single_social social_twitter" to="#">
                     <span className="follow_icon"><FontAwesome name="twitter"/></span>
-                    34,456 <span className="icon_text">Followers</span>
+                    34,456 <span className="icon_text">Seguidores</span>
                 </Link>
                 <Link className="single_social social_youtube" to="#">
                     <span className="follow_icon"><FontAwesome name="youtube"/></span>
-                    34,456 <span className="icon_text">Subscribers</span>
+                    34,456 <span className="icon_text">Subscriptores</span>
                 </Link>
                 <Link className="single_social social_instagram" to="#">
                     <span className="follow_icon"><FontAwesome name="instagram"/></span>
-                    34,456 <span className="icon_text">Followers</span>
+                    34,456 <span className="icon_text">Seguidores</span>
                 </Link>
                 <Link className="single_social social_vimeo" to="#">
                     <span className="follow_icon"><FontAwesome name="vimeo"/></span>
-                    34,456 <span className="icon_text">Followers</span>
+                    34,456 <span className="icon_text">Seguidores</span>
                 </Link>
                 <Link className="single_social social_medium" to="#">
                     <span className="follow_icon"><FontAwesome name="medium"/></span>
-                    34,456 <span className="icon_text">Followers</span>
+                    34,456 <span className="icon_text">Seguidores</span>
                 </Link>
             </div>
         </div>

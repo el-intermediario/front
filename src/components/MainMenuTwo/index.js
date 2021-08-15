@@ -6,160 +6,51 @@ import SidebarMenu from "../SidebarMenu";
 const menus = [
     {
         id: 1,
+        link: '/admin',
         linkText: 'Home',
-        child: true,
-        icon: 'angle-down',
-        submenu: [
-            {
-                id: 11,
-                link: '/',
-                linkText: 'Home 1'
-            },
-            {
-                id: 12,
-                link: '/dark',
-                linkText: 'Home Dark'
-            },
-            {
-                id: 13,
-                new: true,
-                link: '/home-two',
-                linkText: 'Home 2'
-            },
-            {
-                id: 14,
-                link: '/home-three',
-                linkText: 'Home 3'
-            },
-        ]
     },
     {
         id: 2,
-        linkText: 'Pages',
+        link: '/admin/article',
+        linkText: 'Articulos',
         child: true,
         icon: 'angle-down',
         submenu: [
             {
+                id: 20,
+                link: '/admin/article',
+                linkText: 'Articulos'
+            },
+            {
                 id: 21,
-                link: '/home-two/about',
-                linkText: 'About'
+                link: '/admin/article/add',
+                linkText: 'Nuevo'
             },
             {
                 id: 22,
                 link: '/home-two/archive',
-                linkText: 'Archive'
-            },
-            {
-                id: 23,
-                link: '/home-two/contact',
-                linkText: 'Contact Us'
-            },
-            {
-                id: 24,
-                link: '/home-two/404',
-                linkText: '404'
-            },
+                linkText: 'Buscar'
+            }
         ]
     },
     {
         id: 3,
-        linkText: 'Posts',
+        link: '/categorias',
+        linkText: 'Categorias',
         child: true,
         icon: 'angle-down',
         submenu: [
             {
                 id: 31,
-                child: true,
-                linkText: 'General Posts',
-                third_menu: [
-                    {
-                        id: 311,
-                        link: '/home-two/post1',
-                        linkText: 'Post 1',
-                    },
-                    {
-                        id: 312,
-                        link: '/home-two/post2',
-                        linkText: 'Post 2',
-                    },
-                    {
-                        id: 313,
-                        link: '/home-two/post3',
-                        linkText: 'Post 3',
-                    },
-                ],
-            },
-            {
-                id: 32,
-                child: true,
-                linkText: 'Video Posts',
-                third_menu: [
-                    {
-                        id: 321,
-                        link: '/home-two/video_post1',
-                        linkText: 'Video Style 1',
-                    },
-                    {
-                        id: 322,
-                        link: '/home-two/video_post2',
-                        linkText: 'Video Style 2',
-                    },
-                    {
-                        id: 323,
-                        link: '/home-two/video_post3',
-                        linkText: 'Video Style 3',
-                    },
-                ],
-            },
-            {
-                id: 33,
-                child: true,
-                linkText: 'Audio Posts',
-                third_menu: [
-                    {
-                        id: 331,
-                        link: '/home-two/audio_post1',
-                        linkText: 'Audio Style 1',
-                    },
-                    {
-                        id: 332,
-                        link: '/home-two/audio_post2',
-                        linkText: 'Audio Style 2',
-                    },
-                    {
-                        id: 333,
-                        link: '/home-two/audio_post3',
-                        linkText: 'Audio Style 3',
-                    },
-                ],
-            },
-            {
-                id: 34,
-                child: true,
-                linkText: 'Sidebars',
-                third_menu: [
-                    {
-                        id: 341,
-                        link: '/home-two/post1',
-                        linkText: 'Right Sidebar',
-                    },
-                    {
-                        id: 342,
-                        link: '/home-two/left_post2',
-                        linkText: 'Left Sidebar',
-                    },
-                    {
-                        id: 343,
-                        link: '/home-two/post2',
-                        linkText: 'No Sidebar',
-                    },
-                ],
-            },
+                link: '/admin/category/add',
+                linkText: 'Nueva',
+            }
         ]
     },
     {
         id: 4,
-        linkText: 'Categories',
+        link: '/contactos',
+        linkText: 'Contacto',
         child: true,
         icon: 'angle-down',
         submenu: [
@@ -168,42 +59,12 @@ const menus = [
                 link: '/home-two/business',
                 linkText: 'Business'
             },
-            {
-                id: 42,
-                link: '/home-two/entertainment',
-                linkText: 'Entertainment'
-            },
-            {
-                id: 43,
-                link: '/home-two/features',
-                linkText: 'Features'
-            },
-            {
-                id: 44,
-                link: '/home-two/sports',
-                linkText: 'Sports'
-            },
-            {
-                id: 45,
-                link: '/home-two/trending',
-                linkText: 'Trending'
-            },
         ]
     },
     {
         id: 5,
-        linkText: 'World',
-        link: '/home-two/world'
-    },
-    {
-        id: 6,
-        linkText: 'Sports',
-        link: '/home-two/sports'
-    },
-    {
-        id: 7,
-        linkText: 'Contact',
-        link: '/home-two/contact'
+        link: '/logout',
+        linkText: 'Salir',
     },
 ];
 const MainMenuTwo = () => {
@@ -268,7 +129,7 @@ const MainMenuTwo = () => {
                         </nav>
                         <div className="col-lg-3 text-right align-self-center">
                             <div className="date3">
-                                <p>Thursday, March 26, 2020</p>
+                                <p>10 de Julio 2021 (@todo)</p>
                             </div>
                         </div>
                     </div>
