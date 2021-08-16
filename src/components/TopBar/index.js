@@ -54,7 +54,7 @@ const TopBar = ({ className, dark }) => {
           <div className="col-md-4 align-self-center">
             <div className="top_date_social text-right">
               <div className={`paper_date ${dark ? 'white' : ''}`}>
-                <p><Moment format="dddd d, MMMM YYYY" locale="es">
+                <p><Moment format="dddd D, MMMM YYYY" locale="es">
                   {Date.now()}</Moment>
                 </p>
               </div>

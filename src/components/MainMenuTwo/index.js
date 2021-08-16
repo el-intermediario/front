@@ -3,6 +3,8 @@ import FontAwesome from "../uiStyle/FontAwesome";
 import { NavLink } from "react-router-dom";
 import SidebarMenu from "../SidebarMenu";
 import { useSelector } from 'react-redux';
+import Moment from 'react-moment';
+import 'moment/locale/es';
 
 const menus = [
   {
@@ -108,24 +110,17 @@ const MainMenuTwo = () => {
                     )) : null}
                     {user && menusLogged.length > 0 ? menusLogged.map((item, i) => (
                       <li key={i}
-                        className={`
-                                                ${item.child ? 'dropdown' : ''}
-                                                nav-item`}>
+                        className={`${item.child ? 'dropdown' : ''} nav-item`}>
                         {item.child ? <NavLink onClick={e => e.preventDefault()} to="/"
                           className="menu-dropdown"
                           data-toggle="dropdown">{item.linkText}
-                          <FontAwesome
-                            name={item.icon} /></NavLink>
+                          <FontAwesome name={item.icon} /></NavLink>
                           : <NavLink to={item.link} className="menu-dropdown"
-                            data-toggle="dropdown">{item.linkText} <FontAwesome
-                              name={item.icon} /></NavLink>}
-
+                            data-toggle="dropdown">{item.linkText} <FontAwesome name={item.icon} /></NavLink>}
                         {item.child ?
                           <ul className="dropdown-menu" role="menu">
                             {item.submenu.map((sub_item, i) => (
-                              <li key={i}
-                                className={`${sub_item.child ? 'dropdown-submenu' : null}
-                                                        `}>
+                              <li key={i} className={`${sub_item.child ? 'dropdown-submenu' : null}`}>
                                 {sub_item.child ?
                                   <NavLink onClick={e => e.preventDefault()}
                                     to="/">{sub_item.linkText}</NavLink>
@@ -153,7 +148,7 @@ const MainMenuTwo = () => {
             </nav>
             <div className="col-lg-3 text-right align-self-center">
               <div className="date3">
-                <p>10 de Julio 2021 (@todo)</p>
+                <p><Moment format="dddd D, MMMM YYYY" locale="es">{Date.now()}</Moment></p>
               </div>
             </div>
           </div>
