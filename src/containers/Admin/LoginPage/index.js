@@ -40,7 +40,6 @@ const LoginPage = () => {
     }
   };
 
-  console.log(user);
   return (
     <>
       {/*contact form area*/}

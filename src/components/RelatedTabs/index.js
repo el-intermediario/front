@@ -2,12 +2,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { TabContent, TabPane, Nav, NavItem, Fade } from 'reactstrap';
 import classnames from 'classnames';
 import { Link } from "react-router-dom";
-
-import thumb1 from '../../doc/img/header/widget/tab1.jpg';
-import thumb2 from '../../doc/img/header/widget/tab2.jpg';
-import thumb3 from '../../doc/img/header/widget/tab3.jpg';
-import thumb4 from '../../doc/img/header/widget/tab4.jpg';
-import thumb5 from '../../doc/img/header/widget/tab5.jpg';
 import api from '../../utils/api';
 
 const WidgetTabPane = ({ arr, a_id, id, dark }) => {
@@ -19,16 +13,18 @@ const WidgetTabPane = ({ arr, a_id, id, dark }) => {
             <div className="single_post widgets_small">
               <div className="post_img">
                 <div className="img_wrap">
-                  <Link to="/">
+                  <Link to={`/articulo/${item.slug}`}>
                     <img src={item.image} alt="thumb" />
                   </Link>
                 </div>
               </div>
               <div className="single_post_text">
                 <div className="meta2 meta_separator1"><Link to="#">{item.category}</Link>
-                  <Link to="#">{item.date}</Link>
+                  {item.date}
                 </div>
-                <h4><Link to="/post1">{item.title}</Link></h4>
+                <h4>
+                  <Link to={`/articulo/${item.slug}`} state={{time: Date.now}}>{item.title}</Link>
+                </h4>
               </div>
             </div>
             <div className="space-15" />
@@ -41,7 +37,7 @@ const WidgetTabPane = ({ arr, a_id, id, dark }) => {
   )
 };
 
-const RelatedTabs = ({ className, dark, tags }) => {
+const RelatedTabs = ({ className, dark, tags, currentId }) => {
   const [activeTab, setActiveTab] = useState('1');
   const [data, setData] = useState([]);
   let newTags = [];
@@ -49,13 +45,13 @@ const RelatedTabs = ({ className, dark, tags }) => {
   useEffect(() => {
     if (tags && data.length == 0) {
       tags.reduce((acc, tag) => newTags.push(tag.name), []);
-      fetchArticles(newTags);
+      fetchArticles(newTags, currentId);
     }
   });
 
-  const fetchArticles = async (newTags) => {
+  const fetchArticles = async (newTags, currentId) => {
     try {
-      const filter = `?limit=5&page=0&tags=${newTags.join(',')}`;
+      const filter = `?limit=5&page=0&tags=${newTags.join(',')}&idOffset=${currentId}`;
       const response = await api.article.getArticlesSearch(filter,
         { headers: { 'Content-Type': 'application/json' } }
       );

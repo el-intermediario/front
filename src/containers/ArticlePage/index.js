@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
 import BreadCrumb from "../../components/BreadCrumb";
 import FontAwesome from "../../components/uiStyle/FontAwesome";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
+import { Link, useParams } from "react-router-dom";
 import WidgetTab from "../../components/WidgetTab";
 import WidgetTrendingNews from "../../components/WidgetTrendingNews";
 import NewsLetter from "../../components/NewsLetter";
@@ -25,12 +25,17 @@ import api from "../../utils/api";
 import RelatedTabs from '../../components/RelatedTabs';
 
 const ArticlePage = () => {
+  const state = useLocation();
 	let { path } = useParams();
 	//const url = this.props.routeParams.page;
 	const [data, setData] = useState(null);
 	useEffect(() => {
 		fetchData();
 	}, []);
+
+  useEffect(() => {
+		fetchData();
+	}, [state]);
 
   const fetchData = async () => {
     try {
@@ -115,96 +120,6 @@ const ArticlePage = () => {
 										</ul>
 									</div>
 									<div className="space-40" />
-									<p>The comments from Dr Fauci, who heads the National Institute of Allergy and
-										Infectious Diseases, appeared to contradict those of President Trump, who
-										has consistently dismissed the notion of a nationwide lockdown.
-										<br />
-										<br />“It’s awfully tough to say, ‘close it down.’ We have to have a
-										little bit of flexibility,” Mr Trump said on Wednesday.</p>
-									<div className="space-40" />
-									<h3>What’s the debate over masks?</h3>
-									<div className="space-20" />
-									<p>Both the US Centers for Disease Control (CDC) and the World Health
-										Organization (WHO) are reassessing their guidance on face masks, as experts
-										race to find ways to fight the highly contagious virus.
-										<br />
-										<br />Covid-19 is carried in airborne droplets from people coughing or
-										sneezing, but there is some dispute over how far people should
-										distance themselves from each other, and whether masks are useful
-										when used by the public.</p>
-									<div className="space-40" />
-									<div className="row">
-										<div className="col-md-6">
-											<p>The WHO advises that ordinary face masks are only effective if
-												combined with careful hand-washing and social-distancing, and so far
-												it does not recommend them generally for healthy people.
-												<br />
-												<br />However, More and more health experts now say there are
-												benefits. They argue that the public use of masks can
-												primarily help by preventing asymptomatic patients - people
-												who have been infected with Covid-19 but are not aware, and
-												not displaying any symptoms - from unknowingly spreading the
-												virus to others.
-												<br />
-												<br />On Thursday New York mayor Bill de Blasio urged all
-												New Yorkers to cover their faces when outside and
-												near others, but not to use surgical masks, which
-												are in short supply.
-												<br />
-												<br />On Thursday New York mayor Bill de Blasio
-												urged all New Yorkers to cover their faces
-												when outside</p>
-										</div>
-										<div className="col-md-6">
-											<img src={smail1} alt="smail1" />
-											<div className="space-20" />
-											<p>However, More and more health experts now say there are benefits.
-												They argue that the public use of masks can primarily help by
-												preventing asymptomatic patients - people who have been infected
-												with Covid-19 but are not aware, and not displaying any symptoms
-												- from unknowingly spreading the virus to others.</p>
-										</div>
-									</div>
-									<div className="space-40" />
-									<p>Masks may also help lower the risk of individuals catching the virus through
-										the droplets from another person’s sneeze or a cough - and people can be
-										taught how put masks on and take them off correctly, they argue.
-										<br />
-										<br />On Thursday New York mayor Bill de Blasio urged all New Yorkers to
-										cover their faces when outside and near others, but not to use
-										surgical masks, which are in short supply.
-										<br />
-										<br />“It could be a scarf. It could be something you create
-										yourself at home. It could be a bandana,” he said. Governor
-										Cuomo weighed in on Friday, saying “i think it’s fair to say
-										that the masks couldn’t hurt unless they gave you a false
-										sense of security.”
-										<br />
-										<br />Meanwhile, residents in Laredo, Texas will now face
-										a $1,000 (£816) fine if they fail to cover their
-										noses and mouths while outside, after city officials
-										issued an emergency ordinance to its approximately
-										250,000 residents this week.</p>
-									<div className="space-40" />
-									<h3>Which states are not in lockdown?</h3>
-									<div className="space-20" />
-									<div className="points">
-										<ul>
-											<li>Should more of us wear face masks?</li>
-											<li>Why some countries wear face masks and others don’t</li>
-											<li>Coronavirus: Are homemade face masks safe?</li>
-										</ul>
-									</div>
-									<div className="space-40" />
-									<p>Both the US Centers for Disease Control (CDC) and the World Health
-										Organization (WHO) are reassessing their guidance on face masks, as experts
-										race to find ways to fight the highly contagious virus.
-										<br />
-										<br />Covid-19 is carried in airborne droplets from people coughing or
-										sneezing, but there is some dispute over how far people should
-										distance themselves from each other, and whether masks are useful
-										when used by the public.</p>
-									<div className="space-40" />
 								</div>
 								{/*VIDEO POST START*/}
 								<div className="video_img">
@@ -281,9 +196,9 @@ const ArticlePage = () => {
 									<div className="space-40" />
 									<div className="tags">
 										<ul className="inline">
-											<li><Link to="/">Health</Link></li>
-											<li><Link to="/">World</Link></li>
-											<li><Link to="/">Corona</Link></li>
+                      {data && data.tags.map(tag => {
+											  return <li><Link to="#">{tag.name}</Link></li>
+                      })}
 										</ul>
 									</div>
 								</div>
@@ -292,7 +207,7 @@ const ArticlePage = () => {
 							<PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" />
 						</div>
 						<div className="col-md-6 col-lg-4">
-							<RelatedTabs tags={data ? data.tags : null} />
+							<RelatedTabs tags={data ? data.tags : null} currentId={data ? data.id : null} />
 							<FollowUs title="Follow Us" />
 							<WidgetTrendingNews />
 							<div className="banner2 mb30">
