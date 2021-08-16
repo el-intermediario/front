@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8080';//'https://api.sanjua.com';
-const baseS3 = 'https://sanjua-app.s3.amazonaws.com';
+const baseUrl = window.location.hostname + ':8080'; //'https://api.sanjua.com';
 const version = 'api/v1';
 
 const auth = {
