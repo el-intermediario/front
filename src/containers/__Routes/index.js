@@ -91,6 +91,7 @@ import ArticlePage from '../ArticlePage';
 import ArticlesPage from '../ArticlePage/articles';
 import AdminPage from '../Admin';
 import Logout from '../Admin/Logout';
+import FormHomePage from '../Admin/FormHomePage';
 
 const Routes = () => {
     return (
@@ -128,7 +129,13 @@ const Routes = () => {
                 home_style={3}
                 path="/register"
                 parentClass="theme-3"
-                component={RegisterPage}/>    
+                component={RegisterPage}/>
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/home"
+                parentClass="theme-3"
+                component={FormHomePage}/>     
             <PrivateRoute
                 exact
                 home_style={3}

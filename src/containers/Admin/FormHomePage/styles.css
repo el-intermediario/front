@@ -1,0 +1,113 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.home-edit .body {
+  display: flex;
+  flex-direction: row;
+}
+
+.home-edit .sideBar {
+  flex: 0 0 1;
+  width: 200px;
+  padding: 10px;
+  border-right: 1px solid #111;
+  height: 100vh;
+  background: #e1e1e1;
+}
+
+.home-edit .sideBarItem {
+  border: 1px solid #000;
+  border-radius: 3px;
+  height: 30px;
+  padding: 10px;
+  margin-top: 10px;
+  background: #ccc;
+}
+
+.home-edit .page {
+  flex: 1 1 auto;
+  padding: 0 20px;
+  margin: 20px;
+  border: 1px solid green;
+}
+
+.home-edit .dropZone {
+  flex: 0 0 auto;
+  height: 40px;
+  transition: 200ms all;
+}
+
+.home-edit .dropZone:nth-of-type(2n) {
+  display: none;
+}
+
+.home-edit .dropZone.horizontalDrag {
+  width: 40px;
+  height: auto;
+}
+
+.home-edit .dropZone:not(.horizontalDrag).isLast {
+  flex: 1 1 auto;
+}
+
+.home-edit .dropZone.active,
+.home-edit .trashDropZone.active {
+  background: #00a2ff;
+  transition: 100ms all;
+}
+
+
+.home-edit .component {
+  height: 60px;
+  padding: 10px;
+  background: #aaa;
+}
+
+.home-edit .column {
+  border: 1px solid blue;
+  flex: 1 1 100%;
+  padding: 10px;
+}
+
+.home-edit .columns {
+  display: flex;
+  padding: 20px 0;
+}
+
+.home-edit .columnContainer {
+  display: flex;
+}
+
+.home-edit .base {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  cursor: move;
+}
+
+.home-edit .row {
+  border: 1px solid red;
+  padding: 0;
+}
+
+.home-edit .trashDropZone {
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border: 1px solid purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-edit .pageContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
