@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 import DropZone from "./DropZone";
 import TrashDropZone from "./TrashDropZone";
 import SideBarItem from "./SideBarItem";
 import Row from "./Row";
 import initialData from "./initial-data";
+import api from "../../../utils/api";
 import {
   handleMoveWithinParent,
   handleMoveToDifferentParent,
@@ -20,6 +21,35 @@ const Container = () => {
   const initialComponents = initialData.components;
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = async () => {
+    try {
+      const response = await api.article.getArticlesSearch(`?limit=30`,
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+
+      if (response) {
+        const newArticles = [];
+        response.data.forEach(function (article) {
+          newArticles.push({...article,
+            component: {
+              type: article.title,
+              content: article.title
+            },
+            type: 'sidebarItem'
+          })
+        })
+        setArticles(newArticles);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
@@ -126,8 +156,8 @@ const Container = () => {
   return (
     <div className="body">
       <div className="sideBar">
-        {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
-          <SideBarItem key={sideBarItem.id} data={sideBarItem} />
+        {articles.map((article, index) => (
+          <SideBarItem key={article.id} data={article} />
         ))}
       </div>
       <div className="pageContainer">
@@ -159,11 +189,7 @@ const Container = () => {
           />
         </div>
 
-        <TrashDropZone
-          data={{
-            layout
-          }}
-          onDrop={handleDropToTrashBin}
+        <TrashDropZone data={{layout}} onDrop={handleDropToTrashBin}
         />
       </div>
     </div>

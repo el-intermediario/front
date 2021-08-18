@@ -55,7 +55,28 @@ const initialData = {
           ]
         }
       ]
-    }
+    },
+    {
+      type: ROW,
+      id: "videos",
+      children: [
+        {
+          type: COLUMN,
+          id: "column0",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "column1",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "column2",
+          children: []
+        }
+      ]
+    },
   ],
   components: {
     component0: { id: "component0", type: "input", content: "Some input" },
