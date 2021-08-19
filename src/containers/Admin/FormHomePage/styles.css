@@ -14,7 +14,6 @@ body {
   width: 300px;
   padding: 10px;
   border-right: 1px solid #111;
-  height: 100vh;
   background: #e1e1e1;
 }
 
@@ -35,7 +34,7 @@ body {
 
 .home-edit .dropZone {
   flex: 0 0 auto;
-  height: 40px;
+  height: 25px;
   transition: 200ms all;
 }
 
@@ -72,7 +71,7 @@ body {
 
 .home-edit .columns {
   display: flex;
-  padding: 20px 0;
+  padding: 20px 0 4px;
 }
 
 .home-edit .columnContainer {

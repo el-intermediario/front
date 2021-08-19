@@ -22,14 +22,13 @@ const Container = () => {
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);
   const [articles, setArticles] = useState([]);
+  const [ads, setAds] = useState([]);
+  const [search, setSearch] = useState(null);
+  const [searchAd, setSearchAd] = useState(null);
 
-  useEffect(() => {
-    fetchArticles();
-  }, []);
-
-  const fetchArticles = async () => {
+  const handleSearchArticles = async (value) => {
     try {
-      const response = await api.article.getArticlesSearch(`?limit=30`,
+      const response = await api.article.getArticlesSearch(`?search=${value}`,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -45,6 +44,30 @@ const Container = () => {
           })
         })
         setArticles(newArticles);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSearchAds = async (value) => {
+    try {
+      const response = await api.article.getAdsSearch(`?search=${value}`,
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+
+      if (response) {
+        const newAds = [];
+        response.data.forEach(function (ad) {
+          newAds.push({...ad,
+            component: {
+              type: ad.title,
+              content: ad.title
+            },
+            type: 'sidebarItem'
+          })
+        })
+        setAds(newAds);
       }
     } catch (err) {
       console.log(err);
@@ -76,7 +99,7 @@ const Container = () => {
       if (item.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
         const newComponent = {
-          id: shortid.generate(),
+          id: item.id, //shortid.generate(),
           ...item.component
         };
         const newItem = {
@@ -156,9 +179,24 @@ const Container = () => {
   return (
     <div className="body">
       <div className="sideBar">
-        {articles.map((article, index) => (
-          <SideBarItem key={article.id} data={article} />
-        ))}
+        <div className="filters">
+          <div className="col-lg-12">
+            <input name="search-article" value={search} onChange={e => handleSearchArticles(e.target.value)}
+              type="text"
+              placeholder="Buscar" />
+          </div>
+          {articles.map((article, index) => (
+            <SideBarItem key={article.id} data={article} />
+          ))}
+          <div className="col-lg-12">
+            <input name="search-ad" value={searchAd} onChange={e => handleSearchAds(e.target.value)}
+              type="text"
+              placeholder="Buscar publicidad" />
+          </div>
+          {ads.map((ad, index) => (
+            <SideBarItem key={ad.id} data={ad} />
+          ))}
+        </div>
       </div>
       <div className="pageContainer">
         <div className="page">
@@ -180,17 +218,17 @@ const Container = () => {
             );
           })}
           <DropZone
+            onDrop={handleDrop}
+            isLast
             data={{
               path: `${layout.length}`,
               childrenCount: layout.length
             }}
-            onDrop={handleDrop}
-            isLast
           />
         </div>
-
-        <TrashDropZone data={{layout}} onDrop={handleDropToTrashBin}
-        />
+      </div>
+      <div className="trash">
+        <TrashDropZone data={{layout}} onDrop={handleDropToTrashBin} />
       </div>
     </div>
   );

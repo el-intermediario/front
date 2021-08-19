@@ -4,55 +4,101 @@ const initialData = {
   layout: [
     {
       type: ROW,
-      id: "row0",
+      id: "featured",
       children: [
         {
           type: COLUMN,
-          id: "column0",
-          children: [
-            {
-              type: COMPONENT,
-              id: "component0"
-            },
-            {
-              type: COMPONENT,
-              id: "component1"
-            }
-          ]
+          id: "column_featured",
+          children: []
+        },
+      ]
+    },
+    {
+      type: ROW,
+      id: "trending",
+      children: [
+        {
+          type: COLUMN,
+          id: "trending0",
+          children: []
         },
         {
           type: COLUMN,
-          id: "column1",
-          children: [
-            {
-              type: COMPONENT,
-              id: "component2"
-            }
-          ]
+          id: "trending1",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "trending2",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "trending3",
+          children: []
         }
       ]
     },
     {
       type: ROW,
-      id: "row1",
+      id: "corona",
       children: [
         {
           type: COLUMN,
-          id: "column2",
-          children: [
-            {
-              type: COMPONENT,
-              id: "component3"
-            },
-            {
-              type: COMPONENT,
-              id: "component0"
-            },
-            {
-              type: COMPONENT,
-              id: "component2"
-            }
-          ]
+          id: "corona0",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "corona1",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "corona2",
+          children: []
+        }
+      ]
+    },
+    {
+      type: ROW,
+      id: "multiple",
+      children: [
+        {
+          type: COLUMN,
+          id: "multiple0",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "multiple1",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "multiple2",
+          children: []
+        }
+      ]
+    },
+    {
+      type: ROW,
+      id: "topic",
+      children: [
+        {
+          type: COLUMN,
+          id: "topic0",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "topic1",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "topic2",
+          children: []
         }
       ]
     },
