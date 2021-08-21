@@ -4,11 +4,16 @@ const initialData = {
   layout: [
     {
       type: ROW,
-      id: "featured",
+      id: "Nota Destacada",
       children: [
         {
           type: COLUMN,
-          id: "column_featured",
+          id: "Nota",
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: "Publicidad",
           children: []
         },
       ]
