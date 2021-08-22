@@ -132,6 +132,8 @@ class PostGallery extends Component {
         const {className, data} = this.props;
         const {nav1, nav2, vModal, videoId} = this.state;
 
+        const note = data[0].children[0].data;
+
         const navSettings = {
             nextArrow: <SampleNextArrow/>,
             prevArrow: <SamplePrevArrow/>,
@@ -160,6 +162,7 @@ class PostGallery extends Component {
                 },
             ]
         };
+        
         return (
             <div className={`post_gallary_area mb40 ${className}`}>
                 <div className="container">
@@ -168,46 +171,24 @@ class PostGallery extends Component {
                             <div className="row">
                                 <div className="col-xl-8">
                                     <div className="slider_demo2">
-                                        <Slider
-                                            asNavFor={nav2}
-                                            arrows={false}
-                                            fade={true}
-                                            ref={slider => (this.slider1 = slider)}
-                                        >
-                                            {postSlider.slice(0, 9).map((item, i) => (
-                                                <div key={i} className="single_post post_type6 xs-mb30">
-                                                    <div className="post_img gradient1">
-                                                        <img src={item.image} alt="thumb"/>
-                                                        <span onClick={() => this.modalHandler(true)}
-                                                              className="tranding"><FontAwesome
-                                                            name="play"/></span>
-                                                    </div>
-                                                    <div className="single_post_text">
-                                                        <div className="meta meta_separator1">
-                                                            <Link to="#">{item.category}</Link>
-                                                            <Link to="#">{item.date}</Link>
-                                                        </div>
-                                                        <h4><Link className="play_btn"
-                                                                  to="/video_post1">{item.title}</Link></h4>
-                                                        <div className="space-10"/>
-                                                        <p className="post-p">{item.body}</p>
-                                                    </div>
+                                        <div className="single_post post_type6 xs-mb30">
+                                            <div className="post_img gradient1">
+                                                <img src={note.image} alt="thumb"/>
+                                                <span onClick={() => this.modalHandler(true)}
+                                                        className="tranding"><FontAwesome
+                                                    name="play"/></span>
+                                            </div>
+                                            <div className="single_post_text">
+                                                <div className="meta meta_separator1">
+                                                    <Link to="#">{note.copete}</Link>
+                                                    <Link to="#">{note.created}</Link>
                                                 </div>
-                                            ))}
-                                        </Slider>
-                                    </div>
-                                    <div className="slider_demo1">
-                                        <Slider
-                                            ref={slider => (this.slider2 = slider)}
-                                            asNavFor={nav1}
-                                            {...navSettings}
-                                        >
-                                            {thumbs.slice(0, 9).map((item, i) => (
-                                                <div key={i} className="single_gallary_item">
-                                                    <img src={item} alt="thumb"/>
-                                                </div>
-                                            ))}
-                                        </Slider>
+                                                <h4><Link className="play_btn"
+                                                            to="/video_post1">{note.title}</Link></h4>
+                                                <div className="space-10"/>
+                                                <p className="post-p">{note.dropline}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-xl-4">

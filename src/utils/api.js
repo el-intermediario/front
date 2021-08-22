@@ -12,7 +12,12 @@ const article = {
   get: (data, headers) => axios.get(`${baseUrl}/${version}/articles/${data.id}?by=${data.by}`, headers),
   getArticles: (dataModel, headers) => axios.get(`${baseUrl}/${version}/articles`, headers),
   getArticlesSearch: (dataModel, headers) => axios.get(`${baseUrl}/${version}/articles${dataModel}`, headers),
-  add: (dataModel, headers) => axios.post(`${baseUrl}/${version}/articles`, dataModel, headers)
+  add: (dataModel, headers) => axios.post(`${baseUrl}/${version}/articles`, dataModel, headers),
+};
+
+const cover = {
+  get: (data, headers) => axios.get(`${baseUrl}/${version}/covers/${data.id}`, headers),
+  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/covers`, dataModel, headers)
 };
 
 const category = {
@@ -40,4 +45,5 @@ export default {
   contact,
   tag,
   upload,
+  cover
 }

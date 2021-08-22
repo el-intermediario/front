@@ -12,14 +12,21 @@ import {
   handleMoveSidebarComponentIntoParent,
   handleRemoveItemFromLayout
 } from "./helpers";
+import { useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
+
 
 import { SIDEBAR_ITEMS, SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
 
 const Container = () => {
+  const history = useHistory();
+  const { user } = useSelector(state => state.user);
   const initialLayout = initialData.layout;
   const initialComponents = initialData.components;
+  const [title, setTitle] = useState(null);
   const [layout, setLayout] = useState(initialLayout);
+  const [ids, setIds] = useState([]);
   const [components, setComponents] = useState(initialComponents);
   const [articles, setArticles] = useState([]);
   const [ads, setAds] = useState([]);
@@ -99,12 +106,15 @@ const Container = () => {
       if (item.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
         const newComponent = {
-          id: item.id, //shortid.generate(),
+          id: shortid.generate(),
           ...item.component
         };
+
+        const {component, type, ...data} = item;
         const newItem = {
           id: newComponent.id,
-          type: COMPONENT
+          type: COMPONENT,
+          data
         };
         setComponents({
           ...components,
@@ -172,8 +182,26 @@ const Container = () => {
     );
   };
 
-  console.log(layout);
+  const submitHandler = async () => {
+    const data = {
+      title,
+      layout,
+      ids,
+    };
+    try {
+      const response = await api.cover.post(data,
+        { headers: user.headers }
+      );
+      
+      if (response) {
+        history.push('/admin/home', {type: 'success', message: 'La portada se creo correctamente.'});
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  console.log(layout);
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
@@ -228,6 +256,15 @@ const Container = () => {
         </div>
       </div>
       <div className="trash">
+        <div>
+          <input name="title" value={title} onChange={e => setTitle(e.target.value)}
+            type="text"
+            placeholder="Titulo" 
+          />
+        </div>
+        <div>
+          <button type="submit" className="cbtn1" type="submit" onClick={submitHandler}>Guardar</button>
+        </div>
         <TrashDropZone data={{layout}} onDrop={handleDropToTrashBin} />
       </div>
     </div>

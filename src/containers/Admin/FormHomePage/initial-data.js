@@ -1,47 +1,80 @@
+import shortid from "shortid";
 import { COMPONENT, ROW, COLUMN } from "./constants";
 
 const initialData = {
   layout: [
     {
       type: ROW,
-      id: "Nota Destacada",
+      id: "Notas Destacadas",
       children: [
         {
           type: COLUMN,
-          id: "Nota",
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: "Publicidad",
+          id: shortid.generate(),
           children: []
         },
       ]
     },
     {
       type: ROW,
-      id: "trending",
+      id: "Notas Destacadas",
       children: [
         {
           type: COLUMN,
-          id: "trending0",
+          id: shortid.generate(),
           children: []
         },
         {
           type: COLUMN,
-          id: "trending1",
+          id: shortid.generate(),
+          children: []
+        },
+      ]
+    },
+    {
+      type: ROW,
+      id: "Notas Destacadas",
+      children: [
+        {
+          type: COLUMN,
+          id: shortid.generate(),
           children: []
         },
         {
           type: COLUMN,
-          id: "trending2",
+          id: shortid.generate(),
           children: []
         },
         {
           type: COLUMN,
-          id: "trending3",
+          id: shortid.generate(),
           children: []
-        }
+        },
+      ]
+    },
+    {
+      type: ROW,
+      id: "Notas Destacadas",
+      children: [
+        {
+          type: COLUMN,
+          id: shortid.generate(),
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: shortid.generate(),
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: shortid.generate(),
+          children: []
+        },
+        {
+          type: COLUMN,
+          id: shortid.generate(),
+          children: []
+        },
       ]
     },
     {
@@ -50,19 +83,9 @@ const initialData = {
       children: [
         {
           type: COLUMN,
-          id: "corona0",
+          id: shortid.generate(),
           children: []
         },
-        {
-          type: COLUMN,
-          id: "corona1",
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: "corona2",
-          children: []
-        }
       ]
     },
     {
@@ -71,17 +94,7 @@ const initialData = {
       children: [
         {
           type: COLUMN,
-          id: "multiple0",
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: "multiple1",
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: "multiple2",
+          id: shortid.generate(),
           children: []
         }
       ]
@@ -92,19 +105,9 @@ const initialData = {
       children: [
         {
           type: COLUMN,
-          id: "topic0",
+          id: shortid.generate(),
           children: []
         },
-        {
-          type: COLUMN,
-          id: "topic1",
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: "topic2",
-          children: []
-        }
       ]
     },
     {
@@ -113,17 +116,7 @@ const initialData = {
       children: [
         {
           type: COLUMN,
-          id: "column0",
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: "column1",
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: "column2",
+          id: shortid.generate(),
           children: []
         }
       ]
