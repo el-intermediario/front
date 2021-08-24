@@ -31,6 +31,7 @@ import api from '../../utils/api';
 import PostGallery from '../../components/PostGallery';
 import TwoItemsFeatured from '../../components/TwoItemsFeatured';
 import ThreeItemsFeatured from '../../components/ThreeItemsFeatured';
+import TopicArticles from '../../components/TopicArticles';
 
 const entertainments = [
   {
@@ -96,7 +97,7 @@ const HomePage = () => {
 
   const fetchCover = async () => {
     try {
-      const response = await api.cover.get({id: '61228c037dfeeb01f1727fa7'},
+      const response = await api.cover.get({},
         { headers: { 'Content-Type': 'application/json' } }
       );
         
@@ -109,6 +110,7 @@ const HomePage = () => {
   }
 
   const handleRow = (row) => {
+    console.log(row.id);
     switch (row.id) {
       case 'Notas Destacadas':
         if (row.children.length === 1) {
@@ -124,6 +126,40 @@ const HomePage = () => {
           return <FeatureNews news={row.children} />
           break;
         }
+      case 'corona':
+        // Bloque con notas de un tema especifica ej: 'elecciones'
+        break;
+      case 'topic':
+        return <div className="entertrainments">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-lg-8">
+                      <TopicArticles data={row.children}/>
+                    </div>
+                    <div className="col-lg-4">
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="banner2 mb30">
+                            <Link to="/">
+                              <img src={banner2} alt="thumb" />
+                            </Link>
+                          </div>
+                        </div>
+                        <div className="col-lg-12">
+                          <div className="banner2 mb30">
+                            <Link to="/">
+                              <img src={banner2} alt="thumb" />
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>;
+        break;      
+      case 'videos':
+        return <VideoPost className="pt30 half_bg60" />
       default:
         break;  
     }
@@ -133,9 +169,13 @@ const HomePage = () => {
     <Fragment>
       {/* <PostCarousel className="fifth_bg"/> */}
       {layout.map(row => {
+        if (row.id === 'videos') {
+          return handleRow(row);
+        } else {
         return <div className="row">
             <div className="container">{handleRow(row)}</div>
           </div>
+        }
       })}
       {/* <FeatureNews /> */}
       <div className="container">
@@ -150,7 +190,7 @@ const HomePage = () => {
         </div>
       </div>
       {/* <MixCarousel className="half_bg1" /> */}
-      <VideoPost className="pt30 half_bg60" />
+      {/* <VideoPost className="pt30 half_bg60" /> */}
       <div className="entertrainments">
         <div className="container">
           <div className="row">

@@ -37,7 +37,7 @@ const Row = ({ data, components, handleDrop, path }) => {
 
   return (
     <div ref={ref} style={{ ...style, opacity }} className="base draggable row">
-      {data.id}
+      <span>{data.id}</span>
       <div className="columns">
         {data.children.map((column, index) => {
           const currentPath = `${path}-${index}`;

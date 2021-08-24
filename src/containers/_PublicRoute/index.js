@@ -8,7 +8,7 @@ import TopBarTwo from "../../components/TopBarTwo";
 import LogoAreaTwo from "../../components/LogoAreaTwo";
 import MainMenuTwo from "../../components/MainMenuTwo";
 import FooterAreaTwo from "../../components/FooterAreaTwo";
-import LogoAreaThree from "../../components/LogoAreaThree";
+// import LogoAreaThree from "../../components/LogoAreaThree";
 import FooterAreaThree from "../../components/FooterAreaThree";
 
 const PublicRoute = (props) => {

@@ -21,7 +21,7 @@ const Component = ({ data, components, path }) => {
   const opacity = isDragging ? 0 : 1;
   drag(ref);
 
-  const component = components[data.id];
+  //const component = components[data.id];
 
   return (
     <div
@@ -30,7 +30,7 @@ const Component = ({ data, components, path }) => {
       className="component draggable"
     >
       <div>{data.id}</div>
-      <div>{component.content}</div>
+      <div>{data.data.title}</div>
     </div>
   );
 };

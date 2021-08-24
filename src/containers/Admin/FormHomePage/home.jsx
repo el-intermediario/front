@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 
 import DropZone from "./DropZone";
 import TrashDropZone from "./TrashDropZone";
@@ -16,7 +16,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 
 
-import { SIDEBAR_ITEMS, SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
+import {SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
 
 const Container = () => {
@@ -24,14 +24,15 @@ const Container = () => {
   const { user } = useSelector(state => state.user);
   const initialLayout = initialData.layout;
   const initialComponents = initialData.components;
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState('');
+  const [status, setStatus] = useState(false);
   const [layout, setLayout] = useState(initialLayout);
-  const [ids, setIds] = useState([]);
   const [components, setComponents] = useState(initialComponents);
   const [articles, setArticles] = useState([]);
   const [ads, setAds] = useState([]);
-  const [search, setSearch] = useState(null);
-  const [searchAd, setSearchAd] = useState(null);
+  const [search, setSearch] = useState('');
+  const [searchAd, setSearchAd] = useState('');
+  const [topic, setTopic] = useState('');
 
   const handleSearchArticles = async (value) => {
     try {
@@ -91,8 +92,8 @@ const Container = () => {
 
   const handleDrop = useCallback(
     (dropZone, item) => {
-      console.log('dropZone', dropZone)
-      console.log('item', item)
+      // console.log('dropZone', dropZone)
+      // console.log('item', item)
 
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
@@ -186,7 +187,7 @@ const Container = () => {
     const data = {
       title,
       layout,
-      ids,
+      status
     };
     try {
       const response = await api.cover.post(data,
@@ -201,7 +202,27 @@ const Container = () => {
     }
   };
 
-  console.log(layout);
+  const handleBrickTopic = () => {
+    const newBrick = {
+      id: 'topic_' + topic,
+      type: 'row',
+      children: [
+        {
+          type: 'column',
+          id: shortid.generate(),
+          children: [{
+            data: {
+              title: topic
+            },
+            id: shortid.generate(),
+            type: 'component',
+          }]
+        }
+      ]
+    }
+    setLayout([...layout, newBrick]);
+  }
+
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
@@ -224,6 +245,18 @@ const Container = () => {
           {ads.map((ad, index) => (
             <SideBarItem key={ad.id} data={ad} />
           ))}
+          <div className="col-lg-12">
+            <h4>Agregar brick Tema:</h4>
+            <div>
+              <input name="topic" value={topic} onChange={e => setTopic(e.target.value)}
+                type="text"
+                placeholder="Tema" 
+              />
+            </div>
+            <div>
+              <button type="submit" className="cbtn1" type="submit" onClick={handleBrickTopic}>Agregar</button>
+            </div>
+          </div>
         </div>
       </div>
       <div className="pageContainer">
@@ -232,7 +265,7 @@ const Container = () => {
             const currentPath = `${index}`;
 
             return (
-              <React.Fragment key={row.id}>
+              <React.Fragment key={row.id + index}>
                 <DropZone
                   data={{
                     path: currentPath,
@@ -261,6 +294,15 @@ const Container = () => {
             type="text"
             placeholder="Titulo" 
           />
+        </div>
+        <div className="col-12">
+          <input name="status"
+            checked={status}
+            value={status} 
+            onChange={e => setStatus(!e.target.checked)}
+            type="checkbox" 
+          />
+          <label>Publicar</label>
         </div>
         <div>
           <button type="submit" className="cbtn1" type="submit" onClick={submitHandler}>Guardar</button>

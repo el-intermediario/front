@@ -7,37 +7,6 @@ import ModalVideo from 'react-modal-video'
 import black_white1 from '../../doc/img/bg/black_white1.jpg';
 import black_white2 from '../../doc/img/bg/black_white2.jpg';
 
-const mixArray = [
-    {
-        icon: 'play',
-        image: black_white1,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Success is not a good food failure makes you humble',
-    },
-    {
-        icon: 'bolt',
-        image: black_white2,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Success is not a good food failure makes you humble',
-    },
-    {
-        icon: 'play',
-        image: black_white1,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Success is not a good food failure makes you humble',
-    },
-    {
-        icon: 'bolt',
-        image: black_white2,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Success is not a good food failure makes you humble',
-    },
-];
-
 const TwoItemsFeatured = ({className, dark, data}) => {
     const [swiper, setSwiper] = useState(null);
     const [vModal, setvModal] = useState(false);

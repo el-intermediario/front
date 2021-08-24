@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BannerSection from "../../components/BannerSection";
 import FollowUs from "../../components/FollowUs";
 import { useSelector } from 'react-redux';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BannerSection from "../../../components/BannerSection";
 import Home from "./home";
 import Backend from "react-dnd-html5-backend";

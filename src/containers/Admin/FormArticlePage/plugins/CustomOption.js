@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { EditorState, Modifier } from 'draft-js';
 
 const CustomOption = ({ editorState, onChange }) => {

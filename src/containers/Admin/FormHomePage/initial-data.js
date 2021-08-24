@@ -1,5 +1,5 @@
 import shortid from "shortid";
-import { COMPONENT, ROW, COLUMN } from "./constants";
+import { ROW, COLUMN } from "./constants";
 
 const initialData = {
   layout: [
@@ -97,17 +97,6 @@ const initialData = {
           id: shortid.generate(),
           children: []
         }
-      ]
-    },
-    {
-      type: ROW,
-      id: "topic",
-      children: [
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
       ]
     },
     {

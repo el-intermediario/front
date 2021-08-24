@@ -4,13 +4,12 @@ import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
 import api from "../../../utils/api";
 import { userLogin } from '../../../store/actions/index';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const {user} = useSelector(state => state.user);
   const validator = new SimpleReactValidator();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);

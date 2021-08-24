@@ -16,7 +16,7 @@ const article = {
 };
 
 const cover = {
-  get: (data, headers) => axios.get(`${baseUrl}/${version}/covers/${data.id}`, headers),
+  get: (data, headers) => axios.get(`${baseUrl}/${version}/covers`, headers),
   post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/covers`, dataModel, headers)
 };
 

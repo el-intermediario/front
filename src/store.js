@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './store/reducers/rootReducers'
 import { persistStore, persistReducer } from 'redux-persist' // imports from redux-persist

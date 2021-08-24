@@ -13,7 +13,7 @@ import author2 from "../../doc/img/author/author2.png";
 import smail1 from "../../doc/img/blog/smail1.jpg";
 import big1 from "../../doc/img/blog/big1.jpg";
 import banner42 from "../../doc/img/bg/banner42.png";
-import WidgetTabFour from "../../components/WidgetTabFour";
+// import WidgetTabFour from "../../components/WidgetTabFour";
 
 const VideoPostTwoHThreePage = () => {
     const [vModal, setvModal] = useState(false);
