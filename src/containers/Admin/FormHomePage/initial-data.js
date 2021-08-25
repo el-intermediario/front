@@ -117,7 +117,44 @@ const initialData = {
     component2: { id: "component2", type: "email", content: "Some email" },
     component3: { id: "component3", type: "name", content: "Some name" },
     component4: { id: "component4", type: "phone", content: "Some phone" }
-  }
+  },
+  bricks: [
+    {
+      typeId: 'urgente',
+      component: {
+        type: 'Ultimo momento',
+      },
+      type: 'sidebarItem'
+    },
+    {
+      typeId: 'videos',
+      component: {
+        type: 'Videos',
+      },
+      type: 'sidebarItem'
+    },
+    {
+      typeId: 'corona_virus',
+      component: {
+        type: 'Corona virus',
+      },
+      type: 'sidebarItem'
+    },
+    {
+      typeId: 'publicidad_350',
+      component: {
+        type: 'Publicidad 350 x 292',
+      },
+      type: 'sidebarItem'
+    },
+    {
+      typeId: 'publicidad_728',
+      component: {
+        type: 'Publicidad 728 x 90',
+      },
+      type: 'sidebarItem'
+    }
+  ]
 };
 
 export default initialData;

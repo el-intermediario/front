@@ -24,6 +24,7 @@ const Container = () => {
   const { user } = useSelector(state => state.user);
   const initialLayout = initialData.layout;
   const initialComponents = initialData.components;
+  const initialBricks = initialData.bricks;
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState(false);
   const [layout, setLayout] = useState(initialLayout);
@@ -44,6 +45,7 @@ const Container = () => {
         const newArticles = [];
         response.data.forEach(function (article) {
           newArticles.push({...article,
+            typeId: 'article',
             component: {
               type: article.title,
               content: article.title
@@ -95,6 +97,7 @@ const Container = () => {
       // console.log('dropZone', dropZone)
       // console.log('item', item)
 
+      console.log(item);
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
 
@@ -223,6 +226,7 @@ const Container = () => {
     setLayout([...layout, newBrick]);
   }
 
+  console.log(layout);
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
@@ -255,6 +259,16 @@ const Container = () => {
             </div>
             <div>
               <button type="submit" className="cbtn1" type="submit" onClick={handleBrickTopic}>Agregar</button>
+            </div>
+          </div>
+          <div className="col-lg-12">
+            <div>
+              <h4>Bloques:</h4>
+            </div>
+            <div>
+              {initialBricks.map(brick => {
+                return <SideBarItem key={brick.typeId} data={brick} />
+              })}
             </div>
           </div>
         </div>

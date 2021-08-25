@@ -1,5 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+import { GrDrag } from "react-icons/gr";
 
 const SideBarItem = ({ data }) => {
   const [{ opacity }, drag] = useDrag({
@@ -11,7 +12,7 @@ const SideBarItem = ({ data }) => {
   
   return (
     <div className="sideBarItem" ref={drag} style={{ opacity }}>
-      {data.component.type}
+      <GrDrag /> {data.component.type}
     </div>
   );
 };

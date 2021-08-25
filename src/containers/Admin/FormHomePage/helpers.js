@@ -194,12 +194,13 @@ export const handleMoveSidebarComponentIntoParent = (
   splitDropZonePath,
   item
 ) => {
+  console.log(item);
   let newLayoutStructure;
   switch (splitDropZonePath.length) {
     case 1: {
       newLayoutStructure = {
         type: ROW,
-        id: shortid.generate(),
+        id: item.data.typeId, //shortid.generate(),
         children: [{ type: COLUMN, id: shortid.generate(), children: [item] }]
       };
       break;
