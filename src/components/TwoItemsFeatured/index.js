@@ -60,16 +60,16 @@ const TwoItemsFeatured = ({className, dark, data}) => {
                                         <div key={i} className="single_post post_type6 post_type9">
                                             <div className="post_img gradient1">
                                                 <div className="img_wrap">
-                                                    <Link className="play_btn" to="/">
+                                                    <Link className="play_btn" to={`/articulo/${item.children[0].data.slug}`}>
                                                         <img src={item.children[0].data.image} alt="news"/>
                                                     </Link>
                                                 </div>
                                             </div>
                                             <div className="single_post_text">
-                                                <div className="meta"><Link to="/">{item.children[0].data.copete}</Link>
+                                                <div className="meta">{item.children[0].data.copete}
                                                     <Link to="#">{item.children[0].data.created}</Link>
                                                 </div>
-                                                <h4><Link to="/video_post1">{item.children[0].data.title}</Link></h4>
+                                                <h4><Link to={`/articulo/${item.children[0].data.slug}`}>{item.children[0].data.title}</Link></h4>
                                             </div>
                                         </div>
                                     ))}

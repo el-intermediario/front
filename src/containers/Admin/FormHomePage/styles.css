@@ -13,16 +13,24 @@ body {
   flex: 0 0 1;
   width: 300px;
   padding: 10px;
-  border-right: 1px solid #111;
-  background: #e1e1e1;
+  border: 1px solid #e1e1e1;
+  background: #fff;
+}
+
+.home-edit .sideBar h4 {
+  font-size: 18px;
+  padding: 4px;
+  border: 1px dotted #e1e1e1;
+  background: #fff;
 }
 
 .home-edit .sideBarItem {
   border: 1px solid #000;
   border-radius: 3px;
-  padding: 10px;
+  padding: 5px;
   margin-top: 10px;
-  background: #ccc;
+  background: #fff;
+  cursor: pointer;
 }
 
 .home-edit .page {

@@ -233,15 +233,15 @@ const Container = () => {
     <div className="body">
       <div className="sideBar">
         <div className="filters">
-          <div className="col-lg-12">
+          <div className="">
             <input name="search-article" value={search} onChange={e => handleSearchArticles(e.target.value)}
               type="text"
-              placeholder="Buscar" />
+              placeholder="Buscar nota" />
           </div>
           {articles.map((article, index) => (
             <SideBarItem key={article.id} data={article} />
           ))}
-          <div className="col-lg-12">
+          <div className="">
             <input name="search-ad" value={searchAd} onChange={e => handleSearchAds(e.target.value)}
               type="text"
               placeholder="Buscar publicidad" />
@@ -249,8 +249,8 @@ const Container = () => {
           {ads.map((ad, index) => (
             <SideBarItem key={ad.id} data={ad} />
           ))}
-          <div className="col-lg-12">
-            <h4>Agregar brick Tema:</h4>
+          <div className="">
+            <h4>Agregar bloque de:</h4>
             <div>
               <input name="topic" value={topic} onChange={e => setTopic(e.target.value)}
                 type="text"
@@ -261,7 +261,7 @@ const Container = () => {
               <button type="submit" className="cbtn1" type="submit" onClick={handleBrickTopic}>Agregar</button>
             </div>
           </div>
-          <div className="col-lg-12">
+          <div className="">
             <div>
               <h4>Bloques:</h4>
             </div>

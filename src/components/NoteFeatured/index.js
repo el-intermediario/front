@@ -180,11 +180,11 @@ class PostGallery extends Component {
                                             </div>
                                             <div className="single_post_text">
                                                 <div className="meta meta_separator1">
-                                                    <Link to="#">{note.copete}</Link>
-                                                    <Link to="#">{note.created}</Link>
+                                                    <Link to={`/articulo/${note.slug}`}>{note.copete}</Link>
+                                                    {note.created}
                                                 </div>
                                                 <h4><Link className="play_btn"
-                                                            to="/video_post1">{note.title}</Link></h4>
+                                                            to={`/articulo/${note.slug}`}>{note.title}</Link></h4>
                                                 <div className="space-10"/>
                                                 <p className="post-p">{note.dropline}</p>
                                             </div>

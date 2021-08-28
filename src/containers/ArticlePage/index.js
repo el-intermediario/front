@@ -23,6 +23,7 @@ import OurBlogSection from "../../components/OurBlogSection";
 import BlogComment from "../../components/BlogComment";
 import api from "../../utils/api";
 import RelatedTabs from '../../components/RelatedTabs';
+import TrendingArticles from '../../components/TrendingArticles';
 
 const ArticlePage = () => {
   const state = useLocation();
@@ -54,7 +55,7 @@ const ArticlePage = () => {
 	return (
 		<Fragment>
 			<div className="archives post post1">
-				<BreadCrumb className="shadow5 padding-top-30" title="Archive / post 1" />
+				<BreadCrumb className="shadow5 padding-top-30" title={data && data.title} />
 				<span className="space-30" />
 				<div className="container">
 					<div className="row">
@@ -66,8 +67,8 @@ const ArticlePage = () => {
 											<div className="page_comments">
 												<ul className="inline">
 													<li className="page_category">{data && data.copete}</li>
-													<li><FontAwesome name="comment" />563</li>
-													<li><FontAwesome name="fire" />536</li>
+													{/* <li><FontAwesome name="comment" />563</li> */}
+													{/* <li><FontAwesome name="fire" />536</li> */}
 												</ul>
 											</div>
 										</div>
@@ -78,8 +79,7 @@ const ArticlePage = () => {
 										<div className="space-10" />
 										<p>{data && data.dropline}</p>
 									</div>
-									<div className="space-20" />
-									<div className="row">
+									{/* <div className="row">
 										<div className="col-lg-6 align-self-center">
 											<div className="author">
 												<div className="author_img">
@@ -104,8 +104,7 @@ const ArticlePage = () => {
 												</ul>
 											</div>
 										</div>
-									</div>
-									<div className="space-20" />
+									</div> */}
 								</div>
 								<img src={data && data.image} alt="thumb" />
 								<div className="padding20 white_bg">
@@ -209,12 +208,12 @@ const ArticlePage = () => {
 						<div className="col-md-6 col-lg-4">
 							<RelatedTabs tags={data ? data.tags : null} currentId={data ? data.id : null} />
 							<FollowUs title="Follow Us" />
-							<WidgetTrendingNews />
 							<div className="banner2 mb30">
 								<Link to="/">
 									<img src={banner2} alt="thumb" />
 								</Link>
 							</div>
+							<TrendingArticles currentId={data ? data.id : null} />
 							<MostShareWidget title="Most Share" />
 							<NewsLetter />
 						</div>

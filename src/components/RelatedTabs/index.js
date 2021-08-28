@@ -40,16 +40,20 @@ const WidgetTabPane = ({ arr, a_id, id, dark }) => {
 const RelatedTabs = ({ className, dark, tags, currentId }) => {
   const [activeTab, setActiveTab] = useState('1');
   const [data, setData] = useState([]);
+  const [loadingData, setLoadingData] = useState(false);
   let newTags = [];
 
   useEffect(() => {
-    if (tags && data.length == 0) {
+    if (tags && data.length == 0 && currentId) {
       tags.reduce((acc, tag) => newTags.push(tag.name), []);
-      fetchArticles(newTags, currentId);
+      if(!loadingData) {
+        fetchArticles(newTags, currentId);
+      }
     }
   });
 
   const fetchArticles = async (newTags, currentId) => {
+    setLoadingData(true);
     try {
       const filter = `?limit=5&page=0&tags=${newTags.join(',')}&idOffset=${currentId}`;
       const response = await api.article.getArticlesSearch(filter,
@@ -58,6 +62,7 @@ const RelatedTabs = ({ className, dark, tags, currentId }) => {
 
       if (response) {
         setData(response.data);
+        setLoadingData(false);
       }
     } catch (err) {
       console.log(err);

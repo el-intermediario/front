@@ -8,7 +8,7 @@ const BreadCrumb = (props) => {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <div className="bridcrumb"><Link to="/">Home</Link> / {title}</div>
+                        <div className="bridcrumb"><Link to="/">Home</Link>{title ? ` / ${title}` : ''}</div>
                     </div>
                 </div>
                 {props.children}
