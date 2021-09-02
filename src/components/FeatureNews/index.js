@@ -100,14 +100,14 @@ const FeatureNews = ({className, news}) => {
                                 {news.map((item, i) => (
                                     <div key={i} className="single_post post_type6 post_type7">
                                         <div className="post_img gradient1">
-                                            <Link to="/"><img src={item.children[0].data.image} alt="thumb"/></Link>
+                                            <Link to={`/articulo/${item.children[0].data.slug}`}><img src={item.children[0].data.image} alt="thumb"/></Link>
                                         </div>
                                         <div className="single_post_text">
-                                            <div className="meta5"><Link to="/">{item.children[0].data.copete}</Link>
-                                                <Link to="/">{item.children[0].data.created}</Link>
+                                            <div className="meta5">{item.children[0].data.copete}
+                                                {item.children[0].data.created}
                                             </div>
                                             <h4>
-                                                <Link to="/post1">{item.children[0].data.title}</Link>
+                                                <Link to={`/articulo/${item.children[0].data.slug}`}>{item.children[0].data.title}</Link>
                                             </h4>
                                         </div>
                                     </div>

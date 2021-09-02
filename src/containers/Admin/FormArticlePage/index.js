@@ -14,7 +14,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'react-simple-tree-menu/dist/main.css';
 import { useHistory, useParams } from 'react-router-dom';
 
-const FormArticlePage = () => {
+const FormArticlePage = (props) => {
   let { id } = useParams();
   const history = useHistory();
   const { user } = useSelector(state => state.user); 
@@ -162,6 +162,10 @@ const FormArticlePage = () => {
         setImage(data.image);
         setSource(data.source);
         setTags(data.tags);
+
+        const contentBlock = htmlToDraft(data.body);
+        const newData = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+        setEditorState(EditorState.createWithContent(newData));
       }
     } catch (error) {
       console.log(error);
@@ -170,7 +174,7 @@ const FormArticlePage = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    const data = {
+    let data = {
       title,
       body: bodyHtml,
       type,
@@ -184,12 +188,18 @@ const FormArticlePage = () => {
       category,
       categoryKey,
       categoryParent,
-      image
+      image,
+      tags
     };
+
     try {
-      const response = await api.article.add(data,
-        { headers: user.headers }
-      );
+      const response = null;
+      if (props.match.path == '/admin/article/:id/edit') {
+        data = {...data, id, updated: Date.now()};
+        response = await api.article.put(data, { headers: user.headers });  
+      } else {
+        response = await api.article.post(data, { headers: user.headers });
+      }
       
       if (response) {
         history.push('/admin/article', {type: 'success', message: 'El articulo se creo correctamente.'});
