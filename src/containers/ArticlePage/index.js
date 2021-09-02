@@ -195,8 +195,8 @@ const ArticlePage = () => {
 									<div className="space-40" />
 									<div className="tags">
 										<ul className="inline">
-                      {data && data.tags.map(tag => {
-											  return <li><Link to="#">{tag.name}</Link></li>
+                      {data && data.tags.map((tag, t) => {
+											  return <li key={t}><Link to="#">{tag.name}</Link></li>
                       })}
 										</ul>
 									</div>

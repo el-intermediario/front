@@ -9,7 +9,7 @@ const TrendingArticles = ({ dark, currentId }) => {
   const [loadingData, setLoadingData] = useState(false);
 
   useEffect(() => {
-    if (data.length == 0 && currentId) {
+    if (data.length === 0 && currentId) {
       if(!loadingData) {
         fetchArticles(currentId);
       }
@@ -39,7 +39,9 @@ const TrendingArticles = ({ dark, currentId }) => {
       <div className="single_post post_type3">
         <div className="post_img">
           <div className="img_wrap">
-            <img src={data.length > 0 && data[0].image} alt="trendbig1" />
+            {data.length > 0 ? (
+              <img src={data[0].image} alt="trendbig1" />
+            ) : null}
           </div>
           <span className="tranding"><FontAwesome name="bolt" /></span>
         </div>
