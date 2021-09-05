@@ -3,12 +3,47 @@ import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
 import api from '../../../utils/api';
+import { TreeSelect } from 'tree-select';
 
 
 const FormCategoryPage = () => {
   const validator = new SimpleReactValidator();
   const [name, setName] = useState('');
   const [color, setColor] = useState('');
+  const [category, setCategory] = useState('category');
+
+  const categories = [
+    {
+      name: 'category',
+      id: 0,
+      children: [
+        { 
+          name: "Kitchen",
+          id: 1,
+          parent: 0,
+          children: [
+            { 
+              name: "Dishwashing machine",
+              id: 2,
+              parent: 1,
+              children: [
+                { 
+                  name: "Teapot",
+                  id: 1111,
+                  parent: 2
+                }
+              ]
+            },
+            { 
+              name: "Teapot",
+              id: 1111,
+              parent: 1
+            }
+          ] 
+        }
+      ]
+    }
+  ];
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -26,6 +61,8 @@ const FormCategoryPage = () => {
       console.log(error);
     } 
   }
+
+  console.log(category);
 
   return (
     <>
@@ -53,6 +90,13 @@ const FormCategoryPage = () => {
                             type="text"
                             placeholder="color" />
                           {validator.message('color', color, 'required')}
+                        </div>
+                        <div>
+                          <TreeSelect
+                            data={categories}
+                            onChange={value => setCategory(value)}
+                            value={category}
+                          />
                         </div>
                         <div className="col-12">
                           <div className="space-20" />

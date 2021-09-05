@@ -33,9 +33,6 @@ const FormArticlePage = (props) => {
   const [bodyHtml, setBodyHtml] = useState('');
   const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(true);
-  const [category, setCategory] = useState('local');
-  const [categoryKey, setCategoryKey] = useState(null);
-  const [categoryParent, setCategoryParent] = useState(null);
   const [image, setImage] = useState(null);
   const [suggestions, setSuggestions] = useState([
     { text: 'Boca eliminado de la copa', value: 'boca', url: 'https://www.ole.com.ar' },
@@ -45,6 +42,7 @@ const FormArticlePage = (props) => {
   const [tags, setTags] = useState([]);
   const reactTags = useRef(null);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
+  const [category, setCategory] = useState(null);
 
   const categories = [
     {
@@ -59,7 +57,14 @@ const FormArticlePage = (props) => {
               key: 'politica_nacional',
               label: 'Politica Nacional',
               nodes: [],
-              url: 'https://www.google.com/search?q=dog'
+              url: 'https://www.google.com/search?q=dog',
+              nodes: [
+                {
+                  key: 'politica_nacional_demo',
+                  label: 'Politica Nacional demo',
+                  nodes: []
+                }
+              ]
             },
             {
               key: 'politica_regional',
@@ -89,20 +94,17 @@ const FormArticlePage = (props) => {
             {
               key: 'economia',
               label: 'Economia',
-              nodes: [],
-              url: 'https://www.google.com/search?q=fox'
+              nodes: []
             },
             {
               key: 'policiales',
               label: 'Policiales',
-              nodes: [],
-              url: 'https://www.google.com/search?q=wolf'
+              nodes: []
             },
             {
               key: 'cultura_espectaculos',
               label: 'Cultura y Espectaculos',
-              nodes: [],
-              url: 'https://www.google.com/search?q=wolf'
+              nodes: []
             }
           ],
           url: 'https://www.google.com/search?q=canidae'
@@ -114,26 +116,21 @@ const FormArticlePage = (props) => {
             {
               key: 'deportes_nacionales',
               label: 'Deportes Nacionales',
-              nodes: [],
-              url: 'https://www.google.com/search?q=dog'
+              nodes: []
             },
             {
               key: 'deportes_regionales',
               label: 'Deportes Regionales',
-              nodes: [],
-              url: 'https://www.google.com/search?q=fox'
+              nodes: []
             },
             {
               key: 'deportes_internacionales',
               label: 'Deportes Internacionales',
-              nodes: [],
-              url: 'https://www.google.com/search?q=wolf'
+              nodes: []
             }
-          ],
-          url: 'https://www.google.com/search?q=canidae'
+          ]
         },
-      ],
-      url: 'https://www.google.com/search?q=mammal'
+      ]
     }
   ];
 
@@ -156,8 +153,6 @@ const FormArticlePage = (props) => {
         setDropline(data.dropline);
         setCopete(data.copete);
         setCategory(data.category);
-        setCategoryKey(data.categoryKey);
-        setCategoryParent(data.categoryParent);
         setStatus(data.status);
         setImage(data.image);
         setSource(data.source);
@@ -186,8 +181,6 @@ const FormArticlePage = (props) => {
       bodyJson,
       status,
       category,
-      categoryKey,
-      categoryParent,
       image,
       tags
     };
@@ -280,10 +273,13 @@ const FormArticlePage = (props) => {
 
   const handleCategory = (item) => {
     const key = item.key.split('/');
-    const currentKey = key[key.length - 1]; 
-    setCategoryKey(currentKey);
-    setCategory(item.label);
-    setCategoryParent(item.parent);
+    const currentKey = key[key.length - 1];
+    setCategory({
+      key: currentKey,
+      name: item.label,
+      parent: item.parent,
+      initial: item.key
+    });
   }
 
   const embedCallBack = (link) => {
@@ -424,9 +420,9 @@ const FormArticlePage = (props) => {
                   hasSearch={false}
                   onClickItem={handleCategory}
                   resetOpenNodesOnDataUpdate={false}
-                  // initialOpenNodes={[
-                  //   'category',
-                  // ]}
+                  initialActiveKey={category ? category.initial : ''}
+                  initialOpenNodes={category ? category.initialNodes : ['category']}
+                  resetOpenNodesOnDataUpdate={false}
                 />
               </div>
               <div className="col-12">
