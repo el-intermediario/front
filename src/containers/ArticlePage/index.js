@@ -48,8 +48,11 @@ const ArticlePage = () => {
 				try {
 					const arrayTags = [];
 					response.data.tags.reduce((acc, tag) => arrayTags.push(tag.name), []);
-					const filter = `?limit=5&page=0&tags=${arrayTags.join(',')}&idOffset=${response.data.id}`;
-					const responseTags = await api.article.getArticlesSearch(filter,
+					const dataModel = {
+						filter: `?limit=5&page=0&tags=${arrayTags.join(',')}`,
+						id: response.data.id
+					}
+					const responseTags = await api.article.getArticlesRelated(dataModel,
 						{ headers: { 'Content-Type': 'application/json' } }
 					);
 		
