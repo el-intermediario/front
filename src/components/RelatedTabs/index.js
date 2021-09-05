@@ -37,37 +37,8 @@ const WidgetTabPane = ({ arr, a_id, id, dark }) => {
   )
 };
 
-const RelatedTabs = ({ className, dark, tags, currentId }) => {
+const RelatedTabs = ({ className, dark, data }) => {
   const [activeTab, setActiveTab] = useState('1');
-  const [data, setData] = useState([]);
-  const [loadingData, setLoadingData] = useState(false);
-  let newTags = [];
-
-  useEffect(() => {
-    if (tags && data.length == 0 && currentId) {
-      tags.reduce((acc, tag) => newTags.push(tag.name), []);
-      if(!loadingData) {
-        fetchArticles(newTags, currentId);
-      }
-    }
-  });
-
-  const fetchArticles = async (newTags, currentId) => {
-    setLoadingData(true);
-    try {
-      const filter = `?limit=5&page=0&tags=${newTags.join(',')}&idOffset=${currentId}`;
-      const response = await api.article.getArticlesSearch(filter,
-        { headers: { 'Content-Type': 'application/json' } }
-      );
-
-      if (response) {
-        setData(response.data);
-        setLoadingData(false);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -84,14 +55,14 @@ const RelatedTabs = ({ className, dark, tags, currentId }) => {
               toggle('1');
             }}
           >
-            RELACIONADAS
+            NOTAS RELACIONADAS
           </Link>
         </NavItem>
       </Nav>
       <TabContent activeTab={activeTab}>
-        <TabPane tabId='1'><WidgetTabPane dark={dark} a_id={activeTab} id="1" arr={data} /></TabPane>
-        <TabPane tabId='2'><WidgetTabPane dark={dark} a_id={activeTab} id="2" arr={data} /></TabPane>
-        <TabPane tabId='3'><WidgetTabPane dark={dark} a_id={activeTab} id="3" arr={data} /></TabPane>
+        {data && data.length > 0 ? (
+          <TabPane tabId='1'><WidgetTabPane dark={dark} a_id={activeTab} id="1" arr={data} /></TabPane>
+        ) : null}
       </TabContent>
     </div>
   );

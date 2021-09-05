@@ -30,9 +30,7 @@ const ArticlePage = () => {
 	let { path } = useParams();
 	//const url = this.props.routeParams.page;
 	const [data, setData] = useState(null);
-	useEffect(() => {
-		fetchData();
-	}, []);
+	const [articlesRelated, setArticlesRelated] = useState([]);
 
   useEffect(() => {
 		fetchData();
@@ -46,6 +44,21 @@ const ArticlePage = () => {
         
       if (response) {
         setData(response.data);
+				// Get Related articles by tags.
+				try {
+					const arrayTags = [];
+					response.data.tags.reduce((acc, tag) => arrayTags.push(tag.name), []);
+					const filter = `?limit=5&page=0&tags=${arrayTags.join(',')}&idOffset=${response.data.id}`;
+					const responseTags = await api.article.getArticlesSearch(filter,
+						{ headers: { 'Content-Type': 'application/json' } }
+					);
+		
+					if (responseTags) {
+						setArticlesRelated(responseTags.data);
+					}
+				} catch (err) {
+					console.log(err);
+				}
       }
     } catch (error) {
       console.log(error);
@@ -195,9 +208,9 @@ const ArticlePage = () => {
 									<div className="space-40" />
 									<div className="tags">
 										<ul className="inline">
-                      {data && data.tags.map((tag, t) => {
-											  return <li key={t}><Link to="#">{tag.name}</Link></li>
-                      })}
+											{data && data.tags.map((tag, t) => {
+												return <li key={t}><Link to="#">{tag.name}</Link></li>
+											})}
 										</ul>
 									</div>
 								</div>
@@ -206,7 +219,9 @@ const ArticlePage = () => {
 							<PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" />
 						</div>
 						<div className="col-md-6 col-lg-4">
-							<RelatedTabs tags={data ? data.tags : null} currentId={data ? data.id : null} />
+							{articlesRelated.length > 0 ? (
+								<RelatedTabs data={articlesRelated} />
+							) : null}
 							<FollowUs title="Follow Us" />
 							<div className="banner2 mb30">
 								<Link to="/">

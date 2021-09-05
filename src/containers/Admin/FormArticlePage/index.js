@@ -18,7 +18,7 @@ const FormArticlePage = (props) => {
   let { id } = useParams();
   const history = useHistory();
   const { user } = useSelector(state => state.user); 
-  const html = '<p>Hey escribe aqui tu <strong>nota</strong> 😀</p>';
+  const html = '';
   const contentBlock = htmlToDraft(html);
   const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
 
@@ -35,7 +35,7 @@ const FormArticlePage = (props) => {
   const [status, setStatus] = useState(true);
   const [image, setImage] = useState(null);
   const [suggestions, setSuggestions] = useState([
-    { text: 'Boca eliminado de la copa', value: 'boca', url: 'https://www.ole.com.ar' },
+    { text: 'Boca eliminado de la copa', value: 'Boca eliminado de la copa', url: 'https://www.ole.com.ar' },
     { text: 'BANANA', value: 'banana', url: 'banana' },
     { text: 'CHERRY', value: 'cherry', url: 'cherry' }
   ]);
@@ -69,17 +69,14 @@ const FormArticlePage = (props) => {
             {
               key: 'politica_regional',
               label: 'Politica Regional',
-              nodes: [],
-              url: 'https://www.google.com/search?q=fox'
+              nodes: []
             },
             {
               key: 'politica_internacional',
               label: 'Politica Internacional',
-              nodes: [],
-              url: 'https://www.google.com/search?q=wolf'
+              nodes: []
             }
-          ],
-          url: 'https://www.google.com/search?q=canidae'
+          ]
         },
         {
           key: 'interes_general',
@@ -88,8 +85,7 @@ const FormArticlePage = (props) => {
             {
               key: 'sociedad',
               label: 'Sociedad',
-              nodes: [],
-              url: 'https://www.google.com/search?q=dog'
+              nodes: []
             },
             {
               key: 'economia',
@@ -107,7 +103,6 @@ const FormArticlePage = (props) => {
               nodes: []
             }
           ],
-          url: 'https://www.google.com/search?q=canidae'
         },
         {
           key: 'deportes',
@@ -157,6 +152,7 @@ const FormArticlePage = (props) => {
         setImage(data.image);
         setSource(data.source);
         setTags(data.tags);
+        setBodyHtml(data.body);
 
         const contentBlock = htmlToDraft(data.body);
         const newData = ContentState.createFromBlockArray(contentBlock.contentBlocks);
@@ -412,18 +408,32 @@ const FormArticlePage = (props) => {
                 </select>
               </div>
               <div className="col-lg-12">
-                <TreeMenu
-                  cacheSearch
-                  data={categories}
-                  debounceTime={125}
-                  disableKeyboard={false}
-                  hasSearch={false}
-                  onClickItem={handleCategory}
-                  resetOpenNodesOnDataUpdate={false}
-                  initialActiveKey={category ? category.initial : ''}
-                  initialOpenNodes={category ? category.initialNodes : ['category']}
-                  resetOpenNodesOnDataUpdate={false}
-                />
+                {id && category ? (
+                  <TreeMenu
+                    cacheSearch
+                    data={categories}
+                    debounceTime={125}
+                    disableKeyboard={false}
+                    hasSearch={false}
+                    onClickItem={handleCategory}
+                    initialActiveKey={category ? category.initial : ''}
+                    initialOpenNodes={['category', category.parent]}
+                    resetOpenNodesOnDataUpdate={false}
+                  />
+                ) : null}
+
+                {!id ? (
+                  <TreeMenu
+                    cacheSearch
+                    data={categories}
+                    debounceTime={125}
+                    disableKeyboard={false}
+                    hasSearch={false}
+                    onClickItem={handleCategory}
+                    initialOpenNodes={['category']}
+                    resetOpenNodesOnDataUpdate={false}
+                  />
+                ) : null}
               </div>
               <div className="col-12">
                 <label>Tipo de nota: </label>
