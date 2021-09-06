@@ -43,91 +43,25 @@ const FormArticlePage = (props) => {
   const reactTags = useRef(null);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
   const [category, setCategory] = useState(null);
+  const [categories, setCategories] = useState([]);
 
-  const categories = [
-    {
-      key: 'category',
-      label: 'Selecciona una categoria',
-      nodes: [
-        {
-          key: 'politica',
-          label: 'Politica',
-          nodes: [
-            {
-              key: 'politica_nacional',
-              label: 'Politica Nacional',
-              nodes: [],
-              url: 'https://www.google.com/search?q=dog',
-              nodes: [
-                {
-                  key: 'politica_nacional_demo',
-                  label: 'Politica Nacional demo',
-                  nodes: []
-                }
-              ]
-            },
-            {
-              key: 'politica_regional',
-              label: 'Politica Regional',
-              nodes: []
-            },
-            {
-              key: 'politica_internacional',
-              label: 'Politica Internacional',
-              nodes: []
-            }
-          ]
-        },
-        {
-          key: 'interes_general',
-          label: 'Interes General',
-          nodes: [
-            {
-              key: 'sociedad',
-              label: 'Sociedad',
-              nodes: []
-            },
-            {
-              key: 'economia',
-              label: 'Economia',
-              nodes: []
-            },
-            {
-              key: 'policiales',
-              label: 'Policiales',
-              nodes: []
-            },
-            {
-              key: 'cultura_espectaculos',
-              label: 'Cultura y Espectaculos',
-              nodes: []
-            }
-          ],
-        },
-        {
-          key: 'deportes',
-          label: 'Deportes',
-          nodes: [
-            {
-              key: 'deportes_nacionales',
-              label: 'Deportes Nacionales',
-              nodes: []
-            },
-            {
-              key: 'deportes_regionales',
-              label: 'Deportes Regionales',
-              nodes: []
-            },
-            {
-              key: 'deportes_internacionales',
-              label: 'Deportes Internacionales',
-              nodes: []
-            }
-          ]
-        },
-      ]
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async (type) => {
+    try {
+      const response = await api.category.get({type: 'articles'},
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+        
+      if (response.data) {
+        setCategories(response.data.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  ];
+  }
 
   useEffect(() => {
     if (id) {

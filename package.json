@@ -47,6 +47,7 @@
     "shortid": "^2.2.16",
     "simple-react-validator": "^1.4.6",
     "slick-carousel": "^1.8.1",
+    "str-to-machinename": "^1.0.0",
     "swiper": "^5.4.1",
     "typescript": "^4.3.5"
   },

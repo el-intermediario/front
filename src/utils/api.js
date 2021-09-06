@@ -23,9 +23,8 @@ const cover = {
 };
 
 const category = {
-  get: (path, headers) => axios.get(`${baseUrl}/${version}/categories/${path}`, headers),
-  getCategories: (data, headers) => axios.get(`${baseUrl}/${version}/categories`, headers),
-  add: (data, headers) => axios.post(`${baseUrl}/${version}/categories`, data, headers)  
+  get: (data, headers) => axios.get(`${baseUrl}/${version}/categories?type=${data.type}`, headers),
+  put: (data, headers) => axios.put(`${baseUrl}/${version}/categories`, data, headers)  
 }
 
 const contact = {

@@ -1,31 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
 import api from '../../../utils/api';
-import { TreeSelect } from 'tree-select';
-
+import CategoryForm from './CategoryForm';
 
 const FormCategoryPage = () => {
-  const validator = new SimpleReactValidator();
-  const [name, setName] = useState('');
-  const [color, setColor] = useState('');
+  const [categories, setCategories] = useState([]);
 
-  const submitHandler = async (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async (type) => {
+    try {
+      const response = await api.category.get({type: 'articles'},
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+        
+      if (response.data) {
+        setCategories(response.data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const save = async () => {
     const data = {
-      name,
+      type: 'articles',
+      data: categories
     };
     try {
-      const response = await api.category.add(data,
-        { header: { 'Content-Type': 'application/json' } }
-        );
-        if (response) {
-          console.log(response.data)
-        }
+      const response = await api.category.put(data, { 
+        header: { 'Content-Type': 'application/json' } 
+      });
     } catch (error) {
       console.log(error);
     } 
+  }
+
+  const hanleCategory = (item, key) => {
+    let newCategories = [...categories];
+    newCategories.forEach((element, k) => {
+      if (element.key == key) {
+        newCategories[k].nodes.push(item);
+      } else {
+        element.nodes.forEach((elementChild, ec) => {
+          if (elementChild.key == key) {
+            newCategories[k].nodes[ec].nodes.push(item);
+          } else {
+            elementChild.nodes.forEach((child, c) => {
+              if (child.key == key) {
+                newCategories[k].nodes[ec].nodes[c].nodes.push(item);
+              }
+            });
+          }
+        });
+      }
+    });
+    setCategories(newCategories);
   }
 
   return (
@@ -40,30 +74,32 @@ const FormCategoryPage = () => {
                   <div className="col-12">
                     <h3>Crear Categoria!</h3>
                   </div>
-                  <div className="col-12">
-                    <form onSubmit={submitHandler}>
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <input name="title" value={name} onChange={e => setName(e.target.value)}
-                            type="text"
-                            placeholder="Nombre" />
-                          {validator.message('Nombre', name, 'required')}
+                  <div>
+                    {categories.map(category => (
+                      <>
+                        <div>{category.label}</div>
+                        <CategoryForm handleCategory={(data) => hanleCategory(data, category.key)} />
+                        <div>
+                          {category.nodes.map(firstChild => (
+                            <>
+                              <div>{firstChild.label}</div>
+                              <CategoryForm handleCategory={(data) => hanleCategory(data, firstChild.key)} />
+                              <div>
+                                {firstChild.nodes.map(secondChild => (
+                                  <>
+                                    <div>{secondChild.label}</div>
+                                    <CategoryForm handleCategory={(data) => hanleCategory(data, secondChild.key)} />
+                                  </>
+                                ))}
+                              </div>
+                            </>
+                          ))}
                         </div>
-                        <div className="col-lg-6">
-                          <input name="color" value={color} onChange={e => setColor(e.target.value)}
-                            type="text"
-                            placeholder="color" />
-                          {validator.message('color', color, 'required')}
-                        </div>
-                        <div className="col-12">
-                          <div className="space-20" />
-                          <button className="cbtn1" type="submit">Guardar</button>
-                        </div>
-                        <div className="preview">
-                          {/* {JSON.stringify(contentState, null, 4)} */}
-                        </div>
-                      </div>
-                    </form>
+                      </>
+                    ))}
+                  </div>
+                  <div>
+                    <button onClick={save}>Guardar</button>
                   </div>
                 </div>
               </div>
