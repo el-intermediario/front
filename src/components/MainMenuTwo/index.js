@@ -19,6 +19,15 @@ const menusLogged = [
     id: 1,
     link: '/admin',
     linkText: 'Home',
+    child: true,
+    icon: 'angle-down',
+    submenu: [
+      {
+        id: 11,
+        link: '/admin/home',
+        linkText: 'Editar'
+      },
+    ]
   },
   {
     id: 2,
@@ -53,8 +62,8 @@ const menusLogged = [
     submenu: [
       {
         id: 31,
-        link: '/admin/category/add',
-        linkText: 'Nueva',
+        link: '/admin/category/edit',
+        linkText: 'Editar',
       }
     ]
   },

@@ -15,9 +15,9 @@ const FooterAreaThree = () => {
                                 <div className="language"/>
                                 <div className="copyright_menu inline">
                                     <ul>
-                                        <li><Link to="/">Quienes somos?</Link></li>
-                                        <li><Link to="/">Pliticas de privacidad</Link></li>
-                                        <li><Link to="/">Contactenos</Link></li>
+                                        <li><Link to="/quienes-somos">Quienes somos?</Link></li>
+                                        <li><Link to="/politicas-de-privacidad">Politicas de privacidad</Link></li>
+                                        <li><Link to="/contactenos">Contactenos</Link></li>
                                     </ul>
                                 </div>
                             </div>

@@ -157,7 +157,7 @@ const Routes = () => {
             <PrivateRoute
                 exact
                 home_style={3}
-                path="/admin/category/add"
+                path="/admin/category/edit"
                 parentClass="theme-3"
                 component={FormCategoryPage}/>
             <PrivateRoute

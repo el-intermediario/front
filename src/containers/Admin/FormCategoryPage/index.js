@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
-import SimpleReactValidator from 'simple-react-validator';
 import api from '../../../utils/api';
 import CategoryForm from './CategoryForm';
 
 const FormCategoryPage = () => {
   const [categories, setCategories] = useState([]);
+  const [defaultCategories, setDefaultCategories] = useState([]);
 
   useEffect(() => {
     fetchCategories();
@@ -20,6 +20,7 @@ const FormCategoryPage = () => {
         
       if (response.data) {
         setCategories(response.data.data);
+        setDefaultCategories(response.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -27,17 +28,19 @@ const FormCategoryPage = () => {
   }
 
   const save = async () => {
-    const data = {
-      type: 'articles',
-      data: categories
-    };
-    try {
-      const response = await api.category.put(data, { 
-        header: { 'Content-Type': 'application/json' } 
-      });
-    } catch (error) {
-      console.log(error);
-    } 
+    if (categories != defaultCategories) {
+      const data = {
+        type: 'articles',
+        data: categories
+      };
+      try {
+        const response = await api.category.put(data, { 
+          header: { 'Content-Type': 'application/json' } 
+        });
+      } catch (error) {
+        console.log(error);
+      } 
+    }
   }
 
   const hanleCategory = (item, key) => {
@@ -72,34 +75,40 @@ const FormCategoryPage = () => {
               <div className="cotact_form">
                 <div className="row">
                   <div className="col-12">
-                    <h3>Crear Categoria!</h3>
+                    <h3>Categorias</h3>
                   </div>
-                  <div>
+                  <ul className="list-group">
                     {categories.map(category => (
-                      <>
-                        <div>{category.label}</div>
-                        <CategoryForm handleCategory={(data) => hanleCategory(data, category.key)} />
-                        <div>
-                          {category.nodes.map(firstChild => (
-                            <>
-                              <div>{firstChild.label}</div>
-                              <CategoryForm handleCategory={(data) => hanleCategory(data, firstChild.key)} />
-                              <div>
-                                {firstChild.nodes.map(secondChild => (
-                                  <>
-                                    <div>{secondChild.label}</div>
-                                    <CategoryForm handleCategory={(data) => hanleCategory(data, secondChild.key)} />
-                                  </>
-                                ))}
-                              </div>
-                            </>
-                          ))}
+                      <li className="list-group-item justify-content-between align-items-center">
+                        <div className="d-flex">
+                          {category.label}
+                          <CategoryForm handleCategory={(data) => hanleCategory(data, category.key)} data={category} />
                         </div>
-                      </>
+                        <ul className="list-group">
+                          {category.nodes.map(firstChild => (
+                            <li className="list-group-item justify-content-between align-items-center">
+                              <div className="d-flex">
+                                {firstChild.label}
+                                <CategoryForm handleCategory={(data) => hanleCategory(data, firstChild.key)} data={firstChild} />
+                              </div>  
+                              <ul className="list-group">
+                                {firstChild.nodes.map(secondChild => (
+                                  <li className="list-group-item justify-content-between align-items-center">
+                                    <div className="d-flex">
+                                      {secondChild.label}
+                                      <CategoryForm handleCategory={(data) => hanleCategory(data, secondChild.key)} data={secondChild} />
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
                     ))}
-                  </div>
-                  <div>
-                    <button onClick={save}>Guardar</button>
+                  </ul>
+                  <div className="col-12">
+                    <button disabled={categories != defaultCategories ? false : true} onClick={save}>Guardar</button>
                   </div>
                 </div>
               </div>
