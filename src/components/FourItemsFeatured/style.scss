@@ -1,0 +1,19 @@
+.four-items {
+  .single_post {
+    .post_img {
+      img {
+        min-height: 180px;
+        max-height: 180px;
+      }
+    }
+
+    .single_post_text {
+      text-shadow: 1px 1px 2px black;
+
+      .meta5 {
+        color: #1091FF;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

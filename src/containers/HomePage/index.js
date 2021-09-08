@@ -1,7 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import PostCarousel from "../../components/PostCarousel";
-import NoteFeatured from "../../components/NoteFeatured";
-import FeatureNews from "../../components/FeatureNews";
 import TrendingNews from "../../components/TrendingNews";
 import FollowUs from "../../components/FollowUs";
 import MostView from "../../components/MostView";
@@ -32,6 +29,8 @@ import PostGallery from '../../components/PostGallery';
 import TwoItemsFeatured from '../../components/TwoItemsFeatured';
 import ThreeItemsFeatured from '../../components/ThreeItemsFeatured';
 import TopicArticles from '../../components/TopicArticles';
+import FourItemsFeatured from '../../components/FourItemsFeatured';
+import OneItemFeatured from '../../components/OneItemFeatured';
 
 const entertainments = [
   {
@@ -112,19 +111,15 @@ const HomePage = () => {
   const handleRow = (row) => {
     console.log(row.id);
     switch (row.id) {
-      case 'Notas Destacadas':
+      case 'article':
         if (row.children.length === 1) {
-          return <NoteFeatured className="fifth_bg" data={row.children} />
-          break;
+          return <OneItemFeatured className="fifth_bg" data={row.children} />
         } else if (row.children.length === 2) {
           return <TwoItemsFeatured data={row.children} />
-          break;
         } else if (row.children.length === 3) {
           return <ThreeItemsFeatured data={row.children} />
-          break;
         } else {
-          return <FeatureNews news={row.children} />
-          break;
+          return <FourItemsFeatured news={row.children} />
         }
       case 'corona':
         // Bloque con notas de un tema especifica ej: 'elecciones'
@@ -177,7 +172,7 @@ const HomePage = () => {
           </div>
         }
       })}
-      {/* <FeatureNews /> */}
+      {/* <FeaturedNews /> */}
       <div className="container">
         <div className="row">
           <div className="col-lg-8">

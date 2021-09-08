@@ -47,7 +47,7 @@ import FontAwesome from "../uiStyle/FontAwesome";
 //     },
 // ];
 
-const FeatureNews = ({className, news}) => {
+const FeaturedNews = ({className, news}) => {
     const [swiper, setSwiper] = useState(null);
 
     const goNext = () => {
@@ -113,10 +113,10 @@ const FeatureNews = ({className, news}) => {
                                     </div>
                                 ))}
                             </Swiper>
-                            <div className="navBtns">
+                            {/* <div className="navBtns">
                                 <div onClick={goPrev} className="navBtn prevtBtn"><FontAwesome name="angle-left"/></div>
                                 <div onClick={goNext} className="navBtn nextBtn"><FontAwesome name="angle-right"/></div>
-                            </div>
+                            </div> */}
                         </div>
                         {/*CAROUSEL END*/}
                     </div>
@@ -126,4 +126,4 @@ const FeatureNews = ({className, news}) => {
     );
 };
 
-export default FeatureNews;
+export default FeaturedNews;

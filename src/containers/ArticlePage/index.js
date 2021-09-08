@@ -24,6 +24,8 @@ import BlogComment from "../../components/BlogComment";
 import api from "../../utils/api";
 import RelatedTabs from '../../components/RelatedTabs';
 import TrendingArticles from '../../components/TrendingArticles';
+import './style.scss';
+import Moment from 'react-moment';
 
 const ArticlePage = () => {
   const state = useLocation();
@@ -70,9 +72,8 @@ const ArticlePage = () => {
 
 	return (
 		<Fragment>
-			<div className="archives post post1">
+			<div className="archives post post1 page-article">
 				<BreadCrumb className="shadow5 padding-top-30" title={data && data.title} />
-				<span className="space-30" />
 				<div className="container">
 					<div className="row">
 						<div className="col-md-6 col-lg-8">
@@ -84,12 +85,11 @@ const ArticlePage = () => {
 												<ul className="inline">
 													<li className="page_category">{data && data.copete}</li>
 													{/* <li><FontAwesome name="comment" />563</li> */}
-													{/* <li><FontAwesome name="fire" />536</li> */}
+													<li><FontAwesome name="calendar" />{data && <Moment format="dddd D, MMMM YYYY" locale="es">{data.created}</Moment>}</li>
 												</ul>
 											</div>
 										</div>
 									</div>
-									<div className="space-30" />
 									<div className="single_post_heading">
 										<h1>{data && data.title}</h1>
 										<div className="space-10" />
@@ -219,7 +219,7 @@ const ArticlePage = () => {
 								</div>
 							</div>
 							<div className="space-30" />
-							<PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" />
+							{/* <PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" /> */}
 						</div>
 						<div className="col-md-6 col-lg-4">
 							{articlesRelated.length > 0 ? (
@@ -233,16 +233,16 @@ const ArticlePage = () => {
 							</div>
 							<TrendingArticles currentId={data ? data.id : null} />
 							<MostShareWidget title="Most Share" />
-							<NewsLetter />
+							{/* <NewsLetter /> */}
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className="space-60" />
+			{/* <div className="space-60" />
 			<OurBlogSection />
 			<div className="space-60" />
 			<BlogComment />
-			<div className="space-100" />
+			<div className="space-100" /> */}
 			<BannerSection />
 		</Fragment>
 	)

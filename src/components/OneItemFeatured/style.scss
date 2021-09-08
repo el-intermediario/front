@@ -1,0 +1,31 @@
+.slider_demo2 {
+  margin-bottom: 8px;
+}
+
+.slider_demo1 {
+  position: relative;
+}
+
+.slider_demo1 {
+  .single_gallary_item {
+    display: block!important;
+  }
+}
+
+.one-item {
+  .single_post {
+    .post_img img {
+      width: 100%;
+      max-height: 380px;
+    }
+
+    .single_post_text {
+      text-shadow: 1px 1px 2px black;
+
+      .meta5 {
+        color: #1091FF;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

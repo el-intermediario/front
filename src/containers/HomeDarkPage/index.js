@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PostCarousel from "../../components/PostCarousel";
 import PostGallery from "../../components/PostGallery";
-import FeatureNews from "../../components/FeatureNews";
+import FeaturedNews from "../../components/FeaturedNews";
 import TrendingNews from "../../components/TrendingNews";
 import FollowUs from "../../components/FollowUs";
 import MostView from "../../components/MostView";
@@ -87,7 +87,7 @@ const HomeDarkPage = () => {
         <Fragment>
             <PostCarousel className="primay_bg dark-v"/>
             <PostGallery className="primay_bg dark-v"/>
-            <FeatureNews className="dark-v"/>
+            <FeaturedNews className="dark-v"/>
             <div className="dark-v">
                 <div className="container">
                     <div className="row">

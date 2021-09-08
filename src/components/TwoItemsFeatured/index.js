@@ -4,8 +4,7 @@ import {Link} from "react-router-dom";
 import Swiper from 'react-id-swiper';
 import ModalVideo from 'react-modal-video'
 
-import black_white1 from '../../doc/img/bg/black_white1.jpg';
-import black_white2 from '../../doc/img/bg/black_white2.jpg';
+import './style.scss';
 
 const TwoItemsFeatured = ({className, dark, data}) => {
     const [swiper, setSwiper] = useState(null);
@@ -48,11 +47,11 @@ const TwoItemsFeatured = ({className, dark, data}) => {
     };
 
     return (
-        <div className={`mix_area ${className ? className : ''}`}>
+        <div className={`mix_area two-items mb10 ${className ? className : ''}`}>
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <div className={`mix_carousel ${dark ? 'primay_bg' : ''}`}>
+                        <div className={`${dark ? 'primay_bg' : ''}`}>
                             {/*CAROUSEL START*/}
                             <div className="single_mix_carousel nav_style3">
                                 <Swiper getSwiper={setSwiper} {...params}>
@@ -66,9 +65,7 @@ const TwoItemsFeatured = ({className, dark, data}) => {
                                                 </div>
                                             </div>
                                             <div className="single_post_text">
-                                                <div className="meta">{item.children[0].data.copete}
-                                                    <Link to="#">{item.children[0].data.created}</Link>
-                                                </div>
+                                                <div className="meta">{item.children[0].data.copete}</div>
                                                 <h4><Link to={`/articulo/${item.children[0].data.slug}`}>{item.children[0].data.title}</Link></h4>
                                             </div>
                                         </div>

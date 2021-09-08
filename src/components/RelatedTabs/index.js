@@ -55,7 +55,7 @@ const RelatedTabs = ({ className, dark, data }) => {
               toggle('1');
             }}
           >
-            NOTAS RELACIONADAS
+            RELACIONADAS
           </Link>
         </NavItem>
       </Nav>
