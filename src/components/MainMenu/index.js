@@ -6,218 +6,6 @@ import SearchModal from "../SearchModal";
 import SidebarMenu from "../SidebarMenu";
 import api from '../../utils/api';
 
-const menus = [
-  {
-    id: 1,
-    linkText: 'Inicio',
-    child: true,
-    icon: 'angle-down',
-    submenu: [
-      {
-        id: 11,
-        link: '/',
-        linkText: 'Home 1'
-      },
-      {
-        id: 12,
-        link: '/dark',
-        linkText: 'Home Dark'
-      },
-      {
-        id: 13,
-        new: true,
-        link: '/home-two',
-        linkText: 'Home 2'
-      },
-      {
-        id: 14,
-        link: '/home-three',
-        linkText: 'Home 3'
-      },
-    ]
-  },
-  /*
-  {
-      id: 2,
-      linkText: 'Paginas',
-      child: true,
-      icon: 'angle-down',
-      submenu: [
-          {
-              id: 21,
-              link: '/about',
-              linkText: 'nosotros'
-          },
-          {
-              id: 22,
-              link: '/archive',
-              linkText: 'Archivo'
-          },
-          {
-              id: 23,
-              link: '/contact',
-              linkText: 'Contactenos'
-          },
-          {
-              id: 24,
-              link: '/404',
-              linkText: '404'
-          },
-      ]
-  },*/
-  /*
-  {
-      id: 3,
-      linkText: 'Posts',
-      child: true,
-      icon: 'angle-down',
-      submenu: [
-          {
-              id: 31,
-              child: true,
-              linkText: 'General Posts',
-              third_menu: [
-                  {
-                      id: 311,
-                      link: '/post1',
-                      linkText: 'Post 1',
-                  },
-                  {
-                      id: 312,
-                      link: '/post2',
-                      linkText: 'Post 2',
-                  },
-                  {
-                      id: 313,
-                      link: '/post3',
-                      linkText: 'Post 3',
-                  },
-              ],
-          },
-          {
-              id: 32,
-              child: true,
-              linkText: 'Video Posts',
-              third_menu: [
-                  {
-                      id: 321,
-                      link: '/video_post1',
-                      linkText: 'Video Style 1',
-                  },
-                  {
-                      id: 322,
-                      link: '/video_post2',
-                      linkText: 'Video Style 2',
-                  },
-                  {
-                      id: 323,
-                      link: '/video_post3',
-                      linkText: 'Video Style 3',
-                  },
-              ],
-          },
-          {
-              id: 33,
-              child: true,
-              linkText: 'Audio Posts',
-              third_menu: [
-                  {
-                      id: 331,
-                      link: '/audio_post1',
-                      linkText: 'Audio Style 1',
-                  },
-                  {
-                      id: 332,
-                      link: '/audio_post2',
-                      linkText: 'Audio Style 2',
-                  },
-                  {
-                      id: 333,
-                      link: '/audio_post3',
-                      linkText: 'Audio Style 3',
-                  },
-              ],
-          },
-          {
-              id: 34,
-              child: true,
-              linkText: 'Sidebars',
-              third_menu: [
-                  {
-                      id: 341,
-                      link: '/post1',
-                      linkText: 'Right Sidebar',
-                  },
-                  {
-                      id: 342,
-                      link: '/left_post2',
-                      linkText: 'Left Sidebar',
-                  },
-                  {
-                      id: 343,
-                      link: '/post2',
-                      linkText: 'No Sidebar',
-                  },
-              ],
-          },
-      ]
-  },*/
-  /*
-  {
-      id: 4,
-      linkText: 'Categorias',
-      child: true,
-      icon: 'angle-down',
-      submenu: [
-          {
-              id: 41,
-              link: '/business',
-              linkText: 'Business'
-          },
-          {
-              id: 42,
-              link: '/entertainment',
-              linkText: 'Entertainment'
-          },
-          {
-              id: 43,
-              link: '/features',
-              linkText: 'Features'
-          },
-          {
-              id: 44,
-              link: '/sports',
-              linkText: 'Sports'
-          },
-          {
-              id: 45,
-              link: '/trending',
-              linkText: 'Trending'
-          },
-      ]
-  },*/
-  {
-    id: 2,
-    linkText: 'Provinciales',
-    link: '/world'
-  },
-  {
-    id: 3,
-    linkText: 'Regionales',
-    link: '/world'
-  },
-  {
-    id: 4,
-    linkText: 'Internacionales',
-    link: '/world'
-  },
-  {
-    id: 5,
-    linkText: 'Deportes',
-    link: '/sports'
-  }
-];
-
 const menusDark = [
   {
     id: 1,
@@ -442,15 +230,15 @@ const MainMenu = ({ className, dark }) => {
         newMenu.push({
           id: 0,
           linkText: 'Inicio',
-          child: true,
-          submenu: []
+          link: '/',
+          child: false
         });
         response.data.data.map((itemMenu, i) => {
           itemMenu.nodes.map((itemMenuChild, c) => {
             newMenu.push({
               id: c,
               linkText: itemMenuChild.label,
-              link: `${itemMenu.key}/${itemMenuChild.key}`,
+              link: `categoria/${itemMenuChild.key.replaceAll('_', '-')}`,
               child: itemMenuChild.nodes.length,
               icon: itemMenuChild.nodes.length ? 'angle-down' : '',
               submenu: itemMenuChild.nodes.length ? [] : null
@@ -460,7 +248,7 @@ const MainMenu = ({ className, dark }) => {
               newMenu[c+1].submenu.push({
                 id: c+ch,
                 linkText: child.label,
-                link: `${itemMenu.key}/${itemMenuChild.key}/${child.key}`,
+                link: `categoria/${itemMenuChild.key.replaceAll('_', '-')}/${child.key.replaceAll('_', '-')}`,
                 child: false
               });
             });
@@ -476,7 +264,6 @@ const MainMenu = ({ className, dark }) => {
 
   const arr = dark ? menusDark : menus;
 
-  console.log(menus);
   return (
     <Fragment>
       <div className={`main-menu ${className ? className : ''}`} id="header">
@@ -486,7 +273,7 @@ const MainMenu = ({ className, dark }) => {
         <div className="main-nav clearfix is-ts-sticky">
           <div className="container">
             <div className="row justify-content-between">
-              <nav className="navbar navbar-expand-lg col-lg-9 align-self-center">
+              <nav className="navbar navbar-expand-lg col-lg-12 align-self-center">
                 <div className="site-nav-inner">
                   <button className="navbar-toggler" onClick={() => setSideShow(true)}>
                     <FontAwesome name="bars" />
@@ -495,11 +282,8 @@ const MainMenu = ({ className, dark }) => {
                     className="collapse navbar-collapse navbar-responsive-collapse">
                     <ul className="nav navbar-nav" id="scroll">
                       {arr.length > 0 ? arr.map((item, i) => (
-                        <li key={i}
-                          className={`
-                                                ${item.child ? 'dropdown' : ''}
-                                                nav-item`}>
-                          {item.child ? <NavLink onClick={e => e.preventDefault()} to="/"
+                        <li key={i} className={`${item.child ? 'dropdown' : ''} nav-item`}>
+                          {item.child ? <NavLink to={item.link}
                             className="menu-dropdown"
                             data-toggle="dropdown">{item.linkText}
                             <FontAwesome
@@ -515,8 +299,7 @@ const MainMenu = ({ className, dark }) => {
                                   className={`${sub_item.child ? 'dropdown-submenu' : null}
                                                         `}>
                                   {sub_item.child ?
-                                    <NavLink onClick={e => e.preventDefault()}
-                                      to="/">{sub_item.linkText}</NavLink>
+                                    <NavLink to="/">{sub_item.linkText}</NavLink>
                                     : <NavLink
                                       to={sub_item.link}>{sub_item.linkText}</NavLink>}
                                   {sub_item.third_menu ?
@@ -539,7 +322,7 @@ const MainMenu = ({ className, dark }) => {
                   <SidebarMenu sideShow={sideShow} setSideShow={setSideShow} menus={arr} />
                 </div>
               </nav>
-              <div className="col-lg-3 align-self-center">
+              {/* <div className="col-lg-3 align-self-center">
                 <div className="menu_right">
                   <div className="users_area">
                     <ul className="inline">
@@ -548,22 +331,6 @@ const MainMenu = ({ className, dark }) => {
                       <li><FontAwesome name="user-circle" /></li>
                     </ul>
                   </div>
-                  {/* <div className="lang d-none d-xl-block">
-                                        <ul>
-                                            <li><Link to="/">English <FontAwesome name="angle-down"/></Link>
-                                                <ul>
-                                                    <li><Link to="/">Spanish</Link>
-                                                    </li>
-                                                    <li><Link to="/">China</Link>
-                                                    </li>
-                                                    <li><Link to="/">Hindi</Link>
-                                                    </li>
-                                                    <li><Link to="/">Corian</Link>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div> */}
                   <div className="temp d-none d-lg-block">
                     <div className="temp_wap">
                       <div className="temp_icon">
@@ -574,7 +341,7 @@ const MainMenu = ({ className, dark }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
