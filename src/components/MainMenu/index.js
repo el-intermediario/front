@@ -238,7 +238,7 @@ const MainMenu = ({ className, dark }) => {
             newMenu.push({
               id: c,
               linkText: itemMenuChild.label,
-              link: `categoria/${itemMenuChild.key.replaceAll('_', '-')}`,
+              link: `/categoria/${itemMenuChild.key.replaceAll('_', '-')}`,
               child: itemMenuChild.nodes.length,
               icon: itemMenuChild.nodes.length ? 'angle-down' : '',
               submenu: itemMenuChild.nodes.length ? [] : null
@@ -248,7 +248,7 @@ const MainMenu = ({ className, dark }) => {
               newMenu[c+1].submenu.push({
                 id: c+ch,
                 linkText: child.label,
-                link: `categoria/${itemMenuChild.key.replaceAll('_', '-')}/${child.key.replaceAll('_', '-')}`,
+                link: `/categoria/${itemMenuChild.key.replaceAll('_', '-')}/${child.key.replaceAll('_', '-')}`,
                 child: false
               });
             });

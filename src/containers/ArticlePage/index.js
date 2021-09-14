@@ -26,6 +26,7 @@ import RelatedTabs from '../../components/RelatedTabs';
 import TrendingArticles from '../../components/TrendingArticles';
 import './style.scss';
 import Moment from 'react-moment';
+import MostView from '../../components/MostView';
 
 const ArticlePage = () => {
   const state = useLocation();
@@ -225,14 +226,13 @@ const ArticlePage = () => {
 							{articlesRelated.length > 0 ? (
 								<RelatedTabs data={articlesRelated} />
 							) : null}
-							<FollowUs title="Follow Us" />
 							<div className="banner2 mb30">
 								<Link to="/">
 									<img src={banner2} alt="thumb" />
 								</Link>
 							</div>
-							<TrendingArticles currentId={data ? data.id : null} />
-							<MostShareWidget title="Most Share" />
+							{/* <TrendingArticles currentId={data ? data.id : null} /> */}
+							<MostView title="Mas vistas" />
 							{/* <NewsLetter /> */}
 						</div>
 					</div>

@@ -92,6 +92,7 @@ import ArticlesPage from '../ArticlePage/articles';
 import AdminPage from '../Admin';
 import Logout from '../Admin/Logout';
 import FormHomePage from '../Admin/FormHomePage';
+import CategoryPage from '../CategoryPage';
 
 const Routes = () => {
     return (
@@ -174,10 +175,19 @@ const Routes = () => {
                 component={FormTagPage}/>
             <PrivateRoute
                 exact
-                path="business"
-                parentClass="../admin/FromAdsPage"
-                parentClass= "theme-3"
-                component={FromAdsPage}/>            
+                path="/categoria/:path"
+                parentClass="theme-1"
+                component={CategoryPage}/> 
+            <PrivateRoute
+                exact
+                path="/categoria/:path/:path2"
+                parentClass="theme-1"
+                component={CategoryPage}/>
+            <PrivateRoute
+                exact
+                path="/categoria/:path/:path2/:path3"
+                parentClass="theme-1"
+                component={CategoryPage}/>          
             <PrivateRoute
                 exact
                 path="/business"
