@@ -333,6 +333,64 @@ body {
   }
 }
 
+.preview-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: $primary_bg;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  overflow: auto;
+  @include transition(all .3s);
+
+  .container {
+    height: 100%;
+    background-color: white;
+  }
+
+  .v1search_form {
+    input {
+      width: 75%;
+      float: left;
+      margin: 0;
+    }
+
+    button {
+      width: 25%;
+      float: left;
+    }
+  }
+
+  .close_btn {
+    position: absolute;
+    top: 20px;
+    right: 32px;
+    height: 40px;
+    width: 40px;
+    background: $secondary_bg;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: $white;
+    cursor: pointer;
+  }
+
+
+}
+
+.preview-modal.active {
+  visibility: visible;
+  opacity: 1;
+
+  @include transition(all .3s);
+}
+
 .searching {
   position: fixed;
   left: 0;

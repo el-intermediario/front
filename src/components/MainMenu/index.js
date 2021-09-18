@@ -322,7 +322,7 @@ const MainMenu = ({ className, dark }) => {
                   <SidebarMenu sideShow={sideShow} setSideShow={setSideShow} menus={arr} />
                 </div>
               </nav>
-              {/* <div className="col-lg-3 align-self-center">
+              <div className="col-lg-3 align-self-center">
                 <div className="menu_right">
                   <div className="users_area">
                     <ul className="inline">
@@ -341,7 +341,7 @@ const MainMenu = ({ className, dark }) => {
                     </div>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>

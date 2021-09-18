@@ -5,7 +5,7 @@ const initialData = {
   layout: [
     {
       type: ROW,
-      id: "Notas Destacadas",
+      id: "article",
       children: [
         {
           type: COLUMN,
@@ -16,70 +16,7 @@ const initialData = {
     },
     {
       type: ROW,
-      id: "Notas Destacadas",
-      children: [
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-      ]
-    },
-    {
-      type: ROW,
-      id: "Notas Destacadas",
-      children: [
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-      ]
-    },
-    {
-      type: ROW,
-      id: "Notas Destacadas",
-      children: [
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-      ]
-    },
-    {
-      type: ROW,
-      id: "corona",
+      id: "covid19",
       children: [
         {
           type: COLUMN,
@@ -134,7 +71,7 @@ const initialData = {
       type: 'sidebarItem'
     },
     {
-      typeId: 'corona_virus',
+      typeId: 'covid',
       component: {
         type: 'Corona virus',
       },

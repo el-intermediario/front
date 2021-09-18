@@ -65,7 +65,7 @@ class OneItemFeatured extends Component {
     const { className, data } = this.props;
     const { nav1, nav2, vModal, videoId } = this.state;
 
-    const note = data[0].children[0].data;
+    const note = data[0].children.length ? data[0].children[0].data : {};
 
     const navSettings = {
       nextArrow: <SampleNextArrow />,

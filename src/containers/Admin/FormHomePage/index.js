@@ -3,7 +3,7 @@ import BannerSection from "../../../components/BannerSection";
 import Home from "./home";
 import Backend from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
-import "./styles.css";
+import "./styles.scss";
 
 const FormHomePage = () => {
   return (

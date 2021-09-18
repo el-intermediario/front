@@ -18,6 +18,7 @@ import { useHistory } from 'react-router-dom';
 
 import {SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
+import CoverModal from "../../../components/CoverModal";
 
 const Container = () => {
   const history = useHistory();
@@ -34,9 +35,11 @@ const Container = () => {
   const [search, setSearch] = useState('');
   const [searchAd, setSearchAd] = useState('');
   const [topic, setTopic] = useState('');
+  const [preview, setPreview] = useState(false);
 
   const handleSearchArticles = async (value) => {
     try {
+      setSearch(value);
       const response = await api.article.getArticlesSearch(`?search=${value}`,
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -226,7 +229,6 @@ const Container = () => {
     setLayout([...layout, newBrick]);
   }
 
-  console.log(layout);
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
@@ -318,11 +320,18 @@ const Container = () => {
           />
           <label>Publicar</label>
         </div>
+        <div className="col-12">
+          <button onClick={(e) => setPreview(true)}>Vista Previa</button>
+        </div>
         <div>
           <button type="submit" className="cbtn1" type="submit" onClick={submitHandler}>Guardar</button>
         </div>
         <TrashDropZone data={{layout}} onDrop={handleDropToTrashBin} />
       </div>
+      {preview ?
+        <CoverModal setPreviewShow={setPreview} previewShow={preview} layout={layout} />
+        : null
+      }
     </div>
   );
 };
