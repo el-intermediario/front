@@ -331,7 +331,7 @@ const MainMenu = ({ className, dark }) => {
                       <li><FontAwesome name="user-circle" /></li>
                     </ul>
                   </div>
-                  <div className="temp d-none d-lg-block">
+                  {/* <div className="temp d-none d-lg-block">
                     <div className="temp_wap">
                       <div className="temp_icon">
                         <img src={tempIcon} alt="temp icon" />
@@ -339,7 +339,7 @@ const MainMenu = ({ className, dark }) => {
                       <h3 className="temp_count">13</h3>
                       <p>Santa Cruz</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
