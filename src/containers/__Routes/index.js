@@ -103,7 +103,7 @@ const Routes = () => {
                 path="/"
                 parentClass="theme-1"
                 component={HomePage}/>
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/articulo/:path"
                 parentClass="theme-1"
@@ -173,17 +173,17 @@ const Routes = () => {
                 path="../admin/FormTagPage"
                 parentClass= "theme-3"
                 component={FormTagPage}/>
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/categoria/:path"
                 parentClass="theme-1"
                 component={CategoryPage}/> 
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/categoria/:path/:path2"
                 parentClass="theme-1"
                 component={CategoryPage}/>
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/categoria/:path/:path2/:path3"
                 parentClass="theme-1"

@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import FontAwesome from "../uiStyle/FontAwesome";
 import tempIcon from '../../doc/img/icon/temp.png';
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import SearchModal from "../SearchModal";
 import SidebarMenu from "../SidebarMenu";
 import api from '../../utils/api';
@@ -211,6 +211,7 @@ const menusDark = [
 ];
 
 const MainMenu = ({ className, dark }) => {
+  const history = useHistory();
   const [searchShow, setSearchShow] = useState(false);
   const [sideShow, setSideShow] = useState(false);
   const [menus, setMenus] = useState([]);
@@ -273,7 +274,7 @@ const MainMenu = ({ className, dark }) => {
         <div className="main-nav clearfix is-ts-sticky">
           <div className="container">
             <div className="row justify-content-between">
-              <nav className="navbar navbar-expand-lg col-lg-12 align-self-center">
+              <nav className="navbar navbar-expand-lg col-lg-10 align-self-center">
                 <div className="site-nav-inner">
                   <button className="navbar-toggler" onClick={() => setSideShow(true)}>
                     <FontAwesome name="bars" />
@@ -322,13 +323,16 @@ const MainMenu = ({ className, dark }) => {
                   <SidebarMenu sideShow={sideShow} setSideShow={setSideShow} menus={arr} />
                 </div>
               </nav>
-              <div className="col-lg-3 align-self-center">
+              <div className="col-lg-2 align-self-center">
                 <div className="menu_right">
                   <div className="users_area">
                     <ul className="inline">
                       <li className="search_btn" onClick={() => setSearchShow(!searchShow)}>
-                        <FontAwesome name="search" /></li>
-                      <li><FontAwesome name="user-circle" /></li>
+                        <FontAwesome name="search" />
+                      </li>
+                      <li className="search_btn" onClick={() => history.push('/login')}>
+                        <FontAwesome name="user" />
+                      </li>
                     </ul>
                   </div>
                   {/* <div className="temp d-none d-lg-block">

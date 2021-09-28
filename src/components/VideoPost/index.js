@@ -13,8 +13,8 @@ const VideoPost = ({className, dark}) => {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <div className="heading white">
-                            <h2 className="widget-title">Video News</h2>
+                        <div className="heading white mt10">
+                            <h2 className="widget-title">Videos</h2>
                         </div>
                     </div>
                 </div>

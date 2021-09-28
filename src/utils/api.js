@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const baseUrl = window.location.protocol + '//' + window.location.hostname + ':8080';
+const baseUrl = 'https://intermediario-api.sanjua.com';
+//const baseUrl = window.location.protocol + '//' + window.location.hostname + ':8080';
 const version = 'api/v1';
 
 const auth = {

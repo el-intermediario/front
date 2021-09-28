@@ -181,7 +181,7 @@ body {
     float: left;
     margin-right: 10px;
     padding: 12px 20px;
-    background: $tranding3_color;
+    background: $secondary_color;
     font-size: 14px;
     font-weight: 500;
     color: $white;
@@ -222,13 +222,13 @@ body {
 }
 
 .up_btn {
-  height: 70px;
+  height: 50px;
   width: 50px;
   text-align: center;
-  line-height: 70px;
-  background: #FF5555;
+  line-height: 50px;
+  background: $secondary_color;
   color: #fff;
-  border-radius: 50px;
+  border-radius: 40px;
   position: fixed;
   z-index: 9999;
   bottom: 10%;
@@ -932,7 +932,7 @@ span.tranding.tranding_border {
 
         &.active {
           color: $white !important;
-          background: $secondary_bg !important;;
+          background: $secondary_color !important;
         }
       }
 
@@ -972,7 +972,7 @@ span.tranding {
   font-size: 10px;
   line-height: 24px;
   border-radius: 50%;
-  background: $trading_bg;
+  background: $secondary_color;
   color: $white;
   position: absolute;
   left: 5px;
@@ -1028,7 +1028,7 @@ span.tranding {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: $input_bg;
+  background: $secondary_color;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -1037,7 +1037,7 @@ span.tranding {
   left: 0;
 
   h2 {
-    color: $share_number_color;
+    color: $white;
     font-size: $widget_font_size2;
     font-weight: $wightMedium;
   }
@@ -1204,7 +1204,7 @@ span.tranding {
     text-align: center;
     line-height: 54px;
     font-size: 16px;
-    background: #FF5555;
+    background: $secondary_color;
     color: #FFFFFF;
     position: absolute;
     left: auto;
@@ -1434,7 +1434,7 @@ span.tranding {
     font-size: 60px;
     margin-top: -30px;
     margin-left: -35px;
-    color: $tranding3_color;
+    color: $secondary_color;
   }
 
   .padding30 {
@@ -1906,13 +1906,12 @@ span.tranding {
   }
 
   .copyright {
-    background: $third_bg;
+    background: $secondary_color;
     margin-top: 30px;
     padding: 15px 0;
 
     p {
-      color: $footer_dark_color;
-
+      color: $white;
     }
 
     ul {
@@ -1923,7 +1922,7 @@ span.tranding {
         list-style: none;
 
         a {
-          color: $footer_dark_color;
+          color: $white;
           padding: 0 10px;
 
           &:hover {
@@ -2012,6 +2011,10 @@ textarea {
 
 .border_black {
   border-top: 1px dashed $border_black_color;
+}
+
+.border_secondary {
+  border-top: 1px dashed $secondary_color;
 }
 
 .border_black_dash_space_2 {
@@ -2696,7 +2699,6 @@ a.cbtn3 {
   }
 
   .single_post_text .meta2 a {
-
     margin-left: 0 !important;
   }
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FontAwesome from "../uiStyle/FontAwesome";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import SidebarMenu from "../SidebarMenu";
 import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
@@ -88,8 +88,16 @@ const menusLogged = [
   },
 ];
 const MainMenuTwo = () => {
-  const { user } = useSelector(state => state.user);
+  const history = useHistory();
+  const location = useLocation();
+  const user = useSelector(state => state.user);
   const [sideShow, setSideShow] = useState(false);
+
+  useEffect(() => {
+    if (!user && location.pathname != '/login') {
+      return history.push('/login');
+    }
+  }, []);
 
   return (
     <div className="container">

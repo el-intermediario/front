@@ -3,11 +3,12 @@ import BannerSection from "../../components/BannerSection";
 import FollowUs from "../../components/FollowUs";
 import SimpleReactValidator from 'simple-react-validator';
 import api from "../../utils/api";
-import { userLogin } from '../../store/actions/index';
-import { useDispatch} from 'react-redux';
+import { useSelector } from "react-redux"
+import { useHistory } from 'react-router';
 
 const RegisterPage = () => {
-  const dispatch = useDispatch();
+  const history = useHistory();
+  const { user } = useSelector(state => state.user);
   const validator = new SimpleReactValidator();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -22,18 +23,21 @@ const RegisterPage = () => {
       try {
         response = await api.auth.register(
           { email, password, firstName, lastName},
-          { headers: { 'Content-Type': 'application/json' } }
+          { headers: user.headers }
         );
       } catch (err) {
-
+        console.log(err.response.status);
+        console.log(err.response.data.message);
       }
 
       if (response) {
-        dispatch(userLogin(response.data));
-        // redirect to dashboard of notes.
+        console.log(response);
+        history.push('/admin/users', {type: 'success', message: 'El usuario se creo correctamente.'});
       }
     }
   };
+
+  console.log(user);
 
   return (
     <>
@@ -46,7 +50,7 @@ const RegisterPage = () => {
               <div className="cotact_form">
                 <div className="row">
                   <div className="col-12">
-                    <h3>Ingresar!</h3>
+                    <h3>Crear Usuario</h3>
                   </div>
                   <div className="col-12">
                     <form onSubmit={register}>
@@ -79,7 +83,7 @@ const RegisterPage = () => {
                         </div>
                         <div className="col-12">
                           <div className="space-20" />
-                          <button className="cbtn1" type="submit">Ingresar</button>
+                          <button className="cbtn1" type="submit">Crear usuario</button>
                         </div>
                       </div>
                     </form>
