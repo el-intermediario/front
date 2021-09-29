@@ -11,6 +11,16 @@ import FollowUs from "../../components/FollowUs";
 import BannerSection from "../../components/BannerSection";
 import PostOnePagination from "../../components/PostOnePagination";
 import parse from "html-react-parser";
+import {
+	EmailShareButton,
+	FacebookShareButton,
+	TelegramShareButton,
+	TwitterShareButton,
+	WhatsappShareButton,
+	TwitterIcon,
+	FacebookIcon,
+	WhatsappIcon
+  } from "react-share";
 
 // images
 import banner2 from "../../doc/img/bg/sidebar-1.png";
@@ -128,6 +138,11 @@ const ArticlePage = () => {
 									<div className="space-20" />
 										{data && parse(data.body)}
 									<div className="space-40" />
+									<div className="share-buttons">
+										<TwitterShareButton title={data && data.title} url={window.location.href}><TwitterIcon /></TwitterShareButton>
+										<FacebookShareButton quote={data && data.title} url={window.location.href}><FacebookIcon /></FacebookShareButton>
+										<WhatsappShareButton title={data && data.title} url={window.location.href}><WhatsappIcon /></WhatsappShareButton>
+									</div>
 									<div className="points">
 										<ul>
 											<li>Should more of us wear face masks?</li>
@@ -136,87 +151,6 @@ const ArticlePage = () => {
 										</ul>
 									</div>
 									<div className="space-40" />
-								</div>
-								{/*VIDEO POST START*/}
-								<div className="video_img">
-									<img src={big1} alt="big1" />
-									<Link to="/" className="video_img_icon play_btn"> <FontAwesome name="play" /></Link>
-									<p className="video_img_text img_desc">I just had a baby - now I’m going to
-										the frontline.</p>
-								</div>
-								{/*VIDEO POST END*/}
-								<div className="padding20 white_bg">
-									<div className="space-40" />
-									<p>Masks may also help lower the risk of individuals catching the virus through
-										the droplets from another person’s sneeze or a cough - and people can be
-										taught how put masks on and take them off correctly, they argue.
-										<br />
-										<br />On Thursday New York mayor Bill de Blasio urged all New Yorkers to
-										cover their faces when outside and near others, but not to use
-										surgical masks, which are in short supply.
-										<br />
-										<br />Meanwhile, residents in Laredo, Texas will now face a $1,000
-										(£816) fine if they fail to cover their noses and mouths
-										while outside, after city officials issued an emergency
-										ordinance to its approximately 250,000 residents this week.
-									</p>
-									<div className="space-40" />
-									<div className="row">
-										<div className="col-12">
-											<div className="qhote quote_type3 padding30 text-center">
-												<p>I must explain to you how all this mistake idea denouncing
-													pleasure and praising pain was born and I will give you a
-													complete account of the system, and expound the actual teachings
-													of the great explorer of the truth, the master-builder of human
-													happiness. .</p>
-												<div className="author">
-													<div className="author_img">
-														<div className="author_img_wrap">
-															<img src={author2} alt="author2" />
-														</div>
-													</div>
-													<Link to="/">Shuvas Chandra</Link>
-													<ul>
-														<li>Founder at Seative Digital</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="space-40" />
-									<p>The next day I came back to my team and said, This is what I just heard, we
-										have to get ready, he said. We knew that it wasn’t going to be long before
-										we were going to have to deal with it.
-										<br />
-										<br />Mr. Hogan has also leaned on his wife, Yumi Hogan, a Korean
-										immigrant, who was also at the governor’s convention, which included
-										a dinner at the Korean ambassador’s home. As the first Korean first
-										lady in American history, Ms. Hogan has become something of an icon
-										in South Korea. I just grabbed my wife and said, Look, you speak
-										Korean. You know the president. You know the first lady. You know
-										the ambassador. Let’s talk to them in Korean, and tell them we need
-										their help. Companies in South Korea said would tests.</p>
-									<div className="space-40" />
-								</div>
-								<img src={big2} alt="big2" />
-								<div className="padding20 white_bg">
-									<div className="space-40" />
-									<p>In global terms the US has the most Covid-19 cases - more than 245,000.
-										And on Thursday the US authorities said more than 1,000 had died in the
-										past 24 hours - the highest daily toll so far in the world.
-										<br />
-										<br />Hospitals and morgues in New York are struggling to cope with
-										the pandemic, and New York Governor Andrew Cuomo has warned that
-										New York risks running out of ventilators for patients in six
-										days.</p>
-									<div className="space-40" />
-									<div className="tags">
-										<ul className="inline">
-											{data && data.tags.map((tag, t) => {
-												return <li key={t}><Link to="#">{tag.name}</Link></li>
-											})}
-										</ul>
-									</div>
 								</div>
 							</div>
 							<div className="space-30" />

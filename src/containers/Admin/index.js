@@ -3,7 +3,7 @@ import BannerSection from "../../components/BannerSection";
 import FollowUs from "../../components/FollowUs";
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { Alert } from 'reactstrap';
+import AlertMessage from '../../components/AlertMessage';
 
 const AdminPage = () => {
   const location = useLocation();
@@ -20,13 +20,9 @@ const AdminPage = () => {
               <div className="cotact_form">
                 <div className="col-12">
                   <div className="col-12">
-                    <h3>Bienvenido {user && user.firstName}</h3>
+                    {!location.state && <h3>Bienvenido {user && user.firstName}</h3>}
                   </div>
-                  { location.state &&
-                    <Alert color={location.state.type}>
-                      {location.state.message}
-                    </Alert>
-                  }
+                  {location.state && <AlertMessage message={location.state.message} type={location.state.type} />}
                   <div className="col-12">
                     Dashboard 
                   </div>

@@ -13,6 +13,7 @@ import ReactTags from 'react-tag-autocomplete';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'react-simple-tree-menu/dist/main.css';
 import { useHistory, useParams } from 'react-router-dom';
+import es from './es.js';
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
@@ -269,6 +270,10 @@ const FormArticlePage = (props) => {
                         </div>
                         <div className="col-12" id="editor">
                           <Editor
+                            localization={{
+                              locale: 'es',
+                              translations: es
+                            }}
                             editorState={editorState}
                             toolbarClassName="toolbarClassName"
                             wrapperClassName="wrapperClassName"

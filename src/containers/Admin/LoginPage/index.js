@@ -6,6 +6,7 @@ import api from "../../../utils/api";
 import { userLogin } from '../../../store/actions/index';
 import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import AlertMessage from '../../../components/AlertMessage';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
+  const [message, setMessage] = useState(null);
+  
   const login = async (e) => {
     e.preventDefault();
     if (!isLoading) {
@@ -27,7 +29,7 @@ const LoginPage = () => {
             { headers: { 'Content-Type': 'application/json' } }
           );
         } catch (err) {
-
+          setMessage(err.response.data.message);
         }
 
         if (response) {
@@ -41,12 +43,12 @@ const LoginPage = () => {
 
   return (
     <>
-      {/*contact form area*/}
       <div className="contact_form padding-bottom">
         <div className="container">
           <div className="space-50" />
           <div className="row">
             <div className="col-lg-8">
+              {message && <AlertMessage message={message} type="danger"/>}
               <div className="cotact_form">
                 <div className="row">
                   <div className="col-12">

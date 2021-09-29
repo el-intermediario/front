@@ -45,11 +45,6 @@ const menusLogged = [
         id: 21,
         link: '/admin/article/add',
         linkText: 'Nuevo'
-      },
-      {
-        id: 22,
-        link: '/home-two/archive',
-        linkText: 'Buscar'
       }
     ]
   },
