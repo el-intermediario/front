@@ -3,11 +3,13 @@ import { TabContent, TabPane, Nav, NavItem, Fade } from 'reactstrap';
 import classnames from 'classnames';
 import { Link } from "react-router-dom";
 import api from '../../utils/api';
+import Moment from 'react-moment';
+import "./styles.scss";
 
 const WidgetTabPane = ({ arr, a_id, id, dark }) => {
   return (
     <Fade in={id === a_id}>
-      <div className="widget tab_widgets">
+      <div className="widget tab_widgets related-tabs">
         {arr.map((item, i) => (
           <Fragment key={i}>
             <div className="single_post widgets_small">
@@ -19,8 +21,11 @@ const WidgetTabPane = ({ arr, a_id, id, dark }) => {
                 </div>
               </div>
               <div className="single_post_text">
-                <div className="meta2 meta_separator1"><Link to="#">{item.category}</Link>
-                  {item.date}
+                <div className="meta2 meta_separator1">
+                  {item.copete}
+                </div>
+                <div className="meta-date">
+                  {item && <Moment format="D/MM/YYYY" locale="es">{item.created}</Moment>}
                 </div>
                 <h4>
                   <Link to={`/articulo/${item.slug}`} state={{time: Date.now}}>{item.title}</Link>

@@ -3,20 +3,16 @@ import {Link} from "react-router-dom";
 
 const quick_links = [
     {
-        name: 'About',
-        link: '/'
+        name: 'Nosotros',
+        link: '/quienes-somos'
     },
     {
-        name: 'Advertise',
-        link: '/'
+        name: 'Politicas de Privacidad',
+        link: '/politicas-de-privacidad'
     },
     {
-        name: 'Privacy & Policy',
-        link: '/'
-    },
-    {
-        name: 'Contact Us',
-        link: '/'
+        name: 'Contactenos',
+        link: '/contactenos'
     },
 ];
 

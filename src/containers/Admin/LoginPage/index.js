@@ -19,8 +19,7 @@ const LoginPage = () => {
   
   const login = async (e) => {
     e.preventDefault();
-    if (!isLoading) {
-
+    setIsLoading(true);
       if (email && password) {
         let response = null;
         try {
@@ -29,16 +28,17 @@ const LoginPage = () => {
             { headers: { 'Content-Type': 'application/json' } }
           );
         } catch (err) {
+          setIsLoading(false);
           setMessage(err.response.data.message);
         }
 
         if (response) {
           dispatch(userLogin(response.data));
+          setIsLoading(false);
           history.push('/admin');
           // redirect to dashboard of notes.
         }
       }
-    }
   };
 
   return (
@@ -72,8 +72,9 @@ const LoginPage = () => {
                           {validator.message('Password', password, 'required')}
                         </div>
                         <div className="col-12">
-                          <div className="space-20" />
-                          <button className="cbtn1" type="submit">Ingresar</button>
+                          <button className="cbtn1 row" type="submit" disabled={isLoading}>
+                            Ingresar
+                          </button>
                         </div>
                       </div>
                     </form>

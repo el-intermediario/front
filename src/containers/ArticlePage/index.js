@@ -143,13 +143,6 @@ const ArticlePage = () => {
 										<FacebookShareButton quote={data && data.title} url={window.location.href}><FacebookIcon /></FacebookShareButton>
 										<WhatsappShareButton title={data && data.title} url={window.location.href}><WhatsappIcon /></WhatsappShareButton>
 									</div>
-									<div className="points">
-										<ul>
-											<li>Should more of us wear face masks?</li>
-											<li>Why some countries wear face masks and others don’t</li>
-											<li>Coronavirus: Are homemade face masks safe?</li>
-										</ul>
-									</div>
 									<div className="space-40" />
 								</div>
 							</div>

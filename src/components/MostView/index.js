@@ -11,6 +11,8 @@ import mostsm4 from '../../doc/img/most_view/mostsm4.jpg';
 import mostsm5 from '../../doc/img/most_view/mostsm5.jpg';
 import { mostViewSort } from "../../utils/commonFunctions";
 import api from '../../utils/api';
+import Moment from 'react-moment';
+import "./styles.scss";
 
 const mostView = [
   {
@@ -126,7 +128,7 @@ const MostView = ({ no_margin, title, dark }) => {
     slidesPerColumn: 6,
   };
   return (
-    <div className={`widget tab_widgets ${no_margin ? '' : 'mb30'}`}>
+    <div className={`most-view widget tab_widgets ${no_margin ? '' : 'mb30'}`}>
       <h2 className="widget-title">{title ? title : 'Most View'}</h2>
       <div className="post_type2_carousel multipleRowCarousel nav_style1">
         {/*CAROUSEL START*/}
@@ -138,13 +140,13 @@ const MostView = ({ no_margin, title, dark }) => {
                   <div className="img_wrap">
                     <img src={item.image} alt="thumb" />
                   </div>
-                  <span className="tranding">
-                    <FontAwesome name="bolt" />
-                  </span>
                 </div>
                 <div className="single_post_text">
-                  <div className="meta2"><Link to="/">{item.copete}</Link>
-                    <Link to="/">{item.created}</Link>
+                  <div className="meta2">
+                    {item.copete}
+                  </div>
+                  <div className="meta-date">
+                    {item && <Moment format="D/MM/YYYY" locale="es">{item.created}</Moment>}
                   </div>
                   <h4><Link to="/post1">{item.title}</Link></h4>
                 </div>
