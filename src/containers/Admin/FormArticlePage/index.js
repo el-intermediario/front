@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 import CustomOption from './plugins/CustomOption';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import { EditorState, convertToRaw, ContentState, AtomicBlockUtils } from 'draft-js';
 import api from "../../../utils/api";
 import { useSelector } from 'react-redux';
 import BeatLoader from "react-spinners/BeatLoader";
@@ -14,6 +14,8 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'react-simple-tree-menu/dist/main.css';
 import { useHistory, useParams } from 'react-router-dom';
 import es from './es.js';
+import Media from './plugins/Media';
+import ReferenceCustom from './plugins/ReferenceCustom';
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
@@ -45,6 +47,11 @@ const FormArticlePage = (props) => {
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
   const [category, setCategory] = useState(null);
   const [categories, setCategories] = useState([]);
+
+  //custom buttons per editorState
+  const [referenceType, setReferenceType] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [urlValue, setUrlValue] = useState('');
 
   useEffect(() => {
     fetchCategories();
@@ -237,6 +244,56 @@ const FormArticlePage = (props) => {
     setTags([...tags, tag]);
   }
 
+  const addReference = () => {
+    _promptForMedia('reference')
+  }
+
+  const _promptForMedia = (type) => {
+    setShowModal(true);
+    setReferenceType(type);
+  }
+
+  const mediaBlockRenderer = (block) => {
+    if (block.getType() === 'atomic') {
+      return {
+        component: Media,
+        editable: false,
+        props: {
+          data: {
+            url: 'https://google.com'
+          },
+        },
+      };
+    }
+
+    return null;
+  }
+
+  const confirmReference = (e) => {
+    e.preventDefault();
+    const contentState = editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(
+      referenceType,
+      'IMMUTABLE',
+      {src: urlValue}
+    );
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+    const newEditorState = EditorState.set(
+      editorState,
+      {currentContent: contentStateWithEntity}
+    );
+
+    // The third parameter here is a space string, not an empty string
+    // If you set an empty string, you will get an error: Unknown DraftEntity key: null
+    setEditorState(AtomicBlockUtils.insertAtomicBlock(
+      newEditorState,
+      entityKey,
+      ' '
+    ));
+    setShowModal(false);
+    setUrlValue('');
+  };
+
   return (
     <>
       <div className="contact_form padding-bottom">
@@ -270,6 +327,7 @@ const FormArticlePage = (props) => {
                         </div>
                         <div className="col-12" id="editor">
                           <Editor
+                            blockRendererFn={mediaBlockRenderer}
                             localization={{
                               locale: 'es',
                               translations: es
@@ -306,6 +364,23 @@ const FormArticlePage = (props) => {
                               },
                             }}
                           />
+                          <div className="btn" onClick={addReference} style={{marginRight: 10}}>
+                            Agregar nota relacionada
+                          </div>
+                          {showModal ? (
+                            <div>
+                              <input
+                                onChange={(e) => setUrlValue(e.target.value)}
+                                //ref="url"
+                                // style={styles.urlInput}
+                                type="text"
+                                value={urlValue}
+                              />
+                              <button onMouseDown={confirmReference}>
+                                Confirmar
+                              </button>
+                            </div>
+                          ) : null}
                         </div>
                         <div className="col-8">
                           <label>Imagen</label>
