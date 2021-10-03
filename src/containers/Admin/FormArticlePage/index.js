@@ -252,11 +252,7 @@ const FormArticlePage = (props) => {
       return {
         component: ReferenceArticle,
         editable: false,
-        props: {
-          data: {
-            url: 'https://google.com'
-          },
-        },
+        props: { data : null},
       };
     }
 
@@ -269,7 +265,7 @@ const FormArticlePage = (props) => {
     const contentStateWithEntity = contentState.createEntity(
       referenceType,
       'IMMUTABLE',
-      {src: urlValue}
+      articleReferenceSelected
     );
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     const newEditorState = EditorState.set(
@@ -289,24 +285,6 @@ const FormArticlePage = (props) => {
   };
 
   const addArticleReference = async (contentBlock) => {
-    /*
-    const { value: name } = await Swal.fire({
-      input: 'text',
-      inputLabel: 'Busca una nota',
-      inputValue: '',
-      showCancelButton: true,
-      inputValidator: (value) => {
-        console.log(value);
-        if (!value) {
-          return 'You need to write something!'
-        }
-      }
-    })
-    
-    if (name) {
-      submitHandler(name);
-      Swal.fire(`La categoria ${name} se agrego correctamente.`)
-    }*/
     _promptForMedia('reference')
   }
 
@@ -314,21 +292,6 @@ const FormArticlePage = (props) => {
     setShowModal(true);
     setReferenceType(type);
   }
-
-  const searchArticles = (searchValue, cb) => {
-    if (searchValue.length > 2) {
-      const filter = searchValue ? `?search=${searchValue}` : '';
-      api.article.getArticlesSearch(filter,
-        { headers: { 'Content-Type': 'application/json' } }
-      ).then(response => {
-        const articles = response.data;
-        setTimeout(cb, 500, articles);
-      })
-      .catch(error => {
-        console.log(`Error ${error.response}`);
-      });
-    }
-  };
 
   return (
     <>

@@ -1,0 +1,14 @@
+.block-reference {
+    border: 1px dashed #14A5C0;
+    padding: 10px;
+    min-height:86!important;
+
+    .post_img {
+        top: 10px!important;
+        left: 10px!important;
+
+        img {
+            max-height: 66px;
+        }
+    }
+}
