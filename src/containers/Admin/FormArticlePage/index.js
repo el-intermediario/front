@@ -247,6 +247,7 @@ const FormArticlePage = (props) => {
     setTags([...tags, tag]);
   }
 
+  // Functions to insert block reference.
   const mediaBlockRenderer = (block) => {
     if (block.getType() === 'atomic') {
       return {
@@ -257,13 +258,13 @@ const FormArticlePage = (props) => {
     }
 
     return null;
-  }
+  };
 
   const confirmReference = (e) => {
     e.preventDefault();
     const contentState = editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
-      referenceType,
+      'reference',
       'IMMUTABLE',
       articleReferenceSelected
     );
@@ -273,8 +274,6 @@ const FormArticlePage = (props) => {
       {currentContent: contentStateWithEntity}
     );
 
-    // The third parameter here is a space string, not an empty string
-    // If you set an empty string, you will get an error: Unknown DraftEntity key: null
     setEditorState(AtomicBlockUtils.insertAtomicBlock(
       newEditorState,
       entityKey,
@@ -285,12 +284,7 @@ const FormArticlePage = (props) => {
   };
 
   const addArticleReference = async (contentBlock) => {
-    _promptForMedia('reference')
-  }
-
-  const _promptForMedia = (type) => {
     setShowModal(true);
-    setReferenceType(type);
   }
 
   return (
@@ -343,11 +337,6 @@ const FormArticlePage = (props) => {
                             hashtag={{
                               separator: ' ',
                               trigger: '#',
-                            }}
-                            mention={{
-                              separator: ' ',
-                              trigger: '@',
-                              suggestions: suggestions,
                             }}
                             toolbar={{
                               image: {
