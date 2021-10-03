@@ -1,49 +1,41 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import api from "../../utils/api";
 import Autocomplete from 'react-autocomplete';
 
 const CustomAutocomplete = ({handleItemSelected}) => {
-  // Autocomplete.
-  const [valueSearchReference, setValueSearchReference] = useState('');
-  const [articlesReference, setArticlesReference] = useState([]);
-  const [articleReferenceObject, setArticleReferenceObject] = useState(null);
-  let requestTimer = null;
+  const [valueSearch, setValueSearch] = useState('');
+  const [items, setItems] = useState([]);
 
-  const searchItems = (searchValue, cb) => {
-    if (searchValue.length > 2) {
-      const filter = searchValue ? `?search=${searchValue}` : '';
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      const filter = valueSearch ? `?limit=8&search=${valueSearch}` : '?limit=6';
       api.article.getArticlesSearch(filter,
         { headers: { 'Content-Type': 'application/json' } }
       ).then(response => {
-        const articles = response.data;
-        setTimeout(cb, 500, articles);
+        const responseItems = response.data;
+        setItems(responseItems)
       })
       .catch(error => {
         console.log(`Error ${error.response}`);
       });
-    }
-  };
+    }, 1000)
+
+    return () => clearTimeout(delayDebounceFn)
+  }, [valueSearch])
 
   return (
     <Autocomplete
-      value={valueSearchReference}
+      value={valueSearch}
       inputProps={{ id: 'ticketsAutocomplete', className: 'ticket-autocomplete', placeholder: 'Ticket Search' }}
-      items={articlesReference}
+      items={items}
       getItemValue={(item) => item.title}
       wrapperStyle={{ width: '100%' }}
       onChange={(event, value) => {
-        setValueSearchReference(value);
-        /* setTickets([]); */
-        clearTimeout(requestTimer);
-        requestTimer = searchItems(value, (items) => {
-          setArticlesReference(items);
-          //setSearchValue(value);
-        });
+        setValueSearch(value);
       }}
       onSelect={(value, state) => {
-        setValueSearchReference(value);
+        setValueSearch(value);
         handleItemSelected(state);
-        setArticleReferenceObject(state);
       }}
       renderItem={(item, i) =>
         <div key={item.id}>
