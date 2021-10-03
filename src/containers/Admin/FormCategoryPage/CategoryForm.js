@@ -15,7 +15,6 @@ const CategoryForm = ({ handleCategory, data }) => {
   }
 
   const addTerm = async () => {
-    console.log(data);
     const { value: name } = await Swal.fire({
       input: 'text',
       inputLabel: 'Agrega subcategoria en: ' + data.label,

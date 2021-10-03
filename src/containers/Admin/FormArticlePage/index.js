@@ -14,8 +14,10 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'react-simple-tree-menu/dist/main.css';
 import { useHistory, useParams } from 'react-router-dom';
 import es from './es.js';
-import Media from './plugins/Media';
-import ReferenceCustom from './plugins/ReferenceCustom';
+import ReferenceArticle from './plugins/ReferenceArticle';
+import ArticleReferenceBtn from './plugins/ArticleReferenceBtn';
+import Swal from 'sweetalert2';
+import CustomAutocomplete from '../../../components/CustomAutocomplete';
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
@@ -52,6 +54,7 @@ const FormArticlePage = (props) => {
   const [referenceType, setReferenceType] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [urlValue, setUrlValue] = useState('');
+  const [articleReferenceSelected, setArticleReferenceSelected] = useState(null);
 
   useEffect(() => {
     fetchCategories();
@@ -244,19 +247,10 @@ const FormArticlePage = (props) => {
     setTags([...tags, tag]);
   }
 
-  const addReference = () => {
-    _promptForMedia('reference')
-  }
-
-  const _promptForMedia = (type) => {
-    setShowModal(true);
-    setReferenceType(type);
-  }
-
   const mediaBlockRenderer = (block) => {
     if (block.getType() === 'atomic') {
       return {
-        component: Media,
+        component: ReferenceArticle,
         editable: false,
         props: {
           data: {
@@ -292,6 +286,48 @@ const FormArticlePage = (props) => {
     ));
     setShowModal(false);
     setUrlValue('');
+  };
+
+  const addArticleReference = async (contentBlock) => {
+    /*
+    const { value: name } = await Swal.fire({
+      input: 'text',
+      inputLabel: 'Busca una nota',
+      inputValue: '',
+      showCancelButton: true,
+      inputValidator: (value) => {
+        console.log(value);
+        if (!value) {
+          return 'You need to write something!'
+        }
+      }
+    })
+    
+    if (name) {
+      submitHandler(name);
+      Swal.fire(`La categoria ${name} se agrego correctamente.`)
+    }*/
+    _promptForMedia('reference')
+  }
+
+  const _promptForMedia = (type) => {
+    setShowModal(true);
+    setReferenceType(type);
+  }
+
+  const searchArticles = (searchValue, cb) => {
+    if (searchValue.length > 2) {
+      const filter = searchValue ? `?search=${searchValue}` : '';
+      api.article.getArticlesSearch(filter,
+        { headers: { 'Content-Type': 'application/json' } }
+      ).then(response => {
+        const articles = response.data;
+        setTimeout(cb, 500, articles);
+      })
+      .catch(error => {
+        console.log(`Error ${error.response}`);
+      });
+    }
   };
 
   return (
@@ -337,7 +373,10 @@ const FormArticlePage = (props) => {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editor-textarea"
                             onEditorStateChange={onEditorStateChange}
-                            toolbarCustomButtons={[<CustomOption />]}
+                            toolbarCustomButtons={[
+                              <CustomOption />, 
+                              <ArticleReferenceBtn addArticleReference={addArticleReference}/>
+                            ]}
                             hashtag={{
                               separator: ' ',
                               trigger: '#',
@@ -364,18 +403,9 @@ const FormArticlePage = (props) => {
                               },
                             }}
                           />
-                          <div className="btn" onClick={addReference} style={{marginRight: 10}}>
-                            Agregar nota relacionada
-                          </div>
                           {showModal ? (
                             <div>
-                              <input
-                                onChange={(e) => setUrlValue(e.target.value)}
-                                //ref="url"
-                                // style={styles.urlInput}
-                                type="text"
-                                value={urlValue}
-                              />
+                              <CustomAutocomplete handleItemSelected={(data) => setArticleReferenceSelected(data)} />
                               <button onMouseDown={confirmReference}>
                                 Confirmar
                               </button>

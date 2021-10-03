@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Media = (props) => {
+const ReferenceArticle = (props) => {
   const { data } = props.blockProps;
   const entity = props.contentState.getEntity(
     props.block.getEntityAt(0)
@@ -19,4 +19,4 @@ const Media = (props) => {
   return media;
 };
 
-export default Media;
+export default ReferenceArticle;
