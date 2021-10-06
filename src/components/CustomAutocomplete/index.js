@@ -26,7 +26,7 @@ const CustomAutocomplete = ({handleItemSelected}) => {
   return (
     <Autocomplete
       value={valueSearch}
-      inputProps={{ id: 'ticketsAutocomplete', className: 'ticket-autocomplete', placeholder: 'Ticket Search' }}
+      inputProps={{ className: 'custom-autocomplete', placeholder: 'Buscar nota..' }}
       items={items}
       getItemValue={(item) => item.title}
       wrapperStyle={{ width: '100%' }}

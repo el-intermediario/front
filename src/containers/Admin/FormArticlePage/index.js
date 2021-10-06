@@ -18,6 +18,7 @@ import ReferenceArticle from './plugins/ReferenceArticle';
 import ArticleReferenceBtn from './plugins/ArticleReferenceBtn';
 import Swal from 'sweetalert2';
 import CustomAutocomplete from '../../../components/CustomAutocomplete';
+import "./editor.scss";
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
@@ -289,7 +290,7 @@ const FormArticlePage = (props) => {
 
   return (
     <>
-      <div className="contact_form padding-bottom">
+      <div className="page-article padding-bottom">
         <div className="container">
           <div className="space-50" />
           <div className="row">

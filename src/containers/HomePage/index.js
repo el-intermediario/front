@@ -31,6 +31,7 @@ import ThreeItemsFeatured from '../../components/ThreeItemsFeatured';
 import TopicArticles from '../../components/TopicArticles';
 import FourItemsFeatured from '../../components/FourItemsFeatured';
 import OneItemFeatured from '../../components/OneItemFeatured';
+import OneTwoItemsFeatured from '../../components/OneTwoItemsFeatured';
 
 const entertainments = [
   {
@@ -109,12 +110,15 @@ const HomePage = () => {
   }
 
   const handleRow = (row) => {
-    console.log(row.id);
     switch (row.id) {
       case 'article':
+        console.log(row);
         if (row.children.length === 1) {
           return <OneItemFeatured className="fifth_bg" data={row.children} />
         } else if (row.children.length === 2) {
+          if (row.children[1].children.length === 2) {
+            return <OneTwoItemsFeatured data={row.children} />
+          }
           return <TwoItemsFeatured data={row.children} />
         } else if (row.children.length === 3) {
           return <ThreeItemsFeatured data={row.children} />
@@ -167,9 +171,7 @@ const HomePage = () => {
         if (row.id === 'videos') {
           return handleRow(row);
         } else {
-        return <div className="row">
-            <div className="container">{handleRow(row)}</div>
-          </div>
+          return <div className="row-articles">{handleRow(row)}</div>
         }
       })}
       {/* <FeaturedNews /> */}

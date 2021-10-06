@@ -1,21 +1,22 @@
 @import "../../doc/scss/colors.scss";
 
 .page-article {
-    blockquote {
-        background: $secondary_color url("../../doc/img/article/quote.png") 10px 10px no-repeat;
-        background-size: 70px 70px;
-        padding: 30px 10px!important;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
-        
-        span {
-            font-size: 20px !important;
-            padding: 0;
-            color: $white !important;
-            text-transform: uppercase;
-        }
+  blockquote {
+    border: 2px dashed $secondary_color;
+    padding: 20px 10px !important;
+    text-align: center;
+    color: $secondary_color !important;
+
+    span {
+      font-size: 18px !important;
+      padding: 0;
+      color: $secondary_color !important;
+      font-weight: 700;
     }
+
+    .public-DraftStyleDefault-ltr {
+      text-align: center;
+      margin: 0;
+    }
+  }
 }
