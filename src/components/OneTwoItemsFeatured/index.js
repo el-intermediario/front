@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import FontAwesome from "../uiStyle/FontAwesome";
 import {Link} from "react-router-dom";
-
 import './style.scss';
 
 const OneTwoItemsFeatured = ({className, dark, data}) => {
-    console.log(data);
     return (
-        <div className={`OneTwoItemsFeatured mix_area mb10 ${className ? className : ''}`}>
+        <div className={`OneTwoItemsFeatured mix_area ${className ? className : ''}`}>
             <div className="row">
                 <div className="column column-1 col-7">
                     <div className="single_mix_carousel nav_style3">
@@ -46,7 +44,7 @@ const OneTwoItemsFeatured = ({className, dark, data}) => {
                     ))}
                 </div>
             </div>
-            <div className="space-30"/>
+            <div className="space-15"/>
         </div>
     );
 };

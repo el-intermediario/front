@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 const FooterNewsCategories = () => {
     return (
         <Fragment>
-            <h3 className="widget-title">News categories</h3>
             <div className="row">
                 <div className="col-lg-6">
                     <ul>

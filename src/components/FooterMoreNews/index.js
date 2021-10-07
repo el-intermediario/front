@@ -20,23 +20,13 @@ const news = [
         category: 'TECHNOLOGY',
         date: 'March 26, 2020',
         title: 'Nancy zhang a chinese busy woman and dhaka'
-    },
-    {
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Nancy zhang a chinese busy woman and dhaka'
-    },
-    {
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Nancy zhang a chinese busy woman and dhaka'
-    },
+    }
 ];
 
 const FooterMoreNews = () => {
     return (
         <div className="extra_newss border_white_left pl-4">
-            <h3 className="widget-title2">More news</h3>
+            <h3 className="widget-title2">Mas noticias</h3>
             {news.map((item, i) => (
                 <div key={i} className="single_extra_news border_white_bottom">
                     <p>{item.category} <span> / {item.date}</span></p>
@@ -44,9 +34,8 @@ const FooterMoreNews = () => {
                     <span className="news_counter">{i + 1}</span>
                 </div>
             ))}
-            <div className="space-40"/>
-            <div className="border_white_bottom"/>
-            <div className="space-40"/>
+
+            {/* <div className="space-40"/>
             <div className="footer_contact">
                 <h3 className="widget-title2">Newspark news services</h3>
                 <div className="single_fcontact">
@@ -67,7 +56,7 @@ const FooterMoreNews = () => {
                     </div>
                     <Link to="/">Contact Newspark news</Link>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

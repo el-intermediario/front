@@ -23,6 +23,7 @@ const Component = ({ data, components, path }) => {
 
   //const component = components[data.id];
 
+  console.log(data);
   return (
     <div
       ref={ref}
@@ -30,7 +31,7 @@ const Component = ({ data, components, path }) => {
       className="component draggable"
     >
       <div>{data.id}</div>
-      <div>{data.data.title}</div>
+      <div>{data.data && data.data.title}</div>
     </div>
   );
 };

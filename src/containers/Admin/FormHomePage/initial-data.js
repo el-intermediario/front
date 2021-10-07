@@ -57,6 +57,13 @@ const initialData = {
   },
   bricks: [
     {
+      typeId: 'article',
+      component: {
+        type: 'Articulos',
+      },
+      type: 'sidebarItem'
+    },
+    {
       typeId: 'urgente',
       component: {
         type: 'Ultimo momento',

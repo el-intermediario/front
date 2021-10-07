@@ -1,12 +1,48 @@
-.two-items {
-    .single_post {  
-      .single_post_text {
-        text-shadow: 1px 1px 2px black;
-  
-        .meta {
-          color: #1091FF;
-          text-transform: uppercase;
+@import "../../doc/scss/colors.scss";
+
+.TwoItemsFeatured {
+  .row {
+    .column {
+      padding-left: 0;
+      padding-right: 0;
+      max-height: 420px;
+
+      .single_post {  
+        .post_img {
+          a {
+            display: block;
+
+            img {
+              width: 100%;
+              max-height: 420px;
+            }
+          }
+        }
+        .single_post_text {
+          text-shadow: 1px 1px 2px black;
+    
+          .meta {
+            position: relative;
+            background-color: $secondary_color;
+            color: $white;
+            text-transform: uppercase;
+            display: inline;
+            padding: 0 10px 0 5px;
+
+            &::after {
+              position: absolute;
+              left: -22px;
+              content: "";
+              top: 10px;
+              border-bottom: 12px solid transparent;
+              border-left: 10px solid transparent;
+              border-top: 10px solid transparent;
+              border-right: 12px solid #14A5C0;
+              transform: skewY(-45deg);
+            }
+          }
         }
       }
     }
   }
+}

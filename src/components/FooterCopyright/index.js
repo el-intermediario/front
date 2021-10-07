@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'react-moment';
 import {Link} from "react-router-dom";
 
 const quick_links = [
@@ -22,7 +23,8 @@ const FooterCopyright = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 align-self-center">
-                        <p>&copy; Copyright 2020, All Rights Reserved</p>
+                        <p>&copy; Copyright <Moment format="YYYY" locale="es">
+                  {Date.now()}</Moment>, Todos los derechos reservados</p>
                     </div>
                     <div className="col-lg-6 align-self-center">
                         <div className="copyright_menus text-right">

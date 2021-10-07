@@ -17,48 +17,25 @@ const FooterArea = ({className}) => {
     return (
         <div className={`footer footer_area1 ${className ? className : ''}`}>
             <div className="container">
-                <div className="cta">
+                {/* <div className="cta">
                     <div className="row">
-                        <div className="col-md-6 align-self-center">
-                            <div className="footer_logo logo">
-                                <Link to="/">
-                                    <img src={flogo} alt="logo"/>
-                                </Link>
-                            </div>
-                            <div className="social2">
-                                <ul className="inline">
-                                    <li><Link to="#"><FontAwesome name="twitter"/></Link></li>
-                                    <li><Link to="#"><FontAwesome name="facebook-f"/></Link></li>
-                                    <li><Link to="#"><FontAwesome name="youtube-play"/></Link></li>
-                                    <li><Link to="#"><FontAwesome name="instagram"/></Link></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 offset-lg-2 align-self-center">
-                            <div className="signup_form">
-                                <form onSubmit={submitHandler}>
-                                    <input onChange={e => setEmail(e.target.value)} value={email} className="signup"
-                                           type="email" placeholder="Your email address"/>
-                                    <button type="submit" className="cbtn">sign up</button>
-                                </form>
-                                <p>We hate spam as much as you do</p>
-                            </div>
-                        </div>
+                        <div className="col-md-6 align-self-center">banner</div>
                     </div>
                 </div>
-                <div className="border_white"/>
+                <div className="border_white"/> */}
                 <div className="space-40"/>
                 <div className="row justify-content-center">
                     <div className="col-lg-8">
                         <div className="row">
                             <div className="col-sm-6 col-lg">
                                 <div className="single_footer_nav border_white_right">
+                                    <h3 className="widget-title2">Categorias principales</h3>
                                     <FooterNewsCategories/>
                                 </div>
                             </div>
                             <div className="col-sm-6 col-lg">
                                 <div className="single_footer_nav">
-                                    <h3 className="widget-title2">Living</h3>
+                                    <h3 className="widget-title2">Otras</h3>
                                     <div className="row">
                                         <div className="col-lg-6">
                                             <ul>
@@ -102,39 +79,6 @@ const FooterArea = ({className}) => {
                         </div>
                         <div className="space-40"/>
                         <div className="border_white"/>
-                        <div className="space-40"/>
-                        <div className="row">
-                            <div className="col-sm-6 col-lg-5">
-                                <div className="single_footer_nav border_white_right">
-                                    <h3 className="widget-title2">Opinion</h3>
-                                    <div className="row">
-                                        <div className="col-lg-6">
-                                            <ul>
-                                                <li><Link to="/">Today’s Opinion</Link>
-                                                </li>
-                                                <li><Link to="/">Op-Ed Contributing</Link>
-                                                </li>
-                                                <li><Link to="/">Contributing Writers</Link>
-                                                </li>
-                                                <li><Link to="/">Business News</Link>
-                                                </li>
-                                                <li><Link to="/">Collections</Link>
-                                                </li>
-                                                <li><Link to="/">Today’s Paper</Link>
-                                                </li>
-                                                <li><Link to="/">Saturday Review</Link>
-                                                </li>
-                                                <li><Link to="/">Product Review</Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-sm-6 col-lg-7">
-                                <TwitterFeed/>
-                            </div>
-                        </div>
                     </div>
                     <div className="col-lg-4">
                         <FooterMoreNews/>

@@ -43,8 +43,8 @@ const PublicRoute = (props) => {
                         <Fragment>
                             {/*=== home one/default ===*/}
                             <TopBar className="white_bg"/>
-                            <div className="border_black"/>
-                            <LogoArea className="white_bg"/>
+                            <div className="border_secondary"/>
+                            {/* <LogoArea className="white_bg"/> */}
                             <MainMenu/>
                         </Fragment>
             }
