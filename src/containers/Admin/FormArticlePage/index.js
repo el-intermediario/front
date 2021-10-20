@@ -40,11 +40,7 @@ const FormArticlePage = (props) => {
   const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(true);
   const [image, setImage] = useState(null);
-  const [suggestions, setSuggestions] = useState([
-    { text: 'Boca eliminado de la copa', value: 'Boca eliminado de la copa', url: 'https://www.ole.com.ar' },
-    { text: 'BANANA', value: 'banana', url: 'banana' },
-    { text: 'CHERRY', value: 'cherry', url: 'cherry' }
-  ]);
+  const [video, setVideo] = useState(null);
   const [tags, setTags] = useState([]);
   const reactTags = useRef(null);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
@@ -171,25 +167,6 @@ const FormArticlePage = (props) => {
     } catch (error) {
       console.log(error);
     }
-    /*
-    return new Promise(
-      (resolve, reject) => {
-        const xhr = new XMLHttpRequest(); // eslint-disable-line no-undef
-        xhr.open('POST', 'https://api.imgur.com/3/image');
-        xhr.setRequestHeader('Authorization', 'Client-ID d4ceb0c00a0cfc6');
-        const data = new FormData(); // eslint-disable-line no-undef
-        data.append('image', file);
-        xhr.send(data);
-        xhr.addEventListener('load', () => {
-          const response = JSON.parse(xhr.responseText);
-          resolve(response);
-        });
-        xhr.addEventListener('error', () => {
-          const error = JSON.parse(xhr.responseText);
-          reject(error);
-        });
-      },
-    );*/
   }
 
   const imageHandler = async (event) => {

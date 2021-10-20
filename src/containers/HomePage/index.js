@@ -112,7 +112,6 @@ const HomePage = () => {
   const handleRow = (row) => {
     switch (row.id) {
       case 'article':
-        console.log(row);
         if (row.children.length === 1) {
           return <OneItemFeatured className="fifth_bg" data={row.children} />
         } else if (row.children.length === 2) {
@@ -158,7 +157,7 @@ const HomePage = () => {
               </div>;
         break;      
       case 'videos':
-        return <VideoPost className="pt30 half_bg60" />
+        return <VideoPost key="videos" className="pt30 half_bg60" />
       default:
         break;  
     }
@@ -167,11 +166,11 @@ const HomePage = () => {
   return (
     <Fragment>
       {/* <PostCarousel className="fifth_bg"/> */}
-      {layout.map(row => {
+      {layout.map((row, ki) => {
         if (row.id === 'videos') {
           return handleRow(row);
         } else {
-          return <div className="row-articles">{handleRow(row)}</div>
+          return <div key={ki} className="row-articles">{handleRow(row)}</div>
         }
       })}
       {/* <FeaturedNews /> */}

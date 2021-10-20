@@ -2466,6 +2466,27 @@ a.cbtn3 {
 */
 
 @media screen and (max-width: $Medium) {
+  .row-articles {
+    .mix_area {
+      .row {
+        display: inline-block;
+        .column {
+          max-width: 100%;
+
+          .single_post {
+            .post_img {
+              a {
+                img {
+                  height: 240px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .copyright_menus.text-right {
     text-align: left !important;
     margin-top: 10px;
@@ -2488,16 +2509,28 @@ a.cbtn3 {
   .post_type6 {
     background: $primary_bg;
 
+    .single_post {
+      .post_img {
+        a {
+          img {
+            height: 240px;
+          }
+        }
+      }
+    }
+
     .single_post_text {
       padding: 20px;
       position: relative;
 
-      a {
-        margin-top: 10px;
-        color: #fff;
-        font-size: 22px;
-        line-height: 24px;
-        font-weight: 700;
+      h4 {
+        a {
+          margin-top: 10px;
+          color: #fff;
+          font-size: 28px!important;
+          line-height: 26px;
+          font-weight: 700;
+        }
       }
     }
   }

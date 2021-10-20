@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const baseUrl = 'https://intermediario-api.sanjua.com';
-//const baseUrl = window.location.protocol + '//' + window.location.hostname + ':8080';
+//const baseUrl = 'https://intermediario-api.sanjua.com';
+const baseUrl = window.location.protocol + '//' + window.location.hostname + ':8080';
 const version = 'api/v1';
 
 const auth = {
@@ -40,12 +40,22 @@ const upload = {
   post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/upload`, dataModel, headers)
 };
 
+const uploadVideo = {
+  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/upload-video`, dataModel, headers)
+};
+
+const video = {
+  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/videos`, dataModel, headers)
+};
+
 export default {
   auth,
   article,
+  cover,
   category,
   contact,
   tag,
   upload,
-  cover
+  uploadVideo,
+  video
 }
