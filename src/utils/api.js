@@ -2,6 +2,7 @@ import axios from 'axios';
 
 //const baseUrl = 'https://intermediario-api.sanjua.com';
 const baseUrl = window.location.protocol + '//' + window.location.hostname + ':8080';
+const space = 'https://intermediario-dev.sfo3.digitaloceanspaces.com/';
 const version = 'api/v1';
 
 const auth = {
@@ -45,7 +46,8 @@ const uploadVideo = {
 };
 
 const video = {
-  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/videos`, dataModel, headers)
+  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/videos`, dataModel, headers),
+  getVideos: (dataModel, headers) => axios.get(`${baseUrl}/${version}/videos`, headers)
 };
 
 export default {
@@ -54,6 +56,7 @@ export default {
   cover,
   category,
   contact,
+  space,
   tag,
   upload,
   uploadVideo,

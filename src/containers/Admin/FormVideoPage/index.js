@@ -13,12 +13,16 @@ const FormVideoPage = () => {
   const fileInput = useRef(null);
   const videoElem = useRef();
   const [title, setTitle] = useState('');
+  const [type, setType] = useState('youtube');
+  const [videoId, setVideoId] = useState('');
   const [videoSource, setVideoSource] = useState(null);
   const [fileSource, setFileSource] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
   const [imageSource, setImageSource] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [status, setStatus] = useState(true);
+  const [inHome, setInHome] = useState(true);
 
   const videoHandler = async (event) => {
     const file = event.target.files[0];
@@ -61,7 +65,8 @@ const FormVideoPage = () => {
               type: 'url',
               content: responseUpload.data.key,
               mimetype: responseUpload.data.mimetype,
-              thumbnail: responseImage.data.key
+              thumbnail: responseImage.data.key,
+              inHome
             };
             
             try {
@@ -136,47 +141,80 @@ const FormVideoPage = () => {
                           placeholder="Titulo"
                         />
                       </div>
-                      <div className="col-lg-6">
-                        <input 
-                          ref={fileInput}
-                          type="file" 
-                          name="video" 
-                          accept="video/*" 
-                          style={{ display: "none" }}
-                          multiple={false} 
-                          onChange={videoHandler} 
-                        />
-                        <Button 
-                          color="info" 
-                          onClick={() => fileInput.current.click()}>
-                            Subir video
-                        </Button>
-                      </div>
+                      {type === 'custom' ? (
+                        <div className="col-lg-6">
+                          <input 
+                            ref={fileInput}
+                            type="file" 
+                            name="video" 
+                            accept="video/*" 
+                            style={{ display: "none" }}
+                            multiple={false} 
+                            onChange={videoHandler} 
+                          />
+                          <Button 
+                            color="info" 
+                            onClick={() => fileInput.current.click()}>
+                              Subir video
+                          </Button>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                   <div className="col-12">
-                    <div className="row">
-                      <div className="col-lg-8">
-                        {videoSource ? (
-                          <video
-                            id="video"
-                            className="col-12"
-                            ref={videoElem}
-                            src={URL.createObjectURL(fileSource)}
-                            type="video/mp4"
-                            controls
-                          ></video>
-                        ) : null}
-                      </div>
-                      <div className="col-lg-4">
-                        {fileSource && <Button color="secondary" onClick={captureThumbnail}>Capturar miniatura</Button>}
-                        {imgSrc ? (
-                          <div>
-                            <img className="w-160" src={imgSrc} alt="" />
-                          </div>
-                        ) : null}
+                    <label>Tipo de video: </label>
+                    <select onChange={(e) => setType(e.target.value)}>
+                      <option selectedvalue="youtube" value="youtube">Youtube</option>
+                      <option value="vimeo">Vimeo</option>
+                      <option value="custom">Subir video</option>
+                    </select>
+                  </div>
+                  {type == 'custom' ? (
+                    <div className="col-12">
+                      <div className="row">
+                        <div className="col-lg-8">
+                          {videoSource ? (
+                            <video
+                              id="video"
+                              className="col-12"
+                              ref={videoElem}
+                              src={URL.createObjectURL(fileSource)}
+                              type="video/mp4"
+                              controls
+                            ></video>
+                          ) : null}
+                        </div>
+                        <div className="col-lg-4">
+                          {fileSource && <Button color="secondary" onClick={captureThumbnail}>Capturar miniatura</Button>}
+                          {imgSrc ? (
+                            <div>
+                              <img className="w-160" src={imgSrc} alt="" />
+                            </div>
+                          ) : null}
+                        </div>
                       </div>
                     </div>
+                  ) : null}
+                  {type === 'youtube' || type === 'vimeo' ? (
+                    <div className="col-lg-6">
+                      <input
+                        name="videoId"
+                        value={videoId}
+                        onChange={(e) => setVideoId(e.target.value)}
+                        type="text"
+                        placeholder="Video Id"
+                        description="Pegar el id de video."
+                      />
+                    </div>
+                  ) : null}
+                  <div className="col-12">
+                    <input name="inhome"
+                      checked={inHome}
+                      value={inHome} 
+                      onChange={e => setInHome(!e.target.checked)}
+                      type="checkbox" 
+                    />
+                    <label>Mostrar en galeria de portada</label>
                   </div>
                   <div className="col-12">
                     <div className="space-20" />
