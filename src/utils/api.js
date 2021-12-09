@@ -47,7 +47,7 @@ const uploadVideo = {
 
 const video = {
   post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/videos`, dataModel, headers),
-  getVideos: (dataModel, headers) => axios.get(`${baseUrl}/${version}/videos`, headers)
+  getVideos: (params, headers) => axios.get(`${baseUrl}/${version}/videos?${params}`, headers)
 };
 
 export default {

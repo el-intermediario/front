@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import video1 from "../../doc/img/video/video1.jpg";
 import FontAwesome from "../uiStyle/FontAwesome";
 import ModalVideo from 'react-modal-video'
-import PopularPosts from "../PopularPosts";
+import videoPlaceholder from '../../doc/img/bg/video_bg.jpg';
+import Moment from 'react-moment';
+import VideoGallery from '../VideoGallery';
 import api from '../../utils/api';
+import "./styles.scss";
 
 const VideoPost = ({ className, dark }) => {
   const [vModal, setvModal] = useState(false);
@@ -17,19 +20,27 @@ const VideoPost = ({ className, dark }) => {
 
   const fetchVideos = async () => {
     try {
-      const response = await api.video.getVideos({},
+      const response = await api.video.getVideos('limit=6&offset=0',
         { headers: { 'Content-Type': 'application/json' } }
       );
 
       if (response) {
-        setVideos(response.data);
         const first = response.data.shift();
-        setFirstVideo(first);
+        let newItems = response.data;
+        newItems.forEach(item => {
+          item.thumbnail = api.space + item.thumbnail;
+        });
+        setVideos(newItems);
+        setFirstVideo({...first, thumbnail: api.space + first.thumbnail});
       }
     } catch (err) {
       console.log(err);
     }
   };
+
+  const onErrorImage = () => {
+    setFirstVideo({...firstVideo, thumbnail: videoPlaceholder});
+  }
 
   return (
     <div className={`video_posts ${className ? className : ''}`}>
@@ -42,29 +53,35 @@ const VideoPost = ({ className, dark }) => {
           </div>
         </div>
         <div className="space-50" />
-        <div className={`viceo_posts_wrap ${dark ? 'primay_bg' : ''}`}>
+        <div className={`video_posts_wrap ${dark ? 'primay_bg' : ''}`}>
           <div className="row">
-            <div className="col-lg-8">
+            <div className="col-lg-8 first-video">
               <div className="single_post post_type3 post_type11 margintop-60- xs-mb30">
                 <div className="post_img">
-                  <div className="img_wrap">
+                  <div className="img_wrap" onClick={() => setvModal(true)}>
                     <Link to="/" className="play_btn">
-                      <img src={firstVideo ? firstVideo.thumbnail : video1} alt="video1" />
+                      <img 
+                        src={firstVideo ? firstVideo.thumbnail : video1} 
+                        onError={onErrorImage}
+                      />
                     </Link>
                   </div>
                   <p onClick={() => setvModal(true)} className="youtube_middle"><FontAwesome
                     name="youtube-play" /></p>
                 </div>
                 <div className={`single_post_text padding30 ${dark ? 'dark-2' : 'fourth_bg'}`}>
-                  <div className="meta3"><Link to="/">{firstVideo && firstVideo.category}</Link>
-                    <Link to="/">{firstVideo && firstVideo.created}</Link>
+                  <div className="meta3">
+                    <Link to="#">{firstVideo && firstVideo.category}</Link>
+                    <span className="field-created">
+                      {firstVideo && <Moment format="D/MM/YYYY" locale="es" unix>{firstVideo.created}</Moment>}
+                    </span>
                   </div>
-                  <h4><Link to="/post1">{firstVideo && firstVideo.title}</Link></h4>
+                  <h4>{firstVideo && firstVideo.title}</h4>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
-              <PopularPosts />
+            <div className="col-lg-4 gallery-videos">
+              <VideoGallery items={videos} />
             </div>
           </div>
         </div>
