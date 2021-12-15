@@ -33,6 +33,7 @@ import FourItemsFeatured from '../../components/FourItemsFeatured';
 import OneItemFeatured from '../../components/OneItemFeatured';
 import OneTwoItemsFeatured from '../../components/OneTwoItemsFeatured';
 import RadioPlayer from '../../components/RadioPlayer';
+import GridNews from '../../components/GridNews';
 
 const entertainments = [
   {
@@ -51,6 +52,20 @@ const entertainments = [
   },
   {
     image: enter3,
+    category: 'TECHNOLOGY',
+    date: 'March 26, 2020',
+    title: 'There may be no consoles in the future ea exec says',
+    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…'
+  },
+  {
+    image: enter4,
+    category: 'TECHNOLOGY',
+    date: 'March 26, 2020',
+    title: 'There may be no consoles in the future ea exec says',
+    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…'
+  },
+  {
+    image: enter4,
     category: 'TECHNOLOGY',
     date: 'March 26, 2020',
     title: 'There may be no consoles in the future ea exec says',
@@ -174,6 +189,8 @@ const HomePage = () => {
           return <div key={ki} className="row-articles">{handleRow(row)}</div>
         }
       })}
+      <div className="space-30" />
+
       {/* <FeaturedNews /> */}
       <div className="container">
         <div className="row">
@@ -188,8 +205,58 @@ const HomePage = () => {
         </div>
       </div>
       {/* <MixCarousel className="half_bg1" /> */}
-      <VideoPost key="videos" className="pt30 half_bg60" />
-      <div className="entertrainments">
+
+      <VideoPost key="videos" className="pt30 half_bg90" />
+      <div className="space-30" />
+
+      <div className="sports">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="row">
+                <div className="col-12">
+                  <div className="heading">
+                    <h2 className="widget-title">Economia</h2>
+                  </div>
+                </div>
+              </div>
+              <div className="entertrainment_carousel mb30 grid-news">
+                <div className="entertrainment_item">
+                  <div className="row justify-content-center">
+                    <GridNews gridColumns="4" title="Economia" qty={6} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="politic">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="row">
+                <div className="col-12">
+                  <div className="heading">
+                    <h2 className="widget-title">Politica</h2>
+                  </div>
+                </div>
+              </div>
+              <div className="entertrainment_carousel mb30 grid-news">
+                <div className="entertrainment_item">
+                  <div className="row justify-content-center">
+                    <GridNews gridColumns="6" title="Economia" qty={4} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* <div className="entertrainmentss">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
@@ -200,7 +267,6 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-              {/*CAROUSEL START*/}
               <div className="entertrainment_carousel mb30">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
@@ -208,7 +274,6 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-              {/*CAROUSEL END*/}
               <SportsNews />
               <div className="banner_area mt50 mb60 xs-mt60">
                 <Link to="/">
@@ -242,7 +307,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="space-70" />
     </Fragment>
   );

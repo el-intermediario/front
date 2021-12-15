@@ -47,12 +47,12 @@ const VideoPost = ({ className, dark }) => {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="heading white mt10">
-              <h2 className="widget-title">Videoteca</h2>
+            <div className="heading white mt20">
+              <h2 className="widget-title">Ultimos videos</h2>
             </div>
           </div>
         </div>
-        <div className="space-50" />
+        <div className="space-30" />
         <div className={`video_posts_wrap ${dark ? 'primay_bg' : ''}`}>
           <div className="row">
             <div className="col-lg-8 first-video">

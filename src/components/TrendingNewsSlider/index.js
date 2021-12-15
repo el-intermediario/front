@@ -24,7 +24,7 @@ const TrendingNewsSlider = ({ articles }) => {
                   <Moment format="D/MM/YYYY" locale="es" unix>{item.created}</Moment>
                 </Link>
               </div>
-              <h4><Link to="/post1">{item.title}</Link></h4>
+              <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
               <div className="space-10" />
               <p className="post-p">{item.body}</p>
             </div>

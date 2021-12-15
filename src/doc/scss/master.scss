@@ -2114,6 +2114,10 @@ textarea {
   @extend %half_bg60;
 }
 
+.half_bg90 {
+  @extend %half_bg90;
+}
+
 
 .white_bg {
   background: $white !important;

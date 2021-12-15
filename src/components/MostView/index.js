@@ -65,7 +65,7 @@ const MostView = ({ no_margin, title, dark }) => {
                   <div className="meta-date">
                     {item && <Moment format="ll" locale="es" unix>{item.created}</Moment>}
                   </div>
-                  <h4><Link to="/post1">{item.title}</Link></h4>
+                  <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
                 </div>
                 <div className="type8_count">
                   <h2>{i+1}</h2>

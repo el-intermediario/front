@@ -58,7 +58,7 @@ const TrendingNews = ({dark}) => {
                                             <Moment format="ll" locale="es" unix>{item.created}</Moment>
                                         </Link>
                                     </div>
-                                    <h4><Link to="/post1">{item.title}</Link></h4>
+                                    <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
                                 </div>
                             </div>
                             <div className="space-15"/>
@@ -86,7 +86,7 @@ const TrendingNews = ({dark}) => {
                                             <Moment format="ll" locale="es" unix>{item.created}</Moment>
                                         </Link>
                                     </div>
-                                    <h4><Link to="/post1">{item.title}</Link></h4>
+                                    <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
                                 </div>
                             </div>
                             <div className="space-15"/>

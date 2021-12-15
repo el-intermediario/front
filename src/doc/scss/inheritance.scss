@@ -180,6 +180,25 @@
   }
 }
 
+%half_bg90 {
+  position: relative;
+  z-index: 2
+}
+
+
+%half_bg90 {
+  &:after {
+    position: absolute;
+    content: "";
+    height: 95%;
+    width: 100%;
+    background: $secondary_color;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+}
+
 
 %border_left3 {
   border-left: 3px solid $next_prev_border_bg;
