@@ -158,7 +158,7 @@ const HomePage = () => {
               </div>;
         break;      
       case 'videos':
-        return <VideoPost key="videos" className="pt30 half_bg60" />
+        // return <VideoPost key="videos" className="pt30 half_bg60" />
       default:
         break;  
     }
@@ -182,13 +182,13 @@ const HomePage = () => {
           </div>
           <div className="col-md-12 col-lg-4">
             <RadioPlayer title="Radio Online" />
-            <FollowUs title="Follow Us" />
-            <MostView />
+            {/* <FollowUs title="Follow Us" /> */}
+            <MostView title="Lo mas visto" />
           </div>
         </div>
       </div>
       {/* <MixCarousel className="half_bg1" /> */}
-      {/* <VideoPost className="pt30 half_bg60" /> */}
+      <VideoPost key="videos" className="pt30 half_bg60" />
       <div className="entertrainments">
         <div className="container">
           <div className="row">

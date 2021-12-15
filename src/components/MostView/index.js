@@ -2,92 +2,9 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import FontAwesome from "../uiStyle/FontAwesome";
 import Swiper from 'react-id-swiper';
-
-// images
-import mostsm1 from '../../doc/img/most_view/mostsm1.jpg';
-import mostsm2 from '../../doc/img/most_view/mostsm2.jpg';
-import mostsm3 from '../../doc/img/most_view/mostsm3.jpg';
-import mostsm4 from '../../doc/img/most_view/mostsm4.jpg';
-import mostsm5 from '../../doc/img/most_view/mostsm5.jpg';
-import { mostViewSort } from "../../utils/commonFunctions";
 import api from '../../utils/api';
 import Moment from 'react-moment';
 import "./styles.scss";
-
-const mostView = [
-  {
-    image: mostsm1,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'Nancy zhang a chinese busy woman and dhaka',
-  },
-  {
-    image: mostsm2,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'The billionaire Philan thropist read to learn',
-  },
-  {
-    image: mostsm3,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'Cheap smartphone sensor could help you',
-  },
-  {
-    image: mostsm4,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'Ratiffe to be Director of nation talent Trump',
-  },
-  {
-    image: mostsm5,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'Nancy zhang a chinese busy woman and dhaka',
-  },
-  {
-    image: mostsm1,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'The billionaire Philan thropist read to learn',
-  },
-  {
-    image: mostsm1,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'Nancy zhang a chinese busy woman and dhaka',
-  },
-  {
-    image: mostsm2,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'The billionaire Philan thropist read to learn',
-  },
-  {
-    image: mostsm3,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'Cheap smartphone sensor could help you',
-  },
-  {
-    image: mostsm4,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'Ratiffe to be Director of nation talent Trump',
-  },
-  {
-    image: mostsm5,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'Nancy zhang a chinese busy woman and dhaka',
-  },
-  {
-    image: mostsm1,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'The billionaire Philan thropist read to learn',
-  }
-];
 
 const MostView = ({ no_margin, title, dark }) => {
   const [swiper, setSwiper] = useState(null);
@@ -146,7 +63,7 @@ const MostView = ({ no_margin, title, dark }) => {
                     {item.copete}
                   </div>
                   <div className="meta-date">
-                    {item && <Moment format="D/MM/YYYY" locale="es">{item.created}</Moment>}
+                    {item && <Moment format="ll" locale="es" unix>{item.created}</Moment>}
                   </div>
                   <h4><Link to="/post1">{item.title}</Link></h4>
                 </div>
@@ -154,7 +71,7 @@ const MostView = ({ no_margin, title, dark }) => {
                   <h2>{i+1}</h2>
                 </div>
               </div>
-              {i + 2 < mostView.length ? <Fragment>
+              {i + 1 < articles.length ? <Fragment>
                 <div className="space-15" />
                 {dark ? <div className="border_white" /> : <div className="border_black" />}
                 <div className="space-15" />
