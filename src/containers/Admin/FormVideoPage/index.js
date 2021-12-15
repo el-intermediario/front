@@ -38,7 +38,7 @@ const FormVideoPage = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
     setLoading(true)
-    if (!videoSource) {
+    if (!videoSource && type === 'custom') {
       setMessage('Debes subir un video.');
       setLoading(false);
     } else if (!title) {

@@ -1,7 +1,8 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import Heading from "../uiStyle/Heading";
 import TrendingNewsSlider from "../TrendingNewsSlider";
 import {Link} from "react-router-dom";
+import Moment from 'react-moment';
 import FontAwesome from "../uiStyle/FontAwesome";
 
 import transm1 from '../../doc/img/trending/transm1.jpg';
@@ -9,56 +10,37 @@ import transm2 from '../../doc/img/trending/transm2.jpg';
 import transm4 from '../../doc/img/trending/transm4.jpg';
 import transm5 from '../../doc/img/trending/transm5.jpg';
 import transm6 from '../../doc/img/trending/transm6.jpg';
-
-const trendingNews = [
-    {
-        image: transm1,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Nancy Zhang a Chinese busy woman and Dhaka'
-    },
-    {
-        image: transm2,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'U.S. Response subash says he will label regions by risk of…'
-    },
-    {
-        image: transm4,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Venezuela elan govt and opposit the property collect'
-    },
-    {
-        image: transm5,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Nancy Zhang a Chinese busy woman and Dhaka'
-    },
-    {
-        image: transm6,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'U.S. Response subash says he will label regions by risk of…'
-    },
-    {
-        image: transm4,
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Venezuela elan govt and opposit the property collect'
-    },
-];
+import api from '../../utils/api';
 
 const TrendingNews = ({dark}) => {
+    const [headArticles, setHeadArticles] = useState([]);
+    const [bodyArticles, setBodyArticles] = useState([]);
+
+    useEffect(() => {
+        fetchArticles();
+    }, []);
+
+    const fetchArticles = async () => {
+        const params = { query: `?limit=8&page=0` };
+        const response = await api.article.getArticlesOffset(params,
+            { headers: { 'Content-Type': 'application/json' } }
+        );
+
+        if (response.data) {
+            setBodyArticles(response.data.slice(2, 8));
+            setHeadArticles(response.data.slice(0, 2));
+        } 
+    }
+
     return (
         <Fragment>
-            <Heading title="Trending News"/>
-            <TrendingNewsSlider/>
+            <Heading title="Tendencias"/>
+            <TrendingNewsSlider articles={headArticles} />
             {dark ? <div className="border_white"/> : <div className="border_black"/>}
             <div className="space-30"/>
             <div className="row">
                 <div className="col-lg-6">
-                    {trendingNews.slice(0, 3).map((item, i) => (
+                    {bodyArticles.slice(0,3).map((item, i) => (
                         <Fragment key={i}>
                             <div className="single_post widgets_small">
                                 <div className="post_img">
@@ -71,8 +53,10 @@ const TrendingNews = ({dark}) => {
                                 </div>
                                 <div className="single_post_text">
                                     <div className="meta2">
-                                        <Link to="/">{item.category}</Link>
-                                        <Link to="/">{item.date}</Link>
+                                        <Link to="#">{item.copete}</Link>
+                                        <Link to="#">
+                                            <Moment format="ll" locale="es" unix>{item.created}</Moment>
+                                        </Link>
                                     </div>
                                     <h4><Link to="/post1">{item.title}</Link></h4>
                                 </div>
@@ -84,7 +68,7 @@ const TrendingNews = ({dark}) => {
                     ))}
                 </div>
                 <div className="col-lg-6">
-                    {trendingNews.slice(3, 6).map((item, i) => (
+                    {bodyArticles.slice(3, 6).map((item, i) => (
                         <Fragment key={i}>
                             <div className="single_post widgets_small">
                                 <div className="post_img">
@@ -97,8 +81,10 @@ const TrendingNews = ({dark}) => {
                                 </div>
                                 <div className="single_post_text">
                                     <div className="meta2">
-                                        <Link to="/">{item.category}</Link>
-                                        <Link to="/">{item.date}</Link>
+                                        <Link to="#">{item.copete}</Link>
+                                        <Link to="#">
+                                            <Moment format="ll" locale="es" unix>{item.created}</Moment>
+                                        </Link>
                                     </div>
                                     <h4><Link to="/post1">{item.title}</Link></h4>
                                 </div>

@@ -13,6 +13,7 @@ const auth = {
 const article = {
   get: (data, headers) => axios.get(`${baseUrl}/${version}/articles/${data.id}?by=${data.by}`, headers),
   getArticles: (data, headers) => axios.get(`${baseUrl}/${version}/articles${data.query}`, headers),
+  getArticlesOffset: (data, headers) => axios.get(`${baseUrl}/${version}/articles${data.query}`, headers),
   getArticlesSearch: (data, headers) => axios.get(`${baseUrl}/${version}/articles${data}`, headers),
   getArticlesRelated: (data, headers) => axios.get(`${baseUrl}/${version}/articles/${data.id}/related${data.filter}`, headers),
   post: (data, headers) => axios.post(`${baseUrl}/${version}/articles`, data, headers),

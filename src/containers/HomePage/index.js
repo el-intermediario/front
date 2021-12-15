@@ -32,6 +32,7 @@ import TopicArticles from '../../components/TopicArticles';
 import FourItemsFeatured from '../../components/FourItemsFeatured';
 import OneItemFeatured from '../../components/OneItemFeatured';
 import OneTwoItemsFeatured from '../../components/OneTwoItemsFeatured';
+import RadioPlayer from '../../components/RadioPlayer';
 
 const entertainments = [
   {
@@ -180,6 +181,7 @@ const HomePage = () => {
             <TrendingNews />
           </div>
           <div className="col-md-12 col-lg-4">
+            <RadioPlayer title="Radio Online" />
             <FollowUs title="Follow Us" />
             <MostView />
           </div>
