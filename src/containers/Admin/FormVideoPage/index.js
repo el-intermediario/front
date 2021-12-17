@@ -21,7 +21,6 @@ const FormVideoPage = () => {
   const [imageSource, setImageSource] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
-  const [status, setStatus] = useState(true);
   const [inHome, setInHome] = useState(true);
 
   const videoHandler = async (event) => {
@@ -37,13 +36,41 @@ const FormVideoPage = () => {
   
   const submitHandler = async (event) => {
     event.preventDefault();
-    setLoading(true)
+    setLoading(true);
+    if (!title) {
+      setMessage('Debes agregar un titulo.');
+      setLoading(false);
+      return;
+    }
+
+    if (type !== 'custom') {
+      const data = {
+        title,
+        type,
+        content: videoId,
+        mimetype: null,
+        thumbnail: null,
+        inHome
+      };
+      
+      try {
+        const response = await api.video.post(data, {
+          header: { "Content-Type": "application/json" },
+        });
+        if (response.data) {
+          setLoading(false);
+          history.push('/admin', {type: 'success', message: 'El video se creo correctamente.'});
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      return;
+    }
+
     if (!videoSource && type === 'custom') {
       setMessage('Debes subir un video.');
       setLoading(false);
-    } else if (!title) {
-      setMessage('Debes agregar un titulo.');
-      setLoading(false);
+      return;
     } else {
       // Upload video.
       try {
@@ -62,7 +89,7 @@ const FormVideoPage = () => {
           if (responseUpload) {
             const data = {
               title,
-              type: 'url',
+              type: 'custom',
               content: responseUpload.data.key,
               mimetype: responseUpload.data.mimetype,
               thumbnail: responseImage.data.key,
@@ -93,7 +120,6 @@ const FormVideoPage = () => {
     const canvas = document.createElement("canvas");
     canvas.width = videoElem.current.videoWidth;
     canvas.height = videoElem.current.videoHeight;
-    console.log(videoElem.current);
 
     canvas
       .getContext("2d")
@@ -117,6 +143,7 @@ const FormVideoPage = () => {
       });
   };
 
+  console.log(inHome);
   return (
     <>
       <div className="contact_form padding-bottom">
@@ -211,10 +238,10 @@ const FormVideoPage = () => {
                     <input name="inhome"
                       checked={inHome}
                       value={inHome} 
-                      onChange={e => setInHome(!e.target.checked)}
+                      onChange={e => setInHome(e.target.checked)}
                       type="checkbox" 
                     />
-                    <label>Mostrar en galeria de portada</label>
+                    <label>Mostrar en pagina principal</label>
                   </div>
                   <div className="col-12">
                     <div className="space-20" />

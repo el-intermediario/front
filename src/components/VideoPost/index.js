@@ -24,14 +24,24 @@ const VideoPost = ({ className, dark }) => {
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      if (response) {
-        const first = response.data.shift();
+      if (response.data) {
         let newItems = response.data;
-        newItems.forEach(item => {
-          item.thumbnail = api.space + item.thumbnail;
+        console.log(newItems);
+        newItems.map((video, i) => {
+          if (video.type === 'custom') {
+            newItems[i].thumbnail = api.space + video.thumbnail;
+          } else {
+            if (video.type === 'youtube') {
+              newItems[i].thumbnail = `https://img.youtube.com/vi/${video.content}/hqdefault.jpg`;
+            }
+            if (video.type === 'vimeo') {
+              newItems[i].thumbnail = `https://vimeo.com/vi/${video.content}/hqdefault.jpg`;
+            }
+          }
         });
+        const first = newItems.shift();
+        setFirstVideo(first);
         setVideos(newItems);
-        setFirstVideo({...first, thumbnail: api.space + first.thumbnail});
       }
     } catch (err) {
       console.log(err);

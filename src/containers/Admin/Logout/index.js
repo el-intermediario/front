@@ -9,9 +9,7 @@ const Logout = () => {
   const { user } = useSelector(state => state.user);
 
   useEffect(() => {
-    if(user) {
-      logout();
-    }
+    logout();
   }, [])
 
   const logout = () => {

@@ -99,7 +99,7 @@ const CategoryPage = ({location}) => {
                   <img src={banner2} alt="thumb" />
                 </Link>
               </div>
-              <WidgetTab />
+              {/* <WidgetTab /> */}
             </div>
           </div>
         </div>

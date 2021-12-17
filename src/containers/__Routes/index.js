@@ -121,7 +121,7 @@ const Routes = () => {
                 path="/login"
                 parentClass="theme-3"
                 component={LoginPage}/>
-            <PublicRoute
+            <PrivateRoute
                 exact
                 path="/logout"
                 parentClass="theme-3"
