@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GrAddCircle } from "react-icons/gr";
 import Swal from 'sweetalert2';
 const strToMachinename = require('str-to-machinename');

@@ -23,7 +23,6 @@ const FormContactPage = () => {
         header: { "Content-Type": "application/json" },
       });
       if (response) {
-        console.log(response.data);
       }
     } catch (error) {
       console.log(error);

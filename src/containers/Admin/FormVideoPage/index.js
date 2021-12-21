@@ -196,7 +196,7 @@ const FormVideoPage = () => {
                       <option value="custom">Subir video</option>
                     </select>
                   </div>
-                  {type == 'custom' ? (
+                  {type === 'custom' ? (
                     <div className="col-12">
                       <div className="row">
                         <div className="col-lg-8">

@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import FontAwesome from "../uiStyle/FontAwesome";
 
 const RadioPlayer = ({ className = '', title }) => {
   return (
@@ -9,7 +7,6 @@ const RadioPlayer = ({ className = '', title }) => {
       <div className="social_shares">
         <audio
           controls
-          autoplay
           preload="none"
           src="https://ssl.radiosnethosting.com/index.php?port=9798">
         </audio>

@@ -26,7 +26,6 @@ const VideoPost = ({ className, dark }) => {
 
       if (response.data) {
         let newItems = response.data;
-        console.log(newItems);
         newItems.map((video, i) => {
           if (video.type === 'custom') {
             newItems[i].thumbnail = api.space + video.thumbnail;

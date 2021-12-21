@@ -13,7 +13,6 @@ const CoverModal = ({ previewShow, setPreviewShow, layout }) => {
   const [cover, setCover] = useState('');
 
   const handleRow = (row) => {
-    console.log(row.id);
     switch (row.id) {
       case 'article':
         if (row.children.length === 1) {

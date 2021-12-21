@@ -7,7 +7,6 @@ import './style.scss';
 import api from '../../utils/api';
 
 const VideoGallery = ({items}) => {
-    const [swiper, setSwiper] = useState(null);
     const [videos, setVideos] = useState(items);
     const [vModal, setvModal] = useState(false);
     const [currentVideo, setCurrentVideo] = useState(null);
@@ -19,7 +18,6 @@ const VideoGallery = ({items}) => {
     }, [items]);
 
     const onErrorImage = (index) => {
-      console.log(index);
       let newItems = [...videos];
       newItems[index].thumbnail = videoPlaceholder;
       setVideos(newItems);

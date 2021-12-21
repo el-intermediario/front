@@ -40,15 +40,12 @@ const FormArticlePage = (props) => {
   const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(true);
   const [image, setImage] = useState(null);
-  const [video, setVideo] = useState(null);
   const [tags, setTags] = useState([]);
-  const reactTags = useRef(null);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
   const [category, setCategory] = useState(null);
   const [categories, setCategories] = useState([]);
 
   //custom buttons per editorState
-  const [referenceType, setReferenceType] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [urlValue, setUrlValue] = useState('');
   const [articleReferenceSelected, setArticleReferenceSelected] = useState(null);
@@ -125,7 +122,7 @@ const FormArticlePage = (props) => {
 
     try {
       const response = null;
-      if (props.match.path == '/admin/article/:id/edit') {
+      if (props.match.path === '/admin/article/:id/edit') {
         data = {...data, id, updated: parseInt(Date.now()/1000)};
         response = await api.article.put(data, { headers: user.headers });  
       } else {
