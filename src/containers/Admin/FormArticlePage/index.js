@@ -297,7 +297,7 @@ const FormArticlePage = (props) => {
                         </div>
                         <div className="col-12" id="editor">
                           <Editor
-                            blockRendererFn={mediaBlockRenderer}
+                            // blockRendererFn={mediaBlockRenderer}
                             localization={{
                               locale: 'es',
                               translations: es
