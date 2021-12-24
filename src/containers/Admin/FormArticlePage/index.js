@@ -201,6 +201,7 @@ const FormArticlePage = (props) => {
   }
 
   const embedCallBack = (link) => {
+    console.log(link);
     if (link.indexOf("youtube") >= 0){
         link = link.replace("watch?v=","embed/");
         link = link.replace("/watch/", "/embed/");
@@ -241,7 +242,7 @@ const FormArticlePage = (props) => {
     e.preventDefault();
     const contentState = editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
-      'reference',
+      'REFERENCE',
       'IMMUTABLE',
       articleReferenceSelected
     );
@@ -297,7 +298,6 @@ const FormArticlePage = (props) => {
                         </div>
                         <div className="col-12" id="editor">
                           <Editor
-                            // blockRendererFn={mediaBlockRenderer}
                             localization={{
                               locale: 'es',
                               translations: es
@@ -323,7 +323,7 @@ const FormArticlePage = (props) => {
                                 alt: { present: true, mandatory: false },
                               },
                               embedded: {
-                                //icon: embedded,
+                                // icon: embedded,
                                 embedCallback: embedCallBack,
                                 defaultSize: {
                                   height: '240px',
@@ -331,6 +331,7 @@ const FormArticlePage = (props) => {
                                 },
                               },
                             }}
+                            blockRendererFn={mediaBlockRenderer}
                           />
                           {showModal ? (
                             <div>
