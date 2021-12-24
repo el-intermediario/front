@@ -330,7 +330,7 @@ const MainMenu = ({ className, dark }) => {
                       <li className="search_btn" onClick={() => setSearchShow(!searchShow)}>
                         <FontAwesome name="search" />
                       </li>
-                      <li className="search_btn" onClick={() => history.push('/login')}>
+                      <li className="search_btn" onClick={() => history.push('/admin')}>
                         <FontAwesome name="user" />
                       </li>
                     </ul>

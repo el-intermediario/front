@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const baseUrl = 'https://api-intermediario.sanjua.com';
-const baseUrl = window.location.protocol + '//' + window.location.hostname + ':8080';
+const baseUrl = 'https://api-intermediario.sanjua.com';
+// const baseUrl = window.location.protocol + '//' + window.location.hostname + ':8080';
 const space = 'https://intermediario-dev.sfo3.digitaloceanspaces.com/';
 const version = 'api/v1';
 

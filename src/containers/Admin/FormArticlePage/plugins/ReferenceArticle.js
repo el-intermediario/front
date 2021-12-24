@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import Embed from 'react-embed';
 
 const ReferenceArticle = (props) => {
   const { data } = props.blockProps;
@@ -32,9 +33,11 @@ const ReferenceArticle = (props) => {
       )
     break;
     case 'EMBEDDED_LINK':
+      const width = !item.width ? '80%' : item.width;
+      const height = !item.height ? '100%' : item.height;
       return (
-        <iframe width="320" height="440" src="https://www.instagram.com/p/CXolX2mDejv/embed" frameborder="0"></iframe>
-        //<iframe width="560" height="315" src={item.src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <Embed width={width} height={height} url={item.src} />
+        // <iframe width={width} height={height} src={item.src} frameborder="0"></iframe>
       )
     case 'IMAGE':
       console.log(item);
