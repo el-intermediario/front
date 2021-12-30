@@ -19,6 +19,7 @@ import ArticleReferenceBtn from './plugins/ArticleReferenceBtn';
 import Swal from 'sweetalert2';
 import CustomAutocomplete from '../../../components/CustomAutocomplete';
 import "./editor.scss";
+import UploadImage from '../../../components/UploadImage/uploadImage';
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
@@ -265,6 +266,27 @@ const FormArticlePage = (props) => {
     setShowModal(true);
   }
 
+  // Upload Image.
+  const uploadImage = async (file, name) => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('folder', 'articles');
+    formData.append('file', file, name);
+
+    try {
+      const response = await api.upload.post(formData, { headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
+      
+      if (response) {
+        setImage(response.data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <div className="page-article padding-bottom">
@@ -342,23 +364,7 @@ const FormArticlePage = (props) => {
                             </div>
                           ) : null}
                         </div>
-                        <div className="col-8">
-                          <label>Imagen</label>
-                          <input 
-                            type="file" 
-                            name="image" 
-                            accept="image/*" 
-                            multiple={false} 
-                            onChange={imageHandler} 
-                          />
-                        </div>
-                        <div className="col-4">
-                          {!image ? (
-                            <BeatLoader color="#ff0000" loading={loading} size={12} />
-                          ) : (
-                            <img src={image} width={80} height={60} />
-                          )}
-                        </div>
+                        <UploadImage handleImage={uploadImage} />
                         <div className="col-12">
                           <div className="space-20" />
                           <button className="cbtn1" type="submit">Guardar</button>

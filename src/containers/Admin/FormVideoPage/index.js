@@ -76,7 +76,7 @@ const FormVideoPage = () => {
       try {
         const formData = new FormData();
         formData.append('folder', 'videos');
-        formData.append('file', imageSource);
+        formData.append('file', imageSource.file, imageSource.imgName);
         const responseImage = await api.upload.post(formData, { headers: {
           'Content-Type': 'multipart/form-data'
         }});
@@ -121,8 +121,7 @@ const FormVideoPage = () => {
     canvas.width = videoElem.current.videoWidth;
     canvas.height = videoElem.current.videoHeight;
 
-    canvas
-      .getContext("2d")
+    canvas.getContext("2d")
       .drawImage(
         videoElem.current,
         0,
@@ -130,20 +129,31 @@ const FormVideoPage = () => {
         videoElem.current.videoWidth,
         videoElem.current.videoHeight
       );
-
-    setImgSrc(canvas.toDataURL(), "image.png");
-    fetch(imgSrc)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const imgName = fileSource.name.replace('mp4', 'png');
-        const NewFile = new File([blob], imgName, {
-          type: "image/png"
-        });
-        setImageSource(NewFile)
-      });
+    
+      const img = canvas.toDataURL();
+      const file = dataURItoBlob(img);
+      const imgName = fileSource.name.replace('mp4', 'png');
+      setImgSrc(canvas.toDataURL(), imgName);
+      setImageSource({file, imgName});
   };
 
-  console.log(inHome);
+  const dataURItoBlob = (dataURI) => {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], {type:mimeString});
+  }
+
   return (
     <>
       <div className="contact_form padding-bottom">
