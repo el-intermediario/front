@@ -44,7 +44,7 @@ const OneTwoItemsFeatured = ({className, dark, data}) => {
                     ))}
                 </div>
             </div>
-            <div className="space-15"/>
+            {/* <div className="space-15"/> */}
         </div>
     );
 };

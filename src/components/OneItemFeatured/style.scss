@@ -1,4 +1,5 @@
 @import "../../doc/scss/colors.scss";
+@import "../../doc/scss/fonts.scss";
 
 .OneItemFeatured {
   .row {
@@ -19,31 +20,41 @@
           }
         }
         .single_post_text {
-          text-shadow: 1px 1px 2px black;
+          padding: 10px 10px 40px 10px;
+          left: 25%;
+          width: 50%;
 
           h4 {
             a {
-              font-size:60px
+              text-shadow: 4px 3px 1px black;
+              color: white;
+              text-transform: uppercase;
+              font-size:60px;
+              line-height: 50px;
+              text-align: center;
+              font-family: $font1;
             }
           }
     
           .meta {
+            text-shadow: 1px 1px 2px black;
             position: relative;
             background-color: $secondary_color;
             color: $white;
             text-transform: uppercase;
             display: inline;
             padding: 0 10px 0 5px;
+            font-size: 20px;
 
             &::after {
               position: absolute;
               left: -22px;
               content: "";
-              top: 10px;
+              top: 18px;
               border-bottom: 12px solid transparent;
               border-left: 10px solid transparent;
               border-top: 10px solid transparent;
-              border-right: 12px solid #14A5C0;
+              border-right: 12px solid $secondary_color;
               transform: skewY(-45deg);
             }
           }
