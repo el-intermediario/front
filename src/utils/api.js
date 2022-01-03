@@ -6,7 +6,8 @@ const space = 'https://intermediario-dev.sfo3.digitaloceanspaces.com/';
 const version = 'api/v1';
 
 const ad = {
-  add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers) 
+  add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers),
+  getAds: (data, headers) => axios.get(`${baseUrl}/${version}/ads`, headers),
 }
 
 const auth = {

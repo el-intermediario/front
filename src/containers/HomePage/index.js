@@ -106,9 +106,11 @@ const businessNews = [
 
 const HomePage = () => {
   const [layout, setLayout] = useState([]);
+  const [ads, setAds] = useState([]);
 
   useEffect(() => {
     fetchCover();
+    fetchAds();
   }, []);
 
   const fetchCover = async () => {
@@ -119,6 +121,20 @@ const HomePage = () => {
         
       if (response.data) {
         setLayout(response.data.layout);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const fetchAds = async () => {
+    try {
+      const response = await api.ad.getAds({},
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+        
+      if (response.data) {
+        setAds(response.data);
       }
     } catch (error) {
       console.log(error);
@@ -189,6 +205,14 @@ const HomePage = () => {
           return <div key={ki} className="row-articles">{handleRow(row)}</div>
         }
       })}
+      <div className="space-10" />
+      <div className="container text-center">
+        {ads.map(ad => {
+          if (ad.type === 'featured') {
+            return <img src={`${api.space}${ad.image}`} />
+          }
+        })}
+      </div>
       <div className="space-30" />
 
       {/* <FeaturedNews /> */}
@@ -198,7 +222,16 @@ const HomePage = () => {
             <TrendingNews />
           </div>
           <div className="col-md-12 col-lg-4">
+
             <RadioPlayer title="Radio Online" />
+            <div>
+            {ads.map(ad => {
+              if (ad.type === 'normal') {
+                return <img src={`${api.space}${ad.image}`} />
+              }
+            })}
+            <div className="space-20" />
+          </div>
             {/* <FollowUs title="Follow Us" /> */}
             <MostView title="Lo mas visto" />
           </div>
