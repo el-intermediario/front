@@ -209,7 +209,7 @@ const HomePage = () => {
       <div className="container text-center">
         {ads.map(ad => {
           if (ad.type === 'featured') {
-            return <img src={`${api.space}${ad.image} width="100%"`} />
+            return <img src={`${api.space}${ad.image}`} width="100%" />
           }
         })}
       </div>
@@ -227,7 +227,7 @@ const HomePage = () => {
             <div>
             {ads.map(ad => {
               if (ad.type === 'normal') {
-                return <img src={`${api.space}${ad.image} width="100%"`} />
+                return <img src={`${api.space}${ad.image}`} width="100%" />
               }
             })}
             <div className="space-20" />
