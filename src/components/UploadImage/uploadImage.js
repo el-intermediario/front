@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css';
 
-const UploadImage = ({handleImage}) => {
+const UploadImage = ({handleImage, handleCrop}) => {
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const buttonRef = useRef(null);
@@ -27,6 +27,11 @@ const UploadImage = ({handleImage}) => {
   useEffect(() => {
     if (!completedCrop || !previewCanvasRef.current || !imgRef.current) {
       return;
+    }
+
+    if (!handleCrop) {
+      handleImage(originalFile, originalFile.name);
+      return
     }
 
     const image = imgRef.current;
@@ -89,7 +94,7 @@ const UploadImage = ({handleImage}) => {
           onChange={onSelectFile} 
           style={{ display: "none" }}
         />
-        <button className="cbtn1" onClick={() => buttonRef.current.click()}>
+        <button onClick={() => buttonRef.current.click()}>
           Subir imagen
         </button>
       </div>

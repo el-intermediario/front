@@ -1,21 +1,69 @@
 import React, { useState } from 'react';
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
-import SimpleReactValidator from 'simple-react-validator';
 import api from '../../../utils/api';
+import UploadImage from '../../../components/UploadImage/uploadImage';
+import { useSelector } from 'react-redux';
 
 const FormAdsPage = () => {
-  const validator = new SimpleReactValidator();
+  const { user } = useSelector(state => state.user);
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
+  const [type, setType] = useState('normal');
+  const [size, setSize] = useState('350x250');
+  const [image, setImage] = useState(null);
+  const types = [
+    {
+      key: 'normal',
+      label: 'Normal'
+    },
+    {
+      key: 'basic',
+      label: 'Basico'
+    },
+    {
+      key: 'premium',
+      label: 'Premium'
+    },
+    {
+      key: 'featured',
+      label: 'Destacada'
+    }
+  ];
+  const sizes = ["350x250", "390x312", "810x100", "970x250", "1080x840"];
+
+  // Upload Image.
+  const uploadImage = async (file, name) => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('folder', 'ads');
+    formData.append('file', file, name);
+
+    try {
+      const response = await api.upload.post(formData, { headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
+      
+      if (response.data) {
+        setImage(response.data.key);
+        setLoading(false);
+      }
+    } catch (error) {
+      setLoading(false);
+    }
+  }
 
   const submitHandler = async (event) => {
     event.preventDefault();
     const data = {
-      title
+      name: title,
+      type,
+      size,
+      image
     }
     try {
-      const response = await api.category.add(data,
-        { header: { 'Content-Type': 'application/json' } }
+      const response = await api.ad.add(data,
+        { header: user.headers }
         );
         if (response) {
           console.log(response.data)
@@ -38,20 +86,48 @@ const FormAdsPage = () => {
                     <h3>Crear Categoria!</h3>
                   </div>
                   <div className="col-12">
-                    <form onSubmit={(e) => submitHandler(e)}>
                       <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-6">
                           <input name="title" value={title} onChange={e => setTitle(e.target.value)}
                             type="text"
                             placeholder="Titulo" />
-                          {validator.message('Titulo', title, 'required')}
                         </div>
-                        <div className="col-12">
-                          <div className="space-20" />
-                          <button className="cbtn1" type="submit">Guardar</button>
+                        <div className="col-6">
+                          <label>Tipo: </label>
+                          <select onChange={(e) => setType(e.target.value)}>
+                            {types.map((item, i) => {
+                              return <option key={i} value={item.key}>{item.label}</option>
+                            })}
+                          </select>
                         </div>
                       </div>
-                    </form>
+                      <div className="row">
+                        <div className="col-6">
+                          <label>Dimensiones: </label>
+                          <select onChange={(e) => setSize(e.target.value)}>
+                            {sizes.map((item, i) => {
+                              return <option key={i} value={item}>{item}</option>
+                            })}
+                          </select>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-6">
+                          <UploadImage handleImage={uploadImage} handleCrop={false} />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12">
+                          <div className="space-20" />
+                          <button 
+                            className="cbtn1" 
+                            type="submit"
+                            onClick={(e) => submitHandler(e)}
+                          >
+                            Guardar
+                          </button>
+                        </div>
+                      </div>
                   </div>
                 </div>
               </div>

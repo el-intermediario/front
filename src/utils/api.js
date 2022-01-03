@@ -5,6 +5,10 @@ const baseUrl = 'https://api-intermediario.sanjua.com';
 const space = 'https://intermediario-dev.sfo3.digitaloceanspaces.com/';
 const version = 'api/v1';
 
+const ad = {
+  add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers) 
+}
+
 const auth = {
   login: (data, headers) => axios.post(`${baseUrl}/${version}/auth/login`, data, headers),
   register: (data, headers) => axios.post(`${baseUrl}/${version}/auth/register`, data, headers)
@@ -52,6 +56,7 @@ const video = {
 };
 
 export default {
+  ad,
   auth,
   article,
   cover,

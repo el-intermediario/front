@@ -94,6 +94,7 @@ import Logout from '../Admin/Logout';
 import FormHomePage from '../Admin/FormHomePage';
 import CategoryPage from '../CategoryPage';
 import FormVideoPage from '../Admin/FormVideoPage';
+import FormAdsPage from '../Admin/FormAdsPage';
 
 const Routes = () => {
     return (
@@ -162,6 +163,12 @@ const Routes = () => {
                 path="/admin/category/edit"
                 parentClass="theme-3"
                 component={FormCategoryPage}/>
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/ad/add"
+                parentClass="theme-3"
+                component={FormAdsPage}/>
             <PrivateRoute
                 exact
                 home_style={3}

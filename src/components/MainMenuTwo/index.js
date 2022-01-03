@@ -64,6 +64,39 @@ const menusLogged = [
   },
   {
     id: 4,
+    link: '/ads',
+    linkText: 'Publicidad',
+    child: true,
+    icon: 'angle-down',
+    submenu: [
+      {
+        id: 31,
+        link: '/admin/ads/edit',
+        linkText: 'Editar',
+      },
+      {
+        id: 21,
+        link: '/admin/ad/add',
+        linkText: 'Nueva'
+      }
+    ]
+  },
+  {
+    id: 5,
+    link: '/pages',
+    linkText: 'Paginas',
+    child: true,
+    icon: 'angle-down',
+    submenu: [
+      {
+        id: 31,
+        link: '/admin/pages/edit',
+        linkText: 'Editar',
+      }
+    ]
+  },
+  {
+    id: 4,
     link: '/videos',
     linkText: 'Videos',
     child: true,
