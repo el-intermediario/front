@@ -9,6 +9,7 @@ const FormAdsPage = () => {
   const { user } = useSelector(state => state.user);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
+  const [url, setUrl] = useState(null);
   const [type, setType] = useState('normal');
   const [size, setSize] = useState('350x250');
   const [image, setImage] = useState(null);
@@ -59,7 +60,8 @@ const FormAdsPage = () => {
       name: title,
       type,
       size,
-      image
+      image,
+      url
     }
     try {
       const response = await api.ad.add(data,
@@ -114,6 +116,11 @@ const FormAdsPage = () => {
                       <div className="row">
                         <div className="col-6">
                           <UploadImage handleImage={uploadImage} handleCrop={false} />
+                        </div>
+                        <div className="col-6">
+                          <input name="url" value={url} onChange={e => setUrl(e.target.value)}
+                            type="text"
+                            placeholder="Enlace" />
                         </div>
                       </div>
                       <div className="row">
