@@ -353,10 +353,14 @@ const FormArticlePage = (props) => {
                                 },
                               },
                             }}
+                            // blockRendererFn={() => ({
+                            //   component: CustomAutocomplete,
+                            //   editable: false,
+                            // })}
                             blockRendererFn={mediaBlockRenderer}
                           />
                           {showModal ? (
-                            <div>
+                            <div className="rdw-embedded-modal">
                               <CustomAutocomplete handleItemSelected={(data) => setArticleReferenceSelected(data)} />
                               <button onMouseDown={confirmReference}>
                                 Confirmar
