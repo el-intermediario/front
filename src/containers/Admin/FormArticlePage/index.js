@@ -16,8 +16,6 @@ import { useHistory, useParams } from 'react-router-dom';
 import es from './es.js';
 import ReferenceArticle from './plugins/ReferenceArticle';
 import ArticleReferenceBtn from './plugins/ArticleReferenceBtn';
-import Swal from 'sweetalert2';
-import CustomAutocomplete from '../../../components/CustomAutocomplete';
 import "./editor.scss";
 import UploadImage from '../../../components/UploadImage/uploadImage';
 
@@ -326,10 +324,6 @@ const FormArticlePage = (props) => {
                                 },
                               },
                             }}
-                            // blockRendererFn={() => ({
-                            //   component: CustomAutocomplete,
-                            //   editable: false,
-                            // })}
                             blockRendererFn={mediaBlockRenderer}
                           />
                         </div>
