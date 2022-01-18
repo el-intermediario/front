@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import api from "../../utils/api";
 import Autocomplete from 'react-autocomplete';
 
-const CustomAutocomplete = ({handleItemSelected}) => {
-  const [valueSearch, setValueSearch] = useState('');
+const CustomAutocomplete = ({handleItemSelected, searchValue}) => {
+  const [valueSearch, setValueSearch] = useState(searchValue);
   const [items, setItems] = useState([]);
 
   useEffect(() => {

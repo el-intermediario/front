@@ -239,33 +239,6 @@ const FormArticlePage = (props) => {
     return null;
   };
 
-  const confirmReference = (e) => {
-    e.preventDefault();
-    const contentState = editorState.getCurrentContent();
-    const contentStateWithEntity = contentState.createEntity(
-      'REFERENCE',
-      'IMMUTABLE',
-      articleReferenceSelected
-    );
-    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-    const newEditorState = EditorState.set(
-      editorState,
-      {currentContent: contentStateWithEntity}
-    );
-
-    setEditorState(AtomicBlockUtils.insertAtomicBlock(
-      newEditorState,
-      entityKey,
-      ' '
-    ));
-    setShowModal(false);
-    setUrlValue('');
-  };
-
-  const addArticleReference = async (contentBlock) => {
-    setShowModal(true);
-  }
-
   // Upload Image.
   const uploadImage = async (file, name) => {
     setLoading(true);
@@ -331,7 +304,7 @@ const FormArticlePage = (props) => {
                             onEditorStateChange={onEditorStateChange}
                             toolbarCustomButtons={[
                               <CustomOption />, 
-                              <ArticleReferenceBtn addArticleReference={addArticleReference}/>
+                              <ArticleReferenceBtn />
                             ]}
                             hashtag={{
                               separator: ' ',
@@ -359,14 +332,6 @@ const FormArticlePage = (props) => {
                             // })}
                             blockRendererFn={mediaBlockRenderer}
                           />
-                          {showModal ? (
-                            <div className="rdw-embedded-modal">
-                              <CustomAutocomplete handleItemSelected={(data) => setArticleReferenceSelected(data)} />
-                              <button onMouseDown={confirmReference}>
-                                Confirmar
-                              </button>
-                            </div>
-                          ) : null}
                         </div>
                         <UploadImage handleImage={uploadImage} />
                         <div className="col-12">
