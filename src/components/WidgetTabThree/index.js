@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import {Nav, NavItem, TabContent, TabPane} from "reactstrap";
 import classnames from "classnames";
-import Fade from "reactstrap/es/Fade";
+import {Fade} from "reactstrap";
 import {Link} from "react-router-dom";
 import FontAwesome from "../uiStyle/FontAwesome";
 
