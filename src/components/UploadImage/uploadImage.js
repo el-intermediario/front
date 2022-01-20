@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import ReactCrop from 'react-image-crop'
+import ReactCrop from 'react-image-crop';
+import { Button } from 'reactstrap';
 import 'react-image-crop/dist/ReactCrop.css';
 
-const UploadImage = ({handleImage, handleCrop}) => {
+const UploadImage = ({ handleImage, handleCrop }) => {
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const buttonRef = useRef(null);
@@ -41,13 +42,13 @@ const UploadImage = ({handleImage, handleCrop}) => {
     const scaleX = image.naturalWidth / image.width;
     const scaleY = image.naturalHeight / image.height;
     const ctx = canvas.getContext('2d');
-    const pixelRatio = window.devicePixelRatio;
+    const pixelRatio = 1; //window.devicePixelRatio;
 
     canvas.width = crop.width * pixelRatio * scaleX;
     canvas.height = crop.height * pixelRatio * scaleY;
 
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    ctx.imageSmoothingQuality = 'medium';
+    ctx.imageSmoothingQuality = 'low';
 
     ctx.drawImage(
       image,
@@ -71,51 +72,55 @@ const UploadImage = ({handleImage, handleCrop}) => {
     // convert base64/URLEncoded data component to raw binary data held in a string
     var byteString;
     if (dataURI.split(',')[0].indexOf('base64') >= 0)
-        byteString = atob(dataURI.split(',')[1]);
+      byteString = atob(dataURI.split(',')[1]);
     else
-        byteString = unescape(dataURI.split(',')[1]);
+      byteString = unescape(dataURI.split(',')[1]);
     // separate out the mime component
     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
     // write the bytes of the string to a typed array
     var ia = new Uint8Array(byteString.length);
     for (var i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
+      ia[i] = byteString.charCodeAt(i);
     }
-    return new Blob([ia], {type:mimeString});
+    return new Blob([ia], { type: mimeString });
   }
 
   return (
-    <>
-      <div>
+    <div className="row">
+      <div className="col-3">
         <input
           ref={buttonRef}
-          type="file" 
-          accept="image/*" 
-          onChange={onSelectFile} 
+          type="file"
+          accept="image/*"
+          onChange={onSelectFile}
           style={{ display: "none" }}
         />
-        <button onClick={() => buttonRef.current.click()}>
+        <Button
+          outline
+          onClick={() => buttonRef.current.click()}
+        >
           Subir imagen
-        </button>
+        </Button>
       </div>
-     <ReactCrop
-        src={upImg}
-        onImageLoaded={onLoad}
-        crop={crop}
-        onChange={(c) => setCrop(c)}
-        onComplete={(c) => setCompletedCrop(c)}
-      />
-      <div>
+      <div className="col-5">
+        <ReactCrop
+          src={upImg}
+          onImageLoaded={onLoad}
+          crop={crop}
+          onChange={(c) => setCrop(c)}
+          onComplete={(c) => setCompletedCrop(c)}
+        />
+      </div>
+      <div className="col-4">
         <canvas
           ref={previewCanvasRef}
-          // Rounding is important so the canvas width and height matches/is a multiple for sharpness.
           style={{
             width: Math.round(completedCrop?.width ?? 0),
             height: Math.round(completedCrop?.height ?? 0)
           }}
         />
       </div>
-    </>
+    </div>
   )
 };
 

@@ -39,6 +39,7 @@ const FormArticlePage = (props) => {
   const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(true);
   const [image, setImage] = useState(null);
+  const [croppedImage, setCroppedImage] = useState(null);
   const [tags, setTags] = useState([]);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
   const [category, setCategory] = useState(null);
@@ -103,6 +104,26 @@ const FormArticlePage = (props) => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    let newImage; 
+
+    if (croppedImage) {
+      const formData = new FormData();
+      formData.append('folder', 'articles');
+      formData.append('file', croppedImage.file, croppedImage.name);
+      
+      try {
+        const responseImage = await api.upload.post(formData, { headers: {
+          'Content-Type': 'multipart/form-data'
+        }});
+        
+        if (responseImage) {
+          newImage = 'dev/articles/' + responseImage.data.blobName;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     let data = {
       title,
       body: bodyHtml,
@@ -115,7 +136,7 @@ const FormArticlePage = (props) => {
       bodyJson,
       status,
       category,
-      image,
+      image: newImage,
       tags
     };
 
@@ -161,27 +182,6 @@ const FormArticlePage = (props) => {
             resolve({ data: { link: response.data, file } });
           }
         );
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  const imageHandler = async (event) => {
-    setLoading(true);
-    const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append('folder', 'articles');
-    formData.append('file', file);
-
-    try {
-      const response = await api.upload.post(formData, { headers: {
-        'Content-Type': 'multipart/form-data'
-      }});
-      
-      if (response) {
-        setImage(response.data);
-        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -239,23 +239,7 @@ const FormArticlePage = (props) => {
 
   // Upload Image.
   const uploadImage = async (file, name) => {
-    setLoading(true);
-    const formData = new FormData();
-    formData.append('folder', 'articles');
-    formData.append('file', file, name);
-
-    try {
-      const response = await api.upload.post(formData, { headers: {
-        'Content-Type': 'multipart/form-data'
-      }});
-      
-      if (response) {
-        setImage(response.data);
-        setLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    setCroppedImage({file, name});
   }
 
   return (
@@ -327,7 +311,9 @@ const FormArticlePage = (props) => {
                             blockRendererFn={mediaBlockRenderer}
                           />
                         </div>
-                        <UploadImage handleImage={uploadImage} />
+                        <div className="col-12">
+                          <UploadImage handleImage={uploadImage} handleCrop={true} />
+                        </div>
                         <div className="col-12">
                           <div className="space-20" />
                           <button className="cbtn1" type="submit">Guardar</button>
