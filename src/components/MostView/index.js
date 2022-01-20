@@ -16,7 +16,7 @@ const MostView = ({ no_margin, title, dark }) => {
 
   const fetchArticles = async () => {
     try {
-      const response = await api.article.getArticles({ query: `?limit=5&page=0&mostView=true` },
+      const response = await api.article.getArticles({ query: `?limit=3&page=0&mostView=true` },
         { headers: { 'Content-Type': 'application/json' } }
       );
 

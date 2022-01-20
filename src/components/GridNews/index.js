@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import api from '../../utils/api';
 import Moment from "react-moment";
 import "./styles.scss";
+import LazyImage from '../LazyImage';
 
 const GridNews = ({ gridColumns = 6, qty = 4 }) => {
   const [articles, setArticles] = useState([]);
@@ -28,7 +29,7 @@ const GridNews = ({ gridColumns = 6, qty = 4 }) => {
             <div className="post_img">
               <div className="img_wrap">
                 <Link to="#">
-                  <img src={item.image} alt="thumb" />
+                  <LazyImage src={item.image} height="200px" />
                 </Link>
               </div>
             </div>

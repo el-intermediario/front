@@ -13,6 +13,7 @@ import UpcomingMatches from "../../components/UpcomingMatches";
 import NewsLetter from "../../components/NewsLetter";
 import CategoriesWidget from "../../components/CategoriesWidget";
 import VIdeoNewsSection from "../../components/VIdeoNewsSection";
+import "./styles.scss";
 
 // images
 import banner1 from '../../doc/img/bg/banner1.png';
@@ -34,75 +35,7 @@ import OneItemFeatured from '../../components/OneItemFeatured';
 import OneTwoItemsFeatured from '../../components/OneTwoItemsFeatured';
 import RadioPlayer from '../../components/RadioPlayer';
 import GridNews from '../../components/GridNews';
-
-const entertainments = [
-  {
-    image: enter1,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'There may be no consoles in the future ea exec says',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…'
-  },
-  {
-    image: enter2,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'There may be no consoles in the future ea exec says',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…'
-  },
-  {
-    image: enter3,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'There may be no consoles in the future ea exec says',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…'
-  },
-  {
-    image: enter4,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'There may be no consoles in the future ea exec says',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…'
-  },
-  {
-    image: enter4,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'There may be no consoles in the future ea exec says',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…'
-  },
-  {
-    image: enter4,
-    category: 'TECHNOLOGY',
-    date: 'March 26, 2020',
-    title: 'There may be no consoles in the future ea exec says',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…'
-  },
-];
-
-const businessNews = [
-  {
-    image: business1,
-    category: 'uiux.subash',
-    date: 'March 26, 2020',
-    title: 'Copa America: Luis Suarez from devastated US',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with…'
-  },
-  {
-    image: business2,
-    category: 'uiux.subash',
-    date: 'March 26, 2020',
-    title: 'Copa America: Luis Suarez from devastated US',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with…'
-  },
-  {
-    image: business3,
-    category: 'uiux.subash',
-    date: 'March 26, 2020',
-    title: 'Copa America: Luis Suarez from devastated US',
-    body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with…'
-  },
-];
+import LazyImage from '../../components/LazyImage';
 
 const HomePage = () => {
   const [layout, setLayout] = useState([]);
@@ -206,10 +139,10 @@ const HomePage = () => {
         }
       })}
       <div className="space-10" />
-      <div className="container text-center">
+      <div className="container text-center ad-970x250">
         {ads.map(ad => {
           if (ad.type === 'featured') {
-            return <img src={`${api.space}${ad.image}`} width="100%" />
+            return <LazyImage src={`${api.space}${ad.image}`} height="230px" />;
           }
         })}
       </div>
@@ -227,7 +160,7 @@ const HomePage = () => {
             <div>
             {ads.map(ad => {
               if (ad.type === 'normal') {
-                return <img src={`${api.space}${ad.image}`} width="100%" />
+                return <LazyImage src={`${api.space}${ad.image}`} width="100%" height="250px" />
               }
             })}
             <div className="space-20" />

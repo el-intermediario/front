@@ -3,6 +3,7 @@ import FontAwesome from "../uiStyle/FontAwesome";
 import {Link} from "react-router-dom";
 import Swiper from 'react-id-swiper';
 import ModalVideo from 'react-modal-video'
+import LazyImage from '../LazyImage';
 
 const ThreeItemsFeatured = ({className, dark, data}) => {
     const [swiper, setSwiper] = useState(null);
@@ -58,7 +59,8 @@ const ThreeItemsFeatured = ({className, dark, data}) => {
                                             <div className="post_img gradient1">
                                                 <div className="img_wrap">
                                                     <Link className="play_btn" to={`/articulo/${item.children[0].data.slug}`}>
-                                                        <img src={item.children[0].data.image} alt="news"/>
+                                                        {/* <img src={item.children[0].data.image} alt="news"/> */}
+                                                        <LazyImage src={item.children[0].data.image} />
                                                     </Link>
                                                 </div>
                                             </div>

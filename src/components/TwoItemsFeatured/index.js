@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import LazyImage from '../LazyImage';
 import './style.scss';
 
 const TwoItemsFeatured = ({ className, dark, data }) => {
@@ -13,7 +14,7 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                 <div className="post_img gradient1">
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
-                      <img src={item.data.image} alt="news" />
+                      <LazyImage src={item.data.image} height="400px" />
                     </Link>
                   </div>
                 </div>
@@ -32,7 +33,7 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                 <div className="post_img gradient1">
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
-                      <img src={item.data.image} alt="news" />
+                      <LazyImage src={item.data.image} height="400px"/>
                     </Link>
                   </div>
                 </div>

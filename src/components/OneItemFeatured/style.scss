@@ -10,12 +10,16 @@
 
       .single_post {  
         .post_img {
-          a {
-            display: block;
+          .img_wrap {
+            height: 540px;
 
-            img {
-              width: 100%;
-              max-height: 520px;
+            a {
+              display: block;
+  
+              img {
+                width: 100%;
+                max-height: 520px;
+              }
             }
           }
         }

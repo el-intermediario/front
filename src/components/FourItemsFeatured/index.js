@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import FontAwesome from "../uiStyle/FontAwesome";
 
 import './style.scss';
+import LazyImage from '../LazyImage';
 
 // const news = [
 //     {
@@ -103,7 +104,8 @@ const FourItemsFeatured = ({ className, news }) => {
                   <div key={i} className="single_post post_type6 post_type7">
                     <div className="post_img gradient1">
                       <Link to={`/articulo/${item.children[0].data.slug}`}>
-                        <img src={item.children[0].data.image} alt="thumb" />
+                        <LazyImage src={item.children[0].data.image} />
+                        {/* <img src={item.children[0].data.image} alt="thumb" /> */}
                       </Link>
                     </div>
                     <div className="single_post_text">

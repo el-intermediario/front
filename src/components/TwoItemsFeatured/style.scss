@@ -9,12 +9,16 @@
 
       .single_post {  
         .post_img {
-          a {
-            display: block;
-
-            img {
-              width: 100%;
-              max-height: 420px;
+          .img_wrap {
+            height: 400px;
+            
+            a {
+              display: block;
+  
+              img {
+                width: 100%;
+                max-height: 420px;
+              }
             }
           }
         }
