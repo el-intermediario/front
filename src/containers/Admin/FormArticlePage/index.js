@@ -176,10 +176,9 @@ const FormArticlePage = (props) => {
       }});
       
       if (response) {
-        console.log(response.data);
         return new Promise(
           (resolve, reject) => {
-            resolve({ data: { link: response.data, file } });
+            resolve({ data: { link: response.data.location, file } });
           }
         );
       }

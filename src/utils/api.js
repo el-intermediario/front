@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseUrl = 'https://api-intermediario.sanjua.com';
-// const baseUrl = 'https://intermediario-prod-api.azurewebsites.net';
-//const baseUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
+const localUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
+const remoteUrl = 'https://api-intermediario.sanjua.com';
+const baseUrl = window.location.hostname === 'localhost' ? localUrl : remoteUrl;
 const space = 'https://intermediario-dev.sfo3.digitaloceanspaces.com/';
 const version = 'api/v1';
 
