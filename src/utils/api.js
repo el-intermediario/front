@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// const baseUrl = 'https://api-intermediario.sanjua.com';
+const baseUrl = 'https://api-intermediario.sanjua.com';
 // const baseUrl = 'https://intermediario-prod-api.azurewebsites.net';
-const baseUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
+//const baseUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
 const space = 'https://intermediario-dev.sfo3.digitaloceanspaces.com/';
 const version = 'api/v1';
 
@@ -45,7 +45,7 @@ const tag = {
 }
 
 const upload = {
-  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/uploadImage`, dataModel, headers)
+  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/upload`, dataModel, headers)
 };
 
 const uploadVideo = {
