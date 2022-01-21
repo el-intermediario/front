@@ -36,6 +36,7 @@ import OneTwoItemsFeatured from '../../components/OneTwoItemsFeatured';
 import RadioPlayer from '../../components/RadioPlayer';
 import GridNews from '../../components/GridNews';
 import LazyImage from '../../components/LazyImage';
+import Ad from '../../components/Ad';
 
 const HomePage = () => {
   const [layout, setLayout] = useState([]);
@@ -142,7 +143,7 @@ const HomePage = () => {
       <div className="container text-center ad-970x250">
         {ads.map(ad => {
           if (ad.type === 'featured') {
-            return <LazyImage src={`${api.space}${ad.image}`} height="230px" alt={ad.title} />;
+            return <Ad imageUrl={ad.image} url={ad.url} title={ad.title} height="230px" />
           }
         })}
       </div>
@@ -160,7 +161,7 @@ const HomePage = () => {
             <div>
             {ads.map(ad => {
               if (ad.type === 'normal') {
-                return <LazyImage src={`${api.space}${ad.image}`} height="250px" alt={ad.title} />
+                return <Ad imageUrl={ad.image} url={ad.url} title={ad.title} height="250px" />
               }
             })}
             <div className="space-20" />
