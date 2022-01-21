@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import BannerSection from "../../../components/BannerSection";
 import Home from "./home";
 import Backend from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import "./styles.scss";
+import { useLocation } from 'react-router-dom';
+import api from '../../../utils/api';
 
 const FormHomePage = () => {
+  const location = useLocation();
+  const params = location.pathname.split('/');
+  const [cover, setCover] = useState(null);
+
+  useEffect(() => {
+    if (params.includes('edit')) {
+      fetchHome();
+    }
+  }, [])
+
+  const fetchHome = async () => {
+    try {
+      const response = await api.cover.getCurrent('?current=true',
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+        
+      if (response.data) {
+        setCover(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <div className="contact_form padding-bottom">
@@ -20,7 +46,7 @@ const FormHomePage = () => {
                   </div>
                   <div className="col-12 home-edit">
                     <DndProvider backend={Backend}>
-                      <Home />
+                      <Home cover={cover} />
                     </DndProvider>
                   </div>
                 </div>

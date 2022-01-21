@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 import DropZone from "./DropZone";
 import TrashDropZone from "./TrashDropZone";
@@ -20,7 +20,7 @@ import {SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
 import CoverModal from "../../../components/CoverModal";
 
-const Container = () => {
+const Container = (props) => {
   const history = useHistory();
   const { user } = useSelector(state => state.user);
   const initialLayout = initialData.layout;
@@ -36,6 +36,16 @@ const Container = () => {
   const [searchAd, setSearchAd] = useState('');
   const [topic, setTopic] = useState('');
   const [preview, setPreview] = useState(false);
+  const [cover, setCover] = useState(null);
+
+  useEffect(() => {
+    if (props.cover) {
+      setCover(props.cover);
+      setTitle(props.cover.title);
+      setStatus(props.cover.status);
+      setLayout(props.cover.layout);
+    }
+  }, [props])
 
   const handleSearchArticles = async (value) => {
     try {
@@ -195,13 +205,16 @@ const Container = () => {
       layout,
       status
     };
+    
     try {
-      const response = await api.cover.post(data,
-        { headers: user.headers }
-      );
-      
-      if (response) {
-        history.push('/admin/home', {type: 'success', message: 'La portada se creo correctamente.'});
+      if (cover) { // Update a cover.
+        const response = await api.cover.put(cover.id, data,
+          { headers: user.headers }
+        );
+      } else { // Create a new cover.
+        const response = await api.cover.post(data,
+          { headers: user.headers }
+        );
       }
     } catch (error) {
       console.log(error);

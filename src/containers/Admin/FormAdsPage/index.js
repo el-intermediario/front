@@ -4,15 +4,17 @@ import FollowUs from "../../../components/FollowUs";
 import api from '../../../utils/api';
 import UploadImage from '../../../components/UploadImage/uploadImage';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const FormAdsPage = () => {
+  const history = new useHistory();
   const { user } = useSelector(state => state.user);
-  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
-  const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState('');
   const [type, setType] = useState('normal');
   const [size, setSize] = useState('350x250');
   const [image, setImage] = useState(null);
+  const [status, setStatus] = useState(true);
   const types = [
     {
       key: 'normal',
@@ -35,7 +37,6 @@ const FormAdsPage = () => {
 
   // Upload Image.
   const uploadImage = async (file, name) => {
-    setLoading(true);
     const formData = new FormData();
     formData.append('folder', 'ads');
     formData.append('file', file, name);
@@ -47,10 +48,9 @@ const FormAdsPage = () => {
       
       if (response.data) {
         setImage(response.data.key);
-        setLoading(false);
       }
     } catch (error) {
-      setLoading(false);
+      console.log(error);
     }
   }
 
@@ -61,14 +61,15 @@ const FormAdsPage = () => {
       type,
       size,
       image,
-      url
+      url,
+      status
     }
     try {
       const response = await api.ad.add(data,
         { header: user.headers }
         );
-        if (response) {
-          console.log(response.data)
+        if (response.data) {
+          return history.push('/admin', {type: 'success', message: 'La publicidad se creo correctamente.'});
         }
     } catch (error) {
       console.log(error);
@@ -85,7 +86,7 @@ const FormAdsPage = () => {
               <div className="cotact_form">
                 <div className="row">
                   <div className="col-12">
-                    <h3>Crear Categoria!</h3>
+                    <h3>Crear Publicidad</h3>
                   </div>
                   <div className="col-12">
                       <div className="row">
@@ -112,15 +113,26 @@ const FormAdsPage = () => {
                             })}
                           </select>
                         </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-6">
-                          <UploadImage handleImage={uploadImage} handleCrop={false} />
-                        </div>
                         <div className="col-6">
                           <input name="url" value={url} onChange={e => setUrl(e.target.value)}
                             type="text"
                             placeholder="Enlace" />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12">
+                          <UploadImage handleImage={uploadImage} handleCrop={false} />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12">
+                          <input name="status"
+                            checked={status}
+                            value={status} 
+                            onChange={e => setStatus(!e.target.checked)}
+                            type="checkbox" 
+                          />
+                          <label>Publicar</label>
                         </div>
                       </div>
                       <div className="row">

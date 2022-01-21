@@ -60,7 +60,7 @@ const ThreeItemsFeatured = ({className, dark, data}) => {
                                                 <div className="img_wrap">
                                                     <Link className="play_btn" to={`/articulo/${item.children[0].data.slug}`}>
                                                         {/* <img src={item.children[0].data.image} alt="news"/> */}
-                                                        <LazyImage src={item.children[0].data.image} />
+                                                        <LazyImage src={item.children[0].data.image} alt={item.children[0].data.title} />
                                                     </Link>
                                                 </div>
                                             </div>

@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import FontAwesome from "../uiStyle/FontAwesome";
+import React from 'react';
 import {Link} from "react-router-dom";
 import './style.scss';
 import LazyImage from '../LazyImage';
@@ -15,7 +14,7 @@ const OneTwoItemsFeatured = ({className, dark, data}) => {
                                     <div className="post_img gradient1">
                                         <div className="img_wrap">
                                             <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
-                                                <LazyImage src={item.data.image} height="500px" />
+                                                <LazyImage src={item.data.image} height="500px" alt={item.data.title} />
                                             </Link>
                                         </div>
                                     </div>
@@ -33,7 +32,7 @@ const OneTwoItemsFeatured = ({className, dark, data}) => {
                             <div className="post_img gradient1">
                                 <div className="img_wrap">
                                     <Link to={`/articulo/${item.data.slug}`}>
-                                        <LazyImage src={item.data.image} height="250px" />
+                                        <LazyImage src={item.data.image} height="250px" alt={item.data.title} />
                                     </Link>
                                 </div>
                             </div>

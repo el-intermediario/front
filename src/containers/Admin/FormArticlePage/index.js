@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 import CustomOption from './plugins/CustomOption';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw, ContentState, AtomicBlockUtils } from 'draft-js';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import api from "../../../utils/api";
 import { useSelector } from 'react-redux';
-import BeatLoader from "react-spinners/BeatLoader";
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import TreeMenu from 'react-simple-tree-menu';
@@ -28,7 +27,6 @@ const FormArticlePage = (props) => {
   const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
 
   const validator = new SimpleReactValidator();
-  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [type, setType] = useState('normal');
   const [section, setSection] = useState('santa_cruz');
@@ -151,8 +149,8 @@ const FormArticlePage = (props) => {
         response = await api.article.post(data, { headers: user.headers });
       }
       
-      if (response) {
-        history.push('/admin/article', {type: 'success', message: 'El articulo se creo correctamente.'});
+      if (response.data) {
+        return history.push('/admin/article', {type: 'success', message: 'El articulo se creo correctamente.'});
       }
     } catch (error) {
       console.log(error);

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Moment from 'react-moment';
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
 const TrendingNewsSlider = ({ articles }) => {
-
   return (
     <Container className="trending-head">
       <Row className="carousel_post2_type3 nav_style1">

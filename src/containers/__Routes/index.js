@@ -138,7 +138,13 @@ const Routes = () => {
                 home_style={3}
                 path="/admin/home"
                 parentClass="theme-3"
-                component={FormHomePage}/>     
+                component={FormHomePage}/>
+            <PrivateRoute
+                exact
+                home_style={3}
+                path="/admin/home/edit"
+                parentClass="theme-3"
+                component={FormHomePage}/>         
             <PrivateRoute
                 exact
                 home_style={3}

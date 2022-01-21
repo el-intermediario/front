@@ -1,8 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, Fade } from 'reactstrap';
 import classnames from 'classnames';
 import { Link } from "react-router-dom";
-import api from '../../utils/api';
 import Moment from 'react-moment';
 import "./styles.scss";
 

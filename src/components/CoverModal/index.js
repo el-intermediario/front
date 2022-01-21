@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import banner2 from '../../doc/img/bg/sidebar-1.png';
 import FourItemsFeatured from '../FourItemsFeatured';
 import OneItemFeatured from '../OneItemFeatured';
+import OneTwoItemsFeatured from '../OneTwoItemsFeatured';
 import ThreeItemsFeatured from '../ThreeItemsFeatured';
 import TopicArticles from '../TopicArticles';
 import TwoItemsFeatured from '../TwoItemsFeatured';
@@ -10,14 +11,15 @@ import FontAwesome from "../uiStyle/FontAwesome";
 import VideoPost from '../VideoPost';
 
 const CoverModal = ({ previewShow, setPreviewShow, layout }) => {
-  const [cover, setCover] = useState('');
-
   const handleRow = (row) => {
     switch (row.id) {
       case 'article':
         if (row.children.length === 1) {
           return <OneItemFeatured className="fifth_bg" data={row.children} />
         } else if (row.children.length === 2) {
+          if (row.children[1].children.length === 2) {
+            return <OneTwoItemsFeatured data={row.children} />
+          }
           return <TwoItemsFeatured data={row.children} />
         } else if (row.children.length === 3) {
           return <ThreeItemsFeatured data={row.children} />

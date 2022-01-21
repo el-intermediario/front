@@ -122,7 +122,7 @@ const MainMenuTwo = () => {
   const [sideShow, setSideShow] = useState(false);
 
   useEffect(() => {
-    if (!user && location.pathname != '/login') {
+    if (!user && location.pathname !== '/login') {
       return history.push('/login');
     }
   }, []);

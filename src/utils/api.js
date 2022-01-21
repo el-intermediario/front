@@ -28,6 +28,8 @@ const article = {
 
 const cover = {
   get: (data, headers) => axios.get(`${baseUrl}/${version}/covers`, headers),
+  getCurrent: (params, headers) => axios.get(`${baseUrl}/${version}/covers${params}`, headers),
+  put: (id, data, headers) => axios.put(`${baseUrl}/${version}/covers/${id}`, data, headers),
   post: (data, headers) => axios.post(`${baseUrl}/${version}/covers`, data, headers)
 };
 

@@ -142,7 +142,7 @@ const HomePage = () => {
       <div className="container text-center ad-970x250">
         {ads.map(ad => {
           if (ad.type === 'featured') {
-            return <LazyImage src={`${api.space}${ad.image}`} height="230px" />;
+            return <LazyImage src={`${api.space}${ad.image}`} height="230px" alt={ad.title} />;
           }
         })}
       </div>
@@ -160,7 +160,7 @@ const HomePage = () => {
             <div>
             {ads.map(ad => {
               if (ad.type === 'normal') {
-                return <LazyImage src={`${api.space}${ad.image}`} width="100%" height="250px" />
+                return <LazyImage src={`${api.space}${ad.image}`} height="250px" alt={ad.title} />
               }
             })}
             <div className="space-20" />

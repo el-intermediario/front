@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import LazyImage from '../LazyImage';
 import './style.scss';
-
 
 const OneItemFeatured = ({ className, dark, data }) => {
   return (
@@ -15,7 +14,7 @@ const OneItemFeatured = ({ className, dark, data }) => {
                 <div className="post_img gradient1">
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
-                      <LazyImage src={item.data.image} height="520px" />
+                      <LazyImage src={item.data.image} height="520px" alt={item.data.title} />
                     </Link>
                   </div>
                 </div>
