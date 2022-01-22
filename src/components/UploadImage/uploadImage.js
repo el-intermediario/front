@@ -8,7 +8,7 @@ const UploadImage = ({ handleImage, handleCrop }) => {
   const imgRef = useRef(null);
   const buttonRef = useRef(null);
   const previewCanvasRef = useRef(null);
-  const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 16 / 9 });
+  const [crop, setCrop] = useState({ unit: '%', width: 70, aspect: 16 / 9 });
   const [completedCrop, setCompletedCrop] = useState(null);
   const [originalFile, setOriginalFile] = useState(null);
 
@@ -43,12 +43,12 @@ const UploadImage = ({ handleImage, handleCrop }) => {
     const scaleY = image.naturalHeight / image.height;
     const ctx = canvas.getContext('2d');
     const pixelRatio = 1; //window.devicePixelRatio;
-
+    
     canvas.width = crop.width * pixelRatio * scaleX;
     canvas.height = crop.height * pixelRatio * scaleY;
-
+    
+    ctx.imageSmoothingQuality = 'medium';
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    ctx.imageSmoothingQuality = 'low';
 
     ctx.drawImage(
       image,
@@ -62,7 +62,7 @@ const UploadImage = ({ handleImage, handleCrop }) => {
       crop.height * scaleY
     );
 
-    const img = canvas.toDataURL();
+    const img = canvas.toDataURL('image/jpeg');
     const file = dataURItoBlob(img);
     handleImage(file, originalFile.name);
 

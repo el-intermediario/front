@@ -120,7 +120,7 @@ const ArticlePage = () => {
 										</div>
 									</div> */}
 								</div>
-								<img src={data && data.image} alt="thumb" />
+								<img src={data && `${api.space}${data.image}`} alt="thumb" />
 								<div className="padding20 white_bg">
 									<div className="space-20" />
 										{data && parse(data.body)}

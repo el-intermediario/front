@@ -115,7 +115,7 @@ const FormArticlePage = (props) => {
         }});
         
         if (responseImage) {
-          newImage = 'dev/articles/' + responseImage.data.blobName;
+          newImage = responseImage.data.key;
         }
       } catch (error) {
         console.log(error);
@@ -236,6 +236,7 @@ const FormArticlePage = (props) => {
 
   // Upload Image.
   const uploadImage = async (file, name) => {
+    console.log(file);
     setCroppedImage({file, name});
   }
 

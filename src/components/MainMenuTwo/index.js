@@ -24,8 +24,13 @@ const menusLogged = [
     submenu: [
       {
         id: 11,
-        link: '/admin/home',
+        link: '/admin/home/edit',
         linkText: 'Editar'
+      },
+      {
+        id: 12,
+        link: '/admin/home',
+        linkText: 'Nueva portada'
       },
     ]
   },
