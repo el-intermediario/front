@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-import Heading from "../uiStyle/Heading";
 import Swiper from 'react-id-swiper';
-
-import fnewsImg2 from '../../doc/img/feature/feature2.jpg';
-import fnewsImg3 from '../../doc/img/feature/feature3.jpg';
-import fnewsImg4 from '../../doc/img/feature/feature4.jpg';
 import { Link } from "react-router-dom";
-import FontAwesome from "../uiStyle/FontAwesome";
 
 import './style.scss';
 import LazyImage from '../LazyImage';

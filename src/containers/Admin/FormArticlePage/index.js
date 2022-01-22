@@ -139,7 +139,7 @@ const FormArticlePage = (props) => {
     };
 
     try {
-      const response = null;
+      let response = null;
       if (props.match.path === '/admin/article/:id/edit') {
         data = {...data, id, updated: parseInt(Date.now()/1000)};
         response = await api.article.put(data, { headers: user.headers });  

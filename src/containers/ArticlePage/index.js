@@ -3,13 +3,7 @@ import BreadCrumb from "../../components/BreadCrumb";
 import FontAwesome from "../../components/uiStyle/FontAwesome";
 import { useLocation } from "react-router";
 import { Link, useParams } from "react-router-dom";
-import WidgetTab from "../../components/WidgetTab";
-import WidgetTrendingNews from "../../components/WidgetTrendingNews";
-import NewsLetter from "../../components/NewsLetter";
-import MostShareWidget from "../../components/MostShareWidget";
-import FollowUs from "../../components/FollowUs";
 import BannerSection from "../../components/BannerSection";
-import PostOnePagination from "../../components/PostOnePagination";
 import parse from "html-react-parser";
 import {
 	EmailShareButton,
@@ -24,13 +18,6 @@ import {
 
 // images
 import banner2 from "../../doc/img/bg/sidebar-1.png";
-import big2 from '../../doc/img/blog/big2.jpg';
-import author2 from '../../doc/img/author/author2.png';
-import big1 from '../../doc/img/blog/big1.jpg';
-import smail1 from '../../doc/img/blog/smail1.jpg';
-import single_post1 from '../../doc/img/blog/single_post1.jpg';
-import OurBlogSection from "../../components/OurBlogSection";
-import BlogComment from "../../components/BlogComment";
 import api from "../../utils/api";
 import RelatedTabs from '../../components/RelatedTabs';
 import TrendingArticles from '../../components/TrendingArticles';

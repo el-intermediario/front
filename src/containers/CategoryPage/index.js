@@ -1,14 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import BreadCrumb from "../../components/BreadCrumb";
-import BusinessNews from "../../components/BusinessNews";
-import FontAwesome from "../../components/uiStyle/FontAwesome";
 import { Link } from "react-router-dom";
-import WidgetTab from "../../components/WidgetTab";
-import WidgetTrendingNews from "../../components/WidgetTrendingNews";
-import NewsLetter from "../../components/NewsLetter";
-import FollowUs from "../../components/FollowUs";
-import { useHistory, useParams } from 'react-router-dom';
-
 import banner2 from "../../doc/img/bg/sidebar-1.png";
 import BannerSection from "../../components/BannerSection";
 import api from '../../utils/api';

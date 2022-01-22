@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import BannerSection from "../../components/BannerSection";
-import FontAwesome from "../../components/uiStyle/FontAwesome";
 import { Alert, Table } from "reactstrap";
 import FollowUs from "../../components/FollowUs";
 import api from "../../utils/api";
 import { Link, useLocation } from "react-router-dom";
-import classnames from "classnames";
-
-import finance41 from "../../doc/img/finance/finance41.jpg";
-import calendarImg from '../../doc/img/icon/calendar.png';
-import video32 from '../../doc/img/blog/video32.jpg';
 
 const ArticlesPage = () => {
   const location = useLocation();

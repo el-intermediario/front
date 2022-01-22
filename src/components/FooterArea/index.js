@@ -2,18 +2,10 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import FooterCopyright from "../FooterCopyright";
 import FooterMoreNews from "../FooterMoreNews";
-import TwitterFeed from "../TwitterFeed";
-import FontAwesome from "../uiStyle/FontAwesome";
-
-import flogo from '../../doc/img/logo/footer_logo.png';
 import FooterNewsCategories from "../FooterNewsCategories";
 
 const FooterArea = ({className}) => {
     const [email, setEmail] = useState('');
-    const submitHandler = e => {
-        e.preventDefault();
-        setEmail('')
-    };
     return (
         <div className={`footer footer_area1 ${className ? className : ''}`}>
             <div className="container">

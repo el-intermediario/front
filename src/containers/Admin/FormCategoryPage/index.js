@@ -28,7 +28,7 @@ const FormCategoryPage = () => {
   }
 
   const save = async () => {
-    if (categories != defaultCategories) {
+    if (categories !== defaultCategories) {
       const data = {
         type: 'articles',
         data: categories
@@ -46,15 +46,15 @@ const FormCategoryPage = () => {
   const hanleCategory = (item, key) => {
     let newCategories = [...categories];
     newCategories.forEach((element, k) => {
-      if (element.key == key) {
+      if (element.key === key) {
         newCategories[k].nodes.push(item);
       } else {
         element.nodes.forEach((elementChild, ec) => {
-          if (elementChild.key == key) {
+          if (elementChild.key === key) {
             newCategories[k].nodes[ec].nodes.push(item);
           } else {
             elementChild.nodes.forEach((child, c) => {
-              if (child.key == key) {
+              if (child.key === key) {
                 newCategories[k].nodes[ec].nodes[c].nodes.push(item);
               }
             });
@@ -108,7 +108,7 @@ const FormCategoryPage = () => {
                     ))}
                   </ul>
                   <div className="col-12">
-                    <button disabled={categories != defaultCategories ? false : true} onClick={save}>Guardar</button>
+                    <button disabled={categories !== defaultCategories ? false : true} onClick={save}>Guardar</button>
                   </div>
                 </div>
               </div>
