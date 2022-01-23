@@ -389,10 +389,10 @@ const FormArticlePage = (props) => {
                 />
               </div>
               <div className="col-12">
-                <input name="status"
+                <input 
                   checked={status}
-                  value={status} 
-                  onChange={e => setStatus(!e.target.checked)}
+                  name="status"
+                  onChange={e => setStatus(e.target.checked)}
                   type="checkbox" 
                 />
                 <label>Publicar</label>

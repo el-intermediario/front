@@ -143,7 +143,7 @@ const HomePage = () => {
       <div className="container text-center ad-970x250">
         {ads.map(ad => {
           if (ad.type === 'featured') {
-            return <Ad imageUrl={ad.image} url={ad.url} title={ad.title} height="230px" />
+            return <Ad imageUrl={ad.image} url={ad.url} title={ad.name} height="230px" />
           }
         })}
       </div>
@@ -161,7 +161,7 @@ const HomePage = () => {
             <div>
             {ads.map(ad => {
               if (ad.type === 'normal') {
-                return <Ad imageUrl={ad.image} url={ad.url} title={ad.title} height="250px" />
+                return <Ad imageUrl={ad.image} url={ad.url} title={ad.name} height="250px" />
               }
             })}
             <div className="space-20" />

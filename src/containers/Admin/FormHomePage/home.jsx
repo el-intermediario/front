@@ -23,11 +23,12 @@ import CoverModal from "../../../components/CoverModal";
 const Container = (props) => {
   const history = useHistory();
   const { user } = useSelector(state => state.user);
+  const { articlesOffset } = useSelector(state => state.meta);
   const initialLayout = initialData.layout;
   const initialComponents = initialData.components;
   const initialBricks = initialData.bricks;
   const [title, setTitle] = useState('');
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState(true);
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);
   const [articles, setArticles] = useState([]);
@@ -203,18 +204,23 @@ const Container = (props) => {
     const data = {
       title,
       layout,
-      status
+      status,
+      articlesOffset
     };
     
     try {
+      let response;
       if (cover) { // Update a cover.
-        const response = await api.cover.put(cover.id, data,
+        response = await api.cover.put(cover.id, data,
           { headers: user.headers }
         );
       } else { // Create a new cover.
-        const response = await api.cover.post(data,
+        response = await api.cover.post(data,
           { headers: user.headers }
         );
+      }
+      if (response.data) {
+        return history.push('/', {type: 'success', message: 'La portada se actualizó correctamente.'});
       }
     } catch (error) {
       console.log(error);
@@ -325,11 +331,11 @@ const Container = (props) => {
           />
         </div>
         <div className="col-12">
-          <input name="status"
-            checked={status}
-            value={status} 
-            onChange={e => setStatus(!e.target.checked)}
+          <input 
             type="checkbox" 
+            name="status"
+            checked={status}
+            onChange={e => setStatus(e.target.checked)}
           />
           <label>Publicar</label>
         </div>

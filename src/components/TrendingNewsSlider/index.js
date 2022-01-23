@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Moment from 'react-moment';
 import { Link } from "react-router-dom";
 import "./styles.scss";
+import LazyImage from '../LazyImage';
 
 const TrendingNewsSlider = ({ articles }) => {
   return (
@@ -12,7 +13,7 @@ const TrendingNewsSlider = ({ articles }) => {
           return <Col key={i} className="single_post post_type3">
             <div className="post_img">
               <div className="img_wrap">
-                <img src={item.image} alt="thumb" width="200px" />
+                <LazyImage src={item.image} alt={item.title} height="200px" />
               </div>
               <span className="tranding">{i + 1}</span>
             </div>

@@ -5,6 +5,7 @@ import Swiper from 'react-id-swiper';
 import api from '../../utils/api';
 import Moment from 'react-moment';
 import "./styles.scss";
+import LazyImage from '../LazyImage';
 
 const MostView = ({ no_margin, title, dark }) => {
   const [swiper, setSwiper] = useState(null);
@@ -55,7 +56,7 @@ const MostView = ({ no_margin, title, dark }) => {
               <div className="single_post widgets_small type8">
                 <div className="post_img">
                   <div className="img_wrap">
-                    <img src={item.image} alt="thumb" />
+                    <LazyImage src={item.image} alt={item.title} height="77px" />
                   </div>
                 </div>
                 <div className="single_post_text">

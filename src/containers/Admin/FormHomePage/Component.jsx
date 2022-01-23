@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { useDrag } from "react-dnd";
 import { COMPONENT } from "./constants";
+import { useDispatch, useSelector } from "react-redux";
+import { setArticlesOffset } from "../../../store/actions/index";
 
 const style = {
   border: "1px dashed black",
@@ -10,6 +12,8 @@ const style = {
 };
 const Component = ({ data, components, path }) => {
   const ref = useRef(null);
+  const dispatch = useDispatch();
+  const { articlesOffset } = useSelector(state => state.meta);
 
   const [{ isDragging }, drag] = useDrag({
     item: { type: COMPONENT, id: data.id, path },
@@ -21,9 +25,11 @@ const Component = ({ data, components, path }) => {
   const opacity = isDragging ? 0 : 1;
   drag(ref);
 
-  //const component = components[data.id];
+  // Save ids of articles in redux.
+  if (data.data && !articlesOffset.includes(data.data.idShort)) {
+    dispatch(setArticlesOffset(data.data.idShort));
+  }
 
-  console.log(data);
   return (
     <div
       ref={ref}

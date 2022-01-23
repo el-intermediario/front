@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import './style.scss';
 import LazyImage from '../LazyImage';
+import api from '../../utils/api';
 
 const OneTwoItemsFeatured = ({className, dark, data}) => {
     return (

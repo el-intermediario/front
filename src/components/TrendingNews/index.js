@@ -1,97 +1,98 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Heading from "../uiStyle/Heading";
 import TrendingNewsSlider from "../TrendingNewsSlider";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Moment from 'react-moment';
 import FontAwesome from "../uiStyle/FontAwesome";
 import api from '../../utils/api';
+import LazyImage from '../LazyImage';
 
-const TrendingNews = ({dark}) => {
-    const [headArticles, setHeadArticles] = useState([]);
-    const [bodyArticles, setBodyArticles] = useState([]);
+const TrendingNews = ({ dark }) => {
+  const [headArticles, setHeadArticles] = useState([]);
+  const [bodyArticles, setBodyArticles] = useState([]);
 
-    useEffect(() => {
-        fetchArticles();
-    }, []);
+  useEffect(() => {
+    fetchArticles();
+  }, []);
 
-    const fetchArticles = async () => {
-        const params = { query: `?limit=8&page=0` };
-        const response = await api.article.getArticlesOffset(params,
-            { headers: { 'Content-Type': 'application/json' } }
-        );
-
-        if (response.data) {
-            setBodyArticles(response.data.slice(2, 8));
-            setHeadArticles(response.data.slice(0, 2));
-        } 
-    }
-
-    return (
-        <Fragment>
-            <Heading title="Tendencias"/>
-            <TrendingNewsSlider articles={headArticles} />
-            {dark ? <div className="border_white"/> : <div className="border_black"/>}
-            <div className="space-30"/>
-            <div className="row">
-                <div className="col-lg-6">
-                    {bodyArticles.slice(0,3).map((item, i) => (
-                        <Fragment key={i}>
-                            <div className="single_post widgets_small">
-                                <div className="post_img">
-                                    <div className="img_wrap">
-                                        <img src={item.image} alt="thumb"/>
-                                    </div>
-                                    <span className="tranding">
-									<FontAwesome name="bolt"/>
-								</span>
-                                </div>
-                                <div className="single_post_text">
-                                    <div className="meta2">
-                                        <Link to="#">{item.copete}</Link>
-                                        <Link to="#">
-                                            <Moment format="ll" locale="es" unix>{item.created}</Moment>
-                                        </Link>
-                                    </div>
-                                    <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
-                                </div>
-                            </div>
-                            <div className="space-15"/>
-                            {dark ? <div className="border_white"/> : <div className="border_black"/>}
-                            <div className="space-15"/>
-                        </Fragment>
-                    ))}
-                </div>
-                <div className="col-lg-6">
-                    {bodyArticles.slice(3, 6).map((item, i) => (
-                        <Fragment key={i}>
-                            <div className="single_post widgets_small">
-                                <div className="post_img">
-                                    <div className="img_wrap">
-                                        <img src={item.image} alt="thumb"/>
-                                    </div>
-                                    <span className="tranding">
-									<FontAwesome name="bolt"/>
-								</span>
-                                </div>
-                                <div className="single_post_text">
-                                    <div className="meta2">
-                                        <Link to="#">{item.copete}</Link>
-                                        <Link to="#">
-                                            <Moment format="ll" locale="es" unix>{item.created}</Moment>
-                                        </Link>
-                                    </div>
-                                    <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
-                                </div>
-                            </div>
-                            <div className="space-15"/>
-                            {dark ? <div className="border_white"/> : <div className="border_black"/>}
-                            <div className="space-15"/>
-                        </Fragment>
-                    ))}
-                </div>
-            </div>
-        </Fragment>
+  const fetchArticles = async () => {
+    const params = { query: `?limit=8&page=0` };
+    const response = await api.article.getArticlesOffset(params,
+      { headers: { 'Content-Type': 'application/json' } }
     );
+
+    if (response.data) {
+      setBodyArticles(response.data.slice(2, 8));
+      setHeadArticles(response.data.slice(0, 2));
+    }
+  }
+
+  return (
+    <Fragment>
+      <Heading title="Tendencias" />
+      <TrendingNewsSlider articles={headArticles} />
+      {dark ? <div className="border_white" /> : <div className="border_black" />}
+      <div className="space-30" />
+      <div className="row">
+        <div className="col-lg-6">
+          {bodyArticles.slice(0, 3).map((item, i) => (
+            <Fragment key={i}>
+              <div className="single_post widgets_small">
+                <div className="post_img">
+                  <div className="img_wrap">
+                    <LazyImage src={item.image} alt={item.title} height="77px" />
+                  </div>
+                  <span className="tranding">
+                    <FontAwesome name="bolt" />
+                  </span>
+                </div>
+                <div className="single_post_text">
+                  <div className="meta2">
+                    <Link to="#">{item.copete}</Link>
+                    <Link to="#">
+                      <Moment format="ll" locale="es" unix>{item.created}</Moment>
+                    </Link>
+                  </div>
+                  <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
+                </div>
+              </div>
+              <div className="space-15" />
+              {dark ? <div className="border_white" /> : <div className="border_black" />}
+              <div className="space-15" />
+            </Fragment>
+          ))}
+        </div>
+        <div className="col-lg-6">
+          {bodyArticles.slice(3, 6).map((item, i) => (
+            <Fragment key={i}>
+              <div className="single_post widgets_small">
+                <div className="post_img">
+                  <div className="img_wrap">
+                    <LazyImage src={item.image} alt={item.title} height="77px" />
+                  </div>
+                  <span className="tranding">
+                    <FontAwesome name="bolt" />
+                  </span>
+                </div>
+                <div className="single_post_text">
+                  <div className="meta2">
+                    <Link to="#">{item.copete}</Link>
+                    <Link to="#">
+                      <Moment format="ll" locale="es" unix>{item.created}</Moment>
+                    </Link>
+                  </div>
+                  <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
+                </div>
+              </div>
+              <div className="space-15" />
+              {dark ? <div className="border_white" /> : <div className="border_black" />}
+              <div className="space-15" />
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </Fragment>
+  );
 };
 
 export default TrendingNews;

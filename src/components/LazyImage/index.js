@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";
+import api from "../../utils/api";
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -55,7 +56,7 @@ const LazyImage = ({ src, alt, height}) => {
         <StyledImage
           onLoad={removePlaceholder}
           onError={removePlaceholder}
-          src={src}
+          src={`${api.space}${src}`}
           alt={alt}
         />
       </LazyLoad>

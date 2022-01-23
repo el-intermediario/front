@@ -40,7 +40,6 @@ const ReferenceArticle = (props) => {
         // <iframe width={width} height={height} src={item.src} frameborder="0"></iframe>
       )
     case 'IMAGE':
-      console.log(item);
       return (
         <img src={item.src} width={item.width} height={item.height} />
       )  

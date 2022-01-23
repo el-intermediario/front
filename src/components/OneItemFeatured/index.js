@@ -15,7 +15,7 @@ const OneItemFeatured = ({ className, dark, data }) => {
                 <div className="post_img gradient1">
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
-                      <LazyImage src={`${api.space}${item.data.image}`} height="520px" alt={item.data.title} />
+                      <LazyImage src={item.data.image} height="520px" alt={item.data.title} />
                     </Link>
                   </div>
                 </div>
