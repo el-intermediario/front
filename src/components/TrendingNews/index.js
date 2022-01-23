@@ -7,7 +7,7 @@ import FontAwesome from "../uiStyle/FontAwesome";
 import api from '../../utils/api';
 import LazyImage from '../LazyImage';
 
-const TrendingNews = ({ dark }) => {
+const TrendingNews = ({ dark, offset }) => {
   const [headArticles, setHeadArticles] = useState([]);
   const [bodyArticles, setBodyArticles] = useState([]);
 
@@ -16,7 +16,7 @@ const TrendingNews = ({ dark }) => {
   }, []);
 
   const fetchArticles = async () => {
-    const params = { query: `?limit=8&page=0` };
+    const params = { query: `?limit=8&page=0&offset=${offset.slice(',')}` };
     const response = await api.article.getArticlesOffset(params,
       { headers: { 'Content-Type': 'application/json' } }
     );

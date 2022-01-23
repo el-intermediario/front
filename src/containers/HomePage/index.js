@@ -41,6 +41,7 @@ import Ad from '../../components/Ad';
 const HomePage = () => {
   const [layout, setLayout] = useState([]);
   const [ads, setAds] = useState([]);
+  const [articlesOffset, setArticlesOffset] = useState([]);
 
   useEffect(() => {
     fetchCover();
@@ -55,6 +56,7 @@ const HomePage = () => {
         
       if (response.data) {
         setLayout(response.data.layout);
+        setArticlesOffset(response.data.articlesOffset);
       }
     } catch (error) {
       console.log(error);
@@ -153,7 +155,7 @@ const HomePage = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-8">
-            <TrendingNews />
+            {articlesOffset.length > 0 && <TrendingNews offset={articlesOffset} />}
           </div>
           <div className="col-md-12 col-lg-4">
 
@@ -190,7 +192,7 @@ const HomePage = () => {
               <div className="entertrainment_carousel mb30 grid-news">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    <GridNews gridColumns="4" title="Economia" qty={6} />
+                    {articlesOffset.length > 0 && <GridNews gridColumns="4" title="Economia" qty={6}  offset={articlesOffset} />}
                   </div>
                 </div>
               </div>
@@ -213,7 +215,7 @@ const HomePage = () => {
               <div className="entertrainment_carousel mb30 grid-news">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    <GridNews gridColumns="6" title="Economia" qty={4} />
+                    {articlesOffset.length > 0 && <GridNews gridColumns="6" title="Economia" qty={4} offset={articlesOffset} />}
                   </div>
                 </div>
               </div>
