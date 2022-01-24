@@ -3,50 +3,50 @@ import { ROW, COLUMN } from "./constants";
 
 const initialData = {
   layout: [
-    {
-      type: ROW,
-      id: "article",
-      children: [
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-      ]
-    },
-    {
-      type: ROW,
-      id: "covid19",
-      children: [
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        },
-      ]
-    },
-    {
-      type: ROW,
-      id: "multiple",
-      children: [
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        }
-      ]
-    },
-    {
-      type: ROW,
-      id: "videos",
-      children: [
-        {
-          type: COLUMN,
-          id: shortid.generate(),
-          children: []
-        }
-      ]
-    },
+    // {
+    //   type: ROW,
+    //   id: "article",
+    //   children: [
+    //     {
+    //       type: COLUMN,
+    //       id: shortid.generate(),
+    //       children: []
+    //     },
+    //   ]
+    // },
+    // {
+    //   type: ROW,
+    //   id: "covid19",
+    //   children: [
+    //     {
+    //       type: COLUMN,
+    //       id: shortid.generate(),
+    //       children: []
+    //     },
+    //   ]
+    // },
+    // {
+    //   type: ROW,
+    //   id: "multiple",
+    //   children: [
+    //     {
+    //       type: COLUMN,
+    //       id: shortid.generate(),
+    //       children: []
+    //     }
+    //   ]
+    // },
+    // {
+    //   type: ROW,
+    //   id: "videos",
+    //   children: [
+    //     {
+    //       type: COLUMN,
+    //       id: shortid.generate(),
+    //       children: []
+    //     }
+    //   ]
+    // },
   ],
   components: {
     component0: { id: "component0", type: "input", content: "Some input" },
