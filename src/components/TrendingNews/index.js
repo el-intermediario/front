@@ -13,8 +13,10 @@ const TrendingNews = ({ dark, offset }) => {
   const [bodyArticles, setBodyArticles] = useState([]);
 
   useEffect(() => {
-    fetchArticles();
-  }, []);
+    if (offset.length > 0) {
+      fetchArticles();
+    }
+  }, [offset]);
 
   const fetchArticles = async () => {
     const params = { query: `?limit=8&page=0&offset=${offset.slice(',')}` };
