@@ -155,7 +155,7 @@ const HomePage = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-8">
-            {articlesOffset && <TrendingNews offset={articlesOffset} />}
+            {articlesOffset && articlesOffset.length > 0 && <TrendingNews offset={articlesOffset} />}
           </div>
           <div className="col-md-12 col-lg-4">
 
@@ -192,7 +192,7 @@ const HomePage = () => {
               <div className="entertrainment_carousel mb30 grid-news">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    {articlesOffset && <GridNews gridColumns="4" title="Economia" qty={6}  offset={articlesOffset} />}
+                    {articlesOffset && articlesOffset.length > 0 && <GridNews gridColumns="4" title="Economia" qty={6}  offset={articlesOffset} />}
                   </div>
                 </div>
               </div>
@@ -215,7 +215,7 @@ const HomePage = () => {
               <div className="entertrainment_carousel mb30 grid-news">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    {articlesOffset && <GridNews gridColumns="6" title="Economia" qty={4} offset={articlesOffset} />}
+                    {articlesOffset && articlesOffset.length > 0 && <GridNews gridColumns="6" title="Economia" qty={4} offset={articlesOffset} />}
                   </div>
                 </div>
               </div>
