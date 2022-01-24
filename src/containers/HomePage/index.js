@@ -143,9 +143,9 @@ const HomePage = () => {
       })}
       <div className="space-10" />
       <div className="container text-center ad-970x250">
-        {ads.map(ad => {
+        {ads.map((ad, k) => {
           if (ad.type === 'featured') {
-            return <Ad imageUrl={ad.image} url={ad.url} title={ad.name} height="230px" />
+            return <Ad key={k} imageUrl={ad.image} url={ad.url} title={ad.name} height="230px" />
           }
         })}
       </div>
@@ -155,15 +155,15 @@ const HomePage = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-8">
-            {articlesOffset.length > 0 && <TrendingNews offset={articlesOffset} />}
+            {articlesOffset && <TrendingNews offset={articlesOffset} />}
           </div>
           <div className="col-md-12 col-lg-4">
 
             <RadioPlayer title="Radio Online" />
             <div>
-            {ads.map(ad => {
+            {ads.map((ad, k) => {
               if (ad.type === 'normal') {
-                return <Ad imageUrl={ad.image} url={ad.url} title={ad.name} height="250px" />
+                return <Ad key={k} imageUrl={ad.image} url={ad.url} title={ad.name} height="250px" />
               }
             })}
             <div className="space-20" />
@@ -192,7 +192,7 @@ const HomePage = () => {
               <div className="entertrainment_carousel mb30 grid-news">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    {articlesOffset.length > 0 && <GridNews gridColumns="4" title="Economia" qty={6}  offset={articlesOffset} />}
+                    {articlesOffset && <GridNews gridColumns="4" title="Economia" qty={6}  offset={articlesOffset} />}
                   </div>
                 </div>
               </div>
@@ -215,7 +215,7 @@ const HomePage = () => {
               <div className="entertrainment_carousel mb30 grid-news">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    {articlesOffset.length > 0 && <GridNews gridColumns="6" title="Economia" qty={4} offset={articlesOffset} />}
+                    {articlesOffset && <GridNews gridColumns="6" title="Economia" qty={4} offset={articlesOffset} />}
                   </div>
                 </div>
               </div>
