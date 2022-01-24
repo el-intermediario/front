@@ -18,12 +18,10 @@ const TrendingNewsSlider = ({ articles }) => {
               <span className="tranding">{i + 1}</span>
             </div>
             <div className="single_post_text">
-              <div className="meta3">
-                <Link to="#" className="field-category">{item.copete}</Link>
-                <Link to="#">
-                  <Moment format="D/MM/YYYY" locale="es" unix>{item.created}</Moment>
-                </Link>
-              </div>
+              <Row xs="auto" className="meta3">
+                <Col>{item.copete}</Col>
+                <Col><Moment format="D  MMM" locale="es" unix>{item.created}</Moment></Col>
+              </Row>
               <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
               <div className="space-10" />
               <p className="post-p">{item.body}</p>

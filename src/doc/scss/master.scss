@@ -1555,6 +1555,7 @@ span.tranding {
   .meta2 {
     margin-bottom: 0;
 
+    .field-category,
     a {
       font-size: 12px;
       position: relative;
@@ -1629,36 +1630,21 @@ span.tranding {
   .meta3 {
     margin-bottom: 10px;
 
-    a {
-      font-size: 14px !important;
-      position: relative;
-      z-index: 2;
-      line-height: 17px;
-      font-weight: 500;
-      margin-bottom: 5px;
+    div {
+      font-family: $font2;
+      font-size: 16px;
+      text-transform: lowercase;
 
       &:first-child {
         color: $secondary_color;
       }
 
       &:last-child {
+        padding-right: 20px;
         margin-left: 20px;
         color: $body_color;
         opacity: .75;
-
-        &:before {
-          position: absolute;
-          content: "/";
-          height: 20px;
-          width: 10px;
-          left: -18px;
-          top: 50%;
-          margin-top: -10px;
-          line-height: 20px;
-          color: $body_color;
-          opacity: .3;
-          text-align: center;
-        }
+        text-align: right;
       }
     }
   }

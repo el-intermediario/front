@@ -6,6 +6,7 @@ import Moment from 'react-moment';
 import FontAwesome from "../uiStyle/FontAwesome";
 import api from '../../utils/api';
 import LazyImage from '../LazyImage';
+import './styles.scss';
 
 const TrendingNews = ({ dark, offset }) => {
   const [headArticles, setHeadArticles] = useState([]);
@@ -33,7 +34,7 @@ const TrendingNews = ({ dark, offset }) => {
       <TrendingNewsSlider articles={headArticles} />
       {dark ? <div className="border_white" /> : <div className="border_black" />}
       <div className="space-30" />
-      <div className="row">
+      <div className="row trending-news">
         <div className="col-lg-6">
           {bodyArticles.slice(0, 3).map((item, i) => (
             <Fragment key={i}>
