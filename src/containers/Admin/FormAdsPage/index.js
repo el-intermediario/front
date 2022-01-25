@@ -33,7 +33,7 @@ const FormAdsPage = () => {
       label: 'Destacada'
     }
   ];
-  const sizes = ["350x250", "390x312", "810x100", "970x250", "1080x840"];
+  const sizes = ["350x250", "390x312", "810x100", "970x250", "1080x840", "portada_superior"];
 
   // Upload Image.
   const uploadImage = async (file, name) => {
@@ -128,8 +128,7 @@ const FormAdsPage = () => {
                         <div className="col-12">
                           <input name="status"
                             checked={status}
-                            value={status} 
-                            onChange={e => setStatus(!e.target.checked)}
+                            onChange={e => setStatus(e.target.checked)}
                             type="checkbox" 
                           />
                           <label>Publicar</label>

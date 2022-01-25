@@ -65,7 +65,7 @@ const HomePage = () => {
 
   const fetchAds = async () => {
     try {
-      const response = await api.ad.getAds({},
+      const response = await api.ad.getAds('',
         { headers: { 'Content-Type': 'application/json' } }
       );
         
@@ -79,6 +79,13 @@ const HomePage = () => {
 
   const handleRow = (row) => {
     switch (row.id) {
+      case 'ad':
+        return <Ad 
+          imageUrl={row.children[0].children[0].data.image}
+          url={row.children[0].children[0].data.url}
+          title={row.children[0].children[0].data.name}
+        />
+        break;
       case 'article':
         if (row.children.length === 1) {
           return <OneItemFeatured className="fifth_bg" data={row.children} />
@@ -138,7 +145,7 @@ const HomePage = () => {
         if (row.id === 'videos') {
           return handleRow(row);
         } else {
-          return <div key={ki} className="row-articles">{handleRow(row)}</div>
+          return <div key={ki} className={`row-${row.id}s`}>{handleRow(row)}</div>
         }
       })}
       <div className="space-10" />
@@ -162,7 +169,7 @@ const HomePage = () => {
             <RadioPlayer title="Radio Online" />
             <div>
             {ads.map((ad, k) => {
-              if (ad.type === 'normal') {
+              if (ad.type === 'normal' && k === 1) {
                 return <Ad key={k} imageUrl={ad.image} url={ad.url} title={ad.name} height="250px" />
               }
             })}

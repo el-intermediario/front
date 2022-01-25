@@ -3,6 +3,7 @@ import { useDrag } from "react-dnd";
 import { COMPONENT } from "./constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setArticlesOffset } from "../../../store/actions/index";
+import api from "../../../utils/api";
 
 const style = {
   border: "1px dashed black",
@@ -26,7 +27,7 @@ const Component = ({ data, components, path }) => {
   drag(ref);
 
   // Save ids of articles in redux.
-  if (data.data && !articlesOffset.includes(data.data.idShort)) {
+  if (data.data && data.data.typeId === 'article' && !articlesOffset.includes(data.data.idShort)) {
     dispatch(setArticlesOffset(data.data.idShort));
   }
 
@@ -36,8 +37,15 @@ const Component = ({ data, components, path }) => {
       style={{ ...style, opacity }}
       className="component draggable"
     >
-      {/* <div>{data.id}</div> */}
-      <div>{data.data && data.data.title}</div>
+      {data.data.typeId === 'article' ? (
+        <div>
+          <div>{data.data && data.data.title || data.data.name}</div>
+          <div>
+            <img src={`${api.space}${data.data.image}`} width="100%"/>
+          </div>
+        </div>
+      ) : null}
+      {data.data.typeId === 'ad' && <img src={`${api.space}${data.data.image}`} />}
     </div>
   );
 };

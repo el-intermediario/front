@@ -85,18 +85,11 @@ const initialData = {
       type: 'sidebarItem'
     },
     {
-      typeId: 'publicidad_350',
-      component: {
-        type: 'Publicidad 350 x 292',
-      },
-      type: 'sidebarItem'
-    },
-    {
       typeId: 'publicidad_728',
       component: {
-        type: 'Publicidad 728 x 90',
+        type: 'Publicidad principal',
       },
-      type: 'sidebarItem'
+      type: 'sidebarItem',
     }
   ]
 };

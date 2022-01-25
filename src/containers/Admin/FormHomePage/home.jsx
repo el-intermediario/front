@@ -76,7 +76,7 @@ const Container = (props) => {
 
   const handleSearchAds = async (value) => {
     try {
-      const response = await api.article.getAdsSearch(`?search=${value}`,
+      const response = await api.ad.getAds(`?sizes=portada_superior`,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -84,9 +84,10 @@ const Container = (props) => {
         const newAds = [];
         response.data.forEach(function (ad) {
           newAds.push({...ad,
+            typeId: 'ad',
             component: {
-              type: ad.title,
-              content: ad.title
+              type: ad.name,
+              content: ad.name
             },
             type: 'sidebarItem'
           })
@@ -248,6 +249,7 @@ const Container = (props) => {
     setLayout([...layout, newBrick]);
   }
 
+  console.log(layout);
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
