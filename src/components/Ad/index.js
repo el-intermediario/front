@@ -11,7 +11,7 @@ const Ad = ({imageUrl, url, title, height}) => {
       </Link>
     )
   }
-  return <LazyImage src={`${api.space}${imageUrl}`} height={height} alt={title} />
+  return <img src={`${api.space}${imageUrl}`} height={height} alt={title} />
 }
 
 export default Ad;

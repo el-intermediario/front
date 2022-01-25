@@ -19,6 +19,7 @@ import { useHistory } from 'react-router-dom';
 import {SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
 import CoverModal from "../../../components/CoverModal";
+import { Button, ButtonGroup } from "reactstrap";
 
 const Container = (props) => {
   const history = useHistory();
@@ -74,9 +75,9 @@ const Container = (props) => {
     }
   };
 
-  const handleSearchAds = async (value) => {
+  const handleSearchAds = async (value, size) => {
     try {
-      const response = await api.ad.getAds(`?sizes=portada_superior`,
+      const response = await api.ad.getAds(`?sizes=${size}`,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -265,14 +266,20 @@ const Container = (props) => {
             <SideBarItem key={article.id} data={article} />
           ))}
           <div className="">
-            <input name="search-ad" value={searchAd} onChange={e => handleSearchAds(e.target.value)}
-              type="text"
-              placeholder="Buscar publicidad" />
+            <ButtonGroup>
+              <Button color="primary" onClick={e => handleSearchAds(e.target.value, 'portada_superior')}>
+                Publi Horizontal
+              </Button>
+              <Button color="info" onClick={e => handleSearchAds(e.target.value, '350x250')}>
+                Publi Cuadrada
+              </Button>
+            </ButtonGroup>
           </div>
           {ads.map((ad, index) => (
             <SideBarItem key={ad.id} data={ad} />
           ))}
-          <div className="">
+
+          {/* <div className="">
             <h4>Agregar bloque de:</h4>
             <div>
               <input name="topic" value={topic} onChange={e => setTopic(e.target.value)}
@@ -283,8 +290,9 @@ const Container = (props) => {
             <div>
               <button type="submit" className="cbtn1" type="submit" onClick={handleBrickTopic}>Agregar</button>
             </div>
-          </div>
-          <div className="">
+          </div> */}
+
+          {/* <div className="">
             <div>
               <h4>Bloques:</h4>
             </div>
@@ -293,7 +301,7 @@ const Container = (props) => {
                 return <SideBarItem key={brick.typeId} data={brick} />
               })}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="pageContainer">

@@ -49,6 +49,8 @@ const LazyImage = ({ src, alt, height}) => {
     height: height,
   };
 
+  return <img  style={styles} src={`${api.space}${src}`} alt={alt} />
+
   return (
     <ImageWrapper style={styles}>
       <Placeholder ref={refPlaceholder} />

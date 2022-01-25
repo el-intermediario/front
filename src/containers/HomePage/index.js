@@ -148,14 +148,6 @@ const HomePage = () => {
           return <div key={ki} className={`row-${row.id}s`}>{handleRow(row)}</div>
         }
       })}
-      <div className="space-10" />
-      <div className="container text-center ad-970x250">
-        {ads.map((ad, k) => {
-          if (ad.type === 'featured') {
-            return <Ad key={k} imageUrl={ad.image} url={ad.url} title={ad.name} height="230px" />
-          }
-        })}
-      </div>
       <div className="space-30" />
 
       {/* <FeaturedNews /> */}
