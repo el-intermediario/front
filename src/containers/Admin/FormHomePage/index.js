@@ -15,8 +15,10 @@ const FormHomePage = () => {
   useEffect(() => {
     if (params.includes('edit')) {
       fetchHome();
+    } else {
+      setCover(null);
     }
-  }, [])
+  }, [params.includes('edit')]);
 
   const fetchHome = async () => {
     try {

@@ -46,6 +46,10 @@ const Container = (props) => {
       setTitle(props.cover.title);
       setStatus(props.cover.status);
       setLayout(props.cover.layout);
+    } else {
+      setCover(null);
+      setTitle('');
+      setLayout(initialLayout);
     }
   }, [props])
 
@@ -250,7 +254,6 @@ const Container = (props) => {
     setLayout([...layout, newBrick]);
   }
 
-  console.log(layout);
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
