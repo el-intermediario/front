@@ -7,22 +7,24 @@ body {
 .home-edit .body {
   display: flex;
   flex-direction: row;
+  
+  .sideBar {
+    flex: 0 0 1;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+    background: #fff;
+    
+    h4 {
+      font-size: 18px;
+      padding: 4px;
+      border: 1px dotted #e1e1e1;
+      background: #fff;
+    }
+  }
 }
 
-.home-edit .sideBar {
-  flex: 0 0 1;
-  width: 300px;
-  padding: 10px;
-  border: 1px solid #e1e1e1;
-  background: #fff;
-}
 
-.home-edit .sideBar h4 {
-  font-size: 18px;
-  padding: 4px;
-  border: 1px dotted #e1e1e1;
-  background: #fff;
-}
 
 .home-edit .sideBarItem {
   border: 1px solid #000;
@@ -33,39 +35,55 @@ body {
   cursor: pointer;
 }
 
-.home-edit .page {
-  flex: 1 1 auto;
-  padding: 0 20px;
-  margin: 20px;
-  border: 1px solid #666;
-}
+.home-edit .pageContainer {
+  overflow: scroll;
+  height: 550px;
 
-.home-edit .dropZone {
-  background: url('./dropzone.png');
-  flex: 0 0 auto;
-  height: 25px;
-  transition: 200ms all;
-}
+  .row {
+    border: 4px solid #999;
+    padding: 0;
+    position: relative;
 
-.home-edit .dropZone:nth-of-type(2n) {
-  display: none;
-}
+    span {
+      position: absolute;
+      top: -10;
+      color: #fff;
+    }
+  }
+  
+  .page {
+    flex: 1 1 auto;
+    padding: 0 20px;
+    margin: 0 20px 20px;
+    border: 1px solid #666;
+    
+    .dropZone {
+      background: url('./dropzone.png');
+      flex: 0 0 auto;
+      height: 25px;
+      transition: 200ms all;
+    }
 
-.home-edit .dropZone.horizontalDrag {
-  width: 40px;
-  height: auto;
+    .dropZone:nth-of-type(2n) {
+      display: none;
+    }
+    
+    .dropZone.horizontalDrag {
+      width: 40px;
+      height: auto;
+    }
+    
+    .dropZone:not(.horizontalDrag).isLast {
+      flex: 1 1 auto;
+    }
+    
+    .dropZone.active,
+    .trashDropZone.active {
+      background: #00a2ff;
+      transition: 100ms all;
+    }
+  }
 }
-
-.home-edit .dropZone:not(.horizontalDrag).isLast {
-  flex: 1 1 auto;
-}
-
-.home-edit .dropZone.active,
-.home-edit .trashDropZone.active {
-  background: #00a2ff;
-  transition: 100ms all;
-}
-
 
 .home-edit .component {
   padding: 10px;
@@ -80,7 +98,7 @@ body {
 
 .home-edit .columns {
   display: flex;
-  padding: 20px 0 4px;
+  padding: 4px 0;
 }
 
 .home-edit .columnContainer {
@@ -91,20 +109,6 @@ body {
   padding: 0.5rem 1rem;
   background-color: white;
   cursor: move;
-}
-
-.home-edit .pageContainer {
-  .row {
-    border: 4px solid #999;
-    padding: 0;
-    position: relative;
-
-    span {
-      position: absolute;
-      top: -10;
-      color: #fff;
-    }
-  }
 }
 
 .home-edit .trashDropZone {
