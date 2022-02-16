@@ -14,22 +14,12 @@
           .meta {
             position: relative;
             background-color: $secondary_color;
+            border-radius: 6px;
             color: $white;
             text-transform: uppercase;
             display: inline;
-            padding: 0 10px 0 5px;
-
-            &::after {
-              position: absolute;
-              left: -22px;
-              content: "";
-              top: 10px;
-              border-bottom: 12px solid transparent;
-              border-left: 10px solid transparent;
-              border-top: 10px solid transparent;
-              border-right: 12px solid #14A5C0;
-              transform: skewY(-45deg);
-            }
+            padding: 10px 14px;
+            font-size: 20px;
           }
         }
       }

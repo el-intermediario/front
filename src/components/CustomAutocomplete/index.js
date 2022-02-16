@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import api from "../../utils/api";
 import Autocomplete from 'react-autocomplete';
 
-const CustomAutocomplete = ({handleItemSelected, searchValue}) => {
-  const [valueSearch, setValueSearch] = useState(searchValue);
+const CustomAutocomplete = ({handleItemSelected, initialSearch}) => {
+  const [valueSearch, setValueSearch] = useState('');
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,13 @@ const CustomAutocomplete = ({handleItemSelected, searchValue}) => {
     }, 1000)
 
     return () => clearTimeout(delayDebounceFn)
-  }, [valueSearch])
+  }, [valueSearch]);
+  
+  useEffect(() => {
+    if (!initialSearch) {
+      setValueSearch('');
+    }
+  }, [initialSearch]);
 
   return (
     <Autocomplete

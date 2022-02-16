@@ -69,6 +69,15 @@ const FormArticlePage = (props) => {
   useEffect(() => {
     if (id) {
       fetchArticle(id);
+    } else {
+      setTitle('');
+      setBodyHtml('');
+      setBodyJson(null);
+      setType('normal');
+      setDropline('');
+      setCopete('');
+      setSource('');
+      setTags([]);
     }
   }, [id]);
 
