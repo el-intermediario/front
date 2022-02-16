@@ -15,17 +15,20 @@
   }
 }
 
-.rdw-editor-wrapper {
-  .rdw-option-wrapper {
-    min-width: 35px;
-    height: 30px;
-  }
+.field-editor {
+    .rdw-editor-wrapper {
+      .rdw-option-wrapper {
+        min-width: 35px;
+        height: 30px;
+      }
+      .rdw-editor-main {
+        min-height: 200px;
+        font-family: "Verdana, Geneva, sans-serif";
+      }
+    }
 }
 
-.rdw-editor-main {
-  min-height: 200px;
-  font-family: "Verdana, Geneva, sans-serif";
-}
+
 
 .button-modal {
   .rdw-dropdown-optionwrapper {

@@ -13,9 +13,9 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import 'react-simple-tree-menu/dist/main.css';
 import { useHistory, useParams } from 'react-router-dom';
 import es from './es.js';
-import ReferenceArticle from './plugins/ReferenceArticle';
+import CustomBlock from './plugins/CustomBlock';
 import ArticleReferenceBtn from './plugins/ArticleReferenceBtn';
-import "./editor.scss";
+import "./styles.scss";
 import UploadImage from '../../../components/UploadImage/uploadImage';
 
 const FormArticlePage = (props) => {
@@ -234,7 +234,7 @@ const FormArticlePage = (props) => {
   const mediaBlockRenderer = (block) => {
     if (block.getType() === 'atomic') {
       return {
-        component: ReferenceArticle,
+        component: CustomBlock,
         editable: false,
         props: { data : null},
       };
@@ -261,7 +261,7 @@ const FormArticlePage = (props) => {
                   <div className="col-12">
                     <h3>{id ? 'Editar' : 'Crear'} nota!</h3>
                   </div>
-                  <div className="col-12">
+                  <div className="col-12 field-title">
                     <form onSubmit={submitHandler}>
                       <div className="row">
                         <div className="col-lg-12">
@@ -270,17 +270,19 @@ const FormArticlePage = (props) => {
                             placeholder="Titulo" />
                           {validator.message('Titulo', title, 'required')}
                         </div>
-                        <div className="col-lg-12">
+                      </div>
+                      <div className="row">  
+                        <div className="col-lg-6 field-copete">
                           <input name="copete" value={copete} onChange={e => setCopete(e.target.value)}
                             type="text"
                             placeholder="Copete" />
                         </div>
-                        <div className="col-lg-12">
+                        <div className="col-lg-6 field-dropline">
                           <input name="dropline" value={dropline} onChange={e => setDropline(e.target.value)}
                             type="text"
                             placeholder="Volanta" />
                         </div>
-                        <div className="col-12" id="editor">
+                        <div className="col-12 field-editor" id="editor">
                           <Editor
                             localization={{
                               locale: 'es',
@@ -335,15 +337,15 @@ const FormArticlePage = (props) => {
               </div>
             </div>
             <div className="col-lg-4">
-              <div className="col-12">
-                <label>Seccion: </label>
+              <div className="col-12 field-section">
+                <label>Seccion</label>
                 <select onChange={(e) => setSection(e.target.value)}>
                   <option selectedvalue="santa_cruz">Santa Cruz</option>
                   <option value="patagonia">Patagonia</option>
                   <option value="argentina">Argentina</option>
                 </select>
               </div>
-              <div className="col-lg-12">
+              <div className="col-lg-12 field-category">
                 {id && category ? (
                   <TreeMenu
                     cacheSearch
@@ -371,7 +373,7 @@ const FormArticlePage = (props) => {
                   />
                 ) : null}
               </div>
-              <div className="col-12">
+              <div className="col-12 field-type">
                 <label>Tipo de nota: </label>
                 <select onChange={(e) => setType(e.target.value)}>
                   <option selectedvalue="normal">Normal</option>
@@ -379,12 +381,12 @@ const FormArticlePage = (props) => {
                   <option value="sponsor">Sponsoreada</option>
                 </select>
               </div>
-              <div className="col-12">
+              <div className="col-12 field-source">
                 <input name="source" value={source} onChange={e => setSource(e.target.value)}
                   type="text"
                   placeholder="Fuente" />
               </div>
-              <div className="col-12">
+              <div className="col-12 field-tags">
                 <ReactTags
                   //ref={reactTags}
                   tags={tags}
@@ -397,7 +399,7 @@ const FormArticlePage = (props) => {
                   minQueryLength={3}
                 />
               </div>
-              <div className="col-12">
+              <div className="col-12 field-status">
                 <input 
                   checked={status}
                   name="status"
