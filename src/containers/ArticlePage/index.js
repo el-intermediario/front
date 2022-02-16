@@ -71,29 +71,32 @@ const ArticlePage = () => {
 	return (
 		<Fragment>
 			<div className="archives post post1 page-article">
-				<BreadCrumb className="shadow5 padding-top-30" title={data && data.title} />
+				<BreadCrumb className="shadow5 padding-top-10" title={data && data.title} />
 				<div className="container">
-					<div className="row">
-						<div className="col-md-6 col-lg-8">
-							<div className="shadow6">
+          <div className="row">
+            <div className="col-md-12 col-lg-12 page-content">
+              <div className="shadow6">
 								<div className="padding20 white_bg">
-									<div className="row">
-										<div className="col-12">
-											<div className="page_comments">
-												<ul className="inline">
-													<li className="page_category">{data && data.copete}</li>
-													{/* <li><FontAwesome name="comment" />563</li> */}
-													<li><FontAwesome name="calendar" />{data && <Moment format="dddd D, MMMM YYYY" locale="es">{data.created}</Moment>}</li>
-												</ul>
-											</div>
-										</div>
+									<div className="row field-copete-date">
+										<div className="col-8 field-copete">{data && data.copete}</div>
+										<div className="col-4 field-date">{data && <Moment format="dddd D, MMMM YYYY" locale="es" unix>{data.created}</Moment>}</div>
 									</div>
 									<div className="single_post_heading">
-										<h1>{data && data.title}</h1>
+                    <div className="space-10" />
+										<h1 className="field-title">{data && data.title}</h1>
 										<div className="space-10" />
-										<p>{data && data.dropline}</p>
+										<p className="field-dropline">{data && data.dropline}</p>
 									</div>
-									{/* <div className="row">
+                </div>
+              </div>    
+            </div>
+          </div>
+          <div className="space-20" />
+					<div className="row">
+						<div className="col-md-6 col-lg-8 page-content">
+							<div className="shadow6">
+								{/* <div className="padding20 white_bg">
+									<div className="row">
 										<div className="col-lg-6 align-self-center">
 											<div className="author">
 												<div className="author_img">
@@ -118,25 +121,30 @@ const ArticlePage = () => {
 												</ul>
 											</div>
 										</div>
-									</div> */}
-								</div>
+									</div>
+								</div> */}
 								<img src={data && `${api.space}${data.image}`} alt="thumb" />
 								<div className="padding20 white_bg">
 									<div className="space-20" />
 										{data && parse(data.body)}
 									<div className="space-40" />
 									<div className="share-buttons">
-										<TwitterShareButton title={data && data.title} url={window.location.href}><TwitterIcon /></TwitterShareButton>
-										<FacebookShareButton quote={data && data.title} url={window.location.href}><FacebookIcon /></FacebookShareButton>
-										<WhatsappShareButton title={data && data.title} url={window.location.href}><WhatsappIcon /></WhatsappShareButton>
+										<TwitterShareButton title={data && data.title} url={window.location.href}>
+											<TwitterIcon size={48}/>
+										</TwitterShareButton>
+										<FacebookShareButton quote={data && data.title} url={window.location.href}>
+											<FacebookIcon size={48} />
+										</FacebookShareButton>
+										<WhatsappShareButton title={data && data.title} url={window.location.href}>
+											<WhatsappIcon size={48} />
+										</WhatsappShareButton>
 									</div>
-									<div className="space-40" />
 								</div>
 							</div>
 							<div className="space-30" />
 							{/* <PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" /> */}
 						</div>
-						<div className="col-md-6 col-lg-4">
+						<div className="col-md-6 col-lg-4 page-sidebar">
 							{articlesRelated.length > 0 ? (
 								<RelatedTabs data={articlesRelated} />
 							) : null}

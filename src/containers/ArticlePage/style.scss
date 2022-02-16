@@ -1,22 +1,55 @@
 @import "../../doc/scss/colors.scss";
+@import "../../doc/scss/fonts.scss";
 
 .page-article {
-  blockquote {
-    border: 2px dashed $secondary_color;
-    padding: 20px 10px !important;
-    text-align: center;
-    color: $secondary_color !important;
+  .page-content {
+    .field-copete-date {
+      font-family: $font2;
 
-    span {
-      font-size: 18px !important;
-      padding: 0;
-      color: $secondary_color !important;
-      font-weight: 700;
+      .field-date {
+        text-align: right;
+        font-size: 14px;
+        color: #999;
+      }
     }
 
-    .public-DraftStyleDefault-ltr {
+    .single_post_heading {
+      h1.field-title {
+        color: $secondary_color;
+      }
+
+      .field-dropline {
+        font-family: $font2;
+      }
+    }
+
+    blockquote {
+      border: 2px dashed $secondary_color;
+      padding: 20px 10px !important;
       text-align: center;
-      margin: 0;
+      color: $secondary_color !important;
+  
+      span {
+        font-size: 18px !important;
+        padding: 0;
+        color: $secondary_color !important;
+        font-weight: 700;
+      }
+  
+      .public-DraftStyleDefault-ltr {
+        text-align: center;
+        margin: 0;
+      }
+    }
+    
+    .share-buttons {
+      display: flex;
+      grid-gap: 10px;
     }
   }
+
+  .page-sidebar {
+
+  }
+
 }

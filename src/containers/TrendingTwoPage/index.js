@@ -131,7 +131,7 @@ const TrendingTwoPage = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <div className="bridcrumb"><Link to="/">Home</Link> / Categories / Sports</div>
+                            <div className="breadcrumb"><Link to="/">Home</Link> / Categories / Sports</div>
                         </div>
                     </div>
                     <div className="space-30"/>

@@ -21,7 +21,7 @@ const AudioPostTwoHThreePage = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-12 col-md-10 col-lg-8 m-auto">
-                                <div className="bridcrumb"><Link to="/">Home</Link> / Archive / post 1</div>
+                                <div className="breadcrumb"><Link to="/">Home</Link> / Archive / post 1</div>
                             </div>
                         </div>
                         <div className="space-30"/>

@@ -19,7 +19,7 @@ const AudioPostTwoHTwoPage = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-md-10 col-lg-8 m-auto">
-                            <div className="bridcrumb"><Link to="/">Home</Link> / Archive / Audio Post 1</div>
+                            <div className="breadcrumb"><Link to="/">Home</Link> / Archive / Audio Post 1</div>
                             <span className="space-30"/>
                             <div className="audio_post">
                                 <iframe

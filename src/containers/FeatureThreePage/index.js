@@ -79,7 +79,7 @@ const FeatureThreePage = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <div className="bridcrumb"><Link to="/">Home</Link> / Categories / Features</div>
+                            <div className="breadcrumb"><Link to="/">Home</Link> / Categories / Features</div>
                         </div>
                     </div>
                     <div className="space-30"/>
