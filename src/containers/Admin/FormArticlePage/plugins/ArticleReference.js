@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { EditorState, AtomicBlockUtils } from 'draft-js';
 import CustomAutocomplete from "../../../../components/CustomAutocomplete";
 
-const ArticleReferenceBtn = ({ editorState, onChange }) => {
+const ArticleReference = ({ editorState, onChange }) => {
   const [open, setOpen] = useState(false);
   const [articleReferenceSelected, setArticleReferenceSelected] = useState(null);
   const [initialSearch, setInitialSearch] = useState(true);
@@ -42,15 +42,19 @@ const ArticleReferenceBtn = ({ editorState, onChange }) => {
           handleItemSelected={(data) => setArticleReferenceSelected(data)}
           initialSearch={initialSearch}
         />
-        <button onMouseDown={confirmReference}>
-          Confirmar
-        </button>
-        <button onMouseDown={() => {setOpen(false)}}>
-          x
-        </button>
+        <div className="col-12 field-actions">
+          <button onMouseDown={confirmReference}>
+            Confirmar
+          </button>
+          <button
+            className="close"
+            onMouseDown={() => {setOpen(false)}}>
+            x
+          </button>
+        </div>
       </div>
     </div>
   )
 };
 
-export default ArticleReferenceBtn;
+export default ArticleReference;

@@ -1,4 +1,5 @@
 @import "../../../doc/scss/colors.scss";
+@import "../../../doc/scss/fonts.scss";
 
 .block-reference {
   border: 1px dashed $secondary_color;
@@ -15,8 +16,46 @@
   }
 }
 
+.block-quote {
+  background: $secondary_color;
+  border-radius: 6px;
+  padding: 10px;
+  color: white;
+  text-align: center;
+
+  .field-message {
+    font-size: 22px;
+    font-family: $font1;
+  }
+
+  .field-author {
+    font-size: 18px;
+  }
+}
+
 .field-editor {
     .rdw-editor-wrapper {
+      .rdw-editor-toolbar {
+        .field-actions {
+          display:flex;
+          justify-content: space-between;
+
+          button {
+            background: $secondary_color;
+            border-radius: 6px;
+            border: 0;
+            color: white;
+            cursor: pointer;
+            
+            &.close {
+              background: $close_color;
+              padding: 0 10px;
+            }
+          }
+
+        }
+      }
+
       .rdw-option-wrapper {
         min-width: 35px;
         height: 30px;

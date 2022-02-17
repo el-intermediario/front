@@ -14,9 +14,10 @@ import 'react-simple-tree-menu/dist/main.css';
 import { useHistory, useParams } from 'react-router-dom';
 import es from './es.js';
 import CustomBlock from './plugins/CustomBlock';
-import ArticleReferenceBtn from './plugins/ArticleReferenceBtn';
+import ArticleReference from './plugins/ArticleReference';
 import "./styles.scss";
 import UploadImage from '../../../components/UploadImage/uploadImage';
+import BlockQuote from './plugins/BlockQuote';
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
@@ -295,7 +296,8 @@ const FormArticlePage = (props) => {
                             onEditorStateChange={onEditorStateChange}
                             toolbarCustomButtons={[
                               <CustomOption />, 
-                              <ArticleReferenceBtn />
+                              <ArticleReference />,
+                              <BlockQuote />
                             ]}
                             hashtag={{
                               separator: ' ',

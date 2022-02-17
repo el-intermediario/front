@@ -30,8 +30,14 @@ const CustomBlock = (props) => {
             <div className="space-15"/>
           </Fragment>
         </div>
-      )
-    break;
+      );
+      case 'QUOTE':
+        return (
+          <div key={item.id} className="block-quote">
+            <div className="field-message">{item.message}</div>
+            <div className="field-author">{item.author}</div>
+          </div>
+        );  
     case 'EMBEDDED_LINK':
       const width = !item.width ? '80%' : item.width;
       const height = !item.height ? '100%' : item.height;
@@ -47,7 +53,6 @@ const CustomBlock = (props) => {
       return (
         <div>El embedded no se pudo renderizar.</div>
       )
-      break;  
   }
 };
 
