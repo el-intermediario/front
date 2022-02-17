@@ -207,7 +207,6 @@ const FormArticlePage = (props) => {
   }
 
   const embedCallBack = (link) => {
-    console.log(link);
     if (link.indexOf("youtube") >= 0){
         link = link.replace("watch?v=","embed/");
         link = link.replace("/watch/", "/embed/");
@@ -246,7 +245,6 @@ const FormArticlePage = (props) => {
 
   // Upload Image.
   const uploadImage = async (file, name) => {
-    console.log(file);
     setCroppedImage({file, name});
   }
 
@@ -324,6 +322,7 @@ const FormArticlePage = (props) => {
                         </div>
                         <div className="col-12">
                           <UploadImage handleImage={uploadImage} handleCrop={true} />
+                          {image && id && <img src={`${api.space}${image}`} width="200px" />}
                         </div>
                         <div className="col-12">
                           <div className="space-20" />

@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import BreadCrumb from "../../components/BreadCrumb";
-import FontAwesome from "../../components/uiStyle/FontAwesome";
 import { useLocation } from "react-router";
 import { Link, useParams } from "react-router-dom";
 import BannerSection from "../../components/BannerSection";
