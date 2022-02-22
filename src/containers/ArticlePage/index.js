@@ -23,13 +23,21 @@ import TrendingArticles from '../../components/TrendingArticles';
 import './style.scss';
 import Moment from 'react-moment';
 import MostView from '../../components/MostView';
+import { Editor, EditorState, convertFromRaw, Draft } from 'draft-js';
+import CustomBlock from '../Admin/FormArticlePage/plugins/CustomBlock';
 
 const ArticlePage = () => {
   const state = useLocation();
 	let { path } = useParams();
-	//const url = this.props.routeParams.page;
 	const [data, setData] = useState(null);
 	const [articlesRelated, setArticlesRelated] = useState([]);
+  const [bodyData, setBodyData] = useState(null);
+
+  let editorState;
+  if (bodyData) {
+    const contentState = convertFromRaw(JSON.parse(bodyData));
+    editorState = EditorState.createWithContent(contentState);
+  }
 
   useEffect(() => {
 		fetchData();
@@ -43,6 +51,7 @@ const ArticlePage = () => {
         
       if (response) {
         setData(response.data);
+        setBodyData(response.data.bodyData);
 				// Get Related articles by tags.
 				try {
 					const arrayTags = [];
@@ -66,6 +75,18 @@ const ArticlePage = () => {
       console.log(error);
     }
   }
+
+  const mediaBlockRenderer = (block) => {
+    if (block.getType() === 'atomic') {
+      return {
+        component: CustomBlock,
+        editable: false,
+        props: { data : null},
+      };
+    }
+
+    return null;
+  };
 
 	return (
 		<Fragment>
@@ -125,7 +146,13 @@ const ArticlePage = () => {
 								<img src={data && `${api.space}${data.image}`} alt="thumb" />
 								<div className="padding20 white_bg">
 									<div className="space-20" />
-										{data && parse(data.body)}
+                  {bodyData &&
+                    <Editor
+                      editorState={editorState}
+                      blockRendererFn={mediaBlockRenderer}
+                      readOnly={true}
+                    />
+                  }
 									<div className="space-40" />
 									<div className="share-buttons">
 										<TwitterShareButton title={data && data.title} url={window.location.href}>

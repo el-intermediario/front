@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 import CustomOption from './plugins/CustomOption';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import { EditorState, convertToRaw, convertFromRaw, ContentState } from 'draft-js';
 import api from "../../../utils/api";
 import { useSelector } from 'react-redux';
-import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import TreeMenu from 'react-simple-tree-menu';
 import ReactTags from 'react-tag-autocomplete';
@@ -35,7 +34,6 @@ const FormArticlePage = (props) => {
   const [source, setSource] = useState('');
   const [copete, setCopete] = useState('');
   const [bodyHtml, setBodyHtml] = useState('');
-  const [bodyJson, setBodyJson] = useState(null);
   const [status, setStatus] = useState(true);
   const [image, setImage] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
@@ -73,7 +71,6 @@ const FormArticlePage = (props) => {
     } else {
       setTitle('');
       setBodyHtml('');
-      setBodyJson(null);
       setType('normal');
       setDropline('');
       setCopete('');
@@ -101,9 +98,8 @@ const FormArticlePage = (props) => {
         setTags(data.tags);
         setBodyHtml(data.body);
 
-        const contentBlock = htmlToDraft(data.body);
-        const newData = ContentState.createFromBlockArray(contentBlock.contentBlocks);
-        setEditorState(EditorState.createWithContent(newData));
+        const contentState = convertFromRaw(JSON.parse(data.bodyData));
+        setEditorState(EditorState.createWithContent(contentState));
       }
     } catch (error) {
       console.log(error);
@@ -140,8 +136,7 @@ const FormArticlePage = (props) => {
       dropline,
       copete,
       source,
-      bodyHtml,
-      bodyJson,
+      bodyData: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
       status,
       category,
       image: newImage ? newImage : image,
@@ -169,8 +164,6 @@ const FormArticlePage = (props) => {
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
-    setBodyHtml(draftToHtml(convertToRaw(editorState.getCurrentContent())));
-    setBodyJson(JSON.stringify(contentState, null, 4))
   }
 
   const uploadImageCallBack = async (file) => {
@@ -291,7 +284,6 @@ const FormArticlePage = (props) => {
                             toolbarClassName="toolbarClassName"
                             wrapperClassName="wrapperClassName"
                             editorClassName="editor-textarea"
-                            onEditorStateChange={onEditorStateChange}
                             toolbarCustomButtons={[
                               <CustomOption />, 
                               <ArticleReference />,
@@ -304,7 +296,7 @@ const FormArticlePage = (props) => {
                             toolbar={{
                               image: {
                                 previewImage: true,
-                                inputAccept: 'image/gif,image/jpeg,image/jpg,image/png,image/svg',
+                                inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
                                 uploadCallback: uploadImageCallBack,
                                 alt: { present: true, mandatory: false },
                               },
@@ -318,6 +310,7 @@ const FormArticlePage = (props) => {
                               },
                             }}
                             blockRendererFn={mediaBlockRenderer}
+                            onEditorStateChange={onEditorStateChange}
                           />
                         </div>
                         <div className="col-12">

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Embed from 'react-embed';
 
 const CustomBlock = (props) => {
-  const { data } = props.blockProps;
   const entity = props.contentState.getEntity(
     props.block.getEntityAt(0)
   );
