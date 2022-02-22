@@ -144,7 +144,7 @@ const FormArticlePage = (props) => {
       bodyJson,
       status,
       category,
-      image: newImage,
+      image: newImage ? newImage : image,
       tags
     };
 
