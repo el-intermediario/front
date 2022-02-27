@@ -153,7 +153,7 @@ const ArticlePage = () => {
                   src={data && `${api.space}${data.image}`} 
                   alt={data && data.title} 
                   width="730px" 
-                  height="auto" 
+                  height="410px" 
                 />
 								<div className="padding20 white_bg">
 									<div className="space-20" />
