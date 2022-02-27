@@ -37,6 +37,7 @@ import RadioPlayer from '../../components/RadioPlayer';
 import GridNews from '../../components/GridNews';
 import LazyImage from '../../components/LazyImage';
 import Ad from '../../components/Ad';
+import {Helmet} from "react-helmet";
 
 const HomePage = () => {
   const [layout, setLayout] = useState([]);
@@ -140,6 +141,11 @@ const HomePage = () => {
 
   return (
     <Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Intermediario | Santa Cruz - Argentina</title>
+        <link rel="canonical" href="https://intermediario.sanjua.com" />
+      </Helmet>
       {/* <PostCarousel className="fifth_bg"/> */}
       {layout.map((row, ki) => {
         if (row.id === 'videos') {
