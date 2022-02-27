@@ -3,8 +3,10 @@
 
 .page-article {
   .page-content {
+    .public-DraftStyleDefault-block,
     p {
       margin-bottom: 10px;
+      font-family: $font2;
     }
     
     .field-copete-date {

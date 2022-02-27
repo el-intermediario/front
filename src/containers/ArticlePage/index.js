@@ -3,11 +3,8 @@ import BreadCrumb from "../../components/BreadCrumb";
 import { useLocation } from "react-router";
 import { Link, useParams } from "react-router-dom";
 import BannerSection from "../../components/BannerSection";
-import parse from "html-react-parser";
 import {
-	EmailShareButton,
 	FacebookShareButton,
-	TelegramShareButton,
 	TwitterShareButton,
 	WhatsappShareButton,
 	TwitterIcon,
@@ -151,6 +148,7 @@ const ArticlePage = () => {
                       editorState={editorState}
                       blockRendererFn={mediaBlockRenderer}
                       readOnly={true}
+                      stripPastedStyles={true}
                     />
                   }
 									<div className="space-40" />
