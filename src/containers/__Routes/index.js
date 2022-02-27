@@ -2,8 +2,6 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../_PrivateRoute';
 import PublicRoute from '../_PublicRoute';
-import HomePage from "../HomePage";
-import HomePageTwo from "../HomePageTwo";
 import BusinessPage from "../BusinessPage";
 import EntertainmentPage from "../EntertainmentPage";
 import FeaturePage from "../FeaturePage";
@@ -51,44 +49,44 @@ import ContactUsThreePage from "../ContactUsThreePage";
 import NotFoundThreePage from "../NotFoundThreePage";
 import PostOneHThreePage from "../PostOneHThreePage";
 import PostTwoHThreePage from "../PostTwoHThreePage";
-import PostThreeHThreePage from "../PostThreeHThreePage";
-import VideoPostOneHThreePage from "../VideoPostOneHThreePage";
-import VideoPostTwoHThreePage from "../VideoPostTwoHThreePage";
-import VideoPostThreeHThreePage from "../VideoPostThreeHThreePage";
-import AudioPostOneHThreePage from "../AudioPostOneHThreePage";
-import AudioPostTwoHThreePage from "../AudioPostTwoHThreePage";
-import AudioPostThreeHThreePage from "../AudioPostThreeHThreePage";
-import PostOneHThreeLeftSidebarPage from "../PostOneHThreeLeftSidebarPage";
-import HomeDarkPage from "../HomeDarkPage";
-import BusinessDarkPage from "../BusinessDarkPage";
-import EntertainmentDarkPage from "../EntertainmentDarkPage";
-import FeatureDarkPage from "../FeatureDarkPage";
-import SportsDarkPage from "../SportsDarkPage";
-import TrendingDarkPage from "../TrendingDarkPage";
-import AboutUsDarkPage from "../AboutUsDarkPage";
-import ArchiveDarkPage from "../ArchiveDarkPage";
-import ContactUsDarkPage from "../ContactUsDarkPage";
-import NotFoundDarkPage from "../NotFoundDarkPage";
-import PostOneDarkPage from "../PostOneDarkPage";
-import PostTwoDarkPage from "../PostTwoDarkPage";
-import PostThreeDarkPage from "../PostThreeDarkPage";
-import VideoPostOneDarkPage from "../VideoPostOneDarkPage";
-import VideoPostTwoDarkPage from "../VideoPostTwoDarkPage";
-import VideoPostThreeDarkPage from "../VideoPostThreeDarkPage";
-import AudioPostOneDarkPage from "../AudioPostOneDarkPage";
-import AudioPostTwoDarkPage from "../AudioPostTwoDarkPage";
-import AudioPostThreeDarkPage from "../AudioPostThreeDarkPage";
-import PostOneLeftSidebarDarkPage from "../PostOneLeftSidebarDarkPage";
-import LoginPage from '../Admin/LoginPage';
-import FormArticlePage from '../Admin/FormArticlePage';
-import FormCategoryPage from '../Admin/FormCategoryPage';
-import FormContactPage from '../Admin/FormContactPage';
-import FormTagPage from '../Admin/FromTagsPage';
-import FromAdsPage from '../Admin/FormAdsPage';
-import RegisterPage from '../RegisterPage';
 
+
+const HomePage = React.lazy(() => import('../HomePage'));
+const HomePageTwo = React.lazy(() => import('../HomePageTwo'));
+const PostThreeHThreePage = React.lazy(() => import('../PostThreeHThreePage'));
+const VideoPostOneHThreePage = React.lazy(() => import('../VideoPostOneHThreePage'));
+const VideoPostTwoHThreePage = React.lazy(() => import('../VideoPostTwoHThreePage'));
+const VideoPostThreeHThreePage = React.lazy(() => import('../VideoPostThreeHThreePage'));
+const AudioPostOneHThreePage = React.lazy(() => import('../AudioPostOneHThreePage'));
+const AudioPostTwoHThreePage = React.lazy(() => import('../AudioPostTwoHThreePage'));
+const AudioPostThreeHThreePage = React.lazy(() => import('../AudioPostThreeHThreePage'));
+const PostOneHThreeLeftSidebarPage = React.lazy(() => import('../PostOneHThreeLeftSidebarPage'));
+const HomeDarkPage = React.lazy(() => import('../HomeDarkPage'));
+const BusinessDarkPage = React.lazy(() => import('../BusinessDarkPage'));
+const EntertainmentDarkPage = React.lazy(() => import('../EntertainmentDarkPage'));
+const FeatureDarkPage = React.lazy(() => import('../FeatureDarkPage'));
+const SportsDarkPage = React.lazy(() => import('../SportsDarkPage'));
+const TrendingDarkPage = React.lazy(() => import('../TrendingDarkPage'));
+const AboutUsDarkPage = React.lazy(() => import('../ArchiveDarkPage'));
+const ArchiveDarkPage = React.lazy(() => import('../ArchiveDarkPage'));
+const ContactUsDarkPage = React.lazy(() => import('../ContactUsDarkPage'));
+const NotFoundDarkPage = React.lazy(() => import('../NotFoundDarkPage'));
+const PostOneDarkPage = React.lazy(() => import('../PostOneDarkPage'));
+const PostTwoDarkPage = React.lazy(() => import('../PostTwoDarkPage'));
+const PostThreeDarkPage = React.lazy(() => import('../PostThreeDarkPage'));
+const VideoPostOneDarkPage = React.lazy(() => import('../VideoPostOneDarkPage'));
+const VideoPostTwoDarkPage = React.lazy(() => import('../VideoPostTwoDarkPage'));
+const VideoPostThreeDarkPage = React.lazy(() => import('../VideoPostThreeDarkPage'));
+const AudioPostOneDarkPage = React.lazy(() => import('../AudioPostOneDarkPage'));
+const AudioPostTwoDarkPage = React.lazy(() => import('../AudioPostTwoDarkPage'));
+const AudioPostThreeDarkPage = React.lazy(() => import('../AudioPostThreeDarkPage'));
 const VideoPostThreeHTwoPage = React.lazy(() => import('../VideoPostThreeHTwoPage'));
-
+const PostOneLeftSidebarDarkPage = React.lazy(() => import('../PostOneLeftSidebarDarkPage'));
+const LoginPage = React.lazy(() => import('../Admin/LoginPage'));
+const FormCategoryPage = React.lazy(() => import('../Admin/FormCategoryPage'));
+const FormContactPage = React.lazy(() => import('../Admin/FormContactPage'));
+const FormTagPage = React.lazy(() => import('../Admin/FromTagsPage'));
+const RegisterPage = React.lazy(() => import('../RegisterPage'));
 const ArticlePage = React.lazy(() => import('../ArticlePage'));
 const ArticlesPage = React.lazy(() => import('../ArticlePage/articles'));
 const AdminPage = React.lazy(() => import('../Admin'));
@@ -97,10 +95,11 @@ const FormHomePage = React.lazy(() => import('../Admin/FormHomePage'));
 const CategoryPage = React.lazy(() => import('../CategoryPage'));
 const FormVideoPage = React.lazy(() => import('../Admin/FormVideoPage'));
 const FormAdsPage = React.lazy(() => import('../Admin/FormAdsPage'));
+const FormArticlePage = React.lazy(() => import('../Admin/FormArticlePage'));
 
 const Routes = () => {
   return (
-    <Suspense fallback={<span>Cargando...</span>}>
+    <Suspense fallback={<span></span>}>
       <Switch>
         {/*home one routes*/}
         <PublicRoute

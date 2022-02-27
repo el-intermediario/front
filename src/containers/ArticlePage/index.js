@@ -1,4 +1,5 @@
-import React, { Fragment, useState, useEffect, lazy, Suspense } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import BreadCrumb from "../../components/BreadCrumb";
 import { useLocation } from "react-router";
 import { Link, useParams } from "react-router-dom";
 import BannerSection from "../../components/BannerSection";
@@ -12,17 +13,16 @@ import {
   } from "react-share";
 
 // images
+import banner2 from "../../doc/img/bg/sidebar-1.png";
 import api from "../../utils/api";
+import RelatedTabs from '../../components/RelatedTabs';
 import TrendingArticles from '../../components/TrendingArticles';
 import './style.scss';
 import Moment from 'react-moment';
+import MostView from '../../components/MostView';
 import { Editor, EditorState, convertFromRaw, Draft } from 'draft-js';
 import CustomBlock from '../Admin/FormArticlePage/plugins/CustomBlock';
 import {Helmet} from "react-helmet";
-const BreadCrumb = lazy(() => import('../../components/BreadCrumb'));
-const banner2 = lazy(() => import('../../doc/img/bg/sidebar-1.png'));
-const MostView = lazy(() => import('../../components/MostView'));
-const RelatedTabs = lazy(() => import('../../components/RelatedTabs'));
 
 const ArticlePage = () => {
   const state = useLocation();
@@ -95,9 +95,7 @@ const ArticlePage = () => {
         {data && <meta name="description" content={data.dropline} />}
       </Helmet>
 			<div className="archives post post1 page-article">
-        <Suspense fallback={<div></div>}>
-				  <BreadCrumb className="shadow5 padding-top-10" title={data && data.title} />
-        </Suspense>
+				<BreadCrumb className="shadow5 padding-top-10" title={data && data.title} />
 				<div className="container">
           <div className="row">
             <div className="col-md-12 col-lg-12 page-content">
@@ -185,18 +183,16 @@ const ArticlePage = () => {
 							{/* <PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" /> */}
 						</div>
 						<div className="col-md-6 col-lg-4 page-sidebar">
-              {articlesRelated.length > 0 ? (
-                <RelatedTabs data={articlesRelated} />
-              ) : null}
+							{articlesRelated.length > 0 ? (
+								<RelatedTabs data={articlesRelated} />
+							) : null}
 							<div className="banner2 mb30">
 								<Link to="/">
 									<img src={banner2} alt="publicidad side main" width="350px" height="292px" />
 								</Link>
 							</div>
 							{/* <TrendingArticles currentId={data ? data.id : null} /> */}
-              <Suspense fallback={<div>Cargando...</div>}>
-							  <MostView title="Mas vistas" />
-              </Suspense>
+							<MostView title="Mas vistas" />
 							{/* <NewsLetter /> */}
 						</div>
 					</div>
