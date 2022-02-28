@@ -155,7 +155,7 @@ const FormArticlePage = (props) => {
       }
       
       if (response.data) {
-        return history.push('/admin/article', {type: 'success', message: 'El articulo se creo correctamente.'});
+        return history.push('/admin/article', {type: 'success', message: 'El articulo se creo/actualizo correctamente.'});
       }
     } catch (error) {
       console.log(error);

@@ -95,6 +95,7 @@ const CategoryPage = React.lazy(() => import('../CategoryPage'));
 const FormVideoPage = React.lazy(() => import('../Admin/FormVideoPage'));
 const FormAdsPage = React.lazy(() => import('../Admin/FormAdsPage'));
 const FormArticlePage = React.lazy(() => import('../Admin/FormArticlePage'));
+const FormSectionPage = React.lazy(() => import('../Admin/FormSectionPage'));
 
 const Routes = () => {
   return (
@@ -209,6 +210,12 @@ const Routes = () => {
           path="/categoria/:path/:path2/:path3"
           parentClass="theme-1"
           component={CategoryPage} />
+        <PrivateRoute
+          exact
+          home_style={3}
+          path="/admin/section/add"
+          parentClass="theme-3"
+          component={FormSectionPage} />  
         <PrivateRoute
           exact
           path="/business"
