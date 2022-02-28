@@ -5,6 +5,7 @@ import api from '../../../utils/api';
 import UploadImage from '../../../components/UploadImage/uploadImage';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { FormGroup } from 'reactstrap';
 
 const FormAdsPage = () => {
   const history = new useHistory();
@@ -157,14 +158,10 @@ const FormAdsPage = () => {
                       </div>
                       <div className="row">
                         <div className="col-12">
-                          <UploadImage handleImage={uploadImage} handleCrop={false} />
-                        </div>
-                      </div>
-                      <div className="row">
-                        <ul>
+                          <p>Secciones donde aparece:</p>
                           {categories.map(({ key, label }, index) => {
                             return (
-                              <li key={index}>
+                              <FormGroup check inline key={index}>
                                 <input
                                   type="checkbox"
                                   id={`custom-checkbox-${index}`}
@@ -174,10 +171,15 @@ const FormAdsPage = () => {
                                   onChange={handleCategories} 
                                 />
                                 <label htmlFor={`custom-checkbox-${index}`}>{label}</label>
-                              </li>
+                              </FormGroup>
                             );
                           })}
-                        </ul>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12">
+                          <UploadImage handleImage={uploadImage} handleCrop={false} />
+                        </div>
                       </div>
                       <div className="row">
                         <div className="col-12">
