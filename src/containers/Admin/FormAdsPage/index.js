@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import api from '../../../utils/api';
@@ -34,6 +34,31 @@ const FormAdsPage = () => {
     }
   ];
   const sizes = ["350x250", "390x312", "810x100", "970x250", "1080x840", "portada_superior"];
+  const [categories, setCategories] = useState([]);
+  const [checkedCategories, setCheckedCategories] = useState(['home']);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async (type) => {
+    try {
+      const response = await api.category.get({type: 'articles'},
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+        
+      if (response.data && response.data.data[0]) {
+        // Agrego la categori home al principio.
+        response.data.data[0].nodes.unshift({
+          key: 'home',
+          label: 'Portada'
+        });
+        setCategories(response.data.data[0].nodes);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   // Upload Image.
   const uploadImage = async (file, name) => {
@@ -62,7 +87,8 @@ const FormAdsPage = () => {
       size,
       image,
       url,
-      status
+      status,
+      categories: checkedCategories
     }
     try {
       const response = await api.ad.add(data,
@@ -74,6 +100,16 @@ const FormAdsPage = () => {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  const handleCategories = event => {
+    const { checked, value } = event.currentTarget;
+
+    setCheckedCategories(
+      prev => checked
+        ? [...prev, value] // si el check es true agregarmos el elemento al array.
+        : prev.filter(val => val !== value) // si es false, lo buscamos y lo quitamos.
+    )
   }
 
   return (
@@ -123,6 +159,25 @@ const FormAdsPage = () => {
                         <div className="col-12">
                           <UploadImage handleImage={uploadImage} handleCrop={false} />
                         </div>
+                      </div>
+                      <div className="row">
+                        <ul>
+                          {categories.map(({ key, label }, index) => {
+                            return (
+                              <li key={index}>
+                                <input
+                                  type="checkbox"
+                                  id={`custom-checkbox-${index}`}
+                                  name={label}
+                                  value={key}
+                                  checked={checkedCategories.some(val => val === key)}
+                                  onChange={handleCategories} 
+                                />
+                                <label htmlFor={`custom-checkbox-${index}`}>{label}</label>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </div>
                       <div className="row">
                         <div className="col-12">
