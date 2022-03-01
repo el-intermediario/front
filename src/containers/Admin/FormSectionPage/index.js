@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import api from "../../../utils/api";
 import MyEditor from "../../../components/MyEditor";
+import { useSelector } from "react-redux";
+import { convertToRaw } from "draft-js";
+import draftToHtml from 'draftjs-to-html'
 
 const FormSectionPage = () => {
+  const { user } = useSelector(state => state.user);
   const [data, setData] = useState({
     title: '',
     body: '',
+    bodyHtml: null
   });
   
   const submitHandler = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await api.page.add(data, {
-        header: { "Content-Type": "application/json" },
-      });
+      const response = await api.page.add(data, { headers: user.headers });
       if (response) {
       }
     } catch (error) {
@@ -22,8 +25,13 @@ const FormSectionPage = () => {
     }
   };
 
-  const handleBodyData = (body) => {
-    setData({...data, body})
+  const handleEditorState = (editorState) => {
+    const bodyRaw = convertToRaw(editorState.getCurrentContent());
+    setData({
+      ...data, 
+      body: JSON.stringify(bodyRaw), 
+      bodyHtml: draftToHtml(bodyRaw)
+    })
   }
 
   return (
@@ -54,7 +62,7 @@ const FormSectionPage = () => {
                       <div className="space-20" />
                       <div className="row">  
                         <div className="col-lg-12  field-editor">
-                          <MyEditor handleBody={handleBodyData}/>
+                          <MyEditor handleEditorState={handleEditorState}/>
                         </div>
                         <div className="col-12">
                           <div className="space-20" />

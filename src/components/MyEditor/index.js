@@ -6,14 +6,14 @@ import 'draft-js/dist/Draft.css';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../../containers/Admin/FormArticlePage/styles.scss";
 
-const MyEditor = ({handleBody}) => {
+const MyEditor = ({handleEditorState}) => {
   const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),
   );
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
-    handleBody(JSON.stringify(convertToRaw(editorState.getCurrentContent())));
+    handleEditorState(editorState);
   }
 
   return (

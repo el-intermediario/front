@@ -42,6 +42,11 @@ const contact = {
   add:(data, headers) => axios.post(`${baseUrl}/${version}/contacts`, data, headers) 
 }
 
+const page = {
+  add:(data, headers) => axios.post(`${baseUrl}/${version}/pages`, data, headers),
+  get: (data, headers) => axios.get(`${baseUrl}/${version}/pages/${data.id}?by=${data.by}`, headers),
+}
+
 const tag = {
   add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/tags`, dataModel, headers) 
 }
@@ -67,6 +72,7 @@ export default {
   category,
   contact,
   space,
+  page,
   tag,
   upload,
   uploadVideo,

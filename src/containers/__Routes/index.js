@@ -82,20 +82,22 @@ const AudioPostThreeDarkPage = React.lazy(() => import('../AudioPostThreeDarkPag
 const VideoPostThreeHTwoPage = React.lazy(() => import('../VideoPostThreeHTwoPage'));
 const PostOneLeftSidebarDarkPage = React.lazy(() => import('../PostOneLeftSidebarDarkPage'));
 const LoginPage = React.lazy(() => import('../Admin/LoginPage'));
-const FormCategoryPage = React.lazy(() => import('../Admin/FormCategoryPage'));
-const FormContactPage = React.lazy(() => import('../Admin/FormContactPage'));
-const FormTagPage = React.lazy(() => import('../Admin/FromTagsPage'));
 const RegisterPage = React.lazy(() => import('../RegisterPage'));
 const ArticlePage = React.lazy(() => import('../ArticlePage'));
+const SectionPage = React.lazy(() => import('../SectionPage'));
 const ArticlesPage = React.lazy(() => import('../ArticlePage/articles'));
+const CategoryPage = React.lazy(() => import('../CategoryPage'));
 const AdminPage = React.lazy(() => import('../Admin'));
 const Logout = React.lazy(() => import('../Admin/Logout'));
 const FormHomePage = React.lazy(() => import('../Admin/FormHomePage'));
-const CategoryPage = React.lazy(() => import('../CategoryPage'));
 const FormVideoPage = React.lazy(() => import('../Admin/FormVideoPage'));
 const FormAdsPage = React.lazy(() => import('../Admin/FormAdsPage'));
 const FormArticlePage = React.lazy(() => import('../Admin/FormArticlePage'));
 const FormSectionPage = React.lazy(() => import('../Admin/FormSectionPage'));
+const FormCategoryPage = React.lazy(() => import('../Admin/FormCategoryPage'));
+const FormContactPage = React.lazy(() => import('../Admin/FormContactPage'));
+const FormTagPage = React.lazy(() => import('../Admin/FromTagsPage'));
+
 
 const Routes = () => {
   return (
@@ -107,17 +109,6 @@ const Routes = () => {
           path="/"
           parentClass="theme-1"
           component={HomePage} />
-        <PublicRoute
-          exact
-          path="/articulo/:path"
-          parentClass="theme-1"
-          component={ArticlePage} />
-        <PrivateRoute
-          exact
-          home_style={3}
-          path="/admin"
-          parentClass="theme-3"
-          component={AdminPage} />
         <PublicRoute
           exact
           home_style={3}
@@ -134,7 +125,13 @@ const Routes = () => {
           home_style={3}
           path="/register"
           parentClass="theme-3"
-          component={RegisterPage} />
+          component={RegisterPage} />  
+        <PrivateRoute
+          exact
+          home_style={3}
+          path="/admin"
+          parentClass="theme-3"
+          component={AdminPage} />
         <PrivateRoute
           exact
           home_style={3}
@@ -195,6 +192,22 @@ const Routes = () => {
           path="../admin/FormTagPage"
           parentClass="theme-3"
           component={FormTagPage} />
+        <PrivateRoute
+          exact
+          home_style={3}
+          path="/admin/section/add"
+          parentClass="theme-3"
+          component={FormSectionPage} />  
+        <PublicRoute
+          exact
+          path="/articulo/:path"
+          parentClass="theme-1"
+          component={ArticlePage} />
+        <PublicRoute
+          exact
+          path="/seccion/:path"
+          parentClass="theme-1"
+          component={SectionPage} />    
         <PublicRoute
           exact
           path="/categoria/:path"
@@ -209,13 +222,7 @@ const Routes = () => {
           exact
           path="/categoria/:path/:path2/:path3"
           parentClass="theme-1"
-          component={CategoryPage} />
-        <PrivateRoute
-          exact
-          home_style={3}
-          path="/admin/section/add"
-          parentClass="theme-3"
-          component={FormSectionPage} />  
+          component={CategoryPage} />  
         <PrivateRoute
           exact
           path="/business"
