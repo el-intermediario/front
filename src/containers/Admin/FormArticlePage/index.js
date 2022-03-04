@@ -121,7 +121,7 @@ const FormArticlePage = (props) => {
         }});
         
         if (responseImage) {
-          newImage = responseImage.data.key;
+          newImage = responseImage.data.src;
         }
       } catch (error) {
         console.log(error);
@@ -179,7 +179,7 @@ const FormArticlePage = (props) => {
       if (response) {
         return new Promise(
           (resolve, reject) => {
-            resolve({ data: { link: response.data.location, file } });
+            resolve({ data: { link: `${api.space}${response.data.src}`, file } });
           }
         );
       }

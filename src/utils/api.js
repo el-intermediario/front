@@ -3,7 +3,7 @@ import axios from 'axios';
 const localUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
 const remoteUrl = 'https://api-intermediario.sanjua.com';
 const baseUrl = window.location.hostname === 'localhost' ? localUrl : remoteUrl;
-const space = 'https://intermediario-dev.sfo3.digitaloceanspaces.com/';
+const space = 'https://intermediario.blob.core.windows.net/';
 const version = 'api/v1';
 
 const ad = {

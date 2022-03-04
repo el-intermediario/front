@@ -73,7 +73,7 @@ const FormAdsPage = () => {
       }});
       
       if (response.data) {
-        setImage(response.data.key);
+        setImage(response.data.src);
       }
     } catch (error) {
       console.log(error);

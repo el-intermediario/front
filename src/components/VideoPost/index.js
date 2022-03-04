@@ -20,7 +20,7 @@ const VideoPost = ({ className, dark }) => {
 
   const fetchVideos = async () => {
     try {
-      const response = await api.video.getVideos('limit=6&offset=0',
+      const response = await api.video.getVideos('limit=5&offset=0',
         { headers: { 'Content-Type': 'application/json' } }
       );
 

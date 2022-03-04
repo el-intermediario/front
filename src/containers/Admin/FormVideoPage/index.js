@@ -90,9 +90,9 @@ const FormVideoPage = () => {
             const data = {
               title,
               type: 'custom',
-              content: responseUpload.data.key,
-              mimetype: responseUpload.data.mimetype,
-              thumbnail: responseImage.data.key,
+              content: responseUpload.data.src,
+              mimetype: responseUpload.data.file.mimetype,
+              thumbnail: responseImage.data.src,
               inHome
             };
             
@@ -120,6 +120,7 @@ const FormVideoPage = () => {
     const canvas = document.createElement("canvas");
     canvas.width = videoElem.current.videoWidth;
     canvas.height = videoElem.current.videoHeight;
+    canvas.imageSmoothingQuality = 'medium';
 
     canvas.getContext("2d")
       .drawImage(
@@ -130,9 +131,9 @@ const FormVideoPage = () => {
         videoElem.current.videoHeight
       );
     
-      const img = canvas.toDataURL();
+      const img = canvas.toDataURL('image/jpeg');
       const file = dataURItoBlob(img);
-      const imgName = fileSource.name.replace('mp4', 'png');
+      const imgName = fileSource.name.replace('mp4', 'jpeg');
       setImgSrc(canvas.toDataURL(), imgName);
       setImageSource({file, imgName});
   };
