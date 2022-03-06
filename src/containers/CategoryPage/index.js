@@ -5,20 +5,26 @@ import banner2 from "../../doc/img/bg/sidebar-1.png";
 import BannerSection from "../../components/BannerSection";
 import api from '../../utils/api';
 import CategoryArticles from '../../components/CategoryArticles';
+import Sidebar from '../../components/Sidebar';
+import { Helmet } from 'react-helmet';
 
 const CategoryPage = ({location}) => {
   const [articles, setArticles] = useState([]);
   const category = location.pathname.split('/').pop().replaceAll('-', ' ');
   const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+  const [categoryParent, setCategoryParent] = useState(null);
 
   useEffect(() => {
     fetchArticles();
   }, [location.pathname]);
 
   const fetchArticles = async () => {
+    const pathCategory = location.pathname.replace('/categoria', 'category').replaceAll('-', '_');
+    setCategoryParent(pathCategory.split('/')[1]);
+
     const limit = 15,
           page = 0,
-          category = location.pathname.replace('/categoria', 'category').replaceAll('-', '_');
+          category = pathCategory;
     try {
       const response = await api.article.getArticles({ query: `?limit=${limit}&page=${page}&category=${category}` },
         { headers: { 'Content-Type': 'application/json' } }
@@ -34,6 +40,10 @@ const CategoryPage = ({location}) => {
 
   return (
     <Fragment>
+      <Helmet>
+        {categoryName && <title>{categoryName && categoryName} | Intermediario</title>}
+        <link rel="canonical" href={`https://intermediario.sanjua.com/${location.pathname}`} />
+      </Helmet>
       <BreadCrumb title={categoryName} />
       <div className="archives padding-top-30">
         <div className="container">
@@ -86,18 +96,17 @@ const CategoryPage = ({location}) => {
               </div>
             </div>
             <div className="col-md-6 col-lg-4">
-              <div className="banner2 mb30">
+              <Sidebar category={categoryParent} mostView />
+              {/* <div className="banner2 mb30">
                 <Link to="/">
                   <img src={banner2} alt="thumb" />
                 </Link>
-              </div>
-              {/* <WidgetTab /> */}
+              </div> */}
             </div>
           </div>
         </div>
       </div>
-      <div className="space-70" />
-      <BannerSection />
+      <div className="space-40" />
     </Fragment>
   );
 };

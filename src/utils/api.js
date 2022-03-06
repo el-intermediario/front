@@ -8,6 +8,7 @@ const version = 'api/v1';
 
 const ad = {
   add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers),
+  get: (params, headers) => axios.get(`${baseUrl}/${version}/ads${params}`, headers),
   getAds: (params, headers) => axios.get(`${baseUrl}/${version}/ads${params}`, headers),
 }
 
