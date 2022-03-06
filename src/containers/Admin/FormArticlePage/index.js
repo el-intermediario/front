@@ -17,11 +17,13 @@ import ArticleReference from './plugins/ArticleReference';
 import "./styles.scss";
 import UploadImage from '../../../components/UploadImage/uploadImage';
 import BlockQuote from './plugins/BlockQuote';
+import Loading from 'react-fullscreen-loading';
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
   const history = useHistory();
   const { user } = useSelector(state => state.user); 
+  const [loader, setLoader] = useState(false);
   const html = '';
   const contentBlock = htmlToDraft(html);
   const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
@@ -107,6 +109,7 @@ const FormArticlePage = (props) => {
   }
 
   const submitHandler = async (event) => {
+    setLoader(true);
     event.preventDefault();
     let newImage; 
 
@@ -155,9 +158,11 @@ const FormArticlePage = (props) => {
       }
       
       if (response.data) {
+        setLoader(false);
         return history.push('/admin/article', {type: 'success', message: 'El articulo se creo/actualizo correctamente.'});
       }
     } catch (error) {
+      setLoader(false);
       console.log(error);
     }
   }
@@ -239,6 +244,10 @@ const FormArticlePage = (props) => {
   // Upload Image.
   const uploadImage = async (file, name) => {
     setCroppedImage({file, name});
+  }
+
+  if (loader) {
+    return <Loading loading background="#ffffff" loaderColor="#14A5C0" />
   }
 
   return (

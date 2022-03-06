@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
+import Loading from 'react-fullscreen-loading';
 import { useHistory } from 'react-router-dom';
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import { Button } from 'reactstrap';
-import BeatLoader from "react-spinners/BeatLoader";
 import api from "../../../utils/api";
 import AlertMessage from "../../../components/AlertMessage";
 
@@ -12,6 +12,7 @@ const FormVideoPage = () => {
   const history = useHistory();
   const fileInput = useRef(null);
   const videoElem = useRef();
+  const [loader, setLoader] = useState(false);
   const [title, setTitle] = useState('');
   const [type, setType] = useState('youtube');
   const [videoId, setVideoId] = useState('');
@@ -19,7 +20,6 @@ const FormVideoPage = () => {
   const [fileSource, setFileSource] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
   const [imageSource, setImageSource] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const [inHome, setInHome] = useState(true);
 
@@ -35,11 +35,10 @@ const FormVideoPage = () => {
   }
   
   const submitHandler = async (event) => {
+    setLoader(true);
     event.preventDefault();
-    setLoading(true);
     if (!title) {
       setMessage('Debes agregar un titulo.');
-      setLoading(false);
       return;
     }
 
@@ -58,10 +57,10 @@ const FormVideoPage = () => {
           header: { "Content-Type": "application/json" },
         });
         if (response.data) {
-          setLoading(false);
           history.push('/admin', {type: 'success', message: 'El video se creo correctamente.'});
         }
       } catch (error) {
+        setLoader(false);
         console.log(error);
       }
       return;
@@ -69,7 +68,6 @@ const FormVideoPage = () => {
 
     if (!videoSource && type === 'custom') {
       setMessage('Debes subir un video.');
-      setLoading(false);
       return;
     } else {
       // Upload video.
@@ -101,7 +99,7 @@ const FormVideoPage = () => {
                 header: { "Content-Type": "application/json" },
               });
               if (response) {
-                setLoading(false);
+                setLoader(false);
                 history.push('/admin', {type: 'success', message: 'El video se creo correctamente.'});
               }
             } catch (error) {
@@ -111,6 +109,7 @@ const FormVideoPage = () => {
         }
 
       } catch (error) {
+        setLoader(false);
         console.log(error);
       }
     }
@@ -153,6 +152,10 @@ const FormVideoPage = () => {
         ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ia], {type:mimeString});
+  }
+
+  if (loader) {
+    return <Loading loading background="#ffffff" loaderColor="#14A5C0" />
   }
 
   return (
@@ -263,7 +266,6 @@ const FormVideoPage = () => {
                     >
                       Guardar
                     </button>
-                    {loading && <BeatLoader color="#14A5C0" loading={loading} size={12} />}
                   </div>
                 </div>
               </div>

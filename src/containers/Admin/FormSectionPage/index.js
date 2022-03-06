@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import api from "../../../utils/api";
-import MyEditor from "../../../components/MyEditor";
+import Loading from 'react-fullscreen-loading';
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { convertToRaw } from "draft-js";
 import draftToHtml from 'draftjs-to-html'
 
+import api from "../../../utils/api";
+import MyEditor from "../../../components/MyEditor";
+
 const FormSectionPage = () => {
+  const history = new useHistory();
   const { user } = useSelector(state => state.user);
+  const [loader, setLoader] = useState(false);
   const [data, setData] = useState({
     title: '',
     body: '',
@@ -14,13 +19,17 @@ const FormSectionPage = () => {
   });
   
   const submitHandler = async (event) => {
+    setLoader(true);
     event.preventDefault();
 
     try {
       const response = await api.page.add(data, { headers: user.headers });
       if (response) {
+        setLoader(false);
+        return history.push('/admin', {type: 'success', message: 'La seccion se creo correctamente.'});
       }
     } catch (error) {
+      setLoader(false);
       console.log(error);
     }
   };
@@ -32,6 +41,10 @@ const FormSectionPage = () => {
       body: JSON.stringify(bodyRaw), 
       bodyHtml: draftToHtml(bodyRaw)
     })
+  }
+
+  if (loader) {
+    return <Loading loading background="#ffffff" loaderColor="#14A5C0" />
   }
 
   return (

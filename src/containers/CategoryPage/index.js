@@ -49,7 +49,7 @@ const CategoryPage = ({location}) => {
                 </div>
                 <div className="row">
                   <div className="col-12">
-                    <CategoryArticles headerHide={true} articles={articles} />
+                    <CategoryArticles articles={articles} />
                   </div>
                 </div>
                 {/* <div className="row">

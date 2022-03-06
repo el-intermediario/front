@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { FormGroup } from 'reactstrap';
+import Loading from 'react-fullscreen-loading';
+
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import api from '../../../utils/api';
 import UploadImage from '../../../components/UploadImage/uploadImage';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { FormGroup } from 'reactstrap';
 
 const FormAdsPage = () => {
   const history = new useHistory();
   const { user } = useSelector(state => state.user);
+  const [loader, setLoader] = useState(false);
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
   const [type, setType] = useState('normal');
@@ -96,9 +99,11 @@ const FormAdsPage = () => {
         { header: user.headers }
         );
         if (response.data) {
+          setLoader(false);
           return history.push('/admin', {type: 'success', message: 'La publicidad se creo correctamente.'});
         }
     } catch (error) {
+      setLoader(false);
       console.log(error);
     }
   }
@@ -111,6 +116,11 @@ const FormAdsPage = () => {
         ? [...prev, value] // si el check es true agregarmos el elemento al array.
         : prev.filter(val => val !== value) // si es false, lo buscamos y lo quitamos.
     )
+  }
+
+  // Apply loading when save content.
+  if (loader) {
+    return <Loading loading background="#ffffff" loaderColor="#14A5C0" />
   }
 
   return (
