@@ -1,35 +1,28 @@
-import React, {Fragment} from 'react';
-import {Link} from "react-router-dom";
+import React, { Fragment } from 'react';
+import { Link } from "react-router-dom";
 
 const FooterNewsCategories = () => {
-    return (
-        <Fragment>
-            <div className="row">
-                <div className="col-lg-6">
-                    <ul>
-                        <li><Link to="/">Politics</Link></li>
-                        <li><Link to="/">Business</Link></li>
-                        <li><Link to="/">TECHNOLOGY</Link></li>
-                        <li><Link to="/">Science</Link></li>
-                        <li><Link to="/">Health</Link></li>
-                        <li><Link to="/">Sports</Link></li>
-                        <li><Link to="/">Entertainment</Link></li>
-                    </ul>
-                </div>
-                <div className="col-lg-6">
-                    <ul>
-                        <li><Link to="/">Education</Link></li>
-                        <li><Link to="/">Obituaries</Link></li>
-                        <li><Link to="/">Corrections</Link></li>
-                        <li><Link to="/">Education</Link></li>
-                        <li><Link to="/">Today’s Paper</Link></li>
-                        <li><Link to="/">Corrections</Link></li>
-                        <li><Link to="/">Foods</Link></li>
-                    </ul>
-                </div>
-            </div>
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      <div className="row">
+        <div className="col-lg-6">
+          <ul>
+            <li><Link to="/categoria/politica">Política</Link></li>
+            <li><Link to="/categoria/interes-general">Interes general</Link></li>
+            <li><Link to="/categoria/deportes">Deportes</Link></li>
+            <li><Link to="/categoria/el-mundo">El Mundo</Link></li>
+          </ul>
+        </div>
+        <div className="col-lg-6">
+          <ul>
+            <li><Link to="/categoria/trending">Trending</Link></li>
+            <li><Link to="/categoria/lifestyle">Lifestye</Link></li>
+            <li><Link to="/categoria/genero">Genero</Link></li>
+          </ul>
+        </div>
+      </div>
+    </Fragment>
+  );
 };
 
 export default FooterNewsCategories;

@@ -26,7 +26,8 @@ const CategoryPage = ({location}) => {
           page = 0,
           category = pathCategory;
     try {
-      const response = await api.article.getArticles({ query: `?limit=${limit}&page=${page}&category=${category}` },
+      const params = `?limit=${limit}&page=${page}&category=${category}`;
+      const response = await api.article.getArticles(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
 

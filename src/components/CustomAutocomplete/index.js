@@ -8,8 +8,8 @@ const CustomAutocomplete = ({handleItemSelected, initialSearch}) => {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      const filter = valueSearch ? `?limit=8&search=${valueSearch}` : '?limit=4';
-      api.article.getArticlesSearch(filter,
+      const params = valueSearch ? `?limit=8&search=${valueSearch}` : '?limit=4';
+      api.article.getArticles(params,
         { headers: { 'Content-Type': 'application/json' } }
       ).then(response => {
         const responseItems = response.data;

@@ -2,6 +2,13 @@
 @import "../../doc/scss/fonts.scss";
 
 .page-article {
+  .page-share {
+    .share-buttons {
+      button {
+        margin-bottom: 10px;
+      }
+    }
+  }
   .page-content {
     .public-DraftStyleDefault-block,
     p {
@@ -46,11 +53,6 @@
         text-align: center;
         margin: 0;
       }
-    }
-    
-    .share-buttons {
-      display: flex;
-      grid-gap: 10px;
     }
   }
 

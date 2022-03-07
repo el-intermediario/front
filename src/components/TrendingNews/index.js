@@ -19,8 +19,8 @@ const TrendingNews = ({ dark, offset }) => {
   }, [offset]);
 
   const fetchArticles = async () => {
-    const params = { query: `?limit=8&page=0&offset=${offset.slice(',')}` };
-    const response = await api.article.getArticlesOffset(params,
+    const params = `?limit=8&page=0&offset=${offset.slice(',')}`;
+    const response = await api.article.getArticles(params,
       { headers: { 'Content-Type': 'application/json' } }
     );
 

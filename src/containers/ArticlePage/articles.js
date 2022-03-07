@@ -21,8 +21,8 @@ const ArticlesPage = () => {
 
   const fetchArticles = async (search = null) => {
     try {
-      const filter = search ? `?search=${search}` : '';
-      const response = await api.article.getArticlesSearch(filter,
+      const params = search ? `?search=${search}` : '';
+      const response = await api.article.getArticles(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
 

@@ -19,8 +19,8 @@ const TrendingArticles = ({ dark, currentId }) => {
   const fetchArticles = async (currentId) => {
     setLoadingData(true);
     try {
-      const filter = `?limit=4&page=0&trending=true&idOffset=${currentId}`;
-      const response = await api.article.getArticlesSearch(filter,
+      const params = `?limit=4&page=0&trending=true&idOffset=${currentId}`;
+      const response = await api.article.getArticles(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
 

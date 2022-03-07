@@ -5,15 +5,15 @@ import Moment from "react-moment";
 import "./styles.scss";
 import LazyImage from '../LazyImage';
 
-const GridNews = ({ gridColumns = 6, qty = 4 }) => {
+const GridNews = ({ gridColumns = 6, qty = 4, category }) => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     fetchArticles();
   }, []);
 
   const fetchArticles = async () => {
-    const params = { query: `?limit=${qty}&page=2` };
-    const response = await api.article.getArticlesOffset(params,
+    const params = `?limit=${qty}&category=${category}`;
+    const response = await api.article.getArticles(params,
       { headers: { 'Content-Type': 'application/json' } }
     );
 

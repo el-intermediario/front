@@ -31,37 +31,21 @@ const FooterArea = ({className}) => {
                                     <div className="row">
                                         <div className="col-lg-6">
                                             <ul>
-                                                <li><Link to="/">Crossword</Link>
+                                                <li><Link to="/categoria/interes-general/sociedad">Sociedad</Link>
                                                 </li>
-                                                <li><Link to="/">Food</Link>
+                                                <li><Link to="/categoria/interes-general/economia">Economia</Link>
                                                 </li>
-                                                <li><Link to="/">Automobiles</Link>
-                                                </li>
-                                                <li><Link to="/">Education</Link>
-                                                </li>
-                                                <li><Link to="/">Health</Link>
-                                                </li>
-                                                <li><Link to="/">Magazine</Link>
-                                                </li>
-                                                <li><Link to="/">Weddings</Link>
+                                                <li><Link to="/categoria/interes-general/cultura-y-espectaculos">Cultura y Espectaculos</Link>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div className="col-lg-6">
                                             <ul>
-                                                <li><Link to="/">Classifieds</Link>
+                                                <li><Link to="/categoria/interes-general/policiales">Policiales</Link>
                                                 </li>
-                                                <li><Link to="/">Photographies</Link>
+                                                <li><Link to="/categoria/deportes/deportes-regionales">Deportes Regionales</Link>
                                                 </li>
-                                                <li><Link to="/">NYT Store</Link>
-                                                </li>
-                                                <li><Link to="/">Journalisms</Link>
-                                                </li>
-                                                <li><Link to="/">Public Editor</Link>
-                                                </li>
-                                                <li><Link to="/">Tools & Services</Link>
-                                                </li>
-                                                <li><Link to="/">My Account</Link>
+                                                <li><Link to="/categoria/deportes/deportes-nacionales">Deportes Nacionales</Link>
                                                 </li>
                                             </ul>
                                         </div>

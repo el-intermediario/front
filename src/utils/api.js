@@ -9,7 +9,6 @@ const version = 'api/v1';
 const ad = {
   add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers),
   get: (params, headers) => axios.get(`${baseUrl}/${version}/ads${params}`, headers),
-  getAds: (params, headers) => axios.get(`${baseUrl}/${version}/ads${params}`, headers),
 }
 
 const auth = {
@@ -19,9 +18,7 @@ const auth = {
 
 const article = {
   get: (data, headers) => axios.get(`${baseUrl}/${version}/articles/${data.id}?by=${data.by}`, headers),
-  getArticles: (data, headers) => axios.get(`${baseUrl}/${version}/articles${data.query}`, headers),
-  getArticlesOffset: (data, headers) => axios.get(`${baseUrl}/${version}/articles${data.query}`, headers),
-  getArticlesSearch: (data, headers) => axios.get(`${baseUrl}/${version}/articles${data}`, headers),
+  getArticles: (params, headers) => axios.get(`${baseUrl}/${version}/articles${params}`, headers),
   getArticlesRelated: (data, headers) => axios.get(`${baseUrl}/${version}/articles/${data.id}/related${data.filter}`, headers),
   post: (data, headers) => axios.post(`${baseUrl}/${version}/articles`, data, headers),
   put: (data, headers) => axios.put(`${baseUrl}/${version}/articles/${data.id}`, data, headers),

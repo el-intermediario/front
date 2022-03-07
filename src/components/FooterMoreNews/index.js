@@ -15,11 +15,6 @@ const news = [
         category: 'TECHNOLOGY',
         date: 'March 26, 2020',
         title: 'Nancy zhang a chinese busy woman and dhaka'
-    },
-    {
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        title: 'Nancy zhang a chinese busy woman and dhaka'
     }
 ];
 

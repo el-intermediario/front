@@ -1,32 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import TrendingNews from "../../components/TrendingNews";
-import FollowUs from "../../components/FollowUs";
 import MostView from "../../components/MostView";
-import MixCarousel from "../../components/MixCarousel";
 import VideoPost from "../../components/VideoPost";
-import EntertainmentNews from "../../components/EntertainmentNews";
 import { Link } from "react-router-dom";
-import SportsNews from "../../components/SportsNews";
-import BusinessNews from "../../components/BusinessNews";
-import MostShareWidget from "../../components/MostShareWidget";
-import UpcomingMatches from "../../components/UpcomingMatches";
-import NewsLetter from "../../components/NewsLetter";
-import CategoriesWidget from "../../components/CategoriesWidget";
-import VIdeoNewsSection from "../../components/VIdeoNewsSection";
 import "./styles.scss";
 
 // images
-import banner1 from '../../doc/img/bg/banner1.png';
 import banner2 from '../../doc/img/bg/sidebar-1.png';
-import business1 from '../../doc/img/business/business1.jpg';
-import business2 from '../../doc/img/business/business2.jpg';
-import business3 from '../../doc/img/business/business3.jpg';
-import enter1 from '../../doc/img/entertrainment/enter1.jpg';
-import enter2 from '../../doc/img/entertrainment/enter2.jpg';
-import enter3 from '../../doc/img/entertrainment/enter3.jpg';
-import enter4 from '../../doc/img/entertrainment/enter4.jpg';
 import api from '../../utils/api';
-import PostGallery from '../../components/PostGallery';
 import TwoItemsFeatured from '../../components/TwoItemsFeatured';
 import ThreeItemsFeatured from '../../components/ThreeItemsFeatured';
 import TopicArticles from '../../components/TopicArticles';
@@ -43,6 +24,16 @@ const HomePage = () => {
   const [layout, setLayout] = useState([]);
   const [ads, setAds] = useState([]);
   const [articlesOffset, setArticlesOffset] = useState([]);
+
+  const blocks = [
+    {label: 'Politica', key: 'politica', qty: 6},
+    {label: 'Interes general', key: 'interes_general', qty: 4},
+    {label: 'Deportes', key: 'deportes', qty: 6},
+    {label: 'El Mundo', key: 'el_mundo', qty: 4},
+    {label: 'Trending', key: 'trending', qty: 6},
+    {label: 'Lifestyle', key: 'lifestye', qty: 4},
+    {label: 'Genero', key: 'genero', qty: 6},
+  ];
 
   useEffect(() => {
     fetchCover();
@@ -66,7 +57,8 @@ const HomePage = () => {
 
   const fetchAds = async () => {
     try {
-      const response = await api.ad.getAds('',
+      const params = `?category=home`;
+      const response = await api.ad.get(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
         
@@ -183,21 +175,58 @@ const HomePage = () => {
       <VideoPost key="videos" className="pt30 half_bg90" />
       <div className="space-30" />
 
-      <div className="sports">
+      {blocks.map((block, i) => {
+        return <div className={block.key}>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <div className="row">
+                        <div className="col-12">
+                          <div className="heading">
+                            <h2 className="widget-title">{block.label}</h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="entertrainment_carousel mb30 grid-news">
+                        <div className="entertrainment_item">
+                          <div className="row justify-content-center">
+                            <GridNews 
+                              title={block.label} 
+                              gridColumns={block.qty} 
+                              qty={block.qty} 
+                              category={block.key} 
+                              offset={articlesOffset} 
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      })}
+
+      {/* <div className="sports">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="row">
                 <div className="col-12">
                   <div className="heading">
-                    <h2 className="widget-title">Economia</h2>
+                    <h2 className="widget-title">Política</h2>
                   </div>
                 </div>
               </div>
               <div className="entertrainment_carousel mb30 grid-news">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    <GridNews gridColumns="4" title="Economia" qty={6}  offset={articlesOffset} />
+                    <GridNews 
+                      title="Política" 
+                      gridColumns="4" 
+                      qty={6} 
+                      category="politica" 
+                      offset={articlesOffset} 
+                    />
                   </div>
                 </div>
               </div>
@@ -213,21 +242,27 @@ const HomePage = () => {
               <div className="row">
                 <div className="col-12">
                   <div className="heading">
-                    <h2 className="widget-title">Politica</h2>
+                    <h2 className="widget-title">Interes general</h2>
                   </div>
                 </div>
               </div>
               <div className="entertrainment_carousel mb30 grid-news">
                 <div className="entertrainment_item">
                   <div className="row justify-content-center">
-                    <GridNews gridColumns="6" title="Economia" qty={4} offset={articlesOffset} />
+                    <GridNews 
+                      title="Interes general" 
+                      gridColumns="4" 
+                      qty={4} 
+                      category="interes_general" 
+                      offset={articlesOffset} 
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
 
       {/* <div className="entertrainmentss">

@@ -118,7 +118,20 @@ const ArticlePage = () => {
           </div>
           <div className="space-20" />
           <div className="row">
-            <div className="col-md-6 col-lg-8 page-content">
+            <div className="col-md-6 col-lg-1 page-share">
+              <div className="share-buttons">
+                <TwitterShareButton title={data && data.title} url={window.location.href}>
+                  <TwitterIcon size={48} />
+                </TwitterShareButton>
+                <FacebookShareButton quote={data && data.title} url={window.location.href}>
+                  <FacebookIcon size={48} />
+                </FacebookShareButton>
+                <WhatsappShareButton title={data && data.title} url={window.location.href}>
+                  <WhatsappIcon size={48} />
+                </WhatsappShareButton>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-7 page-content">
               <div className="shadow6">
                 {/* <div className="padding20 white_bg">
 									<div className="row">
@@ -167,17 +180,6 @@ const ArticlePage = () => {
                     />
                   }
                   <div className="space-40" />
-                  <div className="share-buttons">
-                    <TwitterShareButton title={data && data.title} url={window.location.href}>
-                      <TwitterIcon size={48} />
-                    </TwitterShareButton>
-                    <FacebookShareButton quote={data && data.title} url={window.location.href}>
-                      <FacebookIcon size={48} />
-                    </FacebookShareButton>
-                    <WhatsappShareButton title={data && data.title} url={window.location.href}>
-                      <WhatsappIcon size={48} />
-                    </WhatsappShareButton>
-                  </div>
                 </div>
               </div>
               <div className="space-30" />

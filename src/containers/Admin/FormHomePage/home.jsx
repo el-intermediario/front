@@ -56,7 +56,7 @@ const Container = (props) => {
   const handleSearchArticles = async (value) => {
     try {
       setSearch(value);
-      const response = await api.article.getArticlesSearch(`?search=${value}`,
+      const response = await api.article.getArticles(`?search=${value}`,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -81,7 +81,7 @@ const Container = (props) => {
 
   const handleSearchAds = async (value, size) => {
     try {
-      const response = await api.ad.getAds(`?sizes=${size}`,
+      const response = await api.ad.get(`?sizes=${size}`,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
