@@ -4,45 +4,9 @@ import { Link } from "react-router-dom";
 
 import './style.scss';
 import LazyImage from '../LazyImage';
+import Heading from '../uiStyle/Heading';
+import FontAwesome from '../uiStyle/FontAwesome';
 
-// const news = [
-//     {
-//         image: fnewsImg2,
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         title: 'Best garden wing supplies for the horticu ltural'
-//     },
-//     {
-//         image: fnewsImg3,
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         title: 'Copa America: Luis Suarez from devastated US'
-//     },
-//     {
-//         image: fnewsImg4,
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         title: 'Best garden wing supplies for the horticu ltural'
-//     },
-//     {
-//         image: fnewsImg3,
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         title: 'Copa America: Luis Suarez from devastated US'
-//     },
-//     {
-//         image: fnewsImg4,
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         title: 'Best garden wing supplies for the horticu ltural'
-//     },
-//     {
-//         image: fnewsImg3,
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         title: 'Copa America: Luis Suarez from devastated US'
-//     },
-// ];
 
 const FourItemsFeatured = ({ className, news }) => {
   const [swiper, setSwiper] = useState(null);
@@ -84,11 +48,11 @@ const FourItemsFeatured = ({ className, news }) => {
   return (
     <div className={`feature_carousel_area four-items mb10 ${className ? className : ''}`}>
       <div className="container">
-        {/* <div className="row">
+        <div className="row">
                     <div className="col-12">
-                        <Heading title="Feature News"/>
+                        <Heading title="Notas destacadas"/>
                     </div>
-                </div> */}
+                </div>
         <div className="row">
           <div className="col-12">
             {/*CAROUSEL START*/}
@@ -103,18 +67,17 @@ const FourItemsFeatured = ({ className, news }) => {
                       </Link>
                     </div>
                     <div className="single_post_text">
-                      <div className="meta5">{item.children[0].data.copete}</div>
-                      <h4>
+                      <div className="field-title">
                         <Link to={`/articulo/${item.children[0].data.slug}`}>{item.children[0].data.title}</Link>
-                      </h4>
+                      </div>
                     </div>
                   </div>
                 ))}
               </Swiper>
-              {/* <div className="navBtns">
+              <div className="navBtns">
                                 <div onClick={goPrev} className="navBtn prevtBtn"><FontAwesome name="angle-left"/></div>
                                 <div onClick={goNext} className="navBtn nextBtn"><FontAwesome name="angle-right"/></div>
-                            </div> */}
+                            </div>
             </div>
             {/*CAROUSEL END*/}
           </div>

@@ -1,18 +1,24 @@
 .four-items {
-  .single_post {
-    .post_img {
-      img {
-        min-height: 180px;
-        max-height: 180px;
+  padding: 20px 0;
+
+  .feature_carousel {
+    .single_post {
+      .post_img {
+        img {
+          border-radius: 10px;
+          object-fit: cover;
+          min-height: 280px;
+          max-height: 280px;
+        }
       }
-    }
-
-    .single_post_text {
-      text-shadow: 1px 1px 2px black;
-
-      .meta5 {
-        color: #1091FF;
-        text-transform: uppercase;
+  
+      .single_post_text {
+        text-shadow: 1px 1px 2px black;
+  
+        .field-title {
+          color: #1091FF;
+          text-transform: uppercase;
+        }
       }
     }
   }

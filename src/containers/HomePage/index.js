@@ -143,7 +143,7 @@ const HomePage = () => {
         if (row.id === 'videos') {
           return handleRow(row);
         } else {
-          return <div key={ki} className={`row-${row.id}s`}>{handleRow(row)}</div>
+          return <div key={ki} className={`row-${row.id}s row-col-${row.children.length}`}>{handleRow(row)}</div>
         }
       })}
       <div className="space-30" />
