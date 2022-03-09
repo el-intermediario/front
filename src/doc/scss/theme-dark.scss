@@ -383,20 +383,6 @@
           margin-left: 20px;
           color: $white;
           opacity: .75;
-
-          &:before {
-            position: absolute;
-            content: "/";
-            height: 20px;
-            width: 10px;
-            left: -18px;
-            top: 50%;
-            margin-top: -10px;
-            line-height: 20px;
-            color: $white;
-            opacity: .3;
-            text-align: center;
-          }
         }
       }
     }
@@ -418,19 +404,6 @@
         &:last-child {
           margin-left: 20px;
           font-weight: 400;
-
-          &:before {
-            position: absolute;
-            content: "/";
-            height: 20px;
-            width: 10px;
-            left: -18px;
-            top: 50%;
-            margin-top: -10px;
-            line-height: 20px;
-            color: $white;
-            text-align: center;
-          }
         }
       }
     }
@@ -456,20 +429,6 @@
           margin-left: 20px;
           color: $white;
           opacity: .75;
-
-          &:before {
-            position: absolute;
-            content: "/";
-            height: 20px;
-            width: 10px;
-            left: -18px;
-            top: 50%;
-            margin-top: -10px;
-            line-height: 20px;
-            color: $white;
-            opacity: .3;
-            text-align: center;
-          }
         }
       }
     }

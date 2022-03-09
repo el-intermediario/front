@@ -6,12 +6,12 @@
     .column {
       padding-left: 0;
       padding-right: 0;
-      max-height: 520px;
+      max-height: 720px;
 
       .single_post {  
         .post_img {
           .img_wrap {
-            height: 540px;
+            height: 740px;
 
             a {
               display: block;
@@ -25,42 +25,45 @@
         }
         .single_post_text {
           padding: 10px 10px 40px 10px;
-          left: 25%;
+          left: 3%;
           width: 50%;
+          position: absolute;
+          top: 350px;
+          z-index: 9;
+          padding: 20px;
+          color: white;
+    
+          .field-copete {
+            border-radius: 100px;
+            position: relative;
+            background-color: white;
+            color: $secondary_color;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            letter-spacing: 2px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: inline-block;
+          }
 
-          h4 {
+          .field-title {
             a {
-              text-shadow: 4px 3px 1px black;
+              text-shadow: 0 4px 16px rgba(0,0,0, 30%);
               color: white;
               text-transform: uppercase;
-              font-size:60px;
+              font-size: 40px;
               line-height: 50px;
-              text-align: center;
               font-family: $font1;
             }
           }
-    
-          .meta {
-            text-shadow: 1px 1px 2px black;
-            position: relative;
-            background-color: $secondary_color;
-            color: $white;
-            text-transform: uppercase;
-            display: inline;
-            padding: 0 10px 0 5px;
-            font-size: 20px;
 
-            &::after {
-              position: absolute;
-              left: -22px;
-              content: "";
-              top: 18px;
-              border-bottom: 12px solid transparent;
-              border-left: 10px solid transparent;
-              border-top: 10px solid transparent;
-              border-right: 12px solid $secondary_color;
-              transform: skewY(-45deg);
-            }
+          .field-date {
+            font-family: $font2;
+          }
+
+          .field-dropline {
+            font-family: $font2;
+            font-size: 18px;
           }
         }
       }

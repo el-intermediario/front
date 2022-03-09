@@ -12,7 +12,6 @@ import {
 } from "react-share";
 
 // images
-import banner2 from "../../doc/img/bg/sidebar-1.png";
 import api from "../../utils/api";
 import './style.scss';
 import Moment from 'react-moment';
@@ -85,8 +84,6 @@ const ArticlePage = () => {
 
     return null;
   };
-
-  console.log(data);
 
   return (
     <Fragment>

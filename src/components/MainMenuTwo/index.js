@@ -95,7 +95,7 @@ const menusLogged = [
     submenu: [
       {
         id: 31,
-        link: '/admin/pages/edit',
+        link: '/admin/section/add',
         linkText: 'Editar',
       }
     ]

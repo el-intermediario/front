@@ -11,17 +11,19 @@ const OneItemFeatured = ({ className, dark, data }) => {
         <div className="column column-1 col-12">
           <div className="single_mix_carousel nav_style3">
             {data[0].children.map((item, i) => (
-              <div key={i} className="single_post post_type6 post_type9">
+              <div key={i} className="single_post post_type9">
                 <div className="post_img gradient1">
                   <div className="img_wrap">
-                    <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
-                      <LazyImage src={item.data.image} height="520px" alt={item.data.title} />
-                    </Link>
+                    <LazyImage src={item.data.image} width="100%" height="720px" alt={item.data.title} />
                   </div>
                 </div>
                 <div className="single_post_text">
-                  <div className="meta">{item.data.copete}</div>
-                  <h4><Link to={`/articulo/${item.data.slug}`}>{item.data.title}</Link></h4>
+                  <div className="field-copete">{item.data.copete}</div>
+                  <div className="field-title">
+                    <Link to={`/articulo/${item.data.slug}`}>{item.data.title}</Link>
+                  </div>
+                  <div className="field-date">Noviembre 17, 2021</div>
+                  <div className="field-dropline">{item.data.dropline}</div>
                 </div>
               </div>
             ))}

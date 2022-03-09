@@ -1265,17 +1265,7 @@ span.tranding {
         &:last-child {
           margin-left: 20px;
 
-          &:before {
-            position: absolute;
-            content: "/";
-            height: 20px;
-            width: 10px;
-            left: -18px;
-            top: 50%;
-            margin-top: -10px;
-            line-height: 20px;
-            text-align: center;
-          }
+
         }
       }
     }
@@ -1572,20 +1562,6 @@ span.tranding {
         margin-left: 20px;
         color: $body_color;
         opacity: .75;
-
-        &:before {
-          position: absolute;
-          content: "/";
-          height: 20px;
-          width: 10px;
-          left: -18px;
-          top: 50%;
-          margin-top: -10px;
-          line-height: 20px;
-          color: $body_color;
-          opacity: .3;
-          text-align: center;
-        }
       }
     }
   }
@@ -1607,19 +1583,6 @@ span.tranding {
       &:last-child {
         margin-left: 20px;
         font-weight: 400;
-
-        &:before {
-          position: absolute;
-          content: "/";
-          height: 20px;
-          width: 10px;
-          left: -18px;
-          top: 50%;
-          margin-top: -10px;
-          line-height: 20px;
-          color: $white;
-          text-align: center;
-        }
       }
     }
   }
@@ -2619,20 +2582,6 @@ a.cbtn3 {
         &:last-child {
           margin-left: 20px;
           font-weight: 400;
-
-          &:before {
-            position: absolute;
-            content: "/";
-            height: 20px;
-            width: 10px;
-            left: -18px;
-            top: 50%;
-            margin-top: -10px;
-            line-height: 20px;
-            color: $white;
-            text-align: center;
-
-          }
         }
       }
     }

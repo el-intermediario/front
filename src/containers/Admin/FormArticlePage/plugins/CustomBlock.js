@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Embed from 'react-embed';
+import api from '../../../../utils/api';
+import './editor.scss';
 
 const CustomBlock = (props) => {
   const entity = props.contentState.getEntity(
@@ -13,22 +15,22 @@ const CustomBlock = (props) => {
   switch (type) {
     case 'REFERENCE':
       return (
-        <div className="col-lg-12">
-          <Fragment key={item.id}>
-            <div className="single_post widgets_small block-reference">
-                <div className="post_img">
-                    <div className="img_wrap">
-                        <img src={item.image} alt="thumb"/>
-                    </div>
-                </div>
-                <div className="single_post_text">
-                    <div className="meta2"><Link to="/">{item.copete}</Link></div>
-                    <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
-                </div>
-            </div>
-            <div className="space-15"/>
-          </Fragment>
-        </div>
+        <Fragment key={item.id}>
+          <div className="single_post block-reference">
+              <div className="post_img">
+                  <div className="img_wrap">
+                      <img src={`${api.space}${item.image}`} alt="thumb"/>
+                  </div>
+              </div>
+              <div className="post_text">
+                  <div className="meta2">
+                     {item.copete}
+                  </div>
+                  <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
+              </div>
+          </div>
+          <div className="space-15"/>
+        </Fragment>
       );
       case 'QUOTE':
         return (

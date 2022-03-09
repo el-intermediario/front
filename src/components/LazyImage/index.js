@@ -38,7 +38,7 @@ const StyledImage = styled.img`
   object-fit: cover;
 `;
 
-const LazyImage = ({ src, alt, height}) => {
+const LazyImage = ({ src, alt, height, width}) => {
   const refPlaceholder = React.useRef();
 
   const removePlaceholder = () => {
@@ -47,6 +47,7 @@ const LazyImage = ({ src, alt, height}) => {
 
   const styles = {
     height: height,
+    width: width
   };
 
   return <img  style={styles} src={`${api.space}${src}`} alt={alt} />
