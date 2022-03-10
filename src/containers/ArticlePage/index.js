@@ -183,7 +183,7 @@ const ArticlePage = () => {
               {/* <PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" /> */}
             </div>
             <div className="col-md-6 col-lg-4 page-sidebar">
-              <Sidebar category={data && data.category.initial.split('/')[1]} mostView articlesRelated />
+              <Sidebar category={data && data.category && data.category.initial.split('/')[1]} mostView articlesRelated />
             </div>
           </div>
         </div>
