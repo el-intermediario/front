@@ -116,6 +116,11 @@ const menusLogged = [
   },
   {
     id: 5,
+    link: '/',
+    linkText: 'Ver Portada',
+  },
+  {
+    id: 6,
     link: '/logout',
     linkText: 'Salir',
   },

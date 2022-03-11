@@ -114,10 +114,6 @@ const Container = (props) => {
 
   const handleDrop = useCallback(
     (dropZone, item) => {
-      // console.log('dropZone', dropZone)
-      // console.log('item', item)
-
-      console.log(item);
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
 
@@ -243,7 +239,8 @@ const Container = (props) => {
           id: shortid.generate(),
           children: [{
             data: {
-              title: topic
+              title: topic,
+              typeId: 'topic'
             },
             id: shortid.generate(),
             type: 'component',
@@ -282,7 +279,7 @@ const Container = (props) => {
             <SideBarItem key={ad.id} data={ad} />
           ))}
 
-          {/* <div className="">
+          <div className="row">
             <h4>Agregar bloque de:</h4>
             <div>
               <input name="topic" value={topic} onChange={e => setTopic(e.target.value)}
@@ -291,9 +288,9 @@ const Container = (props) => {
               />
             </div>
             <div>
-              <button type="submit" className="cbtn1" type="submit" onClick={handleBrickTopic}>Agregar</button>
+              <Button type="submit" color="info" onClick={handleBrickTopic}>Agregar</Button>
             </div>
-          </div> */}
+          </div>
 
           {/* <div className="">
             <div>

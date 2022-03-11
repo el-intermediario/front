@@ -71,7 +71,8 @@ const HomePage = () => {
   }
 
   const handleRow = (row) => {
-    switch (row.id) {
+    const rowId = row.id.split('_');
+    switch (rowId[0]) {
       case 'ad':
         return <Ad 
           imageUrl={row.children[0].children[0].data.image}
@@ -96,33 +97,7 @@ const HomePage = () => {
         // Bloque con notas de un tema especifica ej: 'elecciones'
         break;
       case 'topic':
-        return <div className="entertrainments">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-lg-8">
-                      <TopicArticles data={row.children}/>
-                    </div>
-                    <div className="col-lg-4">
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="banner2 mb30">
-                            <Link to="/">
-                              <img src={banner2} alt="thumb" />
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="banner2 mb30">
-                            <Link to="/">
-                              <img src={banner2} alt="thumb" />
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>;
+        return <TopicArticles topic={rowId[1]}/>;
         break;      
       case 'videos':
         // return <VideoPost key="videos" className="pt30 half_bg60" />

@@ -45,6 +45,11 @@ const Component = ({ data, components, path }) => {
           </div>
         </div>
       ) : null}
+      {data.data.typeId === 'topic' ? (
+        <div>
+          <div>Notas de: {data.data && data.data.title}</div>
+        </div>
+      ) : null}
       {data.data.typeId === 'ad' && <img src={`${api.space}${data.data.image}`} />}
     </div>
   );
