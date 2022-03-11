@@ -349,7 +349,7 @@ const FormArticlePage = (props) => {
                 </select>
               </div>
               <div className="col-lg-12 field-category">
-                {id && category ? (
+                {id ? (
                   <TreeMenu
                     cacheSearch
                     data={categories}
@@ -358,7 +358,7 @@ const FormArticlePage = (props) => {
                     hasSearch={false}
                     onClickItem={handleCategory}
                     initialActiveKey={category ? category.initial : ''}
-                    initialOpenNodes={['category', category.parent]}
+                    initialOpenNodes={category ? ['category', category.parent] : ['category']}
                     resetOpenNodesOnDataUpdate={false}
                   />
                 ) : null}
