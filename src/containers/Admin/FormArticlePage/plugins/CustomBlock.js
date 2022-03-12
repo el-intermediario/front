@@ -35,7 +35,15 @@ const CustomBlock = (props) => {
         </Fragment>
       );
     case 'VIDEO':
-      console.log(item);
+      if (item.type === 'youtube') {
+        const width = !item.width ? '80%' : item.width;
+        const height = !item.height ? '100%' : item.height;
+        return (
+          <Embed width={width} height={height} url={`https://www.youtube.com/watch?v=${item.content}`} />
+        )
+      } 
+      
+      // If video is custom.
       return (
         <Fragment key={item.id}>
           <Video
