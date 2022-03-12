@@ -18,6 +18,7 @@ import "./styles.scss";
 import UploadImage from '../../../components/UploadImage/uploadImage';
 import BlockQuote from './plugins/BlockQuote';
 import Loading from 'react-fullscreen-loading';
+import VideoReference from './plugins/VideoReference';
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
@@ -296,6 +297,7 @@ const FormArticlePage = (props) => {
                             toolbarCustomButtons={[
                               <CustomOption />, 
                               <ArticleReference />,
+                              <VideoReference />,
                               <BlockQuote />
                             ]}
                             hashtag={{

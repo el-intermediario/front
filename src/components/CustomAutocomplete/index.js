@@ -2,22 +2,33 @@ import React, {useState, useEffect} from 'react';
 import api from "../../utils/api";
 import Autocomplete from 'react-autocomplete';
 
-const CustomAutocomplete = ({handleItemSelected, initialSearch}) => {
+const CustomAutocomplete = ({type = 'article', handleItemSelected, initialSearch}) => {
   const [valueSearch, setValueSearch] = useState('');
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       const params = valueSearch ? `?limit=8&search=${valueSearch}` : '?limit=4';
-      api.article.getArticles(params,
-        { headers: { 'Content-Type': 'application/json' } }
-      ).then(response => {
-        const responseItems = response.data;
-        setItems(responseItems)
-      })
-      .catch(error => {
-        console.log(`Error ${error.response}`);
-      });
+
+      if (type === 'article') {
+        api.article.getArticles(params, 
+          { headers: { 'Content-Type': 'application/json' } }
+        ).then(response => {
+          const responseItems = response.data;
+          setItems(responseItems)
+        }).catch(error => {
+          console.log(`Error ${error.response}`);
+        });
+      } else if (type === 'video') {
+        api.video.getVideos(params, 
+          { headers: { 'Content-Type': 'application/json' } }
+        ).then(response => {
+          const responseItems = response.data;
+          setItems(responseItems)
+        }).catch(error => {
+          console.log(`Error ${error.response}`);
+        });
+      }
     }, 1000)
 
     return () => clearTimeout(delayDebounceFn)
@@ -31,8 +42,9 @@ const CustomAutocomplete = ({handleItemSelected, initialSearch}) => {
 
   return (
     <Autocomplete
+      key={type}
       value={valueSearch}
-      inputProps={{ className: 'custom-autocomplete', placeholder: 'Buscar nota..' }}
+      inputProps={{ className: 'custom-autocomplete', placeholder: 'Buscar..' }}
       items={items}
       getItemValue={(item) => item.title}
       wrapperStyle={{ width: '100%' }}

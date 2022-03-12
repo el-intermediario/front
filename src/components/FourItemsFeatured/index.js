@@ -75,9 +75,9 @@ const FourItemsFeatured = ({ className, news }) => {
                 ))}
               </Swiper>
               <div className="navBtns">
-                                <div onClick={goPrev} className="navBtn prevtBtn"><FontAwesome name="angle-left"/></div>
-                                <div onClick={goNext} className="navBtn nextBtn"><FontAwesome name="angle-right"/></div>
-                            </div>
+                  <div onClick={goPrev} className="navBtn prevtBtn"><FontAwesome name="angle-left"/></div>
+                  <div onClick={goNext} className="navBtn nextBtn"><FontAwesome name="angle-right"/></div>
+              </div>
             </div>
             {/*CAROUSEL END*/}
           </div>
