@@ -1,0 +1,21 @@
+.row-topic {
+  .single_post {
+    border-radius: 6px;
+    min-height: 220px;
+    background-size: cover;
+    position: relative;
+
+    .field-title {
+      position: absolute;
+      padding: 10px;
+      bottom: 0;
+      left: 0;
+      font-size: 18px;
+      
+      a {
+        text-shadow: 1px 1px 8px rgba(0,0,0, 30%);
+        color: white;
+      }
+    }
+  }
+}
