@@ -8,7 +8,7 @@ import api from '../../utils/api';
 import LazyImage from '../LazyImage';
 import './styles.scss';
 
-const TrendingNews = ({ dark, offset }) => {
+const TrendingNews = ({ dark, offset, handleOffset }) => {
   const [headArticles, setHeadArticles] = useState([]);
   const [bodyArticles, setBodyArticles] = useState([]);
 
@@ -25,6 +25,11 @@ const TrendingNews = ({ dark, offset }) => {
     );
 
     if (response.data) {
+      if (response.data.length > 0 && offset.length > 0) {
+        console.log(offset);
+        const newOffsets = response.data.map(item => item.idShort);
+        handleOffset([...offset, ...newOffsets]);
+      }
       setBodyArticles(response.data.slice(2, 8));
       setHeadArticles(response.data.slice(0, 2));
     }

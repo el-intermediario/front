@@ -24,11 +24,12 @@ const HomePage = () => {
   const [layout, setLayout] = useState([]);
   const [ads, setAds] = useState([]);
   const [articlesOffset, setArticlesOffset] = useState([]);
+  const [articlesOffset2, setArticlesOffset2] = useState([]);
 
   const blocks = [
-    {label: 'Politica', key: 'politica', qty: 6},
-    {label: 'Interes general', key: 'interes_general', qty: 4},
-    {label: 'Deportes', key: 'deportes', qty: 6},
+    {label: 'Politica', key: 'politica', qty: 4},
+    {label: 'Interes general', key: 'interes_general', qty: 3},
+    {label: 'Deportes', key: 'deportes', qty: 4},
     {label: 'El Mundo', key: 'el_mundo', qty: 4},
     {label: 'Trending', key: 'trending', qty: 6},
     {label: 'Lifestyle', key: 'lifestye', qty: 4},
@@ -127,7 +128,7 @@ const HomePage = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-8">
-            <TrendingNews offset={articlesOffset} />
+            <TrendingNews offset={articlesOffset} handleOffset={setArticlesOffset2} />
           </div>
           <div className="col-md-12 col-lg-4">
 
@@ -150,148 +151,16 @@ const HomePage = () => {
       <VideoPost key="videos" className="pt30 half_bg90" />
       <div className="space-30" />
 
-      {blocks.map((block, i) => {
-        return <div className={block.key}>
-                <div className="container">
-                  <div className="row">
-                    <div className="col-lg-12">
-                      <div className="row">
-                        <div className="col-12">
-                          <div className="heading">
-                            <h2 className="widget-title">{block.label}</h2>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="entertrainment_carousel mb30 grid-news">
-                        <div className="entertrainment_item">
-                          <div className="row justify-content-center">
-                            <GridNews 
-                              title={block.label} 
-                              gridColumns={block.qty} 
-                              qty={block.qty} 
-                              category={block.key} 
-                              offset={articlesOffset} 
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      {blocks.map((block, i) => { 
+        return  <GridNews
+                  key={i}
+                  title={block.label} 
+                  gridColumns={block.qty} 
+                  qty={block.qty} 
+                  category={block.key} 
+                  offset={articlesOffset2} 
+                />
       })}
-
-      {/* <div className="sports">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="row">
-                <div className="col-12">
-                  <div className="heading">
-                    <h2 className="widget-title">Política</h2>
-                  </div>
-                </div>
-              </div>
-              <div className="entertrainment_carousel mb30 grid-news">
-                <div className="entertrainment_item">
-                  <div className="row justify-content-center">
-                    <GridNews 
-                      title="Política" 
-                      gridColumns="4" 
-                      qty={6} 
-                      category="politica" 
-                      offset={articlesOffset} 
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="politic">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="row">
-                <div className="col-12">
-                  <div className="heading">
-                    <h2 className="widget-title">Interes general</h2>
-                  </div>
-                </div>
-              </div>
-              <div className="entertrainment_carousel mb30 grid-news">
-                <div className="entertrainment_item">
-                  <div className="row justify-content-center">
-                    <GridNews 
-                      title="Interes general" 
-                      gridColumns="4" 
-                      qty={4} 
-                      category="interes_general" 
-                      offset={articlesOffset} 
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-
-      {/* <div className="entertrainmentss">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8">
-              <div className="row">
-                <div className="col-12">
-                  <div className="heading">
-                    <h2 className="widget-title">Entertrainment News</h2>
-                  </div>
-                </div>
-              </div>
-              <div className="entertrainment_carousel mb30">
-                <div className="entertrainment_item">
-                  <div className="row justify-content-center">
-                    <EntertainmentNews entertainments={entertainments} />
-                  </div>
-                </div>
-              </div>
-              <SportsNews />
-              <div className="banner_area mt50 mb60 xs-mt60">
-                <Link to="/">
-                  <img src={banner1} alt="banner1" />
-                </Link>
-              </div>
-              <BusinessNews businessNews={businessNews} />
-            </div>
-            <div className="col-lg-4">
-              <div className="row">
-                <div className="col-lg-12">
-                  <MostShareWidget title="Most share" />
-                </div>
-                <div className="col-lg-12">
-                  <UpcomingMatches />
-                </div>
-                <div className="col-lg-12">
-                  <NewsLetter />
-                </div>
-                <div className="col-lg-12">
-                  <CategoriesWidget />
-                </div>
-                <div className="col-lg-12">
-                  <div className="banner2 mb30">
-                    <Link to="/">
-                      <img src={banner2} alt="thumb" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className="space-70" />
     </Fragment>
   );
