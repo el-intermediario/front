@@ -32,12 +32,10 @@ const RegisterPage = () => {
 
       if (response) {
         console.log(response);
-        history.push('/admin/users', {type: 'success', message: 'El usuario se creo correctamente.'});
+        history.push('/admin', {type: 'success', message: 'El usuario se creo correctamente.'});
       }
     }
   };
-
-  console.log(user);
 
   return (
     <>

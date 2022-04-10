@@ -26,7 +26,6 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
 
     if (response.data) {
       if (response.data.length > 0 && offset.length > 0) {
-        console.log(offset);
         const newOffsets = response.data.map(item => item.idShort);
         handleOffset([...offset, ...newOffsets]);
       }

@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FormGroup } from 'reactstrap';
 import Loading from 'react-fullscreen-loading';
+import axios from 'axios';
 
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import api from '../../../utils/api';
 import UploadImage from '../../../components/UploadImage/uploadImage';
+import FileUpload from '../../../components/FileUpload';
 
 const FormAdsPage = () => {
   const history = new useHistory();
@@ -94,6 +96,7 @@ const FormAdsPage = () => {
       status,
       categories: checkedCategories
     }
+
     try {
       const response = await api.ad.add(data,
         { header: user.headers }
@@ -116,6 +119,28 @@ const FormAdsPage = () => {
         ? [...prev, value] // si el check es true agregarmos el elemento al array.
         : prev.filter(val => val !== value) // si es false, lo buscamos y lo quitamos.
     )
+  }
+
+  const handleFiles = async (files) => {
+    const formData = new FormData();
+    formData.append('folder', 'intermediario/ads');
+    for(const file of files) {
+      formData.append('image', file);
+    }
+
+    try {
+      const response = await axios.post(`http://localhost:3001/upload-images`, formData, { 
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      
+      if (response) {
+        setImage(response.data.data[0]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // Apply loading when save content.
@@ -188,7 +213,7 @@ const FormAdsPage = () => {
                       </div>
                       <div className="row">
                         <div className="col-12">
-                          <UploadImage handleImage={uploadImage} handleCrop={false} />
+                          <FileUpload maxFiles={1} handleFiles={handleFiles}/>
                         </div>
                       </div>
                       <div className="row">

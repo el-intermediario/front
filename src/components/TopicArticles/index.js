@@ -47,16 +47,14 @@ const TopicArticles = ({ dark, topic }) => {
           </div>
         </div>
         <div className="row">
-          {articles.map(item => (
-            <div className="col-3">
+          {articles.map((item, k) => (
+            <div className="col-3" key={k}>
               <div className="single_post" style={{backgroundImage: `url(${api.space}${item.image})`}}>
-                <Link to={`/articulo/${item.slug}`}>
-                  <div className="single_post_text">
-                    <div className="field-title">
-                      <Link to={`/articulo/${item.slug}`}>{item.title}</Link>
-                    </div>
+                <div className="single_post_text">
+                  <div className="field-title">
+                    <Link to={`/articulo/${item.slug}`}>{item.title}</Link>
                   </div>
-                </Link>
+                </div>
               </div>
             </div>
           ))}
