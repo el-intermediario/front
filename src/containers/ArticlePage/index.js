@@ -161,7 +161,7 @@ const ArticlePage = () => {
                 <img
                   rel="preload"
                   as="image"
-                  src={data && `${api.space}${data.image}`}
+                  src={data && data.image.url}
                   alt={data && data.title}
                   width="730px"
                   height="410px"

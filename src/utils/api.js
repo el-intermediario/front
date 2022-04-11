@@ -50,7 +50,7 @@ const tag = {
 }
 
 const upload = {
-  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/upload`, dataModel, headers)
+  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/upload-images`, dataModel, headers)
 };
 
 const uploadVideo = {

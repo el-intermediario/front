@@ -15,10 +15,10 @@ import es from './es.js';
 import CustomBlock from './plugins/CustomBlock';
 import ArticleReference from './plugins/ArticleReference';
 import "./styles.scss";
-import UploadImage from '../../../components/UploadImage/uploadImage';
 import BlockQuote from './plugins/BlockQuote';
 import Loading from 'react-fullscreen-loading';
 import VideoReference from './plugins/VideoReference';
+import FileUpload from '../../../components/FileUpload';
 
 const FormArticlePage = (props) => {
   let { id } = useParams();
@@ -44,6 +44,7 @@ const FormArticlePage = (props) => {
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
   const [category, setCategory] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [gallery, setGallery] = useState([]);
 
   //custom buttons per editorState
   const [showModal, setShowModal] = useState(false);
@@ -79,6 +80,7 @@ const FormArticlePage = (props) => {
       setCopete('');
       setSource('');
       setTags([]);
+      setGallery([]);
     }
   }, [id]);
 
@@ -100,6 +102,7 @@ const FormArticlePage = (props) => {
         setSource(data.source);
         setTags(data.tags);
         setBodyHtml(data.body);
+        setGallery(data.gallery)
 
         const contentState = convertFromRaw(JSON.parse(data.bodyData));
         setEditorState(EditorState.createWithContent(contentState));
@@ -144,7 +147,8 @@ const FormArticlePage = (props) => {
       status,
       category,
       image: newImage ? newImage : image,
-      tags
+      tags,
+      gallery
     };
 
     try {
@@ -247,6 +251,32 @@ const FormArticlePage = (props) => {
     setCroppedImage({file, name});
   }
 
+  const handleFiles = async (files, folder) => {
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
+    const formData = new FormData();
+    formData.append('folder', `intermediario/${folder}/${year}/${month}`);
+    for(const file of files) {
+      formData.append('image', file);
+    }
+
+    try {
+      const response = await api.upload.post(formData, { headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
+      
+      if (response) {
+        if (folder === 'articles') {
+          setImage(response.data.data[0]);
+        } else {
+          setGallery([...gallery, response.data.data]);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   if (loader) {
     return <Loading loading background="#ffffff" loaderColor="#14A5C0" />
   }
@@ -325,8 +355,25 @@ const FormArticlePage = (props) => {
                           />
                         </div>
                         <div className="col-12">
-                          <UploadImage handleImage={uploadImage} handleCrop={true} />
-                          {image && id && <img src={`${api.space}${image}`} width="200px" />}
+                          <div className="row">
+                            <div className="col-lg-6 field-image">
+                              <label>Imagen principal</label>
+                              <FileUpload
+                                initialFiles={image ? [image] : []}
+                                maxFiles={1}
+                                handleInitialFiles={(data) => setImage(data[0])}
+                                handleFiles={(files) => handleFiles(files, 'articles')}
+                              />
+                            </div>
+                            <div className="col-lg-6 field-gallery">
+                              <label>Galeria de imagenes</label>
+                              <FileUpload 
+                                initialFiles={gallery}
+                                handleInitialFiles={(data) => setGallery(data)}
+                                handleFiles={(files) => handleFiles(files, 'gallery')}
+                              />
+                            </div>
+                          </div>
                         </div>
                         <div className="col-12">
                           <div className="space-20" />

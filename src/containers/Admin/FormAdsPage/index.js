@@ -8,7 +8,6 @@ import axios from 'axios';
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
 import api from '../../../utils/api';
-import UploadImage from '../../../components/UploadImage/uploadImage';
 import FileUpload from '../../../components/FileUpload';
 
 const FormAdsPage = () => {
@@ -121,19 +120,17 @@ const FormAdsPage = () => {
     )
   }
 
-  const handleFiles = async (files) => {
+  const handleFiles = async (files, folder) => {
     const formData = new FormData();
-    formData.append('folder', 'intermediario/ads');
+    formData.append('folder', `intermediario/${folder}`);
     for(const file of files) {
       formData.append('image', file);
     }
 
     try {
-      const response = await axios.post(`http://localhost:3001/upload-images`, formData, { 
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const response = await api.upload.post(formData, { headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
       
       if (response) {
         setImage(response.data.data[0]);
@@ -213,7 +210,12 @@ const FormAdsPage = () => {
                       </div>
                       <div className="row">
                         <div className="col-12">
-                          <FileUpload maxFiles={1} handleFiles={handleFiles}/>
+                          <FileUpload
+                            initialFiles={image ? [image] : []}
+                            maxFiles={1}
+                            handleInitialFiles={(data) => setImage(data[0])}
+                            handleFiles={(files) => handleFiles(files, 'ads')}
+                          />
                         </div>
                       </div>
                       <div className="row">
