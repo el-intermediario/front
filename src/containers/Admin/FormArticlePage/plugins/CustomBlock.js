@@ -21,7 +21,7 @@ const CustomBlock = (props) => {
           <div className="single_post block-reference">
             <div className="post_img">
               <div className="img_wrap">
-                <img src={`${api.space}c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} alt="thumb" />
+                <img src={`${api.space}f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} alt="thumb" />
               </div>
             </div>
             <div className="post_text">

@@ -49,7 +49,7 @@ const TopicArticles = ({ dark, topic }) => {
         <div className="row">
           {articles.map((item, k) => (
             <div className="col-3" key={k}>
-              <div className="single_post" style={{backgroundImage: `url(${api.space}c_fill,g_face,h_280,w_280/v${item.image.url})`}}>
+              <div className="single_post" style={{backgroundImage: `url(${api.space}f_auto,c_fill,g_face,h_280,w_280/v${item.image.url})`}}>
                 <div className="single_post_text">
                   <div className="field-title">
                     <Link to={`/articulo/${item.slug}`}>{item.title}</Link>

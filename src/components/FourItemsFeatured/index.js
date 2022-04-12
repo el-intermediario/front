@@ -62,7 +62,7 @@ const FourItemsFeatured = ({ className, news }) => {
                   <div key={i} className="single_post post_type6 post_type7">
                     <div className="post_img gradient1">
                       <Link to={`/articulo/${item.children[0].data.slug}`}>
-                        <LazyImage src={`c_fill,g_face,h_280,w_280/v${item.children[0].data.image.url}`}  alt={item.children[0].data.title} />
+                        <LazyImage src={`f_auto,c_fill,g_face,h_280,w_280/v${item.children[0].data.image.url}`}  alt={item.children[0].data.title} />
                       </Link>
                     </div>
                     <div className="single_post_text">

@@ -13,7 +13,7 @@ const TrendingNewsSlider = ({ articles }) => {
           return <Col key={i} className="single_post post_type3">
             <div className="post_img">
               <div className="img_wrap">
-                <LazyImage src={`c_fill,g_face,h_250,q_84,w_300/v${item.image.url}`} alt={item.title} height="200px" />
+                <LazyImage src={`f_auto,c_fill,g_face,h_250,q_84,w_300/v${item.image.url}`} alt={item.title} height="200px" />
               </div>
               <span className="tranding">{i + 1}</span>
             </div>

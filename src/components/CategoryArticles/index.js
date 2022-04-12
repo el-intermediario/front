@@ -16,7 +16,7 @@ const CategoryArticles = ({articles}) => {
                                     <div className="post_img">
                                         <div className="img_wrap">
                                             <Link to={`/articulo/${item.slug}`}>
-                                                <img src={`${api.space}c_fill,g_face,h_200,q_84,w_350/v${item.image.url}`} alt={item.title}/>
+                                                <img src={`${api.space}f_auto,c_fill,g_face,h_200,q_84,w_350/v${item.image.url}`} alt={item.title}/>
                                             </Link>
                                         </div>
                                     </div>
