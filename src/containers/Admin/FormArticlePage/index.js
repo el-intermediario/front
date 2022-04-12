@@ -46,11 +46,6 @@ const FormArticlePage = (props) => {
   const [categories, setCategories] = useState([]);
   const [gallery, setGallery] = useState([]);
 
-  //custom buttons per editorState
-  const [showModal, setShowModal] = useState(false);
-  const [urlValue, setUrlValue] = useState('');
-  const [articleReferenceSelected, setArticleReferenceSelected] = useState(null);
-
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -398,7 +393,7 @@ const FormArticlePage = (props) => {
                 </select>
               </div>
               <div className="col-lg-12 field-category">
-                {id ? (
+                {id && category ? (
                   <TreeMenu
                     cacheSearch
                     data={categories}
@@ -420,6 +415,7 @@ const FormArticlePage = (props) => {
                     disableKeyboard={false}
                     hasSearch={false}
                     onClickItem={handleCategory}
+                    initialActiveKey={''}
                     initialOpenNodes={['category']}
                     resetOpenNodesOnDataUpdate={false}
                   />

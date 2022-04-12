@@ -41,7 +41,7 @@ const Component = ({ data, components, path }) => {
         <div>
           <div>{data.data && data.data.title || data.data.name}</div>
           <div>
-            <img src={`${api.space}${data.data.image}`} width="100%"/>
+            <img src={`${api.space}c_fill,g_face,h_380,q_84,w_600/v${data.data.image.url}`} width="100%"/>
           </div>
         </div>
       ) : null}
@@ -50,7 +50,7 @@ const Component = ({ data, components, path }) => {
           <div>Notas de: {data.data && data.data.title}</div>
         </div>
       ) : null}
-      {data.data.typeId === 'ad' && <img src={`${api.space}${data.data.image}`} />}
+      {data.data.typeId === 'ad' && <img src={`${api.space}v${data.data.image.url}`} />}
     </div>
   );
 };

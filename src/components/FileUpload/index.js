@@ -4,8 +4,7 @@ import Dropzone from 'react-dropzone-uploader'
 import { getDroppedOrSelectedFiles } from 'html5-file-selector'
 import { useArray } from 'react-hanger';
 import "./styles.scss";
-
-const close = "background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTQgMTQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUuMCwgMC4wKSIgZmlsbD0iIzMzMzMzMyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNC4wLCAwLjApIj48cG9seWdvbiBwb2ludHM9IjcuNzE5IDQuOTY0IDEyLjY5MiAwLjAxNyAxNC4zODkgMS43MTUgOS40MTIgNi42NjYgMTQuMzU0IDExLjYzNCAxMi42NTcgMTMuMzMxIDYuMDE3IDYuNjU3IDcuNzE1IDQuOTYwIj48L3BvbHlnb24+PHBvbHlnb24gcG9pbnRzPSI3LjYxMiA0Ljk2NCA3LjYxNiA0Ljk2MCA5LjMxMyA2LjY1NyAyLjY3NCAxMy4zMzEgMC45NzcgMTEuNjM0IDUuOTE5IDYuNjY2IDAuOTQyIDEuNzE1IDIuNjM5IDAuMDE3Ij48L3BvbHlnb24+PC9nPjwvZz48L3N2Zz4K&quot;);";
+import api from '../../utils/api';
 
 const FileUpload = ({ maxFiles = 50, handleFiles, initialFiles, handleInitialFiles }) => {
   const images = useArray([]);
@@ -66,7 +65,7 @@ const FileUpload = ({ maxFiles = 50, handleFiles, initialFiles, handleInitialFil
     <>
       {images.value.map((item, i) => (
         <div className="dzu-previewContainer" key={i}>
-          <img className="dzu-previewImage" src={item.url} alt={item.id} title={item.id}  width={60} height={60} />
+          <img className="dzu-previewImage" src={`${api.space}c_fill,g_face,h_77,w_100/v${item.url}`} alt={item.id} title={item.id}  width={60} height={60} />
           <div className="dzu-previewStatusContainer">
             <span 
               onClick={() => images.removeIndex(item.assetId)}

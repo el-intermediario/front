@@ -28,6 +28,7 @@ const Container = (props) => {
   const initialLayout = initialData.layout;
   const initialComponents = initialData.components;
   const initialBricks = initialData.bricks;
+  const [id, setId] = useState(null);
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState(true);
   const [layout, setLayout] = useState(initialLayout);
@@ -46,6 +47,9 @@ const Container = (props) => {
       setTitle(props.cover.title);
       setStatus(props.cover.status);
       setLayout(props.cover.layout);
+      if (props.cover) {
+        setId(props.cover._id);
+      }
     } else {
       setCover(null);
       setTitle('');
@@ -212,8 +216,8 @@ const Container = (props) => {
     
     try {
       let response;
-      if (cover) { // Update a cover.
-        response = await api.cover.put(cover.id, data,
+      if (id) { // Update a cover.
+        response = await api.cover.put(id, data,
           { headers: user.headers }
         );
       } else { // Create a new cover.
@@ -251,6 +255,7 @@ const Container = (props) => {
     setLayout([...layout, newBrick]);
   }
 
+  console.log(props.cover);
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (

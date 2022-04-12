@@ -47,7 +47,7 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
               <div className="single_post widgets_small">
                 <div className="post_img">
                   <div className="img_wrap">
-                    <LazyImage src={item.image} alt={item.title} height="77px" />
+                    <LazyImage src={`c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} alt={item.title} height="77px" />
                   </div>
                   <span className="tranding">
                     <FontAwesome name="bolt" />
@@ -75,7 +75,7 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
               <div className="single_post widgets_small">
                 <div className="post_img">
                   <div className="img_wrap">
-                    <LazyImage src={item.image} alt={item.title} height="77px" />
+                    <LazyImage src={`c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} alt={item.title} height="77px" />
                   </div>
                   <span className="tranding">
                     <FontAwesome name="bolt" />

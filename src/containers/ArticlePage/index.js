@@ -161,10 +161,8 @@ const ArticlePage = () => {
                 <img
                   rel="preload"
                   as="image"
-                  src={data && data.image.url}
+                  src={data && `${api.space}c_fill,g_face,h_360,q_84,w_730/v${data.image.url}`}
                   alt={data && data.title}
-                  width="730px"
-                  height="410px"
                 />
                 <div className="padding20 white_bg">
                   <div className="space-20" />

@@ -21,7 +21,7 @@ const ArticlesPage = () => {
 
   const fetchArticles = async (search = null) => {
     try {
-      const params = search ? `?search=${search}` : '';
+      const params = search ? `?search=${search}&limit=25` : '';
       const response = await api.article.getArticles(params,
         { headers: { 'Content-Type': 'application/json' } }
       );

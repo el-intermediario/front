@@ -21,12 +21,12 @@ const CustomBlock = (props) => {
           <div className="single_post block-reference">
             <div className="post_img">
               <div className="img_wrap">
-                <img src={`${api.space}${item.image}`} alt="thumb" />
+                <img src={`${api.space}c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} alt="thumb" />
               </div>
             </div>
             <div className="post_text">
               <div className="meta2">
-                {item.copete}
+                Tambien podria interesarte:
               </div>
               <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
             </div>

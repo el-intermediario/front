@@ -56,7 +56,7 @@ const MostView = ({ no_margin, title, dark }) => {
               <div className="single_post widgets_small type8">
                 <div className="post_img">
                   <div className="img_wrap">
-                    <LazyImage src={item.image} alt={item.title} height="77px" />
+                    <LazyImage src={`c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} alt={item.title} height="77px" />
                   </div>
                 </div>
                 <div className="single_post_text">

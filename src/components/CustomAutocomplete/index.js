@@ -7,31 +7,33 @@ const CustomAutocomplete = ({type = 'article', handleItemSelected, initialSearch
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
-      const params = valueSearch ? `?limit=8&search=${valueSearch}` : '?limit=4';
-
-      if (type === 'article') {
-        api.article.getArticles(params, 
-          { headers: { 'Content-Type': 'application/json' } }
-        ).then(response => {
-          const responseItems = response.data;
-          setItems(responseItems)
-        }).catch(error => {
-          console.log(`Error ${error.response}`);
-        });
-      } else if (type === 'video') {
-        api.video.getVideos(params, 
-          { headers: { 'Content-Type': 'application/json' } }
-        ).then(response => {
-          const responseItems = response.data;
-          setItems(responseItems)
-        }).catch(error => {
-          console.log(`Error ${error.response}`);
-        });
-      }
-    }, 1000)
-
-    return () => clearTimeout(delayDebounceFn)
+    if (valueSearch.length) {
+      const delayDebounceFn = setTimeout(() => {
+        const params = valueSearch ? `?limit=8&search=${valueSearch}` : '?limit=4';
+  
+        if (type === 'article') {
+          api.article.getArticles(params, 
+            { headers: { 'Content-Type': 'application/json' } }
+          ).then(response => {
+            const responseItems = response.data;
+            setItems(responseItems)
+          }).catch(error => {
+            console.log(`Error ${error.response}`);
+          });
+        } else if (type === 'video') {
+          api.video.getVideos(params, 
+            { headers: { 'Content-Type': 'application/json' } }
+          ).then(response => {
+            const responseItems = response.data;
+            setItems(responseItems)
+          }).catch(error => {
+            console.log(`Error ${error.response}`);
+          });
+        }
+      }, 1000)
+  
+      return () => clearTimeout(delayDebounceFn)
+    }
   }, [valueSearch]);
   
   useEffect(() => {
