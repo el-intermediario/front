@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom';
 import api from '../../utils/api';
 import "./styles.scss";
 
-const TopicArticles = ({ dark, topic }) => {
+const TopicArticles = ({ dark, data }) => {
   const [articles, setArticles] = useState([]);
+  const topicName = data.id.split('_');
+  const image = data.children[0].children[0].data.image && data.children[0].children[0].data.image.url;
 
   useEffect(() => {
-    fetchArticles()
+    fetchArticles();
   }, []);
 
   const fetchArticles = async () => {
     try {
-      const response = await api.article.getArticles(`?tags=${topic}&limit=4`,
+      const response = await api.article.getArticles(`?tags=${topicName[1]}&limit=4`,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -24,8 +26,10 @@ const TopicArticles = ({ dark, topic }) => {
     }
   }
 
+  console.log(api.base);
+
   const bg = {
-    backgroundImage: `url("./images/blocks/${topic}.jpg")`,
+    backgroundImage: image ? `url("${api.space}f_auto,c_fill,g_faces,h_320,w_1400/v${image}")` : `url("./default/bg.jpg")`,
     backgroundSize: `100%`,
     marginTop: '20px',
     marginBottom: '20px',
@@ -37,12 +41,12 @@ const TopicArticles = ({ dark, topic }) => {
   }
 
   return (
-    <div className={`row row-topic topic-${topic}`} style={bg}>
+    <div className={`row row-topic topic-${topicName[1]}`} style={bg}>
       <div className="container">
         <div className="row">
           <div className="col-12">
             <div className="heading white mt20">
-              <h2 className="widget-title">{topic.toUpperCase()}</h2>
+              <h2 className="widget-title">{topicName[1].toUpperCase()}</h2>
             </div>
           </div>
         </div>

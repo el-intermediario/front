@@ -98,7 +98,7 @@ const HomePage = () => {
         // Bloque con notas de un tema especifica ej: 'elecciones'
         break;
       case 'topic':
-        return <TopicArticles topic={rowId[1]}/>;
+        return <TopicArticles data={row}/>;
         break;      
       case 'videos':
         // return <VideoPost key="videos" className="pt30 half_bg60" />

@@ -19,6 +19,7 @@ import { useHistory } from 'react-router-dom';
 import {SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
 import CoverModal from "../../../components/CoverModal";
+import TopicForm from "../../../components/TopicForm";
 import { Button, ButtonGroup } from "reactstrap";
 
 const Container = (props) => {
@@ -37,7 +38,6 @@ const Container = (props) => {
   const [ads, setAds] = useState([]);
   const [search, setSearch] = useState('');
   const [searchAd, setSearchAd] = useState('');
-  const [topic, setTopic] = useState('');
   const [preview, setPreview] = useState(false);
   const [cover, setCover] = useState(null);
 
@@ -47,8 +47,8 @@ const Container = (props) => {
       setTitle(props.cover.title);
       setStatus(props.cover.status);
       setLayout(props.cover.layout);
-      if (props.cover) {
-        setId(props.cover._id);
+      if (props.cover.id) {
+        setId(props.cover.id);
       }
     } else {
       setCover(null);
@@ -233,7 +233,7 @@ const Container = (props) => {
     }
   };
 
-  const handleBrickTopic = () => {
+  const handleBrickTopic = (topic, image) => {
     const newBrick = {
       id: 'topic_' + topic,
       type: 'row',
@@ -244,6 +244,7 @@ const Container = (props) => {
           children: [{
             data: {
               title: topic,
+              image,
               typeId: 'topic'
             },
             id: shortid.generate(),
@@ -255,7 +256,6 @@ const Container = (props) => {
     setLayout([...layout, newBrick]);
   }
 
-  console.log(props.cover);
   // dont use index for key when mapping over items
   // causes this issue - https://github.com/react-dnd/react-dnd/issues/342
   return (
@@ -270,7 +270,7 @@ const Container = (props) => {
           {articles.map((article, index) => (
             <SideBarItem key={article.id} data={article} />
           ))}
-          <div className="">
+          <div>
             <ButtonGroup>
               <Button color="primary" onClick={e => handleSearchAds(e.target.value, 'portada_superior')}>
                 Publi Horizontal
@@ -284,17 +284,8 @@ const Container = (props) => {
             <SideBarItem key={ad.id} data={ad} />
           ))}
 
-          <div className="row">
-            <h4>Agregar bloque de:</h4>
-            <div>
-              <input name="topic" value={topic} onChange={e => setTopic(e.target.value)}
-                type="text"
-                placeholder="Tema" 
-              />
-            </div>
-            <div>
-              <Button type="submit" color="info" onClick={handleBrickTopic}>Agregar</Button>
-            </div>
+          <div>
+            <TopicForm handleBrickTopic={handleBrickTopic} />
           </div>
 
           {/* <div className="">

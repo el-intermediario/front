@@ -82,7 +82,7 @@ const FileUpload = ({ maxFiles = 50, handleFiles, initialFiles, handleInitialFil
         maxFiles={maxFiles}
         inputContent="Arrastra un archivo"
         styles={{
-          dropzone: { width: 400 },
+          dropzone: { width: "100%" },
           dropzoneActive: { borderColor: 'green' },
         }}
         submitButtonContent="Confirmar archivos"
