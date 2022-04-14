@@ -4,6 +4,7 @@ const localUrl = window.location.protocol + '//' + window.location.hostname + ':
 const remoteUrl = 'https://api-intermediario.sanjua.com';
 const baseUrl = window.location.hostname === 'localhost' ? localUrl : remoteUrl;
 const space = 'https://res.cloudinary.com/sanjua/image/upload/';
+const spaceVideo = 'https://res.cloudinary.com/sanjua/video/upload/';
 const version = 'api/v1';
 
 const ad = {
@@ -54,7 +55,7 @@ const upload = {
 };
 
 const uploadVideo = {
-  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/upload-video`, dataModel, headers)
+  post: (dataModel, headers) => axios.post(`${baseUrl}/${version}/upload-images`, dataModel, headers)
 };
 
 const video = {
@@ -70,6 +71,7 @@ export default {
   category,
   contact,
   space,
+  spaceVideo,
   page,
   tag,
   upload,

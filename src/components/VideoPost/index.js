@@ -28,7 +28,7 @@ const VideoPost = ({ className, dark }) => {
         let newItems = response.data;
         newItems.map((video, i) => {
           if (video.type === 'custom') {
-            newItems[i].thumbnail = api.space + video.thumbnail;
+            newItems[i].thumbnail = `${api.space}h_410,w_730/v${video.customThumbnail.url}`;
           } else {
             if (video.type === 'youtube') {
               newItems[i].thumbnail = `https://img.youtube.com/vi/${video.content}/hqdefault.jpg`;
@@ -98,7 +98,7 @@ const VideoPost = ({ className, dark }) => {
       {firstVideo ? firstVideo.type === 'custom' ? (
         <ModalVideo 
           channel={firstVideo && firstVideo.type} 
-          url={firstVideo && api.space + firstVideo.content} 
+          url={firstVideo && `${api.spaceVideo}v${firstVideo.customVideo.url}`} 
           isOpen={vModal}
           onClose={() => setvModal(false)} 
         />

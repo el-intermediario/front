@@ -20,6 +20,9 @@ import Loading from 'react-fullscreen-loading';
 import VideoReference from './plugins/VideoReference';
 import FileUpload from '../../../components/FileUpload';
 
+const year = new Date().getFullYear();
+const month = new Date().getMonth() + 1;
+
 const FormArticlePage = (props) => {
   let { id } = useParams();
   const history = useHistory();
@@ -110,25 +113,6 @@ const FormArticlePage = (props) => {
   const submitHandler = async (event) => {
     setLoader(true);
     event.preventDefault();
-    let newImage; 
-
-    if (croppedImage) {
-      const formData = new FormData();
-      formData.append('folder', 'articles');
-      formData.append('file', croppedImage.file, croppedImage.name);
-      
-      try {
-        const responseImage = await api.upload.post(formData, { headers: {
-          'Content-Type': 'multipart/form-data'
-        }});
-        
-        if (responseImage) {
-          newImage = responseImage.data.src;
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
 
     let data = {
       title,
@@ -141,7 +125,7 @@ const FormArticlePage = (props) => {
       bodyData: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
       status,
       category,
-      image: newImage ? newImage : image,
+      image: image,
       tags,
       gallery
     };
@@ -173,8 +157,8 @@ const FormArticlePage = (props) => {
 
   const uploadImageCallBack = async (file) => {
     const formData = new FormData();
-    formData.append('folder', 'articles');
-    formData.append('file', file);
+    formData.append('folder', `intermediario/articles/${year}/${month}`);
+    formData.append('image', file);
 
     try {
       const response = await api.upload.post(formData, { headers: {
@@ -184,7 +168,8 @@ const FormArticlePage = (props) => {
       if (response) {
         return new Promise(
           (resolve, reject) => {
-            resolve({ data: { link: `${api.space}${response.data.src}`, file } });
+            console.log(response.data);
+            resolve({ data: { link: `${api.space}v${response.data.data[0].url}`, file } });
           }
         );
       }
@@ -241,14 +226,7 @@ const FormArticlePage = (props) => {
     return null;
   };
 
-  // Upload Image.
-  const uploadImage = async (file, name) => {
-    setCroppedImage({file, name});
-  }
-
   const handleFiles = async (files, folder) => {
-    const year = new Date().getFullYear();
-    const month = new Date().getMonth() + 1;
     const formData = new FormData();
     formData.append('folder', `intermediario/${folder}/${year}/${month}`);
     for(const file of files) {
@@ -332,7 +310,7 @@ const FormArticlePage = (props) => {
                             toolbar={{
                               image: {
                                 previewImage: true,
-                                inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
+                                inputAccept: 'image/jpeg,image/jpg,image/png',
                                 uploadCallback: uploadImageCallBack,
                                 alt: { present: true, mandatory: false },
                               },

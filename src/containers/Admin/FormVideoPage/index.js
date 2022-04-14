@@ -28,8 +28,8 @@ const FormVideoPage = () => {
     setFileSource(file);
 
     const formData = new FormData();
-    formData.append('folder', 'videos');
-    formData.append('file', file);
+    formData.append('folder', 'intermediario/videos');
+    formData.append('image', file);
 
     setVideoSource(formData);
   }
@@ -73,24 +73,23 @@ const FormVideoPage = () => {
       // Upload video.
       try {
         const formData = new FormData();
-        formData.append('folder', 'videos');
-        formData.append('file', imageSource.file, imageSource.imgName);
+        formData.append('folder', 'intermediario/videos');
+        formData.append('image', imageSource.file, imageSource.imgName);
         const responseImage = await api.upload.post(formData, { headers: {
           'Content-Type': 'multipart/form-data'
         }});
 
         if (responseImage) {
-          const responseUpload = await api.uploadVideo.post(videoSource, { headers: {
+          const responseVideo = await api.upload.post(videoSource, { headers: {
             'Content-Type': 'multipart/form-data'
           }});
           
-          if (responseUpload) {
+          if (responseVideo) {
             const data = {
               title,
               type: 'custom',
-              content: responseUpload.data.src,
-              mimetype: responseUpload.data.file.mimetype,
-              thumbnail: responseImage.data.src,
+              customThumbnail: responseImage.data.data[0],
+              customVideo: responseVideo.data.data[0],
               inHome
             };
             
@@ -98,7 +97,7 @@ const FormVideoPage = () => {
               const response = await api.video.post(data, {
                 header: { "Content-Type": "application/json" },
               });
-              if (response) {
+              if (response.data) {
                 setLoader(false);
                 history.push('/admin', {type: 'success', message: 'El video se creo correctamente.'});
               }
