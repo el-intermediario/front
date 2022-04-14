@@ -298,7 +298,6 @@ const FormArticlePage = (props) => {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editor-textarea"
                             toolbarCustomButtons={[
-                              <CustomOption />, 
                               <ArticleReference />,
                               <VideoReference />,
                               <BlockQuote />

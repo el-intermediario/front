@@ -56,7 +56,7 @@ const VideoGallery = ({items}) => {
             {currentVideo ? currentVideo.type === 'custom' ? (
               <ModalVideo 
                   channel={currentVideo && currentVideo.type} 
-                  url={currentVideo && api.space + currentVideo.content} 
+                  url={currentVideo && `${api.spaceVideo}v${currentVideo.customVideo.url}`} 
                   isOpen={vModal}
                   onClose={() => setvModal(false)} 
                 />
