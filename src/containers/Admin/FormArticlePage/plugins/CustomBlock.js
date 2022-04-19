@@ -67,10 +67,22 @@ const CustomBlock = (props) => {
     case 'EMBEDDED_LINK':
       const width = !item.width ? '80%' : item.width;
       const height = !item.height ? '100%' : item.height;
-      return (
-        <Embed width={width} height={height} url={item.src} />
-        // <iframe width={width} height={height} src={item.src} frameborder="0"></iframe>
-      )
+
+      console.log(item.src);
+      if (item.src.includes('open.spotify.com')) {
+        return <iframe
+                  title="Spotify Web Player"
+                  src={item.src}
+                  width={width}
+                  height={height}
+                  frameBorder={0}
+                  allow="encrypted-media"
+                  style={{
+                    borderRadius: 0,
+                  }}
+                />
+      }
+      return <Embed width={width} height={height} url={item.src} />
     case 'IMAGE':
       return (
         <img src={item.src} width={item.width} height={item.height} />
