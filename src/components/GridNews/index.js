@@ -49,7 +49,12 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
                               <div className="img_wrap">
                               {item.image ? (
                                 <Link to="#">
-                                  <LazyImage src={`f_auto,c_fill,g_face,h_200,w_245/v${item.image.url}`} height="200px" alt={item.title} />
+                                  <LazyImage 
+                                    src={`f_auto,c_fill,g_face,h_200,w_245/v${item.image.url}`} 
+                                    width={245}
+                                    height={200}
+                                    alt={item.title} 
+                                  />
                                 </Link>
                               ): null}
                               </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../utils/api';
-import LazyImage from '../LazyImage';
 
 const Ad = ({imageUrl, url, title, height}) => {
   if (url) {

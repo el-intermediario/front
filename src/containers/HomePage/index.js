@@ -16,7 +16,6 @@ import OneItemFeatured from '../../components/OneItemFeatured';
 import OneTwoItemsFeatured from '../../components/OneTwoItemsFeatured';
 import RadioPlayer from '../../components/RadioPlayer';
 import GridNews from '../../components/GridNews';
-import LazyImage from '../../components/LazyImage';
 import Ad from '../../components/Ad';
 import {Helmet} from "react-helmet";
 

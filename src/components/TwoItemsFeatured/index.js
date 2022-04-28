@@ -15,7 +15,12 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                 <div className="post_img gradient1">
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
-                      <LazyImage src={item.data.image} height="400px" alt={item.data.title} />
+                      <LazyImage 
+                        src={`f_auto,c_fill,g_face,h_400,w_600/v${item.children[0].data.image.url}`} 
+                        width={600}
+                        height={400}
+                        alt={item.data.title} 
+                      />
                     </Link>
                   </div>
                 </div>
@@ -34,7 +39,12 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                 <div className="post_img gradient1">
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
-                      <LazyImage src={item.data.image} height="400px" alt={item.data.title}/>
+                      <LazyImage 
+                        src={`f_auto,c_fill,g_face,h_400,w_600/v${item.children[0].data.image.url}`} 
+                        width={600}
+                        height={400} 
+                        alt={item.data.title}
+                      />
                     </Link>
                   </div>
                 </div>

@@ -47,10 +47,12 @@ const LazyImage = ({ src, alt, height, width}) => {
 
   const styles = {
     height: height,
-    width: width
+    // width: width
   };
 
-  // return <img  style={styles} src={`${api.space}${src}`} alt={alt} />
+  if (!width && !height) {
+    return <img  style={styles} src={`${api.space}${src}`} alt={alt} />
+  }
 
   return (
     <ImageWrapper style={styles}>

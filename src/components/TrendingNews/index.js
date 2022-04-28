@@ -48,7 +48,12 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
                 <div className="post_img">
                   <div className="img_wrap">
                     {item.image ? (
-                      <LazyImage src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} alt={item.title} height="77px" />
+                      <LazyImage 
+                        src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} 
+                        alt={item.title}
+                        width={100}
+                        height={77} 
+                      />
                     ) : null}
                   </div>
                   <span className="tranding">
@@ -78,7 +83,12 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
                 <div className="post_img">
                   <div className="img_wrap">
                     {item.image ? (
-                      <LazyImage src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} alt={item.title} height="77px" />
+                      <LazyImage 
+                        src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} 
+                        alt={item.title}
+                        width={100}
+                        height={77}
+                      />
                     ) : null}
                   </div>
                   <span className="tranding">
