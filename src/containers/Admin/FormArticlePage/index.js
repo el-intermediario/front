@@ -200,7 +200,7 @@ const FormArticlePage = (props) => {
     }
 
     if (link.indexOf("open.spotify.com") >= 0) {
-      console.log(link);
+      link = link.replace("open.spotify.com/","open.spotify.com/embed/");
     }
     return link
   }
