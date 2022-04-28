@@ -158,12 +158,14 @@ const ArticlePage = () => {
 										</div>
 									</div>
 								</div> */}
-                <img
-                  rel="preload"
-                  as="image"
-                  src={data && `${api.space}f_auto,c_fill,g_face,h_360,q_84,w_730/v${data.image.url}`}
-                  alt={data && data.title}
-                />
+                {data.image ? (
+                  <img
+                    rel="preload"
+                    as="image"
+                    src={data && `${api.space}f_auto,c_fill,g_face,h_360,q_84,w_730/v${data.image.url}`}
+                    alt={data && data.title}
+                  />
+                ) : null}
                 <div className="padding20 white_bg">
                   <div className="space-20" />
                   {bodyData &&
