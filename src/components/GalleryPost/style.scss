@@ -1,0 +1,16 @@
+@import '../../doc/scss/colors.scss';
+
+.slider_demo2 {
+  margin-bottom: 8px;
+  border: 2px solid $secondary_color
+}
+
+.slider_demo1 {
+  position: relative;
+}
+
+.slider_demo1 {
+  .single_gallary_item {
+    display: block!important;
+  }
+}

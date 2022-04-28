@@ -1,18 +1,41 @@
 import React, { useState } from "react";
 import { EditorState, AtomicBlockUtils } from 'draft-js';
 import iconQuote from './img/quote.png';
+import FontAwesome from "../../../../components/uiStyle/FontAwesome";
+import FileUpload from "../../../../components/FileUpload";
+import api from "../../../../utils/api";
 
-const BlockQuote = ({ editorState, onChange }) => {
+const Gallery = ({ editorState, onChange }) => {
   const [open, setOpen] = useState(false);
-  const [quote, setQuote] = useState(null);
+  const [gallery, setGallery] = useState([]);
+
+  const handleFiles = async (files, folder) => {
+    const formData = new FormData();
+    formData.append('folder', `intermediario/${folder}`);
+    for(const file of files) {
+      formData.append('image', file);
+    }
+
+    try {
+      const response = await api.upload.post(formData, { headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
+      
+      if (response) {
+        setGallery([...gallery, response.data.data]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const confirmReference = (e) => {
     e.preventDefault();
     const contentState = editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
-      'QUOTE',
+      'GALLERY',
       'IMMUTABLE',
-      quote
+      gallery
     );
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     const newEditorState = EditorState.set(
@@ -32,18 +55,14 @@ const BlockQuote = ({ editorState, onChange }) => {
     <div className="rdw-block-wrapper button-modal" aria-label="rdw-block-control" role="button">
       <div className="rdw-dropdown-selectedtext">
         <span onClick={() => setOpen(true)}>
-          <img src={iconQuote} width="17px" />
+          <FontAwesome name="photo"/>
         </span>
       </div>
       <div className={`rdw-dropdown-optionwrapper ${open ? 'open-modal' : ''}`}>
-        <input 
-          type="text"
-          placeholder="Autor.."
-          onChange={(e) => setQuote({...quote, author: e.target.value})} 
-        />
-        <textarea 
-          placeholder="Mensaje.."
-          onChange={(e) => setQuote({...quote, message: e.target.value})} 
+        <FileUpload 
+          initialFiles={gallery}
+          handleInitialFiles={(data) => setGallery(data)}
+          handleFiles={(files) => handleFiles(files, 'gallery')}
         />
         <div className="col-12 field-actions">
           <button onMouseDown={confirmReference}> Insertar </button>
@@ -56,4 +75,4 @@ const BlockQuote = ({ editorState, onChange }) => {
   )
 };
 
-export default BlockQuote;
+export default Gallery;

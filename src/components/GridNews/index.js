@@ -47,9 +47,11 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
                           <div className="single_post post_type3 mb30">
                             <div className="post_img">
                               <div className="img_wrap">
+                              {item.image ? (
                                 <Link to="#">
                                   <LazyImage src={`f_auto,c_fill,g_face,h_200,w_245/v${item.image.url}`} height="200px" alt={item.title} />
                                 </Link>
+                              ): null}
                               </div>
                             </div>
                             <div className="single_post_text">

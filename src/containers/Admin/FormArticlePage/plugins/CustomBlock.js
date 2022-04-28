@@ -5,6 +5,7 @@ import api from '../../../../utils/api';
 import { DefaultPlayer as Video } from 'react-html5video';
 import 'react-html5video/dist/styles.css';
 import './editor.scss';
+import GalleryPost from '../../../../components/GalleryPost';
 
 const CustomBlock = (props) => {
   const entity = props.contentState.getEntity(
@@ -68,7 +69,6 @@ const CustomBlock = (props) => {
       const width = !item.width ? '80%' : item.width;
       const height = !item.height ? '100%' : item.height;
 
-      console.log(item.src);
       if (item.src.includes('open.spotify.com')) {
         return <iframe
                   title="Spotify Web Player"
@@ -83,10 +83,17 @@ const CustomBlock = (props) => {
                 />
       }
       return <Embed width={width} height={height} url={item.src} />
-    case 'IMAGE':
+    case 'GALLERY':
       return (
-        <img src={item.src} width={item.width} height={item.height} />
+        <GalleryPost images={item} />
       )
+      case 'QUOTE':
+        return (
+          <div key={item.id} className="block-quote">
+            <div className="field-message">{item.message}</div>
+            <div className="field-author">{item.author}</div>
+          </div>
+        );  
     default:
       return (
         <div>El embedded no se pudo renderizar.</div>

@@ -19,6 +19,7 @@ import BlockQuote from './plugins/BlockQuote';
 import Loading from 'react-fullscreen-loading';
 import VideoReference from './plugins/VideoReference';
 import FileUpload from '../../../components/FileUpload';
+import Gallery from './plugins/Gallery';
 
 const year = new Date().getFullYear();
 const month = new Date().getMonth() + 1;
@@ -300,7 +301,8 @@ const FormArticlePage = (props) => {
                             toolbarCustomButtons={[
                               <ArticleReference />,
                               <VideoReference />,
-                              <BlockQuote />
+                              <BlockQuote />,
+                              <Gallery />
                             ]}
                             hashtag={{
                               separator: ' ',
