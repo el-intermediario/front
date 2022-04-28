@@ -2,11 +2,9 @@ import React, { Fragment, useEffect, useState } from 'react';
 import TrendingNews from "../../components/TrendingNews";
 import MostView from "../../components/MostView";
 import VideoPost from "../../components/VideoPost";
-import { Link } from "react-router-dom";
 import "./styles.scss";
 
 // images
-import banner2 from '../../doc/img/bg/sidebar-1.png';
 import api from '../../utils/api';
 import TwoItemsFeatured from '../../components/TwoItemsFeatured';
 import ThreeItemsFeatured from '../../components/ThreeItemsFeatured';

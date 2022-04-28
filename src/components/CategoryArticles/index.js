@@ -15,9 +15,11 @@ const CategoryArticles = ({articles}) => {
                                 <div key={i} className="single_post post_type3 post_type12 mb30">
                                     <div className="post_img">
                                         <div className="img_wrap">
-                                            <Link to={`/articulo/${item.slug}`}>
-                                                <img src={`${api.space}f_auto,c_fill,g_face,h_200,q_84,w_350/v${item.image.url}`} alt={item.title}/>
-                                            </Link>
+                                            {item.image ? (
+                                                <Link to={`/articulo/${item.slug}`}>
+                                                    <img src={`${api.space}f_auto,c_fill,g_face,h_200,q_84,w_350/v${item.image.url}`} alt={item.title}/>
+                                                </Link>
+                                            ) : null}
                                         </div>
                                     </div>
                                     <div className="single_post_text">
