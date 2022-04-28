@@ -168,7 +168,6 @@ const FormArticlePage = (props) => {
       if (response) {
         return new Promise(
           (resolve, reject) => {
-            console.log(response.data);
             resolve({ data: { link: `${api.space}v${response.data.data[0].url}`, file } });
           }
         );

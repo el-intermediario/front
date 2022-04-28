@@ -87,13 +87,19 @@ const CustomBlock = (props) => {
       return (
         <GalleryPost images={item} />
       )
-      case 'QUOTE':
-        return (
-          <div key={item.id} className="block-quote">
-            <div className="field-message">{item.message}</div>
-            <div className="field-author">{item.author}</div>
-          </div>
-        );  
+    case 'QUOTE':
+      return (
+        <div key={item.id} className="block-quote">
+          <div className="field-message">{item.message}</div>
+          <div className="field-author">{item.author}</div>
+        </div>
+      ); 
+    case 'IMAGE':
+      return (
+        <div key={item.src}>
+          <img src={item.src} alt="thumb" />
+        </div>
+      );    
     default:
       return (
         <div>El embedded no se pudo renderizar.</div>
