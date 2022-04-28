@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
-import CustomOption from './plugins/CustomOption';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, convertFromRaw, ContentState } from 'draft-js';
 import api from "../../../utils/api";
@@ -198,6 +197,10 @@ const FormArticlePage = (props) => {
     }
     if (link.indexOf("vimeo") >= 0){
       link = link.replace("vimeo.com","player.vimeo.com/video");
+    }
+
+    if (link.indexOf("open.spotify.com") >= 0) {
+      console.log(link);
     }
     return link
   }
