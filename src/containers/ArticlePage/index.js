@@ -130,35 +130,7 @@ const ArticlePage = () => {
             </div>
             <div className="col-md-6 col-lg-7 page-content">
               <div className="shadow6">
-                {/* <div className="padding20 white_bg">
-									<div className="row">
-										<div className="col-lg-6 align-self-center">
-											<div className="author">
-												<div className="author_img">
-													<div className="author_img_wrap">
-														<img src={author2} alt="big2" />
-													</div>
-												</div>
-												<Link to="/">Shuvas Chandra</Link>
-												<ul>
-													<li><Link to="/">March 26, 2020</Link></li>
-													<li>Updated 1:58 p.m. ET</li>
-												</ul>
-											</div>
-										</div>
-										<div className="col-lg-6 align-self-center">
-											<div className="author_social inline text-right">
-												<ul>
-													<li><Link to="#"><FontAwesome name="twitter" /></Link></li>
-													<li><Link to="#"><FontAwesome name="facebook-f" /></Link></li>
-													<li><Link to="#"><FontAwesome name="youtube-play" /></Link></li>
-													<li><Link to="#"><FontAwesome name="instagram" /></Link></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div> */}
-                {data.image ? (
+                {data && data.image ? (
                   <img
                     rel="preload"
                     as="image"
