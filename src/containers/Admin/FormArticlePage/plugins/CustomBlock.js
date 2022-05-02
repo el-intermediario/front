@@ -73,6 +73,15 @@ const CustomBlock = (props) => {
       const height = !item.height ? '100%' : item.height;
 
       if (item.src.indexOf("youtube") >= 0){
+        return <iframe
+          width={width}
+          height={height}
+          src={`${item.src}`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Embedded youtube"
+        />
         return <Embed width={width} height={height} url={item.src} />
       }
 

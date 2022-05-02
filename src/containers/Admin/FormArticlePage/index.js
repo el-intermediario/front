@@ -321,7 +321,7 @@ const FormArticlePage = (props) => {
                                 // icon: embedded,
                                 embedCallback: embedCallBack,
                                 defaultSize: {
-                                  height: '240px',
+                                  height: '340px',
                                   width: 'auto',
                                 },
                               },
