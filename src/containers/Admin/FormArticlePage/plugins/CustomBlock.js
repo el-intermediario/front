@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Embed from 'react-embed';
+import { FacebookProvider, EmbeddedPost } from 'react-facebook';
 import api from '../../../../utils/api';
 import { DefaultPlayer as Video } from 'react-html5video';
 import 'react-html5video/dist/styles.css';
@@ -15,6 +16,8 @@ const CustomBlock = (props) => {
   const type = entity.getType();
   //const type = 'video';
 
+  console.log(type);
+  console.log(item);
   switch (type) {
     case 'REFERENCE':
       return (
@@ -69,6 +72,17 @@ const CustomBlock = (props) => {
       const width = !item.width ? '80%' : item.width;
       const height = !item.height ? '100%' : item.height;
 
+      if (item.src.indexOf("youtube") >= 0){
+        return <Embed width={width} height={height} url={item.src} />
+      }
+
+      if (item.src.indexOf("facebook.com") >= 0){
+        const appId = item.src.split("?v=");
+        return <FacebookProvider appId={appId[1]}>
+                <EmbeddedPost href="https://www.facebook.com" width="500" />
+               </FacebookProvider>
+      }
+
       if (item.src.includes('open.spotify.com')) {
         return <iframe
                   title="Spotify Web Player"
@@ -82,6 +96,7 @@ const CustomBlock = (props) => {
                   }}
                 />
       }
+      console.log(item);
       return <Embed width={width} height={height} url={item.src} />
     case 'GALLERY':
       return (
