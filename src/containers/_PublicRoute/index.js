@@ -17,30 +17,6 @@ const PublicRoute = (props) => {
   const { component: Component, ...rest } = props;
   let redirect = null;
 
-  const style = () => {
-    return (
-      <style jsx>{`
-        .nav {
-          transition: all 0.1s linear;
-          z-index: 2000;
-          display: inline;
-        }
-
-        .scrollNav {
-          position: fixed;
-          transition: all 0.5s ease-in;
-          z-index: 2000;
-          background: #FFFFFF;
-          width: 100%;
-          border-bottom: 1px solid #dddddd;
-          top: 0;
-        }
-        .styl {
-          padding-top: 80px;
-        }
-      `}</style>
-    )
-  }
   return (
     <div className={props.parentClass}>
       {
@@ -72,7 +48,6 @@ const PublicRoute = (props) => {
                 <TopBar className="white_bg" />
                 <div className="border_secondary" />
                 {/* <LogoArea className="white_bg"/> */}
-                {style()}
                 <StickyNav length='40'>
                   <MainMenu />
                 </StickyNav>

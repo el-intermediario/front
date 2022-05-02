@@ -21,7 +21,6 @@ const CategoryForm = ({ handleCategory, data }) => {
       inputValue: '',
       showCancelButton: true,
       inputValidator: (value) => {
-        console.log(value);
         if (!value) {
           return 'You need to write something!'
         }

@@ -7,6 +7,7 @@ import FontAwesome from "../uiStyle/FontAwesome";
 import api from '../../utils/api';
 import LazyImage from '../LazyImage';
 import './styles.scss';
+import Placeholder from '../Placeholder';
 
 const TrendingNews = ({ dark, offset, handleOffset }) => {
   const [headArticles, setHeadArticles] = useState([]);
@@ -54,7 +55,9 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
                         width={100}
                         height={77} 
                       />
-                    ) : null}
+                    ) : (
+                      <Placeholder asset="f_auto,c_fill,g_face,h_77,q_84,w_100" />
+                    )}
                   </div>
                   <span className="tranding">
                     <FontAwesome name="bolt" />
@@ -89,7 +92,9 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
                         width={100}
                         height={77}
                       />
-                    ) : null}
+                    ) : (
+                      <Placeholder asset="f_auto,c_fill,g_face,h_77,q_84,w_100" />
+                    )}
                   </div>
                   <span className="tranding">
                     <FontAwesome name="bolt" />

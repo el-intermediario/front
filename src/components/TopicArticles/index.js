@@ -26,8 +26,6 @@ const TopicArticles = ({ dark, data }) => {
     }
   }
 
-  console.log(api.base);
-
   const bg = {
     backgroundImage: image ? `url("${api.space}f_auto,c_fill,g_faces,h_320,w_1400/v${image}")` : `url("./default/bg.jpg")`,
     backgroundSize: `100%`,

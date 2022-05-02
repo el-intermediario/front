@@ -17,8 +17,6 @@ const CustomBlock = (props) => {
   const type = entity.getType();
   //const type = 'video';
 
-  console.log(type);
-  console.log(item);
   switch (type) {
     case 'REFERENCE':
       return (
@@ -125,7 +123,6 @@ const CustomBlock = (props) => {
                   }}
                 />
       }
-      console.log(item);
       return <Embed width={width} height={height} url={item.src} />
     case 'GALLERY':
       return (

@@ -4,6 +4,7 @@ import api from '../../utils/api';
 import Moment from "react-moment";
 import "./styles.scss";
 import LazyImage from '../LazyImage';
+import Placeholder from '../Placeholder';
 
 const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
   const [articles, setArticles] = useState([]);
@@ -56,7 +57,9 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
                                     alt={item.title} 
                                   />
                                 </Link>
-                              ): null}
+                              ): (
+                                <Placeholder asset="f_auto,c_fill,g_face,h_200,w_245" />
+                              )}
                               </div>
                             </div>
                             <div className="single_post_text">
