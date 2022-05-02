@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Embed from 'react-embed';
 import { FacebookProvider, EmbeddedPost } from 'react-facebook';
+import InstagramEmbed from 'react-instagram-embed';
 import api from '../../../../utils/api';
 import { DefaultPlayer as Video } from 'react-html5video';
 import 'react-html5video/dist/styles.css';
@@ -72,6 +73,7 @@ const CustomBlock = (props) => {
       const width = !item.width ? '80%' : item.width;
       const height = !item.height ? '100%' : item.height;
 
+      // Youtube embed.
       if (item.src.indexOf("youtube") >= 0){
         return <iframe
           width={width}
@@ -82,9 +84,26 @@ const CustomBlock = (props) => {
           allowFullScreen
           title="Embedded youtube"
         />
-        return <Embed width={width} height={height} url={item.src} />
       }
 
+      // Instagram embed.
+      if (item.src.indexOf("instagra") >= 0){
+        return <InstagramEmbed
+          url={item.src}
+          clientAccessToken='123|456'
+          maxWidth={320}
+          hideCaption={false}
+          containerTagName='div'
+          protocol=''
+          injectScript
+          onLoading={() => {}}
+          onSuccess={() => {}}
+          onAfterRender={() => {}}
+          onFailure={() => {}}
+        />
+      }
+
+      // Facebook embed.
       if (item.src.indexOf("facebook.com") >= 0){
         const appId = item.src.split("?v=");
         return <FacebookProvider appId={appId[1]}>
@@ -92,6 +111,7 @@ const CustomBlock = (props) => {
                </FacebookProvider>
       }
 
+      // Spotify embed.
       if (item.src.includes('open.spotify.com')) {
         return <iframe
                   title="Spotify Web Player"
