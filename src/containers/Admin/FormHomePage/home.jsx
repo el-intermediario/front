@@ -349,7 +349,7 @@ const Container = (props) => {
           <button onClick={(e) => setPreview(true)}>Vista Previa</button>
         </div>
         <div>
-          <button type="submit" className="cbtn1" type="submit" onClick={submitHandler}>Guardar</button>
+          <button type="submit" className="cbtn1" onClick={submitHandler}>Guardar</button>
         </div>
         <TrashDropZone data={{layout}} onDrop={handleDropToTrashBin} />
       </div>

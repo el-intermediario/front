@@ -2853,10 +2853,18 @@ a.cbtn3 {
   position: fixed;
   transition: all 0.5s ease-in;
   z-index: 2000;
-  background: #FFFFFF;
   width: 100%;
   border-bottom: 1px solid #dddddd;
   top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  .main-nav {
+    background: inherit;
+
+    .nav-item > a {
+      color: #fff;
+    }
+  }
 }
 .styl {
   padding-top: 80px;

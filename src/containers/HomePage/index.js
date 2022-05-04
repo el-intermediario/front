@@ -24,13 +24,13 @@ const HomePage = () => {
   const [articlesOffset2, setArticlesOffset2] = useState([]);
 
   const blocks = [
-    {label: 'Politica', key: 'politica', qty: 3},
-    {label: 'Interes general', key: 'interes_general', qty: 3},
-    {label: 'Deportes', key: 'deportes', qty: 3},
-    {label: 'El Mundo', key: 'el_mundo', qty: 3},
-    {label: 'Trending', key: 'trending', qty: 3},
-    {label: 'Lifestyle', key: 'lifestye', qty: 3},
-    {label: 'Genero', key: 'genero', qty: 3},
+    {label: 'Politica', key: 'politica', qty: 4},
+    {label: 'Interes general', key: 'interes_general', qty: 4},
+    {label: 'Deportes', key: 'deportes', qty: 4},
+    {label: 'El Mundo', key: 'el_mundo', qty: 4},
+    {label: 'Trending', key: 'trending', qty: 4},
+    {label: 'Lifestyle', key: 'lifestye', qty: 4},
+    {label: 'Genero', key: 'genero', qty: 4},
   ];
 
   useEffect(() => {
