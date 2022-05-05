@@ -80,13 +80,13 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
                                 </div>
                               </div>
                               <div className="single_post_text">
-                                {!['deportes'].includes(category) ? (
+                                {/* {!['deportes'].includes(category) ? (
                                   <div className="meta3"><Link to="#">{item.copete}</Link>
                                     <Link to="#">
                                       <Moment format="ll" locale="es" unix>{item.created}</Moment>
                                     </Link>
                                   </div>
-                                ) : null}
+                                ) : null} */}
                                 <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
                                 <div className="space-10" />
                                 <p className="post-p">{item.body}</p>
