@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import TopBar from "../../components/TopBar";
 import LogoArea from "../../components/LogoArea";
@@ -16,6 +16,13 @@ import 'react-js-stickynav/dist/index.css'
 const PublicRoute = (props) => {
   const { component: Component, ...rest } = props;
   let redirect = null;
+  const [isMobile, setIsMobile] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth);
+    }, false);
+  });
 
   return (
     <div className={props.parentClass}>
@@ -48,9 +55,13 @@ const PublicRoute = (props) => {
                 <TopBar className="white_bg" />
                 <div className="border_secondary" />
                 {/* <LogoArea className="white_bg"/> */}
-                <StickyNav length='40'>
+                {isMobile < 1200 ? (
                   <MainMenu />
-                </StickyNav>
+                ): (
+                  <StickyNav length='40'>
+                    <MainMenu />
+                  </StickyNav>
+                )}
               </Fragment>
       }
 

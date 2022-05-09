@@ -7,6 +7,13 @@ const TopicArticles = ({ dark, data }) => {
   const [articles, setArticles] = useState([]);
   const topicName = data.id.split('_');
   const image = data.children[0].children[0].data.image && data.children[0].children[0].data.image.url;
+  const [isMobile, setIsMobile] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth);
+    }, false);
+  });
 
   useEffect(() => {
     fetchArticles();
@@ -50,7 +57,7 @@ const TopicArticles = ({ dark, data }) => {
         </div>
         <div className="row">
           {articles.map((item, k) => (
-            <div className="col-3" key={k}>
+            <div className={isMobile < 1200 ? 'col-12' : 'col-3'} key={k}>
               <div className="single_post" style={{backgroundImage: `url(${api.space}f_auto,c_fill,g_face,h_280,w_280/v${item.image.url})`}}>
                 <div className="single_post_text">
                   <div className="field-title">

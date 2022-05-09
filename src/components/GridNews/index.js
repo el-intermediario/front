@@ -11,7 +11,7 @@ const backgrounds = {
   deportes: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1651694476/intermediario/bg/bg_sports_dc1sev.jpg`
 };
 
-const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
+const GridNews = ({ key, title, gridColumns = 6, qty = 4, category, offset }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -36,9 +36,6 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
     backgroundSize: `cover`,
     backgroundRepeat: 'no-repeat',
   };
-
-  console.log(category);
-  console.log(backgrounds[category]);
   
   return (
     <Fragment>

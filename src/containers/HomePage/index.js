@@ -148,9 +148,9 @@ const HomePage = () => {
       <VideoPost key="videos" className="pt30 half_bg90" />
       <div className="space-30" />
 
-      {blocks.map((block, i) => { 
-        return  <GridNews
-                  key={i}
+      {blocks.map((block, p) => { 
+        return <GridNews
+                  key={block.key}
                   title={block.label} 
                   gridColumns={block.qty} 
                   qty={block.qty} 
