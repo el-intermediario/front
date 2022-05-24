@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Embed from 'react-embed';
 import { FacebookProvider, EmbeddedPost } from 'react-facebook';
 import InstagramEmbed from 'react-instagram-embed';
+import ReactPlayer from 'react-player';
 import api from '../../../../utils/api';
 import { DefaultPlayer as Video } from 'react-html5video';
 import 'react-html5video/dist/styles.css';
@@ -42,7 +43,8 @@ const CustomBlock = (props) => {
         const width = !item.width ? '80%' : item.width;
         const height = !item.height ? '100%' : item.height;
         return (
-          <Embed width={width} height={height} url={`https://www.youtube.com/watch?v=${item.content}`} />
+          <ReactPlayer url={`https://www.youtube.com/watch?v=${item.content}`} />
+          // <Embed width={width} height={height} url={`https://www.youtube.com/watch?v=${item.content}`} />
         )
       } 
       
