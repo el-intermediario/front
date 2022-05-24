@@ -43,7 +43,7 @@ const CustomBlock = (props) => {
         const width = !item.width ? '80%' : item.width;
         const height = !item.height ? '100%' : item.height;
         return (
-          <ReactPlayer url={`https://www.youtube.com/watch?v=${item.content}`} />
+          <ReactPlayer url={`https://www.youtube.com/watch?v=${item.content}`} width='100%'/>
           // <Embed width={width} height={height} url={`https://www.youtube.com/watch?v=${item.content}`} />
         )
       } 
@@ -75,7 +75,7 @@ const CustomBlock = (props) => {
 
       // Youtube embed.
       if (item.src.indexOf("youtube") >= 0){
-        return <ReactPlayer url={`https://www.youtube.com/watch?v=${item.src}`} />
+        return <ReactPlayer url={`https://www.youtube.com/watch?v=${item.src}`} width='100%' />
         // return <iframe
         //   width={width}
         //   height={height}
