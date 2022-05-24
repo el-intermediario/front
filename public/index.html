@@ -9,7 +9,17 @@
       name="description"
       content="Intermediario noticias del sur."
     />
-    <meta http-equiv="Content-Security-Policy" content="frame-src youtube.com www.youtube.com" />
+    <meta http-equiv="Content-Security-Policy" content="script-src https://www.youtube.com
+https://m.youtube.com;
+  frame-src
+    *.youtube.com
+    www.youtube-nocookie.com;
+  child-src
+    www.youtube.com;
+  img-src
+    data:
+    *.ytimg.com
+    *.youtube.com;" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
     <!--
       manifest.json provides metadata used when your web app is installed on a
