@@ -43,7 +43,7 @@ const CustomBlock = (props) => {
         const width = !item.width ? '80%' : item.width;
         const height = !item.height ? '100%' : item.height;
         return (
-          <ReactPlayer url={`https://www.youtube.com/watch?v=${item.content}`} />
+          <ReactPlayer url={`http://www.youtube.com/watch?v=${item.content}`} />
           // <Embed width={width} height={height} url={`https://www.youtube.com/watch?v=${item.content}`} />
         )
       } 
