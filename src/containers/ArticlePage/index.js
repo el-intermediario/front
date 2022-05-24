@@ -93,6 +93,7 @@ const ArticlePage = () => {
         {data && <title>{data.title} | Intermediario</title>}
         <link rel="canonical" href={`https://intermediario.sanjua.com/${data && data.slug}`} />
         {data && <meta name="description" content={data.dropline} />}
+        <meta http-equiv="Content-Security-Policy" content="frame-src youtube.com www.youtube.com" />
       </Helmet>
       <div className="archives post post1 page-article">
         <BreadCrumb className="shadow5 padding-top-10" title={data && data.title} />
