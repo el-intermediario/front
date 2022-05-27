@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const localUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
-const remoteUrl = 'https://api.elintermediario.com';
+const remoteUrl = 'https://api.elintermediario.com.ar';
 const baseUrl = remoteUrl;
 const space = 'https://res.cloudinary.com/el-intermediario/image/upload/';
 const spaceVideo = 'https://res.cloudinary.com/el-intermediario/video/upload/';
