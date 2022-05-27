@@ -116,7 +116,7 @@ const HomePage = () => {
         if (row.id === 'videos') {
           return handleRow(row);
         } else {
-          return <div key={ki} className={`row-${row.id}s row-col-${row.children.length}`}>{handleRow(row)}</div>
+          return <div key={`row-item${ki}`} className={`row-${row.id}s row-col-${row.children.length}`}>{handleRow(row)}</div>
         }
       })}
       <div className="space-30" />
@@ -133,7 +133,7 @@ const HomePage = () => {
             <div>
             {ads.map((ad, k) => {
               if (ad.type === 'normal' && k === 1) {
-                return <Ad key={k} imageUrl={ad.image} url={ad.url} title={ad.name} height="250px" />
+                return <Ad key={`row-ads-${k}`} imageUrl={ad.image} url={ad.url} title={ad.name} height="250px" />
               }
             })}
             <div className="space-20" />
@@ -148,16 +148,14 @@ const HomePage = () => {
       <VideoPost key="videos" className="pt30 half_bg90" />
       <div className="space-30" />
 
-      {blocks.map((block, p) => { 
-        return <GridNews
-                  key={block.key}
-                  title={block.label} 
-                  gridColumns={block.qty} 
-                  qty={block.qty} 
-                  category={block.key} 
-                  offset={articlesOffset2} 
-                />
-      })}
+      {blocks?.map((block, i) => <GridNews
+        key={`row-blocks-${i}`}
+        title={block.label} 
+        gridColumns={block.qty} 
+        qty={block.qty} 
+        category={block.key} 
+        offset={articlesOffset2} 
+      />)}
       <div className="space-70" />
     </Fragment>
   );

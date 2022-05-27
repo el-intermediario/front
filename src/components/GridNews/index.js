@@ -11,7 +11,7 @@ const backgrounds = {
   deportes: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1651694476/intermediario/bg/bg_sports_dc1sev.jpg`
 };
 
-const GridNews = ({ key, title, gridColumns = 6, qty = 4, category, offset }) => {
+const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const GridNews = ({ key, title, gridColumns = 6, qty = 4, category, offset }) =>
   };
   
   return (
-    <Fragment>
+    <>
       {articles.length > 0 ? (
         <div className={`block block-bg-${category}`} style={bg}>
           <div className={`container`}>
@@ -100,7 +100,7 @@ const GridNews = ({ key, title, gridColumns = 6, qty = 4, category, offset }) =>
           </div>
         </div>
       ) : null}
-    </Fragment>
+    </>
   );
 };
 
