@@ -95,8 +95,13 @@ const menusLogged = [
     submenu: [
       {
         id: 31,
-        link: '/admin/section/add',
-        linkText: 'Editar',
+        link: '/admin/sections',
+        linkText: 'Paginas',
+      },
+      {
+        id: 32,
+        link: '/admin/sections/add',
+        linkText: 'Agregar',
       }
     ]
   },

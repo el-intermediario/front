@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import SectionsPage from '../SectionPage/sections';
 import PrivateRoute from '../_PrivateRoute';
 import PublicRoute from '../_PublicRoute';
 
@@ -121,9 +122,21 @@ const Routes = () => {
         <PrivateRoute
           exact
           home_style={3}
-          path="/admin/section/add"
+          path="/admin/sections"
           parentClass="theme-3"
-          component={FormSectionPage} />  
+          component={SectionsPage} />  
+        <PrivateRoute
+          exact
+          home_style={3}
+          path="/admin/sections/add"
+          parentClass="theme-3"
+          component={FormSectionPage} />
+        <PrivateRoute
+          exact
+          home_style={3}
+          path="/admin/sections/:id/edit"
+          parentClass="theme-3"
+          component={FormSectionPage} />
         <PublicRoute
           exact
           path="/articulo/:path"

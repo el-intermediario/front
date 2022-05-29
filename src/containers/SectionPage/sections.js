@@ -7,26 +7,23 @@ import { Link, useLocation } from "react-router-dom";
 
 const SectionsPage = () => {
   const location = useLocation();
-  const [pages, setPages] = useState([]);
+  const [sections, setSections] = useState([]);
   const [activeTab, setActiveTab] = useState('1');
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    fetchPages(search);
+    fetchSections(search);
   }, [search]);
 
-  const toggle = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
-
-  const fetchPages = async () => {
+  const fetchSections = async () => {
     try {
-      const response = await api.page.getPages({},
+      const params = '';
+      const response = await api.page.getPages(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
       if (response) {
-        setArticles(response.data);
+        setSections(response.data);
       }
     } catch (err) {
       console.log(err);
@@ -61,14 +58,14 @@ const SectionsPage = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {pages.map((page, i) => (
+                          {sections.map((page, i) => (
                             <tr key={i}>
                               <th scope="row">{i+1}</th>
                               <td>
                                 <Link to={`/seccion/${page.slug}`} className="text-muted">{page.title}</Link>
                               </td>
                               <td>
-                                <Link to={`/admin/page/${page.id}/edit`}>Editar</Link>
+                                <Link to={`/admin/sections/${page.id}/edit`}>Editar</Link>
                               </td>
                             </tr>
                           ))}
@@ -85,7 +82,6 @@ const SectionsPage = () => {
           </div>
         </div>
       </div>
-      <BannerSection />
     </>
   );
 }

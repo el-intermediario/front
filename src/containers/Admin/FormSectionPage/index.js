@@ -1,32 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Loading from 'react-fullscreen-loading';
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { convertToRaw } from "draft-js";
+import { useHistory, useParams } from "react-router-dom";
+import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
 import draftToHtml from 'draftjs-to-html'
 
 import api from "../../../utils/api";
 import MyEditor from "../../../components/MyEditor";
 
-const FormSectionPage = () => {
+const FormSectionPage = (props) => {
   const history = new useHistory();
+  let { id } = useParams();
   const { user } = useSelector(state => state.user);
   const [loader, setLoader] = useState(false);
+  const [bodyData, setBodyData] = useState('');
   const [data, setData] = useState({
     title: '',
     body: '',
-    bodyHtml: null
   });
+
+  useEffect(() => {
+    if (id) {
+      fetchSection(id);
+    } else {
+      setData({
+        title: '',
+        body: '',
+      });
+    }
+  }, [id]);
+
+  const fetchSection = async (id) => {
+    try {
+      const response = await api.page.get({id, by: '_id'},
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+        
+      if (response.data) {
+        const { data } = response;
+        setData({
+          title: data.title,
+          body: data.body
+        });
+
+        setBodyData(data.body);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   const submitHandler = async (event) => {
     setLoader(true);
     event.preventDefault();
 
     try {
-      const response = await api.page.add(data, { headers: user.headers });
+      let response;
+      if (props.match.path === '/admin/sections/:id/edit') {
+        let updatedData = {...data, id, updated: parseInt(Date.now()/1000)};
+        response = await api.page.put(updatedData, { headers: user.headers });
+      } else {
+        response = await api.page.add(data, { headers: user.headers });
+      }
       if (response) {
         setLoader(false);
-        return history.push('/admin', {type: 'success', message: 'La seccion se creo correctamente.'});
+        return history.push('/admin', {type: 'success', message: 'La seccion se creo o actualizo correctamente.'});
       }
     } catch (error) {
       setLoader(false);
@@ -39,7 +77,6 @@ const FormSectionPage = () => {
     setData({
       ...data, 
       body: JSON.stringify(bodyRaw), 
-      bodyHtml: draftToHtml(bodyRaw)
     })
   }
 
@@ -75,7 +112,7 @@ const FormSectionPage = () => {
                       <div className="space-20" />
                       <div className="row">  
                         <div className="col-lg-12  field-editor">
-                          <MyEditor handleEditorState={handleEditorState}/>
+                          <MyEditor handleEditorState={handleEditorState} currentEditorState={bodyData} />
                         </div>
                         <div className="col-12">
                           <div className="space-20" />

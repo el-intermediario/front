@@ -77,7 +77,6 @@ const HomePage = () => {
           url={row.children[0].children[0].data.url}
           title={row.children[0].children[0].data.name}
         />
-        break;
       case 'article':
         if (row.children.length === 1) {
           return <OneItemFeatured className="fifth_bg" data={row.children} />
@@ -96,9 +95,8 @@ const HomePage = () => {
         break;
       case 'topic':
         return <TopicArticles data={row}/>;
-        break;      
       case 'videos':
-        // return <VideoPost key="videos" className="pt30 half_bg60" />
+        return <VideoPost key="videos" className="pt30 half_bg60" />
       default:
         break;  
     }
@@ -109,7 +107,7 @@ const HomePage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Intermediario | Santa Cruz - Argentina</title>
-        <link rel="canonical" href="https://intermediario.sanjua.com" />
+        <link rel="canonical" href="https://elintermediario.com.ar" />
       </Helmet>
       {/* <PostCarousel className="fifth_bg"/> */}
       {layout.map((row, ki) => {

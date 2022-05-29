@@ -42,8 +42,10 @@ const contact = {
 }
 
 const page = {
+  getPages: (params, headers) => axios.get(`${baseUrl}/${version}/pages${params}`, headers),
   add:(data, headers) => axios.post(`${baseUrl}/${version}/pages`, data, headers),
   get: (data, headers) => axios.get(`${baseUrl}/${version}/pages/${data.id}?by=${data.by}`, headers),
+  put: (data, headers) => axios.put(`${baseUrl}/${version}/pages/${data.id}`, data, headers),
 }
 
 const tag = {

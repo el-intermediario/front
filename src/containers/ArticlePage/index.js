@@ -19,6 +19,7 @@ import { Editor, EditorState, convertFromRaw, Draft } from 'draft-js';
 import CustomBlock from '../Admin/FormArticlePage/plugins/CustomBlock';
 import { Helmet } from "react-helmet";
 import Sidebar from '../../components/Sidebar';
+import { useSelector } from 'react-redux';
 const RelatedTabs = lazy(() => import('../../components/RelatedTabs'));
 const MostView = lazy(() => import('../../components/MostView'));
 const BreadCrumb = lazy(() => import('../../components/BreadCrumb'));
@@ -26,6 +27,7 @@ const BreadCrumb = lazy(() => import('../../components/BreadCrumb'));
 const ArticlePage = () => {
   const state = useLocation();
   let { path } = useParams();
+  const user = useSelector(state => state.user);
   const [data, setData] = useState(null);
   const [articlesRelated, setArticlesRelated] = useState([]);
   const [bodyData, setBodyData] = useState(null);
@@ -85,11 +87,13 @@ const ArticlePage = () => {
     return null;
   };
 
+  console.log(data);
+
   return (
     <Fragment>
       <Helmet>
         {data && <title>{data.title} | Intermediario</title>}
-        <link rel="canonical" href={`https://intermediario.sanjua.com/${data && data.slug}`} />
+        <link rel="canonical" href={`https://elintermediario.com.ar/${data && data.slug}`} />
         {data && <meta name="description" content={data.dropline} />}
       </Helmet>
       <div className="archives post post1 page-article">
@@ -100,7 +104,14 @@ const ArticlePage = () => {
               <div className="shadow6">
                 <div className="padding20 white_bg">
                   <div className="row field-copete-date">
-                    <div className="col-8 field-copete">{data && data.copete}</div>
+                    <div className="col-8 field-copete">
+                      {data && data.copete}
+                      {user && user.role === 'admin' && data ? (
+                      <Link to={`/admin/article/${data._id}/edit`}>
+                        Editar
+                      </Link>
+                    ) : null}
+                    </div>
                     <div className="col-4 field-date">{data && <Moment format="dddd D, MMMM YYYY" locale="es" unix>{data.created}</Moment>}</div>
                   </div>
                   <div className="single_post_heading">

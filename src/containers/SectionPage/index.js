@@ -1,22 +1,25 @@
 import React, { Fragment, useState, useEffect, lazy } from 'react';
-import { useLocation } from "react-router";
 import { useParams } from "react-router-dom";
 
 // images
 import api from "../../utils/api";
 import './style.scss';
 import {Helmet} from "react-helmet";
+import { convertFromRaw, Editor, EditorState } from 'draft-js';
 const BreadCrumb = lazy(() => import('../../components/BreadCrumb'));
 
 const SectionPage = () => {
-  const state = useLocation();
 	let { path } = useParams();
+  const [currentPath, setCurrentPath] = useState('');
 	const [data, setData] = useState(null);
-  const [body, setBody] = useState(null);
+  const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
   useEffect(() => {
-		fetchData();
-	}, []);
+    if (path !== currentPath) {
+      setCurrentPath(path);
+      fetchData();
+    }
+  }, [path]);
 
   const fetchData = async () => {
     try {
@@ -26,18 +29,20 @@ const SectionPage = () => {
         
       if (response) {
         setData(response.data);
+
+        const contentState = convertFromRaw(JSON.parse(response.data.body));
+        setEditorState(EditorState.createWithContent(contentState));
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  console.log(body);
 	return (
 		<Fragment>
       <Helmet>
         {data && <title>{data.title} | Intermediario</title>}
-        <link rel="canonical" href={`https://intermediario.sanjua.com/seccion/${data && data.slug}`} />
+        <link rel="canonical" href={`https://elintermediario.com.ar/seccion/${data && data.slug}`} />
         {data && <meta name="description" content={data.dropline} />}
       </Helmet>
 			<div className="archives post post1 page-article">
@@ -47,7 +52,11 @@ const SectionPage = () => {
 						<div className="col-md-6 col-lg-8 page-content">
 							<div className="shadow6">
 								<div className="padding20 white_bg">
-                  {data && <div dangerouslySetInnerHTML={{__html: data.bodyHtml}} />}
+								<Editor
+									editorState={editorState}
+									readOnly={true}
+									stripPastedStyles={true}
+								/>
 								</div>
 							</div>
 							<div className="space-30" />

@@ -5,16 +5,16 @@ import {Link} from "react-router-dom";
 const quick_links = [
     {
         name: 'Nosotros',
-        link: '/quienes-somos'
+        link: '/seccion/quienes-somos'
     },
     {
         name: 'Politicas de Privacidad',
-        link: '/politicas-de-privacidad'
+        link: '/seccion/politicas-de-privacidad'
     },
-    {
-        name: 'Contactenos',
-        link: '/contactenos'
-    },
+    // {
+    //     name: 'Contactenos',
+    //     link: '/contactenos'
+    // },
 ];
 
 const FooterCopyright = () => {

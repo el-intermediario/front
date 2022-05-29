@@ -28,8 +28,7 @@ const FormArticlePage = (props) => {
   const history = useHistory();
   const { user } = useSelector(state => state.user); 
   const [loader, setLoader] = useState(false);
-  const html = '';
-  const contentBlock = htmlToDraft(html);
+  const contentBlock = htmlToDraft('');
   const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
 
   const validator = new SimpleReactValidator();

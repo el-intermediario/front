@@ -43,7 +43,7 @@ const CategoryPage = ({location}) => {
     <Fragment>
       <Helmet>
         {categoryName && <title>{categoryName && categoryName} | Intermediario</title>}
-        <link rel="canonical" href={`https://intermediario.sanjua.com/${location.pathname}`} />
+        <link rel="canonical" href={`https://elintermediario.com.ar/${location.pathname}`} />
       </Helmet>
       <BreadCrumb title={categoryName} />
       <div className="archives padding-top-30">
