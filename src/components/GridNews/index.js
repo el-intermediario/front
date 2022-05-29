@@ -7,8 +7,8 @@ import LazyImage from '../LazyImage';
 import Placeholder from '../Placeholder';
 
 const backgrounds = {
-  politica: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1651700085/intermediario/bg/Screen_Shot_2022-05-04_at_18.36.04_ovpns8.png`,
-  deportes: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1651694476/intermediario/bg/bg_sports_dc1sev.jpg`
+  politica: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1653863864/intermediario/cover/blockBg/bg_trending_agipv6.jpg`,
+  deportes: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1653863869/intermediario/cover/blockBg/bg_sports_kcbjwp.jpg`
 };
 
 const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {

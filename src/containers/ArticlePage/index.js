@@ -27,7 +27,7 @@ const BreadCrumb = lazy(() => import('../../components/BreadCrumb'));
 const ArticlePage = () => {
   const state = useLocation();
   let { path } = useParams();
-  const user = useSelector(state => state.user);
+  const { user } = useSelector(state => state.user);
   const [data, setData] = useState(null);
   const [articlesRelated, setArticlesRelated] = useState([]);
   const [bodyData, setBodyData] = useState(null);
@@ -87,8 +87,6 @@ const ArticlePage = () => {
     return null;
   };
 
-  console.log(data);
-
   return (
     <Fragment>
       <Helmet>
@@ -105,12 +103,14 @@ const ArticlePage = () => {
                 <div className="padding20 white_bg">
                   <div className="row field-copete-date">
                     <div className="col-8 field-copete">
+                      <div className="col-2 field-copete">
+                        {user && user.role === 'admin' && data ? (
+                          <Link to={`/admin/article/${data.id}/edit`}>
+                            Editar
+                          </Link>
+                        ) : null}
+                      </div>
                       {data && data.copete}
-                      {user && user.role === 'admin' && data ? (
-                      <Link to={`/admin/article/${data._id}/edit`}>
-                        Editar
-                      </Link>
-                    ) : null}
                     </div>
                     <div className="col-4 field-date">{data && <Moment format="dddd D, MMMM YYYY" locale="es" unix>{data.created}</Moment>}</div>
                   </div>
