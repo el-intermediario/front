@@ -1,8 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import BreadCrumb from "../../components/BreadCrumb";
-import { Link } from "react-router-dom";
-import banner2 from "../../doc/img/bg/sidebar-1.png";
-import BannerSection from "../../components/BannerSection";
 import api from '../../utils/api';
 import CategoryArticles from '../../components/CategoryArticles';
 import Sidebar from '../../components/Sidebar';

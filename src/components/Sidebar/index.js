@@ -1,6 +1,5 @@
 import React, {Suspense, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import banner2 from "../../doc/img/bg/sidebar-1.png";
 import api from '../../utils/api';
 import MostView from '../MostView';
 

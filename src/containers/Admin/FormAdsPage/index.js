@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FormGroup } from 'reactstrap';
 import Loading from 'react-fullscreen-loading';
-import axios from 'axios';
 
 import BannerSection from "../../../components/BannerSection";
 import FollowUs from "../../../components/FollowUs";
@@ -59,25 +58,6 @@ const FormAdsPage = () => {
           label: 'Portada'
         });
         setCategories(response.data.data[0].nodes);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  // Upload Image.
-  const uploadImage = async (file, name) => {
-    const formData = new FormData();
-    formData.append('folder', 'ads');
-    formData.append('file', file, name);
-
-    try {
-      const response = await api.upload.post(formData, { headers: {
-        'Content-Type': 'multipart/form-data'
-      }});
-      
-      if (response.data) {
-        setImage(response.data.src);
       }
     } catch (error) {
       console.log(error);

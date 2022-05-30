@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, lazy, Suspense } from 'react';
+import React, { Fragment, useState, useEffect, lazy } from 'react';
 import { useLocation } from "react-router";
 import { Link, useParams } from "react-router-dom";
 import BannerSection from "../../components/BannerSection";
@@ -15,13 +15,11 @@ import {
 import api from "../../utils/api";
 import './style.scss';
 import Moment from 'react-moment';
-import { Editor, EditorState, convertFromRaw, Draft } from 'draft-js';
+import { Editor, EditorState, convertFromRaw } from 'draft-js';
 import CustomBlock from '../Admin/FormArticlePage/plugins/CustomBlock';
 import { Helmet } from "react-helmet";
 import Sidebar from '../../components/Sidebar';
 import { useSelector } from 'react-redux';
-const RelatedTabs = lazy(() => import('../../components/RelatedTabs'));
-const MostView = lazy(() => import('../../components/MostView'));
 const BreadCrumb = lazy(() => import('../../components/BreadCrumb'));
 
 const ArticlePage = () => {

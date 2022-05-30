@@ -5,10 +5,7 @@ import PrivateRoute from '../_PrivateRoute';
 import PublicRoute from '../_PublicRoute';
 
 const NotFoundPage = React.lazy(() => import('../NotFoundPage'));
-const HomePageThree = React.lazy(() => import('../HomePageThree'));
-const NotFoundThreePage = React.lazy(() => import('../NotFoundThreePage'));
 const HomePage = React.lazy(() => import('../HomePage'));
-const HomePageTwo = React.lazy(() => import('../HomePageTwo'));
 const LoginPage = React.lazy(() => import('../Admin/LoginPage'));
 const RegisterPage = React.lazy(() => import('../RegisterPage'));
 const ArticlePage = React.lazy(() => import('../ArticlePage'));
@@ -169,27 +166,7 @@ const Routes = () => {
           component={NotFoundPage} />
 
         {/*home two routes*/}
-        <PrivateRoute
-          exact
-          home_style={2}
-          parentClass="theme-3 theme3_bg"
-          path="/home-two"
-          component={HomePageTwo} />
-
         {/*home page three*/}
-        <PrivateRoute
-          exact
-          home_style={3}
-          parentClass="theme-4"
-          path="/home-three"
-          component={HomePageThree} />
-
-        <PrivateRoute
-          exact
-          home_style={3}
-          parentClass="theme-4 bg4"
-          path="/home-three/404"
-          component={NotFoundThreePage} />
 
         <Route exact component={NotFoundPage} />
       </Switch>

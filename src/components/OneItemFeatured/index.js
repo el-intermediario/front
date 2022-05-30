@@ -3,7 +3,6 @@ import Moment from 'react-moment';
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from 'reactstrap';
 import api from '../../utils/api';
-import LazyImage from '../LazyImage';
 import Placeholder from '../Placeholder';
 import './style.scss';
 

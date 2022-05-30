@@ -1,6 +1,3 @@
-import shortid from "shortid";
-import { ROW, COLUMN } from "./constants";
-
 const initialData = {
   layout: [
     // {

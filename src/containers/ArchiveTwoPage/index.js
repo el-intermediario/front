@@ -6,7 +6,6 @@ import NewsLetter from "../../components/NewsLetter";
 import BannerSection from "../../components/BannerSection";
 import Whatsnew from "../../components/Whatsnew";
 import FollowUs from "../../components/FollowUs";
-import WidgetTrendingNewsThree from "../../components/WidgetTrendingNewsThree";
 
 // images
 
@@ -240,7 +239,6 @@ const ArchiveTwoPage = () => {
                                 title="Contact Us"
                                 className="follow_box widget sociai_style3 mb30 white_bg padding20 white_bg border-radious5 inner_socail4"
                             />
-                            <WidgetTrendingNewsThree/>
                             <div className="banner2 mb30">
                                 <Link to="/">
                                     <img className="border-radious5" src={sd_banner_img} alt="sd_banner_img"/>

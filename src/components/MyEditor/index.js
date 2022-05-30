@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
-import {EditorState, convertToRaw, convertFromRaw} from 'draft-js';
+import {EditorState, convertFromRaw} from 'draft-js';
 import es from './es.js';
 import 'draft-js/dist/Draft.css';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";

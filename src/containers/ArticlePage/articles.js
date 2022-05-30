@@ -8,16 +8,11 @@ import { Link, useLocation } from "react-router-dom";
 const ArticlesPage = () => {
   const location = useLocation();
   const [articles, setArticles] = useState([]);
-  const [activeTab, setActiveTab] = useState('1');
   const [search, setSearch] = useState('');
 
   useEffect(() => {
     fetchArticles(search);
   }, [search]);
-
-  const toggle = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
 
   const fetchArticles = async (search = null) => {
     try {

@@ -41,7 +41,6 @@ const FormArticlePage = (props) => {
   const [bodyHtml, setBodyHtml] = useState('');
   const [status, setStatus] = useState(true);
   const [image, setImage] = useState(null);
-  const [croppedImage, setCroppedImage] = useState(null);
   const [tags, setTags] = useState([]);
   const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
   const [category, setCategory] = useState(null);
