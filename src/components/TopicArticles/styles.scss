@@ -13,6 +13,7 @@
     min-height: 250px;
     background-size: cover;
     position: relative;
+    box-shadow: 3px 3px 3px 2px rgb(0 0 0 / 80%);
 
     .field-title {
       position: absolute;
@@ -22,7 +23,7 @@
       font-size: 18px;
       
       a {
-        text-shadow: 1px 1px 8px rgba(0,0,0, 30%);
+        text-shadow: 4px 2px 4px rgb(0 0 0 / 53%);
         color: white;
       }
     }

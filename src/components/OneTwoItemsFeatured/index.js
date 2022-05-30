@@ -2,8 +2,11 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import './style.scss';
 import LazyImage from '../LazyImage';
+import { useWindowSize } from 'react-hanger';
 
 const OneTwoItemsFeatured = ({className, dark, data}) => {
+    const {width} = useWindowSize();
+    
     return (
         <div className={`OneTwoItemsFeatured mix_area ${className ? className : ''}`}>
             <div className="row">
@@ -15,9 +18,9 @@ const OneTwoItemsFeatured = ({className, dark, data}) => {
                                         <div className="img_wrap">
                                             <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
                                                 <LazyImage 
-                                                    src={`f_auto,c_fill,g_face,h_500,w_860/v${item.data.image.url}`} 
+                                                    src={`f_auto,c_fill,g_face,h_${width < 640 ? 240 : 500},w_860/v${item.data.image.url}`} 
                                                     width={860}
-                                                    height={500} 
+                                                    height={width < 640 ? 240 : 500} 
                                                     alt={item.data.title} 
                                                 />
                                             </Link>

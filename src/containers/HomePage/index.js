@@ -16,8 +16,10 @@ import RadioPlayer from '../../components/RadioPlayer';
 import GridNews from '../../components/GridNews';
 import Ad from '../../components/Ad';
 import {Helmet} from "react-helmet";
+import { useWindowSize } from 'react-hanger';
 
 const HomePage = () => {
+  const { width } = useWindowSize();
   const [layout, setLayout] = useState([]);
   const [ads, setAds] = useState([]);
   const [articlesOffset, setArticlesOffset] = useState([]);
@@ -103,7 +105,7 @@ const HomePage = () => {
   }
 
   return (
-    <Fragment>
+    <div className={width < 640 ? 'page-home mobile' : 'page-home'}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Intermediario | Santa Cruz - Argentina</title>
@@ -155,7 +157,7 @@ const HomePage = () => {
         offset={articlesOffset2} 
       />)}
       <div className="space-70" />
-    </Fragment>
+    </div>
   );
 };
 

@@ -1600,6 +1600,7 @@ span.tranding {
 
       &:first-child {
         color: $secondary_color;
+        text-transform: capitalize;
       }
 
       &:last-child {
