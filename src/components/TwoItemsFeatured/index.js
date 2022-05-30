@@ -24,7 +24,7 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                   </div>
                 </div>
                 <div className="single_post_text">
-                  <div className="meta">{item.data.copete}</div>
+                  <div className="field-copete">{item.data.copete}</div>
                   <h4><Link to={`/articulo/${item.data.slug}`}>{item.data.title}</Link></h4>
                 </div>
               </div>
@@ -48,7 +48,7 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                   </div>
                 </div>
                 <div className="single_post_text">
-                  <div className="meta">{item.data.copete}</div>
+                <div className="field-copete">{item.data.copete}</div>
                   <h4><Link to={`/articulo/${item.data.slug}`}>{item.data.title}</Link></h4>
                 </div>
               </div>

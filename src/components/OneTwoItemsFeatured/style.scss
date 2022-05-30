@@ -9,17 +9,9 @@
       .single_post {  
         .single_post_text {
           text-transform: uppercase;
-          text-shadow: 3px 2px 1px black;
-    
-          .meta {
-            position: relative;
-            background-color: $secondary_color;
-            border-radius: 6px;
-            color: $white;
-            text-transform: uppercase;
-            display: inline;
-            padding: 0 14px;
-            font-size: 20px;
+
+          h4 {
+            text-shadow: 3px 2px 1px black;
           }
         }
       }

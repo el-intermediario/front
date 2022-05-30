@@ -48,16 +48,15 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
               <div className="single_post widgets_small">
                 <div className="post_img">
                   <div className="img_wrap">
-                    {item.image ? (
-                      <LazyImage 
-                        src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} 
-                        alt={item.title}
-                        width={100}
-                        height={77} 
-                      />
-                    ) : (
-                      <Placeholder />
-                    )}
+                    <Link to={`/articulo/${item.slug}`}>
+                      {item.image ? <LazyImage 
+                          src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} 
+                          alt={item.title}
+                          width={100}
+                          height={77} 
+                        />
+                       : <Placeholder /> }
+                    </Link>
                   </div>
                   <span className="tranding">
                     <FontAwesome name="bolt" />
@@ -85,16 +84,15 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
               <div className="single_post widgets_small">
                 <div className="post_img">
                   <div className="img_wrap">
-                    {item.image ? (
-                      <LazyImage 
-                        src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} 
-                        alt={item.title}
-                        width={100}
-                        height={77}
-                      />
-                    ) : (
-                      <Placeholder />
-                    )}
+                    <Link to={`/articulo/${item.slug}`}>
+                      {item.image ? <LazyImage 
+                          src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} 
+                          alt={item.title}
+                          width={100}
+                          height={77}
+                        />
+                       : <Placeholder />}
+                    </Link>  
                   </div>
                   <span className="tranding">
                     <FontAwesome name="bolt" />

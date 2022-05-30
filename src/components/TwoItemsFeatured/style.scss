@@ -24,28 +24,8 @@
         }
         .single_post_text {
           text-transform: uppercase;
-          text-shadow: 3px 2px 1px black;
-    
-          .meta {
-            position: relative;
-            background-color: $secondary_color;
-            color: $white;
-            text-transform: uppercase;
-            display: inline;
-            padding: 0 10px 0 5px;
-
-            &::after {
-              position: absolute;
-              left: -22px;
-              content: "";
-              top: 10px;
-              border-bottom: 12px solid transparent;
-              border-left: 10px solid transparent;
-              border-top: 10px solid transparent;
-              border-right: 12px solid #14A5C0;
-              transform: skewY(-45deg);
-            }
-          }
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 6px;
         }
       }
     }

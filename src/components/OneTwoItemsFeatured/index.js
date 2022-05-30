@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import './style.scss';
 import LazyImage from '../LazyImage';
-import api from '../../utils/api';
 
 const OneTwoItemsFeatured = ({className, dark, data}) => {
     return (
@@ -25,7 +24,7 @@ const OneTwoItemsFeatured = ({className, dark, data}) => {
                                         </div>
                                     </div>
                                     <div className="single_post_text">
-                                        <div className="meta">{item.data.copete}</div>
+                                        <div className="field-copete">{item.data.copete}</div>
                                         <h4><Link to={`/articulo/${item.data.slug}`}>{item.data.title}</Link></h4>
                                     </div>
                                 </div>
@@ -48,7 +47,7 @@ const OneTwoItemsFeatured = ({className, dark, data}) => {
                                 </div>
                             </div>
                             <div className="single_post_text">
-                                <div className="meta">{item.data.copete}</div>
+                                <div className="field-copete">{item.data.copete}</div>
                                 <h4><Link to={`/articulo/${item.data.slug}`}>{item.data.title}</Link></h4>
                             </div>
                         </div>

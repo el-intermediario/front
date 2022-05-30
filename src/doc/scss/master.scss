@@ -47,7 +47,7 @@
 a {
   @include transition(all .4s);
   color: $secondary_color;
-  display: inline-block;
+  // display: inline-block;
 }
 
 a:hover {
@@ -649,14 +649,14 @@ a.social_medium {
   z-index: 2;
   @include transition(all .3s);
 
-  .single_post_text {
-    a {
-      &:hover {
-        color: $secondary_color;
-        @include transition(all .3s)
-      }
-    }
-  }
+  // .single_post_text {
+  //   a {
+  //     &:hover {
+  //       color: $secondary_color;
+  //       @include transition(all .3s)
+  //     }
+  //   }
+  // }
 }
 
 
@@ -2868,4 +2868,17 @@ a.cbtn3 {
 }
 .styl {
   padding-top: 80px;
+}
+
+.field-copete {
+  border-radius: 100px;
+  position: relative;
+  background-color: white;
+  color: $secondary_color;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  letter-spacing: 2px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  display: inline-block;
 }
