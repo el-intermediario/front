@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import api from '../../utils/api';
+const placeholder = api.frontUrl + '/images/placeholder.jpg';
 
 const Placeholder = ({asset}) => {
     return (
-        <img src={`${api.space}${asset}/v1651530960/shared/placeholder_dqwbao.jpg`} />
+        <img src={placeholder} alt="placeholder"/>
     )
 }
 

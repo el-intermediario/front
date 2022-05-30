@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import api from '../../utils/api';
 import LazyImage from '../LazyImage';
 import './style.scss';
 
@@ -16,7 +15,7 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
                       <LazyImage 
-                        src={`f_auto,c_fill,g_face,h_400,w_600/v${item.children[0].data.image.url}`} 
+                        src={`f_auto,c_fill,g_face,h_400,w_600/v${item.data.image.url}`} 
                         width={600}
                         height={400}
                         alt={item.data.title} 
@@ -40,7 +39,7 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
                       <LazyImage 
-                        src={`f_auto,c_fill,g_face,h_400,w_600/v${item.children[0].data.image.url}`} 
+                        src={`f_auto,c_fill,g_face,h_400,w_600/v${item.data.image.url}`} 
                         width={600}
                         height={400} 
                         alt={item.data.title}

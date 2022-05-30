@@ -56,7 +56,7 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
                         height={77} 
                       />
                     ) : (
-                      <Placeholder asset="f_auto,c_fill,g_face,h_77,q_84,w_100" />
+                      <Placeholder />
                     )}
                   </div>
                   <span className="tranding">
@@ -93,7 +93,7 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
                         height={77}
                       />
                     ) : (
-                      <Placeholder asset="f_auto,c_fill,g_face,h_77,q_84,w_100" />
+                      <Placeholder />
                     )}
                   </div>
                   <span className="tranding">

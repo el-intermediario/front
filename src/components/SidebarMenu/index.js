@@ -10,7 +10,7 @@ const SidebarMenu = ({menus, sideShow, setSideShow, className}) => {
     const [stMenu, setSTMenu] = useState(null);
     return (
         <div className={`sidebarMenu ${sideShow ? '' : 'hideSideMenu'} ${className ? className : ''}`}>
-            <span className="clox" onClick={() => setSideShow(false)}>Close</span>
+            <span className="clox" onClick={() => setSideShow(false)}>Cerrar</span>
             <ul className="navBar">
                 {menus.length > 0 ? menus.map((item, i) => (
                     <li key={i}
@@ -31,8 +31,7 @@ const SidebarMenu = ({menus, sideShow, setSideShow, className}) => {
                                         <li key={i}
                                             className={`${sub_item.child ? 'has_sub' : ''}`}>
                                             {sub_item.child ?
-                                                <p
-                                                    onClick={() => setSTMenu(sub_item.id === stMenu ? null : sub_item.id)}
+                                                <p onClick={() => setSTMenu(sub_item.id === stMenu ? null : sub_item.id)}
                                                     className={stMenu === sub_item.id ? 'active' : ''}
                                                 >{sub_item.linkText}
                                                     <FontAwesome

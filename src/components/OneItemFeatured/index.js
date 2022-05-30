@@ -61,7 +61,7 @@ function OneItemFeaturedMobile({item}) {
                 {item.data.image ? ( 
                   <img src={`${api.space}f_auto,c_fill,g_face,h_300,q_84,w_800/v${item.data.image.url}`} alt={item.data.title} />
                 ) : (
-                  <Placeholder asset="f_auto,c_fill,g_face,h_250,q_84,w_300" />
+                  <Placeholder />
                 )}
               </div>
             </div>

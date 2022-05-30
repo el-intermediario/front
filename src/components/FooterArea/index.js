@@ -57,7 +57,7 @@ const FooterArea = ({className}) => {
                         <div className="border_white"/>
                     </div>
                     <div className="col-lg-4">
-                        <FooterMoreNews/>
+                        {/* <FooterMoreNews/> */}
                     </div>
                 </div>
             </div>

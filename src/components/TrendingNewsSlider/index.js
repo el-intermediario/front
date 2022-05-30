@@ -22,7 +22,7 @@ const TrendingNewsSlider = ({ articles }) => {
                     height={250}
                   />
                 ) : (
-                  <Placeholder asset="f_auto,c_fill,g_face,h_250,q_84,w_300" />
+                  <Placeholder />
                 )}
               </div>
               <span className="tranding">{i + 1}</span>

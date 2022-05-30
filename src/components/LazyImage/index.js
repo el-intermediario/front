@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";
 import api from "../../utils/api";
+const placeholder = api.frontUrl + '/images/placeholder.jpg';
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -39,11 +40,17 @@ const StyledImage = styled.img`
 `;
 
 const LazyImage = ({ src, alt, height, width}) => {
+  const [imageSrc, setImageSrc] = useState(src);
   const refPlaceholder = React.useRef();
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
   };
+
+  const addDefaultPlaceholder = () => {
+    refPlaceholder.current.remove();
+    setImageSrc('');
+  }
 
   const styles = {
     height: height,
@@ -60,8 +67,8 @@ const LazyImage = ({ src, alt, height, width}) => {
       <LazyLoad>
         <StyledImage
           onLoad={removePlaceholder}
-          onError={removePlaceholder}
-          src={`${api.space}${src}`}
+          onError={addDefaultPlaceholder}
+          src={imageSrc === '' ? placeholder : `${api.space}${imageSrc}`}
           alt={alt}
         />
       </LazyLoad>

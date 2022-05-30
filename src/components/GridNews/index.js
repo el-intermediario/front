@@ -1,7 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import api from '../../utils/api';
-import Moment from "react-moment";
 import "./styles.scss";
 import LazyImage from '../LazyImage';
 import Placeholder from '../Placeholder';
@@ -61,7 +60,7 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
                               <div className="post_img">
                                 <div className="img_wrap">
                                 {item.image ? (
-                                  <Link to="#">
+                                  <Link to={`/articulo/${item.slug}`}>
                                     <LazyImage 
                                       src={`f_auto,c_fill,g_face,h_200,w_245/v${item.image.url}`} 
                                       width={245}
@@ -69,9 +68,9 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
                                       alt={item.title} 
                                     />
                                   </Link>
-                                ): (
-                                  <Link to="#">
-                                    <Placeholder asset="f_auto,c_fill,g_face,h_200,w_245" />
+                                ) : (
+                                  <Link to={`/articulo/${item.slug}`}>
+                                    <Placeholder />
                                   </Link>
                                 )}
                                 </div>
