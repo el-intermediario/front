@@ -17,6 +17,7 @@ import GridNews from '../../components/GridNews';
 import Ad from '../../components/Ad';
 import {Helmet} from "react-helmet";
 import { useWindowSize } from 'react-hanger';
+import Mam from '../../components/Mam/mam';
 
 const HomePage = () => {
   const { width } = useWindowSize();
