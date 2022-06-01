@@ -7,10 +7,12 @@ body {
 .home-edit .body {
   display: flex;
   flex-direction: row;
-  
+}
+
+.home-edit {
   .sideBar {
     flex: 0 0 1;
-    width: 300px;
+    width: 260px;
     padding: 10px;
     border: 1px solid #e1e1e1;
     background: #fff;
@@ -22,83 +24,103 @@ body {
       background: #fff;
     }
   }
-}
 
-
-
-.home-edit .sideBarItem {
-  border: 1px solid #000;
-  border-radius: 3px;
-  padding: 5px;
-  margin-top: 10px;
-  background: #fff;
-  cursor: pointer;
-}
-
-.home-edit .pageContainer {
-  overflow: scroll;
-  height: 550px;
-
-  .row {
-    border: 4px solid #999;
-    padding: 0;
-    position: relative;
-
-    span {
-      position: absolute;
-      top: -10;
-      color: #fff;
-    }
+  .sideBarItem {
+    border: 1px solid #000;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 10px;
+    background: #fff;
+    cursor: pointer;
   }
+
+  .pageContainer {
+    overflow: scroll;
+    height: 610px;
   
-  .page {
-    flex: 1 1 auto;
-    padding: 0 20px;
-    margin: 0 20px 20px;
-    border: 1px solid #666;
-    
-    .dropZone {
-      background: url('./dropzone.png');
-      flex: 0 0 auto;
-      height: 25px;
-      transition: 200ms all;
-    }
-
-    .dropZone:nth-of-type(2n) {
-      display: none;
+    .row {
+      border: 3px solid rgb(240, 103, 249);
+      padding: 0;
+      position: relative;
+  
+      span {
+        position: absolute;
+        color: #fff;
+        right: 0;
+        padding: 4px 10px;
+        background: rgb(240, 103, 249);
+      }
     }
     
-    .dropZone.horizontalDrag {
-      width: 40px;
-      height: auto;
-    }
-    
-    .dropZone:not(.horizontalDrag).isLast {
+    .page {
       flex: 1 1 auto;
-    }
-    
-    .dropZone.active,
-    .trashDropZone.active {
-      background: #00a2ff;
-      transition: 100ms all;
+      padding: 0 20px;
+      margin: 0 20px 20px;
+      border: 1px solid #666;
+      
+      .dropZone {
+        background: url('./img/dropzone.png');
+        flex: 0 0 auto;
+        height: 15px;
+        transition: 200ms all;
+      }
+  
+      .dropZone:nth-of-type(2n) {
+        display: none;
+      }
+      
+      .dropZone.horizontalDrag {
+        width: 20px;
+        height: auto;
+      }
+      
+      .dropZone:not(.horizontalDrag).isLast {
+        flex: 1 1 auto;
+      }
+      
+      .dropZone.active,
+      .trashDropZone.active {
+        background: #00a2ff;
+        transition: 100ms all;
+      }
     }
   }
-}
 
-.home-edit .component {
-  padding: 10px;
-  background: #aaa;
-}
+  .component {
+    padding: 10px;
+    background: #aaa;
+  }
 
-.home-edit .column {
-  border: 1px dotted #333;
-  flex: 1 1 100%;
-  padding: 10px;
-}
+  .columns {
+    display: flex;
+    padding: 4px 0;
+  }
 
-.home-edit .columns {
-  display: flex;
-  padding: 4px 0;
+  .column {
+    border: 1px dotted #333;
+    flex: 1 1 100%;
+    padding: 10px;
+  }
+
+  .trashDropZone {
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0 auto;
+    height: 100px;
+    border: 1px solid purple;
+    background: rgba(255, 0, 255, 0.255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+  }
+
+  .pageContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
 }
 
 .home-edit .columnContainer {
@@ -106,27 +128,8 @@ body {
 }
 
 .home-edit .base {
-  padding: 0.5rem 1rem;
+  padding: 5px 10px;
   background-color: white;
   cursor: move;
 }
 
-.home-edit .trashDropZone {
-  position: relative;
-  text-align: center;
-  padding: 20px 0;
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
-  border: 1px solid purple;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.home-edit .pageContainer {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  margin-bottom: 100px;
-}

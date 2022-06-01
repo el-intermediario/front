@@ -39,7 +39,6 @@ const TopicArticles = ({ dark, data }) => {
     backgroundImage: image ? `url("${api.space}f_auto,c_fill,g_faces,${width < 640 ? 'h_360,w_640' :  'h_320,w_1400'}/v${image}")` : `url("./default/bg.jpg")`,
     backgroundSize: '100%',
     backgroundRepeat: 'no-repeat',
-    marginTop: '20px',
     marginBottom: '20px',
     minHeight: '300px',
   };

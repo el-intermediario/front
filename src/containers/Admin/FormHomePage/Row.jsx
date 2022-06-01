@@ -35,9 +35,22 @@ const Row = ({ data, components, handleDrop, path }) => {
     );
   };
 
+  const getBlockLabel = (key) => {
+    const newKey = key.split('_');
+    switch (newKey[0]) {
+      case 'ad':
+        return 'Publicidad';
+      case 'topic':
+        return `Notas de ${newKey[1]}`;  
+      case 'article':
+      default:
+        return 'Articulos'
+    }
+  }
+
   return (
     <div ref={ref} style={{ ...style, opacity }} className="base draggable row">
-      {/* <span>{data.id}</span> */}
+      <span>{getBlockLabel(data.id)}</span>
       <div className="columns">
         {data.children.map((column, index) => {
           const currentPath = `${path}-${index}`;

@@ -44,6 +44,7 @@ const Column = ({ data, components, handleDrop, path, rowId }) => {
       {data.children.map((component, index) => {
         const currentPath = `${path}-${index}`;
 
+
         return (
           <React.Fragment key={component.id}>
             <DropZone

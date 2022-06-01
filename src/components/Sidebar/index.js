@@ -28,12 +28,14 @@ const Sidebar = ({mostView, category, articlesRelated}) => {
   }
 
   const renderLoader = () => <div>Cargando...</div>
+
+  console.log(banners[0]);
   return (
     <>
       {banners.length ? (
         <div className="banner2 mb30">
           <Link to={banners[0].url}>
-            <img src={`${api.space}${banners[0].image}`} alt={banners[0].name} width="350px" height="auto" />
+            <img src={`${api.space}/v${banners[0].image.url}`} alt={banners[0].name} width="350px" height="auto" />
           </Link>
         </div>
       ) : null}

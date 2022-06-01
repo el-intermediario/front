@@ -80,7 +80,15 @@ const HomePage = () => {
           url={row.children[0].children[0].data.url}
           title={row.children[0].children[0].data.name}
         />
+      case 'corona':
+        // Bloque con notas de un tema especifica ej: 'elecciones'
+        break;
+      case 'topic':
+        return <TopicArticles data={row}/>;
+      case 'videos':
+        return <VideoPost key="videos" className="pt30 half_bg60" />
       case 'article':
+      default:
         if (row.children.length === 1) {
           return <OneItemFeatured className="fifth_bg" data={row.children} />
         } else if (row.children.length === 2) {
@@ -92,16 +100,7 @@ const HomePage = () => {
           return <ThreeItemsFeatured data={row.children} />
         } else {
           return <FourItemsFeatured news={row.children} />
-        }
-      case 'corona':
-        // Bloque con notas de un tema especifica ej: 'elecciones'
-        break;
-      case 'topic':
-        return <TopicArticles data={row}/>;
-      case 'videos':
-        return <VideoPost key="videos" className="pt30 half_bg60" />
-      default:
-        break;  
+        }  
     }
   }
 

@@ -39,9 +39,9 @@ const Component = ({ data, components, path }) => {
     >
       {data.data.typeId === 'article' ? (
         <div>
-          <div>{data.data && data.data.title || data.data.name}</div>
+          <div>{data.data ? data.data.title : data.data.name}</div>
           <div>
-            <img src={`${api.space}f_auto,c_fill,g_face,h_380,q_84,w_600/v${data.data.image.url}`} width="100%"/>
+            <img src={`${api.space}f_auto,c_fill,g_face,h_180,q_84,w_600/v${data.data.image.url}`} width="100%"/>
           </div>
         </div>
       ) : null}

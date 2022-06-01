@@ -36,7 +36,7 @@ const FormHomePage = () => {
 
   return (
     <>
-      <div className="contact_form padding-bottom">
+      <div className="contact_form">
         <div className="container">
           <div className="space-10" />
           <div className="row">
@@ -57,7 +57,6 @@ const FormHomePage = () => {
           </div>
         </div>
       </div>
-      <BannerSection />
     </>
   );
 }

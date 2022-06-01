@@ -121,9 +121,16 @@ const Container = (props) => {
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
 
+      console.log(item.type);
       const newItem = { id: item.id, type: item.type };
       if (item.type === COLUMN) {
         newItem.children = item.children;
+      }
+
+      if (item.type === COMPONENT) {
+        const pos = item.path.split('-');
+        newItem.data = layout[pos[0]].children[pos[1]].children[pos[2]].data; 
+        console.log(newItem);
       }
 
       // sidebar into
@@ -262,7 +269,7 @@ const Container = (props) => {
     <div className="body">
       <div className="sideBar">
         <div className="filters">
-          <div className="">
+          <div className="mb-2">
             <input name="search-article" value={search} onChange={e => handleSearchArticles(e.target.value)}
               type="text"
               placeholder="Buscar nota" />
@@ -270,13 +277,13 @@ const Container = (props) => {
           {articles.map((article, index) => (
             <SideBarItem key={article.id} data={article} />
           ))}
-          <div>
+          <div className="mb-2">
             <ButtonGroup>
               <Button color="primary" onClick={e => handleSearchAds(e.target.value, 'portada_superior')}>
-                Publi Horizontal
+                Publi Grande
               </Button>
               <Button color="info" onClick={e => handleSearchAds(e.target.value, '350x250')}>
-                Publi Cuadrada
+                Publi Chica
               </Button>
             </ButtonGroup>
           </div>
@@ -284,7 +291,7 @@ const Container = (props) => {
             <SideBarItem key={ad.id} data={ad} />
           ))}
 
-          <div>
+          <div className="mb-2">
             <TopicForm handleBrickTopic={handleBrickTopic} />
           </div>
 
@@ -330,9 +337,12 @@ const Container = (props) => {
         </div>
       </div>
       <div className="trash">
-        <div>
-          <input name="title" value={title} onChange={e => setTitle(e.target.value)}
+        <TrashDropZone data={{layout}} onDrop={handleDropToTrashBin} />
+        <div className="col-12">
+          <input 
+            name="title" value={title} onChange={e => setTitle(e.target.value)}
             type="text"
+            disabled={(id ? true : false)}
             placeholder="Titulo" 
           />
         </div>
@@ -345,13 +355,12 @@ const Container = (props) => {
           />
           <label>Publicar</label>
         </div>
-        <div className="col-12">
+        <div className="col-12 mb-2">
           <button onClick={(e) => setPreview(true)}>Vista Previa</button>
         </div>
-        <div>
+        <div className="col-12 mb-2">
           <button type="submit" className="cbtn1" onClick={submitHandler}>Guardar</button>
         </div>
-        <TrashDropZone data={{layout}} onDrop={handleDropToTrashBin} />
       </div>
       {preview ?
         <CoverModal setPreviewShow={setPreview} previewShow={preview} layout={layout} />
