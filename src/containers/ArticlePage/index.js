@@ -92,11 +92,21 @@ const ArticlePage = () => {
         <link rel="canonical" href={`https://elintermediario.com.ar/${data && data.slug}`} />
         {data && <meta name="description" content={data.dropline} />}
         {data && <meta property="og:title" content={data.title} />}
+        {data && <meta property="og:site_name" content="El Intermediario" />}
         {data && <meta property="og:url" content={`https://elintermediario.com.ar/${data && data.slug}`} />}
         {data && <meta property="og:description" content={data.dropline} />}
-        {data && data.image && <meta property="og:image" content={`${api.space}f_auto,c_fill,g_faces,h_360,q_84,w_730/v${data.image.url}`} />}
+        {data && data.image && <meta property="og:image" content={`${api.space}f_auto,c_fill,g_faces,h_630,w_1200/v${data.image.url}`} />}
         {data && <meta property="og:type" content="article" />}
         {data && <meta property="og:locale" content="es_ES" />}
+        {data && <meta property="og:image:width" content="1200" />}
+        {data && <meta property="og:image:heiht" content="630" />}
+
+        {data && <meta property="twitter:card" content="summary_large_image" />}
+        {data && <meta property="twitter:site" content="elintermediario" />}
+        {data && <meta property="twitter:title" content={data.title} />}
+        {data && <meta property="twitter:description" content={data.dropline} />}
+        {data && <meta property="twitter:creator" content="elintermediario" />}
+        {data && <meta name="twitter:image" content={`${api.space}f_auto,c_fill,g_faces,h_630,w_1200/v${data.image.url}`} />}
       </Helmet>
       <div className="archives post post1 page-article">
         <BreadCrumb className="shadow5 padding-top-10" title={data && data.title} />
