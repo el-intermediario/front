@@ -14,7 +14,7 @@ const Sidebar = ({mostView, category, articlesRelated}) => {
 
   const fetchAd = async (category) => {
     try {
-      const params = `?category=${category}&sizes=350x250=limit=1`;
+      const params = `?category=${category}&sizes=350x250&limit=1`;
       const responseAd = await api.ad.getAds(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -34,7 +34,7 @@ const Sidebar = ({mostView, category, articlesRelated}) => {
       {banners.length ? (
         <div className="banner2 mb30">
           <Link to={banners[0].url}>
-            <img src={`${api.space}/v${banners[0].image.url}`} alt={banners[0].name} width="350px" height="auto" />
+            <img src={`${api.space}v${banners[0].image.url}`} alt={banners[0].name} width="350px" height="auto" />
           </Link>
         </div>
       ) : null}

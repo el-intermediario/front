@@ -133,7 +133,7 @@ const HomePage = () => {
             <div>
             {ads.map((ad, k) => {
               if (ad.type === 'normal' && k === 1) {
-                return <Ad key={`row-ads-${k}`} imageUrl={ad.image} url={ad.url} title={ad.name} height="250px" />
+                return <Ad key={`row-ads-${k}`} imageUrl={`v${ad.image.url}`} url={ad.url} title={ad.name} height="250px" />
               }
             })}
             <div className="space-20" />
