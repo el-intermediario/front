@@ -62,7 +62,7 @@ const FormAdsPage = (props) => {
 
   const fetchAd = async (id) => {
     try {
-      const response = await api.ad.get({id, by: '_id'},
+      const response = await api.ad.get({id},
         { headers: { 'Content-Type': 'application/json' } }
       );
         

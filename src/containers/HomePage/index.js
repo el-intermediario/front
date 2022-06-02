@@ -59,7 +59,7 @@ const HomePage = () => {
   const fetchAds = async () => {
     try {
       const params = `?category=home`;
-      const response = await api.ad.get(params,
+      const response = await api.ad.getAds(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
         

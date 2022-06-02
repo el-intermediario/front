@@ -14,8 +14,8 @@ const Sidebar = ({mostView, category, articlesRelated}) => {
 
   const fetchAd = async (category) => {
     try {
-      const params = `?category=${category}&sizes=350x250`;
-      const responseAd = await api.ad.get(params,
+      const params = `?category=${category}&sizes=350x250=limit=1`;
+      const responseAd = await api.ad.getAds(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -29,7 +29,6 @@ const Sidebar = ({mostView, category, articlesRelated}) => {
 
   const renderLoader = () => <div>Cargando...</div>
 
-  console.log(banners[0]);
   return (
     <>
       {banners.length ? (

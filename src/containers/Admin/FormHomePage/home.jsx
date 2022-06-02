@@ -85,7 +85,7 @@ const Container = (props) => {
 
   const handleSearchAds = async (value, size) => {
     try {
-      const response = await api.ad.get(`?sizes=${size}`,
+      const response = await api.ad.getAds(`?sizes=${size}`,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
