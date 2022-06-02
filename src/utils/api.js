@@ -10,7 +10,9 @@ const frontUrl = 'https://elintermediario.com.ar';
 
 const ad = {
   add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers),
-  get: (params, headers) => axios.get(`${baseUrl}/${version}/ads${params}`, headers),
+  get: (data, headers) => axios.get(`${baseUrl}/${version}/ads/${data.id}`, headers),
+  put: (data, headers) => axios.put(`${baseUrl}/${version}/ads/${data.id}`, data.data, headers),
+  getAds: (params, headers) => axios.get(`${baseUrl}/${version}/ads${params}`, headers),
 }
 
 const auth = {

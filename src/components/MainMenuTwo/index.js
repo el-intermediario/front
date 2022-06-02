@@ -76,8 +76,8 @@ const menusLogged = [
     submenu: [
       {
         id: 31,
-        link: '/admin/ads/edit',
-        linkText: 'Editar',
+        link: '/admin/ads',
+        linkText: 'Lista',
       },
       {
         id: 21,

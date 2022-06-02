@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { FormGroup } from 'reactstrap';
 import Loading from 'react-fullscreen-loading';
 
@@ -9,8 +9,9 @@ import FollowUs from "../../../components/FollowUs";
 import api from '../../../utils/api';
 import FileUpload from '../../../components/FileUpload';
 
-const FormAdsPage = () => {
+const FormAdsPage = (props) => {
   const history = new useHistory();
+  let { id } = useParams();
   const { user } = useSelector(state => state.user);
   const [loader, setLoader] = useState(false);
   const [title, setTitle] = useState('');
@@ -42,8 +43,43 @@ const FormAdsPage = () => {
   const [checkedCategories, setCheckedCategories] = useState(['home']);
 
   useEffect(() => {
+    if (id) {
+      fetchAd(id);
+    } else {
+      setTitle('');
+      setSize('350x250');
+      setType('normal');
+      setUrl('');
+      setImage(null);
+      setStatus(true);
+      setCheckedCategories([]);
+    }
+  }, [id]);
+
+  useEffect(() => {
     fetchCategories();
   }, []);
+
+  const fetchAd = async (id) => {
+    try {
+      const response = await api.ad.get({id, by: '_id'},
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+        
+      if (response.data) {
+        const { data } = response;
+        setTitle(data.name);
+        setSize(data.size);
+        setType(data.type);
+        setUrl(data.url);
+        setImage(data.image);
+        setStatus(data.status);
+        setCheckedCategories(data.categories);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const fetchCategories = async (type) => {
     try {
@@ -65,7 +101,9 @@ const FormAdsPage = () => {
   }
 
   const submitHandler = async (event) => {
+    setLoader(true);
     event.preventDefault();
+
     const data = {
       name: title,
       type,
@@ -77,13 +115,18 @@ const FormAdsPage = () => {
     }
 
     try {
-      const response = await api.ad.add(data,
-        { header: user.headers }
-        );
-        if (response.data) {
-          setLoader(false);
-          return history.push('/admin', {type: 'success', message: 'La publicidad se creo correctamente.'});
-        }
+      let response = null;
+      if (props.match.path === '/admin/ad/:id/edit') {
+        response = await api.ad.put({data, id}, { headers: user.headers });  
+      } else {
+        data.created = parseInt(Date.now()/1000);
+        data.updated = parseInt(Date.now()/1000);
+        response = await api.ad.add(data, { header: user.headers });
+      }
+      if (response.data) {
+        setLoader(false);
+        return history.push('/admin', {type: 'success', message: 'La publicidad se creo/actualizo correctamente.'});
+      }
     } catch (error) {
       setLoader(false);
       console.log(error);

@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import AdsPage from '../AdPage/ads';
 import SectionsPage from '../SectionPage/sections';
 import PrivateRoute from '../_PrivateRoute';
 import PublicRoute from '../_PublicRoute';
@@ -95,9 +96,21 @@ const Routes = () => {
         <PrivateRoute
           exact
           home_style={3}
+          path="/admin/ads"
+          parentClass="theme-3"
+          component={AdsPage} />
+        <PrivateRoute
+          exact
+          home_style={3}
           path="/admin/ad/add"
           parentClass="theme-3"
           component={FormAdsPage} />
+        <PrivateRoute
+          exact
+          home_style={3}
+          path="/admin/ad/:id/edit"
+          parentClass="theme-3"
+          component={FormAdsPage} />  
         <PrivateRoute
           exact
           home_style={3}
