@@ -91,6 +91,12 @@ const ArticlePage = () => {
         {data && <title>{data.title} | Intermediario</title>}
         <link rel="canonical" href={`https://elintermediario.com.ar/${data && data.slug}`} />
         {data && <meta name="description" content={data.dropline} />}
+        {data && <meta property="og:title" content={data.title} />}
+        {data && <meta property="og:url" content={`https://elintermediario.com.ar/${data && data.slug}`} />}
+        {data && <meta property="og:description" content={data.dropline} />}
+        {data && data.image && <meta property="og:image" content={`${api.space}f_auto,c_fill,g_faces,h_360,q_84,w_730/v${data.image.url}`} />}
+        {data && <meta property="og:type" content="article" />}
+        {data && <meta property="og:locale" content="es_ES" />}
       </Helmet>
       <div className="archives post post1 page-article">
         <BreadCrumb className="shadow5 padding-top-10" title={data && data.title} />
