@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import BreadCrumb from "../../components/BreadCrumb";
 import api from '../../utils/api';
 import CategoryArticles from '../../components/CategoryArticles';
@@ -37,7 +37,7 @@ const CategoryPage = ({location}) => {
   };
 
   return (
-    <Fragment>
+    <>
       <Helmet>
         {categoryName && <title>{categoryName && categoryName} | Intermediario</title>}
         <link rel="canonical" href={`https://elintermediario.com.ar/${location.pathname}`} />
@@ -95,17 +95,12 @@ const CategoryPage = ({location}) => {
             </div>
             <div className="col-md-6 col-lg-4">
               <Sidebar category={categoryParent} mostView />
-              {/* <div className="banner2 mb30">
-                <Link to="/">
-                  <img src={banner2} alt="thumb" />
-                </Link>
-              </div> */}
             </div>
           </div>
         </div>
       </div>
       <div className="space-40" />
-    </Fragment>
+    </>
   );
 };
 

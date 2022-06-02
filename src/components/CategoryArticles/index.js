@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Moment from 'react-moment';
 import { Link } from "react-router-dom";
 import LazyImage from '../LazyImage';

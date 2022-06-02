@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";
@@ -42,6 +42,10 @@ const StyledImage = styled.img`
 const LazyImage = ({ src, alt, height, width}) => {
   const [imageSrc, setImageSrc] = useState(src);
   const refPlaceholder = React.useRef();
+  
+  useEffect(() => {
+    src !== imageSrc && setImageSrc(src)
+  }, [src]);
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
