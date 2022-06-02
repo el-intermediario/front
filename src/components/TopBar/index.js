@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { Link } from "react-router-dom";
 import Swiper from 'react-id-swiper';
 import FontAwesome from "../uiStyle/FontAwesome";
@@ -74,4 +74,4 @@ const TopBar = ({ className, dark }) => {
   );
 };
 
-export default TopBar;
+export default memo(TopBar);

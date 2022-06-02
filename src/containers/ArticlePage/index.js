@@ -1,15 +1,8 @@
+import { ShareButtons } from './../../components/ShareButtons/ShareButtons';
 import React, { Fragment, useState, useEffect, lazy } from 'react';
 import { useLocation } from "react-router";
 import { Link, useParams } from "react-router-dom";
 import BannerSection from "../../components/BannerSection";
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-  TwitterIcon,
-  FacebookIcon,
-  WhatsappIcon
-} from "react-share";
 
 // images
 import api from "../../utils/api";
@@ -141,17 +134,7 @@ const ArticlePage = () => {
           <div className="space-20" />
           <div className="row">
             <div className="col-md-6 col-lg-1 page-share">
-              <div className="share-buttons">
-                <TwitterShareButton title={data && data.title} url={window.location.href}>
-                  <TwitterIcon size={48} />
-                </TwitterShareButton>
-                <FacebookShareButton quote={data && data.title} url={window.location.href}>
-                  <FacebookIcon size={48} />
-                </FacebookShareButton>
-                <WhatsappShareButton title={data && data.title} url={window.location.href}>
-                  <WhatsappIcon size={48} />
-                </WhatsappShareButton>
-              </div>
+              <ShareButtons   data={data}  />
             </div>
             <div className="col-md-6 col-lg-7 page-content">
               <div className="shadow6">

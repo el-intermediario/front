@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import Moment from 'react-moment';
 import {Link} from "react-router-dom";
 
@@ -11,10 +11,6 @@ const quick_links = [
         name: 'Politicas de Privacidad',
         link: '/seccion/politicas-de-privacidad'
     },
-    // {
-    //     name: 'Contactenos',
-    //     link: '/contactenos'
-    // },
 ];
 
 const FooterCopyright = () => {
@@ -44,4 +40,4 @@ const FooterCopyright = () => {
     );
 };
 
-export default FooterCopyright;
+export default memo(FooterCopyright);

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { memo, Fragment, useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import api from '../../utils/api';
 import "./styles.scss";
@@ -101,4 +101,4 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
   );
 };
 
-export default GridNews;
+export default memo(GridNews);

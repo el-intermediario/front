@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Link} from "react-router-dom";
 import FooterCopyright from "../FooterCopyright";
 import FooterNewsCategories from "../FooterNewsCategories";
@@ -64,4 +64,4 @@ const FooterArea = ({className}) => {
     );
 };
 
-export default FooterArea;
+export default memo(FooterArea);

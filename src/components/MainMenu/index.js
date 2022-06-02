@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { memo, Fragment, useState, useEffect } from 'react';
 import FontAwesome from "../uiStyle/FontAwesome";
 import tempIcon from '../../doc/img/icon/temp.png';
 import { Link, NavLink, useHistory } from "react-router-dom";
@@ -358,4 +358,4 @@ const MainMenu = ({ className, dark }) => {
   );
 };
 
-export default MainMenu;
+export default memo(MainMenu);
