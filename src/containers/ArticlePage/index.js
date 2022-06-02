@@ -2,7 +2,6 @@ import { ShareButtons } from './../../components/ShareButtons/ShareButtons';
 import React, { Fragment, useState, useEffect, lazy } from 'react';
 import { useLocation } from "react-router";
 import { Link, useParams } from "react-router-dom";
-import BannerSection from "../../components/BannerSection";
 
 // images
 import api from "../../utils/api";
@@ -39,7 +38,7 @@ const ArticlePage = () => {
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      if (response) {
+      if (response.data) {
         setData(response.data);
         setBodyData(response.data.bodyData);
         // Get Related articles by tags.
@@ -134,7 +133,7 @@ const ArticlePage = () => {
           <div className="space-20" />
           <div className="row">
             <div className="col-md-6 col-lg-1 page-share">
-              <ShareButtons   data={data}  />
+              <ShareButtons data={data}  />
             </div>
             <div className="col-md-6 col-lg-7 page-content">
               <div className="shadow6">
@@ -156,24 +155,19 @@ const ArticlePage = () => {
                       stripPastedStyles={true}
                     />
                   }
-                  <div className="space-40" />
+                  <div className="space-20" />
+                  {data?.source && <div className="row">Fuente: ${data.source}</div>}
                 </div>
               </div>
               <div className="space-30" />
               {/* <PostOnePagination className="next_prv_single padding20 shadow6 next_prv_single3" /> */}
             </div>
             <div className="col-md-6 col-lg-4 page-sidebar">
-              <Sidebar category={data && data.category && data.category.initial.split('/')[1]} mostView articlesRelated />
+              <Sidebar category={data && data.category && data.category.initial.split('/')[1]} mostView articlesRelated={articlesRelated} />
             </div>
           </div>
         </div>
       </div>
-      {/* <div className="space-60" />
-			<OurBlogSection />
-			<div className="space-60" />
-			<BlogComment />
-			<div className="space-100" /> */}
-      <BannerSection />
     </Fragment>
   )
 };

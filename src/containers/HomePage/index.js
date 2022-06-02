@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TrendingNews from "../../components/TrendingNews";
 import MostView from "../../components/MostView";
 import VideoPost from "../../components/VideoPost";

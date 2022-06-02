@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {Link} from "react-router-dom";
 import FontAwesome from "../uiStyle/FontAwesome";
 
@@ -36,4 +36,4 @@ const FollowUs = ({className='', title}) => {
     );
 };
 
-export default FollowUs;
+export default memo(FollowUs);

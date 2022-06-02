@@ -28,7 +28,6 @@ const Container = (props) => {
   const { articlesOffset } = useSelector(state => state.meta);
   const initialLayout = initialData.layout;
   const initialComponents = initialData.components;
-  const initialBricks = initialData.bricks;
   const [id, setId] = useState(null);
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState(true);
@@ -37,7 +36,6 @@ const Container = (props) => {
   const [articles, setArticles] = useState([]);
   const [ads, setAds] = useState([]);
   const [search, setSearch] = useState('');
-  const [searchAd, setSearchAd] = useState('');
   const [preview, setPreview] = useState(false);
   const [cover, setCover] = useState(null);
 

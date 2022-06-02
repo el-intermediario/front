@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import FontAwesome from "../uiStyle/FontAwesome";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 import SidebarMenu from "../SidebarMenu";
@@ -220,4 +220,4 @@ const MainMenuTwo = () => {
   );
 };
 
-export default MainMenuTwo;
+export default memo(MainMenuTwo);

@@ -1,6 +1,5 @@
 import React, { memo, Fragment, useState, useEffect } from 'react';
 import FontAwesome from "../uiStyle/FontAwesome";
-import tempIcon from '../../doc/img/icon/temp.png';
 import { Link, NavLink, useHistory } from "react-router-dom";
 import SearchModal from "../SearchModal";
 import SidebarMenu from "../SidebarMenu";

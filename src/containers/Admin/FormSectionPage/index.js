@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from 'react-fullscreen-loading';
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
-import draftToHtml from 'draftjs-to-html'
+import { convertToRaw } from "draft-js";
 
 import api from "../../../utils/api";
 import MyEditor from "../../../components/MyEditor";

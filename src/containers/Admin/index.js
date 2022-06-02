@@ -1,5 +1,4 @@
 import React from 'react';
-import BannerSection from "../../components/BannerSection";
 import FollowUs from "../../components/FollowUs";
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
@@ -35,7 +34,6 @@ const AdminPage = () => {
           </div>
         </div>
       </div>
-      <BannerSection />
     </>
   );
 }

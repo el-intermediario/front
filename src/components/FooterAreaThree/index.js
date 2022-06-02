@@ -1,5 +1,4 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, { memo } from 'react';
 
 const FooterAreaThree = () => {
     return (
@@ -8,19 +7,7 @@ const FooterAreaThree = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 align-self-center">
-                            <p>&copy; Copyright 2021, Todos los derechos reservados</p>
-                        </div>
-                        <div className="col-lg-6 align-self-center">
-                            <div className="copyright_menus text-right">
-                                <div className="language"/>
-                                <div className="copyright_menu inline">
-                                    <ul>
-                                        <li><Link to="/quienes-somos">Quienes somos?</Link></li>
-                                        <li><Link to="/politicas-de-privacidad">Politicas de privacidad</Link></li>
-                                        <li><Link to="/contactenos">Contactenos</Link></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <p>&copy; Copyright 2022, Todos los derechos reservados</p>
                         </div>
                     </div>
                 </div>
@@ -29,4 +16,4 @@ const FooterAreaThree = () => {
     );
 };
 
-export default FooterAreaThree;
+export default memo(FooterAreaThree);

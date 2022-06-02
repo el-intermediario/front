@@ -3,7 +3,6 @@ import classNames from "classnames";
 import { useDrop } from "react-dnd";
 import { COMPONENT, ROW, COLUMN } from "./constants";
 
-const trash = './img/trash.svg';
 const ACCEPTS = [ROW, COLUMN, COMPONENT];
 
 const TrashDropZone = ({ data, onDrop }) => {

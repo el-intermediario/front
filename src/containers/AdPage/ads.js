@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, Table } from "reactstrap";
-import FollowUs from "../../components/FollowUs";
 import api from "../../utils/api";
 import { Link, useLocation } from "react-router-dom";
 
 const AdsPage = () => {
   const location = useLocation();
   const [ads, setAds] = useState([]);
-  const [activeTab, setActiveTab] = useState('1');
-  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    fetchAds(search);
-  }, [search]);
+    fetchAds();
+  }, []);
 
   const fetchAds = async () => {
     try {

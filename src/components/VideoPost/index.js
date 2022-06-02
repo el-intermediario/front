@@ -72,6 +72,7 @@ const VideoPost = ({ className, dark }) => {
                       <img 
                         src={firstVideo ? firstVideo.thumbnail : video1} 
                         onError={onErrorImage}
+                        alt="video"
                       />
                     </Link>
                   </div>
