@@ -4,6 +4,7 @@ import iconQuote from './img/quote.png';
 import FontAwesome from "../../../../components/uiStyle/FontAwesome";
 import FileUpload from "../../../../components/FileUpload";
 import api from "../../../../utils/api";
+import { UncontrolledTooltip } from "reactstrap";
 
 const Gallery = ({ editorState, onChange }) => {
   const [open, setOpen] = useState(false);
@@ -54,9 +55,12 @@ const Gallery = ({ editorState, onChange }) => {
   return (
     <div className="rdw-block-wrapper button-modal" aria-label="rdw-block-control" role="button">
       <div className="rdw-dropdown-selectedtext">
-        <span onClick={() => setOpen(true)}>
+        <span onClick={() => setOpen(true)} id="TooltipGallery">
           <FontAwesome name="photo"/>
         </span>
+        <UncontrolledTooltip placement="bottom" target="TooltipGallery">
+          Insertar Galeria
+        </UncontrolledTooltip>
       </div>
       <div className={`rdw-dropdown-optionwrapper ${open ? 'open-modal' : ''}`}>
         <FileUpload 

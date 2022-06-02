@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { EditorState, AtomicBlockUtils } from 'draft-js';
 import CustomAutocomplete from "../../../../components/CustomAutocomplete";
 import FontAwesome from "../../../../components/uiStyle/FontAwesome";
+import { UncontrolledTooltip } from 'reactstrap';
 
 const ArticleReference = ({ editorState, onChange }) => {
   const [open, setOpen] = useState(false);
@@ -34,9 +35,12 @@ const ArticleReference = ({ editorState, onChange }) => {
   return (
     <div className="rdw-block-wrapper button-modal" aria-label="rdw-block-control" role="button">
       <div className="rdw-dropdown-selectedtext">
-        <span onClick={() => setOpen(true)}>
+        <span onClick={() => setOpen(true)} id="Tooltip">
           <FontAwesome name="files-o"/>
         </span>
+        <UncontrolledTooltip placement="bottom" target="Tooltip">
+          Insertar Articulo
+        </UncontrolledTooltip>
       </div>
       <div className={`rdw-dropdown-optionwrapper ${open ? 'open-modal' : ''}`}>
         <CustomAutocomplete

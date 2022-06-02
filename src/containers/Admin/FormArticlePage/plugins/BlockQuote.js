@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { EditorState, AtomicBlockUtils } from 'draft-js';
 import iconQuote from './img/quote.png';
+import { UncontrolledTooltip } from "reactstrap";
 
 const BlockQuote = ({ editorState, onChange }) => {
   const [open, setOpen] = useState(false);
@@ -31,9 +32,12 @@ const BlockQuote = ({ editorState, onChange }) => {
   return (
     <div className="rdw-block-wrapper button-modal" aria-label="rdw-block-control" role="button">
       <div className="rdw-dropdown-selectedtext">
-        <span onClick={() => setOpen(true)}>
-          <img src={iconQuote} width="17px" />
+        <span onClick={() => setOpen(true)} id="TooltipQuote">
+          <img src={iconQuote} width="17px" alt="quote" />
         </span>
+        <UncontrolledTooltip placement="bottom" target="TooltipQuote">
+          Insertar Quote
+        </UncontrolledTooltip>
       </div>
       <div className={`rdw-dropdown-optionwrapper ${open ? 'open-modal' : ''}`}>
         <input 
