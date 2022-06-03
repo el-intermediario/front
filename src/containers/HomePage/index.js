@@ -18,13 +18,16 @@ import Ad from '../../components/Ad';
 import {Helmet} from "react-helmet";
 import { useWindowSize } from 'react-hanger';
 import Mam from '../../components/Mam/mam';
+import useScrollPosition from '../../hooks/useScrollPosition';
 
 const HomePage = () => {
   const { width } = useWindowSize();
+  const scrollPosition = useScrollPosition();
   const [layout, setLayout] = useState([]);
   const [ads, setAds] = useState([]);
   const [articlesOffset, setArticlesOffset] = useState([]);
   const [articlesOffset2, setArticlesOffset2] = useState([]);
+  const [showBottomPage, setShowBottomPage] = useState(false);
 
   const blocks = [
     {label: 'Politica', key: 'politica', qty: 4},
@@ -35,6 +38,12 @@ const HomePage = () => {
     {label: 'Lifestyle', key: 'lifestye', qty: 4},
     {label: 'Genero', key: 'genero', qty: 4},
   ];
+
+  useEffect(() => {
+    if (!showBottomPage && scrollPosition > 1000) {
+      setShowBottomPage(true);
+    }
+  }, [scrollPosition])
 
   useEffect(() => {
     fetchCover();
@@ -76,7 +85,7 @@ const HomePage = () => {
     switch (rowId[0]) {
       case 'ad':
         return <Ad 
-          imageUrl={`v${row.children[0].children[0].data.image.url}`}
+          imageUrl={`f_auto/v${row.children[0].children[0].data.image.url}`}
           url={row.children[0].children[0].data.url}
           title={row.children[0].children[0].data.name}
         />
@@ -133,42 +142,45 @@ const HomePage = () => {
       })}
       <div className="space-30" />
 
-      {/* <FeaturedNews /> */}
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-8">
-            <TrendingNews offset={articlesOffset} handleOffset={setArticlesOffset2} />
-          </div>
-          <div className="col-md-12 col-lg-4">
+      
+      {showBottomPage ? (
+        <>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8">
+                <TrendingNews offset={articlesOffset} handleOffset={setArticlesOffset2} />
+              </div>
+              <div className="col-md-12 col-lg-4">
 
-            <RadioPlayer title="Radio Online" />
-            <div>
-            {ads.map((ad, k) => {
-              if (ad.type === 'normal' && k === 1) {
-                return <Ad key={`row-ads-${k}`} imageUrl={`v${ad.image.url}`} url={ad.url} title={ad.name} height="250px" />
-              }
-            })}
-            <div className="space-20" />
+                <RadioPlayer title="Radio Online" />
+                <div>
+                {ads.map((ad, k) => {
+                  if (ad.type === 'normal' && k === 1) {
+                    return <Ad key={`row-ads-${k}`} imageUrl={`f_auto/v${ad.image.url}`} url={ad.url} title={ad.name} height="250px" />
+                  }
+                })}
+                <div className="space-20" />
+              </div>
+                {/* <FollowUs title="Follow Us" /> */}
+                <MostView title="Lo mas visto" />
+              </div>
+            </div>
           </div>
-            {/* <FollowUs title="Follow Us" /> */}
-            <MostView title="Lo mas visto" />
-          </div>
-        </div>
-      </div>
-      {/* <MixCarousel className="half_bg1" /> */}
 
-      <VideoPost key="videos" className="pt30 half_bg90" />
-      <div className="space-30" />
+          <VideoPost key="videos" className="pt30 half_bg90" />
+          <div className="space-30" />
 
-      {blocks?.map((block, i) => <GridNews
-        key={`row-blocks-${i}`}
-        title={block.label} 
-        gridColumns={block.qty} 
-        qty={block.qty} 
-        category={block.key} 
-        offset={articlesOffset2} 
-      />)}
-      <div className="space-70" />
+          {blocks?.map((block, i) => <GridNews
+            key={`row-blocks-${i}`}
+            title={block.label} 
+            gridColumns={block.qty} 
+            qty={block.qty} 
+            category={block.key} 
+            offset={articlesOffset2} 
+          />)}
+          <div className="space-70" />
+        </>
+      ) : null}
     </div>
   );
 };

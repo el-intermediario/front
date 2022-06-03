@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";
 import api from "../../utils/api";
-const placeholder = api.frontUrl + '/images/placeholder.jpg';
+const placeholder = api.frontUrl + '/images/placeholder.webp';
 
 const ImageWrapper = styled.div`
   position: relative;

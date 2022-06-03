@@ -1,6 +1,6 @@
 import React from 'react';
 import api from '../../utils/api';
-const placeholder = api.frontUrl + '/images/placeholder.jpg';
+const placeholder = api.frontUrl + '/images/placeholder.webp';
 
 const Placeholder = ({asset}) => {
     return (
