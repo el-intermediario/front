@@ -6,18 +6,19 @@ import {Helmet} from "react-helmet";
 import { useWindowSize } from 'react-hanger';
 import Mam from '../../components/Mam/mam';
 import useScrollPosition from '../../hooks/useScrollPosition';
+import GridNews from '../../components/GridNews';
+import VideoPost from '../../components/VideoPost';
+import RadioPlayer from '../../components/RadioPlayer';
+import Ad from '../../components/Ad';
+import TrendingNews from '../../components/TrendingNews';
+import MostView from '../../components/MostView';
+
 const OneItemFeatured = lazy(() => import('../../components/OneItemFeatured'));
 const TwoItemsFeatured = lazy(() => import('../../components/TwoItemsFeatured'));
 const ThreeItemsFeatured = lazy(() => import('../../components/ThreeItemsFeatured'));
 const TopicArticles = lazy(() => import('../../components/TopicArticles'));
 const FourItemsFeatured = lazy(() => import('../../components/FourItemsFeatured'));
 const OneTwoItemsFeatured = lazy(() => import('../../components/OneTwoItemsFeatured'));
-const RadioPlayer = lazy(() => import('../../components/RadioPlayer'));
-const GridNews = lazy(() => import('../../components/GridNews'));
-const Ad = lazy(() => import('../../components/Ad'));
-const TrendingNews = lazy(() => import('../../components/TrendingNews'));
-const MostView = lazy(() => import('../../components/MostView'));
-const VideoPost = lazy(() => import('../../components/VideoPost'));
 
 const HomePage = () => {
   const { width } = useWindowSize();
@@ -26,7 +27,7 @@ const HomePage = () => {
   const [ads, setAds] = useState([]);
   const [articlesOffset, setArticlesOffset] = useState([]);
   const [articlesOffset2, setArticlesOffset2] = useState([]);
-  const [showBottomPage, setShowBottomPage] = useState(true);
+  const [showBottomPage, setShowBottomPage] = useState(false);
   const [firstImage, setFirstImage] = useState(null);
 
   const blocks = [
@@ -40,8 +41,8 @@ const HomePage = () => {
   ];
 
   useEffect(() => {
-    if (!showBottomPage && scrollPosition > 2000) {
-      // setShowBottomPage(true);
+    if (!showBottomPage && scrollPosition > 1500) {
+      setShowBottomPage(true);
     }
   }, [scrollPosition])
 
@@ -157,33 +158,32 @@ const HomePage = () => {
       <div className="space-30" />
 
     
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-8">
-            <TrendingNews offset={articlesOffset} handleOffset={setArticlesOffset2} />
-          </div>
-          <div className="col-md-12 col-lg-4">
-
-            <RadioPlayer title="Radio Online" />
-            <div>
-            {ads.map((ad, k) => {
-              if (ad.type === 'normal' && k === 1) {
-                return <Ad key={`row-ads-${k}`} imageUrl={`f_auto/v${ad.image.url}`} url={ad.url} title={ad.name} height="250px" />
-              }
-            })}
-            <div className="space-20" />
-          </div>
-            {/* <FollowUs title="Follow Us" /> */}
-            <MostView title="Lo mas visto" />
-          </div>
-        </div>
-      </div>
-
-      <VideoPost key="videos" className="pt30 half_bg90" />
-      <div className="space-30" />
 
       {showBottomPage ? (
         <>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8">
+                <TrendingNews offset={articlesOffset} handleOffset={setArticlesOffset2} />
+              </div>
+              <div className="col-md-12 col-lg-4">
+
+                <RadioPlayer title="Radio Online" />
+                <div>
+                {ads.map((ad, k) => {
+                  if (ad.type === 'normal' && k === 1) {
+                    return <Ad key={`row-ads-${k}`} imageUrl={`f_auto/v${ad.image.url}`} url={ad.url} title={ad.name} height="250px" />
+                  }
+                })}
+                <div className="space-20" />
+              </div>
+                {/* <FollowUs title="Follow Us" /> */}
+                <MostView title="Lo mas visto" />
+              </div>
+            </div>
+          </div>
+          <VideoPost key="videos" className="pt30 half_bg90" />
+          <div className="space-30" />
           {blocks?.map((block, i) => <GridNews
             key={`row-blocks-${i}`}
             title={block.label} 
