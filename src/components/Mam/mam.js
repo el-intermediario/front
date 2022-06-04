@@ -1,39 +1,29 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
-import useScript from 'react-script-hook';
+import React, { useEffect, useState } from 'react';
+import api from '../../utils/api';
+import CarouselMatchs from '../CarouselMatchs';
 
-const MINUTE_MS = 60000;
+const MINUTE_MS = 180000;
 
 const Mam = () => {
-  useScript({
-    src: 'https://widgets.api-sports.io/football/1.1.8/widget.js',
-    onload: () => console.log('Script loaded!'),
-  });
+  const [matchs, setMatchs] = useState([]);
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
+    /*
     const interval = setInterval(() => {
-      // fetchData();
+      fetchData();
     }, MINUTE_MS)
 
     // Unmount component
-    return () => clearInterval(interval);
+    return () => clearInterval(interval);*/
   }, []);
 
   const fetchData = async () => {
-    const config = {
-      method: 'get',
-      url: 'https://v3.football.api-sports.io/fixtures?season=2022&league=128&last=1', // 128 , copaargentina 130  code=AR fixtures/events
-      headers: {
-        'x-rapidapi-key': 'xxxxxxx', // .env
-        'x-rapidapi-host': 'v3.football.api-sports.io'
-      }
-    };
-    
     try {
-      const response = await axios(config);
+      const response = await api.fixtures.get('', { headers: { 'Content-Type': 'application/json' } })
       if (response.data) {
-        console.log(response.data);
+        console.log(response.data.lastMatchs);
+        setMatchs([...response.data.lastMatchs, ...response.data.nextMatchs]);
       }
     } catch (error) {
       console.log(error);
@@ -41,9 +31,9 @@ const Mam = () => {
   }
 
   return (
-    <>
-      
-    </>
+    <div className="row-matchs">
+      <CarouselMatchs data={matchs}/>
+    </div>
   )
 }
 

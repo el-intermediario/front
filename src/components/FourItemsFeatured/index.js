@@ -49,10 +49,10 @@ const FourItemsFeatured = ({ className, news }) => {
     <div className={`feature_carousel_area four-items mb10 ${className ? className : ''}`}>
       <div className="container">
         <div className="row">
-                    <div className="col-12">
-                        <Heading title="Notas destacadas"/>
-                    </div>
-                </div>
+              <div className="col-12">
+                  <Heading title="Notas destacadas"/>
+              </div>
+          </div>
         <div className="row">
           <div className="col-12">
             {/*CAROUSEL START*/}

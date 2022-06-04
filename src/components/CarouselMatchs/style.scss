@@ -1,0 +1,41 @@
+.four-items {
+  padding: 20px 0;
+
+  .block-fixture {
+    .match-status {
+      background-color: #e0f29a;
+      color: #000;
+      padding: 2px 5px;
+      font-size: 12px;
+
+      &.finished {
+        background-color: #21b938;
+        color: #fff;
+      }
+    }
+  }
+
+  .feature_carousel {
+    width: 100%;
+
+    .single_post {
+      .post_img {
+        img {
+          border-radius: 10px;
+          object-fit: cover;
+          min-height: 280px;
+          max-height: 280px;
+        }
+      }
+  
+      .single_post_text {
+        text-shadow: 1px 1px 2px black;
+  
+        .field-title {
+          color: #1091FF;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

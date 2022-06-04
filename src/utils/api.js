@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const localUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
 const remoteUrl = 'https://api.elintermediario.com.ar';
-const baseUrl = remoteUrl;
+const baseUrl = localUrl;
 const space = 'https://res.cloudinary.com/el-intermediario/image/upload/';
 const spaceVideo = 'https://res.cloudinary.com/el-intermediario/video/upload/';
 const version = 'api/v1';
@@ -68,6 +68,10 @@ const video = {
   getVideos: (params, headers) => axios.get(`${baseUrl}/${version}/videos?${params}`, headers)
 };
 
+const fixtures = {
+  get: (params, headers) => axios.get(`${baseUrl}/${version}/fixtures?${params}`, headers)
+}
+
 export default {
   ad,
   auth,
@@ -82,5 +86,6 @@ export default {
   upload,
   uploadVideo,
   video, 
-  frontUrl
+  frontUrl,
+  fixtures
 }

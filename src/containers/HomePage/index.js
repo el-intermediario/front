@@ -4,7 +4,6 @@ import "./styles.scss";
 import api from '../../utils/api';
 import {Helmet} from "react-helmet";
 import { useWindowSize } from 'react-hanger';
-import Mam from '../../components/Mam/mam';
 import useScrollPosition from '../../hooks/useScrollPosition';
 import GridNews from '../../components/GridNews';
 import VideoPost from '../../components/VideoPost';
@@ -13,6 +12,7 @@ import Ad from '../../components/Ad';
 import TrendingNews from '../../components/TrendingNews';
 import MostView from '../../components/MostView';
 
+const Mam = lazy(() => import('../../components/Mam/mam'));
 const OneItemFeatured = lazy(() => import('../../components/OneItemFeatured'));
 const TwoItemsFeatured = lazy(() => import('../../components/TwoItemsFeatured'));
 const ThreeItemsFeatured = lazy(() => import('../../components/ThreeItemsFeatured'));
@@ -157,7 +157,7 @@ const HomePage = () => {
       })}
       <div className="space-30" />
 
-    
+      <Mam />
 
       {showBottomPage ? (
         <>
