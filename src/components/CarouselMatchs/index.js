@@ -71,18 +71,18 @@ const CarouselMatchs = ({className, data}) => {
                           <div className="evsc__i is-pregame" data-idpartido={match.fixture.id}>
                             {/* <span>VIE 03/06 </span><span> 20:00h</span> */}
                             <div className="row">
-                              <img className="col-2 p-0 m-0 match-picture" src={match.teams.away.logo} width="80%" alt={match.teams.away.name} />
-                              <span className="col-8">{match.teams.away.name}</span>
-                              <p className="col-2">
-                                {match.score.fulltime?.away}
-                              </p>
-                            </div>
-                            <div className="row">
                               <img className="col-2 p-0 m-0 match-picture" src={match.teams.home.logo} width="80%" alt={match.teams.home.name} />
 
                               <span className="col-8">{match.teams.home.name}</span>
                               <p className="col-2">
                                 {match.score.fulltime?.home}
+                              </p>
+                            </div>
+                            <div className="row">
+                              <img className="col-2 p-0 m-0 match-picture" src={match.teams.away.logo} width="80%" alt={match.teams.away.name} />
+                              <span className="col-8">{match.teams.away.name}</span>
+                              <p className="col-2">
+                                {match.score.fulltime?.away}
                               </p>
                             </div>
                             <div className={`match-status ${match.fixture.status.long === 'Match Finished' ? 'finished' : ''}`}>
