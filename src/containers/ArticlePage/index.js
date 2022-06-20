@@ -159,7 +159,7 @@ const ArticlePage = () => {
                       />
                     }
                   <div className="space-20" />
-                  {data?.source && <div className="row">Fuente: ${data.source}</div>}
+                  {data?.source && <div className="row">Fuente: {data.source}</div>}
                 </div>
               </div>
               <div className="space-30" />
