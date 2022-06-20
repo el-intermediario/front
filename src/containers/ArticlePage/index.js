@@ -154,7 +154,7 @@ const ArticlePage = () => {
                         toolbarHidden={true}
                         editorState={editorState}
                         blockRendererFn={mediaBlockRenderer}
-                        editorClassName="editor-textarea article-editor-draftjs"
+                        editorClassName="article-editor-draftjs"
                         readOnly={true}
                       />
                     }
