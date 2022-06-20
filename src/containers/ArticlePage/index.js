@@ -6,8 +6,10 @@ import { Link, useParams } from "react-router-dom";
 // images
 import api from "../../utils/api";
 import './style.scss';
+import './editor.scss';
 import Moment from 'react-moment';
-import { Editor, EditorState, convertFromRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, convertFromRaw } from 'draft-js';
 import CustomBlock from '../Admin/FormArticlePage/plugins/CustomBlock';
 import { Helmet } from "react-helmet";
 import Sidebar from '../../components/Sidebar';
@@ -147,14 +149,15 @@ const ArticlePage = () => {
                 ) : null}
                 <div className="padding20 white_bg">
                   <div className="space-20" />
-                  {bodyData &&
-                    <Editor
-                      editorState={editorState}
-                      blockRendererFn={mediaBlockRenderer}
-                      readOnly={true}
-                      stripPastedStyles={true}
-                    />
-                  }
+                    {bodyData &&
+                      <Editor
+                        toolbarHidden={true}
+                        editorState={editorState}
+                        blockRendererFn={mediaBlockRenderer}
+                        editorClassName="editor-textarea article-editor-draftjs"
+                        readOnly={true}
+                      />
+                    }
                   <div className="space-20" />
                   {data?.source && <div className="row">Fuente: ${data.source}</div>}
                 </div>

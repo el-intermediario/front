@@ -1,0 +1,69 @@
+@import "../../doc/scss/colors.scss";
+@import "../../doc/scss/fonts.scss";
+
+.article-editor-draftjs {
+  .block-reference {
+    border: 1px dashed $secondary_color;
+    padding: 4px;
+    min-height: 86px !important;
+    display: flex;
+  
+    .post_img {
+      justify-content: flex-start;
+      margin: 2px 15px 2px 2px;
+  
+      img {
+        max-height: 66px !important;
+      }
+    }
+  
+    .post_text {
+      justify-content: flex-start;
+  
+      .meta2 {
+        font-size: 14px;
+      }
+  
+      h4 {
+        a {
+          color: $secondary_color;
+          font-size: 22px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .rdw-center-aligned-block {
+    text-align: center;
+  }
+
+  .rdw-right-aligned-block {
+    text-align: right;
+  }
+
+  // Link
+  .rdw-link-decorator-wrapper {
+    a span span {
+      color: #14A5C0;
+      font-weight: bold;
+    }
+  }
+
+  // Bloquote
+  .block-quote {
+    background: $secondary_color;
+    padding: 10px 10px;
+    text-align: center;
+    color: white;
+    border-radius: 6px;
+
+    .field-message {
+      font-size: 18px;
+    }
+
+    .field-author {
+      font-size: 12px;
+    }
+  }
+}

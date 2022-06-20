@@ -14,6 +14,7 @@ import es from './es.js';
 import CustomBlock from './plugins/CustomBlock';
 import ArticleReference from './plugins/ArticleReference';
 import "./styles.scss";
+import "../../ArticlePage/editor.scss";
 import BlockQuote from './plugins/BlockQuote';
 import Loading from 'react-fullscreen-loading';
 import VideoReference from './plugins/VideoReference';
@@ -290,6 +291,7 @@ const FormArticlePage = (props) => {
                         </div>
                         <div className="col-12 field-editor" id="editor">
                           <Editor
+                            stripPastedStyles={true}
                             localization={{
                               locale: 'es',
                               translations: es
@@ -297,7 +299,7 @@ const FormArticlePage = (props) => {
                             editorState={editorState}
                             toolbarClassName="toolbarClassName"
                             wrapperClassName="wrapperClassName"
-                            editorClassName="editor-textarea"
+                            editorClassName="editor-textarea article-editor-draftjs"
                             toolbarCustomButtons={[
                               <ArticleReference />,
                               <VideoReference />,

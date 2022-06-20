@@ -35,29 +35,5 @@
         font-family: $font2;
       }
     }
-
-    blockquote {
-      border: 2px dashed $secondary_color;
-      padding: 20px 10px !important;
-      text-align: center;
-      color: $secondary_color !important;
-  
-      span {
-        font-size: 18px !important;
-        padding: 0;
-        color: $secondary_color !important;
-        font-weight: 700;
-      }
-  
-      .public-DraftStyleDefault-ltr {
-        text-align: center;
-        margin: 0;
-      }
-    }
   }
-
-  .page-sidebar {
-
-  }
-
 }

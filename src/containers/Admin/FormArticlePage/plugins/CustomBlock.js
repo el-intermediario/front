@@ -7,7 +7,7 @@ import ReactPlayer from 'react-player';
 import api from '../../../../utils/api';
 import { DefaultPlayer as Video } from 'react-html5video';
 import 'react-html5video/dist/styles.css';
-import './editor.scss';
+// import './editor.scss';
 import GalleryPost from '../../../../components/GalleryPost';
 
 const CustomBlock = (props) => {
