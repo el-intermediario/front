@@ -4,6 +4,7 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import SearchModal from "../SearchModal";
 import SidebarMenu from "../SidebarMenu";
 import api from '../../utils/api';
+import logoIcon from '../../doc/img/logo_icon.png';
 
 const menusDark = [
   {
@@ -281,6 +282,7 @@ const MainMenu = ({ className, dark }) => {
                   <div id="navbarSupportedContent"
                     className="collapse navbar-collapse navbar-responsive-collapse">
                     <ul className="nav navbar-nav" id="scroll">
+                      <li><img className="logo" src={logoIcon} width="40px" height="auto" alt="elintermediario logo"/></li>
                       {arr.length > 0 ? arr.map((item, i) => (
                         <li key={i} className={`${item.child ? 'dropdown' : ''} nav-item`}>
                           {item.child ? <NavLink to={item.link}

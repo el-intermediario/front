@@ -2850,6 +2850,12 @@ a.cbtn3 {
   display: inline;
 }
 
+#navbarSupportedContent {
+  ul li .logo {
+    display: none
+  }
+}
+
 .scrollNav {
   position: fixed;
   transition: all 0.5s ease-in;
@@ -2861,6 +2867,13 @@ a.cbtn3 {
 
   .main-nav {
     background: inherit;
+
+    #navbarSupportedContent {
+      ul li .logo {
+        display: block;
+        margin-top: 12px
+      }
+    }
 
     .nav-item > a {
       color: #fff;

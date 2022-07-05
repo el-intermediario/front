@@ -4,6 +4,7 @@ import Swiper from 'react-id-swiper';
 import FontAwesome from "../uiStyle/FontAwesome";
 import Moment from 'react-moment';
 import 'moment/locale/es';
+import logoFooter from '../../doc/img/logo.png';
 
 const TopBar = ({ className, dark }) => {
   const [swiper, setSwiper] = useState(null);
@@ -29,7 +30,8 @@ const TopBar = ({ className, dark }) => {
     <div className={`topbar ${className ? className : ''}`} id="top">
       <div className="container">
         <div className="row">
-          <div className="col-md-8 align-self-center">
+          <div className="col-md-9 align-self-center">
+            <img src={logoFooter} width="300px" height="auto" alt="elintermediario logo"/>
             <div className={`trancarousel_area ${dark ? 'white' : ''}`}>
               <p className="trand">Tendencias</p>
               <div className="nav_style1">
@@ -51,7 +53,7 @@ const TopBar = ({ className, dark }) => {
               </div>
             </div>
           </div>
-          <div className="col-md-4 align-self-center">
+          <div className="col-md-3 align-self-center">
             <div className="top_date_social text-right">
               <div className={`paper_date ${dark ? 'white' : ''}`}>
                 <p><Moment format="dddd D, MMMM YYYY" locale="es">

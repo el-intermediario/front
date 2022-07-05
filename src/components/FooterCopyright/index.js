@@ -1,6 +1,7 @@
 import React, {memo} from 'react';
 import Moment from 'react-moment';
 import {Link} from "react-router-dom";
+import logoFooter from '../../doc/img/logo.png';
 
 const quick_links = [
     {
@@ -19,6 +20,7 @@ const FooterCopyright = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 align-self-center">
+                        <img src={logoFooter} width="300px" height="auto" alt="elintermediario logo"/>
                         <p>&copy; Copyright <Moment format="YYYY" locale="es">
                   {Date.now()}</Moment>, Todos los derechos reservados</p>
                     </div>
