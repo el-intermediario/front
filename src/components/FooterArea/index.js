@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import {Link} from "react-router-dom";
 import FooterCopyright from "../FooterCopyright";
 import FooterNewsCategories from "../FooterNewsCategories";
+import logoFooter from '../../doc/img/logo.png';
 
 const FooterArea = ({className}) => {
     return (
@@ -51,8 +52,12 @@ const FooterArea = ({className}) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="space-40"/>
+                        <div className="space-20"/>
                         <div className="border_white"/>
+                        <div className="space-20"/>
+                        <div className="row logo-footer">
+                            <img src={logoFooter} width="300px" height="auto" alt="elintermediario logo"/>
+                        </div>
                     </div>
                     <div className="col-lg-4">
                         {/* <FooterMoreNews/> */}

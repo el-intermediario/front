@@ -2896,3 +2896,15 @@ a.cbtn3 {
   margin-bottom: 15px;
   display: inline-block;
 }
+
+.footer {
+  .logo-footer {
+    padding: 0 0 0 10px;
+
+    img {
+      filter: brightness(120%);
+      filter: contrast(120%);
+      filter: drop-shadow(1px 1px 1px white);
+    }
+  }
+}
