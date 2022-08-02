@@ -32,7 +32,7 @@ const TopBar = ({ className, dark }) => {
         <div className="row">
           <div className="col-md-9 align-self-center">
             <img src={logoFooter} width="300px" height="auto" alt="elintermediario logo"/>
-            <div className={`trancarousel_area ${dark ? 'white' : ''}`}>
+            {/* <div className={`trancarousel_area ${dark ? 'white' : ''}`}>
               <p className="trand">Tendencias</p>
               <div className="nav_style1">
                 <Swiper getSwiper={setSwiper} className="trancarousel" {...params}>
@@ -51,7 +51,7 @@ const TopBar = ({ className, dark }) => {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="col-md-3 align-self-center">
             <div className="top_date_social text-right">

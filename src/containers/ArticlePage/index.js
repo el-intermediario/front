@@ -100,7 +100,7 @@ const ArticlePage = () => {
         {data && <meta property="twitter:title" content={data.title} />}
         {data && <meta property="twitter:description" content={data.dropline} />}
         {data && <meta property="twitter:creator" content="elintermediario" />}
-        {data && <meta name="twitter:image" content={`${api.space}f_auto,c_fill,g_faces,h_630,w_1200/v${data.image.url}`} />}
+        {data && data.image && <meta name="twitter:image" content={`${api.space}f_auto,c_fill,g_faces,h_630,w_1200/v${data.image.url}`} />}
       </Helmet>
       <div className="archives post post1 page-article">
         <BreadCrumb className="shadow5 padding-top-10" title={data && data.title} />

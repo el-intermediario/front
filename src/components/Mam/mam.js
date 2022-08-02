@@ -22,7 +22,6 @@ const Mam = () => {
     try {
       const response = await api.fixtures.get('', { headers: { 'Content-Type': 'application/json' } })
       if (response.data) {
-        console.log(response.data.lastMatchs);
         setMatchs([...response.data.lastMatchs, ...response.data.nextMatchs]);
       }
     } catch (error) {
