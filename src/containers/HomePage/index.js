@@ -119,17 +119,17 @@ const HomePage = () => {
     <div className={width < 640 ? 'page-home mobile' : 'page-home'}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>El Intermediario</title>
-        <link rel="canonical" href="https://elintermediario.com.ar" />
-        <meta name="description" content="El Intermediario - Noticias de Santa Cruz" />
+        <title>Sanjua.com</title>
+        <link rel="canonical" href="https://sanjua.com" />
+        <meta name="description" content="Sanjua.com - Noticias del gran San Juan" />
         <meta name="distribution" content="global" />
         <meta name="rating" content="general" />
         <meta name="language" content="es_ES" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="El Intermediario" />
-        <meta property="og:site_name" content="El Intermediario" />
-        <meta property="og:url" content={`https://elintermediario.com.ar`} />
-        <meta property="og:description" content="El Intermediario - Noticias de Santa Cruz" />
+        <meta property="og:title" content="Sanjua.com" />
+        <meta property="og:site_name" content="Sanjua.com" />
+        <meta property="og:url" content={`https://sanjua.com`} />
+        <meta property="og:description" content="Sanjua.com - Noticias del gran San Juan" />
         {/* <meta property="og:image" content={`${api.space}f_auto,c_fill,g_faces,h_630,w_1200`} /> */}
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="es_ES" />

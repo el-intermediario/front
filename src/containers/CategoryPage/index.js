@@ -39,8 +39,8 @@ const CategoryPage = ({location}) => {
   return (
     <>
       <Helmet>
-        {categoryName && <title>{categoryName && categoryName} | Intermediario</title>}
-        <link rel="canonical" href={`https://elintermediario.com.ar/${location.pathname}`} />
+        {categoryName && <title>{categoryName && categoryName} | Sanjua.com</title>}
+        <link rel="canonical" href={`https://sanjua.com/${location.pathname}`} />
       </Helmet>
       <BreadCrumb title={categoryName} />
       <div className="archives padding-top-30">

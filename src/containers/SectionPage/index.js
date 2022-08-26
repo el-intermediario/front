@@ -41,8 +41,8 @@ const SectionPage = () => {
 	return (
 		<Fragment>
       <Helmet>
-        {data && <title>{data.title} | Intermediario</title>}
-        <link rel="canonical" href={`https://elintermediario.com.ar/seccion/${data && data.slug}`} />
+        {data && <title>{data.title} | Sanjua</title>}
+        <link rel="canonical" href={`https://sanjua.com/seccion/${data && data.slug}`} />
         {data && <meta name="description" content={data.dropline} />}
       </Helmet>
 			<div className="archives post post1 page-article">

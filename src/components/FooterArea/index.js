@@ -56,7 +56,7 @@ const FooterArea = ({className}) => {
                         <div className="border_white"/>
                         <div className="space-20"/>
                         <div className="row logo-footer">
-                            <img src={logoFooter} width="300px" height="auto" alt="elintermediario logo"/>
+                            <img src={logoFooter} width="300px" height="auto" alt="logo sanjua"/>
                         </div>
                     </div>
                     <div className="col-lg-4">

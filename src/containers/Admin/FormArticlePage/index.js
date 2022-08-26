@@ -156,7 +156,7 @@ const FormArticlePage = (props) => {
 
   const uploadImageCallBack = async (file) => {
     const formData = new FormData();
-    formData.append('folder', `intermediario/articles/${year}/${month}`);
+    formData.append('folder', `sanjua/articles/${year}/${month}`);
     formData.append('image', file);
 
     try {
@@ -230,7 +230,7 @@ const FormArticlePage = (props) => {
 
   const handleFiles = async (files, folder) => {
     const formData = new FormData();
-    formData.append('folder', `intermediario/${folder}/${year}/${month}`);
+    formData.append('folder', `sanjua/${folder}/${year}/${month}`);
     for(const file of files) {
       formData.append('image', file);
     }

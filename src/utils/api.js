@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const localUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
-const remoteUrl = 'https://api.elintermediario.com.ar';
+const remoteUrl = 'https://api.sanjua.com';
 const baseUrl = remoteUrl;
 const space = 'https://res.cloudinary.com/el-intermediario/image/upload/';
 const spaceVideo = 'https://res.cloudinary.com/el-intermediario/video/upload/';
 const version = 'api/v1';
-const frontUrl = 'https://elintermediario.com.ar';
+const frontUrl = 'https://sanjua.com';
 
 const ad = {
   add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers),

@@ -6,8 +6,8 @@ import LazyImage from '../LazyImage';
 import Placeholder from '../Placeholder';
 
 const backgrounds = {
-  politica: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1653863864/intermediario/cover/blockBg/bg_trending_agipv6.jpg`,
-  deportes: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1653863869/intermediario/cover/blockBg/bg_sports_kcbjwp.jpg`
+  politica: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1653863864/sanjua/cover/blockBg/bg_trending_agipv6.jpg`,
+  deportes: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1653863869/sanjua/cover/blockBg/bg_sports_kcbjwp.jpg`
 };
 
 const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {

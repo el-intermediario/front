@@ -28,7 +28,7 @@ const FormVideoPage = () => {
     setFileSource(file);
 
     const formData = new FormData();
-    formData.append('folder', 'intermediario/videos');
+    formData.append('folder', 'sanjua/videos');
     formData.append('image', file);
 
     setVideoSource(formData);
@@ -73,7 +73,7 @@ const FormVideoPage = () => {
       // Upload video.
       try {
         const formData = new FormData();
-        formData.append('folder', 'intermediario/videos');
+        formData.append('folder', 'sanjua/videos');
         formData.append('image', imageSource.file, imageSource.imgName);
         const responseImage = await api.upload.post(formData, { headers: {
           'Content-Type': 'multipart/form-data'

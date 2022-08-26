@@ -12,7 +12,7 @@ const Gallery = ({ editorState, onChange }) => {
 
   const handleFiles = async (files, folder) => {
     const formData = new FormData();
-    formData.append('folder', `intermediario/${folder}`);
+    formData.append('folder', `sanjua/${folder}`);
     for(const file of files) {
       formData.append('image', file);
     }
