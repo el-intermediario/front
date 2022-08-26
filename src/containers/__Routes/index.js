@@ -45,7 +45,7 @@ const Routes = () => {
           path="/logout"
           parentClass="theme-3"
           component={Logout} />
-        <PrivateRoute
+        <PublicRoute
           exact
           home_style={3}
           path="/register"
