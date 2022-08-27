@@ -1,4 +1,5 @@
 @import "../../doc/scss/colors.scss";
+@import "../../doc/scss/responsive.scss";
 
 .TwoItemsFeatured {
   .row {
@@ -26,6 +27,16 @@
           background-color: rgba(0, 0, 0, 0.3);
           border-radius: 6px;
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: $mobile_layout) {
+    .row {
+      margin: 0 0.8rem;
+
+      .column {
+        max-height: inherit;
       }
     }
   }
