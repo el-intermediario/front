@@ -51,7 +51,7 @@ const CarouselMatchs = ({className, data}) => {
     }
 
     return (
-      <div className={`feature_carousel_area four-items mb10 ${className ? className : ''}`}>
+      <div className={`feature_carousel_area carousel-matchs four-items mb10 ${className ? className : ''}`}>
         <div className="container">
           <div className="row">
               <div className="col-12">
@@ -70,22 +70,22 @@ const CarouselMatchs = ({className, data}) => {
                           <div>{translate(match.league.round)}</div>
                           <div className="evsc__i is-pregame" data-idpartido={match.fixture.id}>
                             {/* <span>VIE 03/06 </span><span> 20:00h</span> */}
-                            <div className="row">
-                              <img className="col-2 p-0 m-0 match-picture" src={match.teams.home.logo} width="80%" alt={match.teams.home.name} />
+                            <div className="row row-team">
+                              <img className="col-2 p-0 m-0 team-picture" src={match.teams.home.logo} width="80%" alt={match.teams.home.name} />
 
-                              <span className="col-8">{match.teams.home.name}</span>
+                              <span className="col-8 team-name">{match.teams.home.name}</span>
                               <p className="col-2">
                                 {match.score.fulltime?.home}
                               </p>
                             </div>
-                            <div className="row">
-                              <img className="col-2 p-0 m-0 match-picture" src={match.teams.away.logo} width="80%" alt={match.teams.away.name} />
-                              <span className="col-8">{match.teams.away.name}</span>
+                            <div className="row row-team">
+                              <img className="col-2 p-0 m-0 team-picture" src={match.teams.away.logo} width="80%" alt={match.teams.away.name} />
+                              <span className="col-8 team-name">{match.teams.away.name}</span>
                               <p className="col-2">
                                 {match.score.fulltime?.away}
                               </p>
                             </div>
-                            <div className={`match-status ${match.fixture.status.long === 'Match Finished' ? 'finished' : ''}`}>
+                            <div className={`row-status ${match.fixture.status.long === 'Match Finished' ? 'finished' : ''}`}>
                               {match.fixture.status.long === 'Match Finished' ? 'Finalizado' : 'Por comenzar...'}
                             </div>
                           </div>

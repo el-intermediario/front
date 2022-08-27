@@ -6,6 +6,7 @@ import './style.scss';
 
 const TwoItemsFeatured = ({ className, dark, data }) => {
   const {width} = useWindowSize();
+  
   return (
     <div className={`TwoItemsFeatured mix_area ${className ? className : ''}`}>
       <div className="row">
@@ -17,9 +18,9 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
                       <LazyImage 
-                        src={`f_auto,c_fill,g_face,h_${width < 640 ? 240 : 400},w_600/v${item.data.image.url}`} 
-                        width={600}
-                        height={width < 640 ? 240 : 400}
+                        src={`f_auto,c_fill,g_face,h_${width < 426 ? 240 : 400},w_${width < 426 ? 425 : 600}/v${item.data.image.url}`} 
+                        width={width < 426 ? 425 : 600}
+                        height={width < 426 ? 240 : 400}
                         alt={item.data.title} 
                       />
                     </Link>
@@ -41,9 +42,9 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                   <div className="img_wrap">
                     <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
                       <LazyImage 
-                        src={`f_auto,c_fill,g_face,h_${width < 640 ? 240 : 400},w_600/v${item.data.image.url}`} 
-                        width={600}
-                        height={width < 640 ? 240 : 400} 
+                        src={`f_auto,c_fill,g_face,h_${width < 640 ? 240 : 400},w_${width < 426 ? 425 : 600}/v${item.data.image.url}`} 
+                        width={width < 426 ? 425 : 600}
+                        height={width < 426 ? 240 : 400} 
                         alt={item.data.title}
                       />
                     </Link>
