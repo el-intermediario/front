@@ -79,7 +79,7 @@ class BlogComment extends Component {
                     <div className="comment_list">
                         <div className="row">
                             <div className="col-12 col-lg-10 m-auto">
-                                <h3>Our latest news</h3>
+                                <h3>Noticias anteriores</h3>
                                 <div className="single_comment">
                                     <div className="comment_img">
                                         <img src={author2} alt="author2"/>

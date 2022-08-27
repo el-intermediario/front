@@ -82,12 +82,12 @@ const ArticlePage = () => {
   return (
     <Fragment>
       <Helmet>
-        {data && <title>{data.title} | Intermediario</title>}
-        <link rel="canonical" href={`https://elintermediario.com.ar/${data && data.slug}`} />
+        {data && <title>{data.title} | Sanjua.com</title>}
+        <link rel="canonical" href={`https://sanjua.com/${data && data.slug}`} />
         {data && <meta name="description" content={data.dropline} />}
         {data && <meta property="og:title" content={data.title} />}
-        {data && <meta property="og:site_name" content="El Intermediario" />}
-        {data && <meta property="og:url" content={`https://elintermediario.com.ar/${data && data.slug}`} />}
+        {data && <meta property="og:site_name" content="Sanjua.com" />}
+        {data && <meta property="og:url" content={`https://sanjua.com/${data && data.slug}`} />}
         {data && <meta property="og:description" content={data.dropline} />}
         {data && data.image && <meta property="og:image" content={`${api.space}f_auto,c_fill,g_faces,h_630,w_1200/v${data.image.url}`} />}
         {data && <meta property="og:type" content="article" />}
@@ -96,10 +96,10 @@ const ArticlePage = () => {
         {data && <meta property="og:image:heiht" content="630" />}
 
         {data && <meta property="twitter:card" content="summary_large_image" />}
-        {data && <meta property="twitter:site" content="elintermediario" />}
+        {data && <meta property="twitter:site" content="sanjua.com" />}
         {data && <meta property="twitter:title" content={data.title} />}
         {data && <meta property="twitter:description" content={data.dropline} />}
-        {data && <meta property="twitter:creator" content="elintermediario" />}
+        {data && <meta property="twitter:creator" content="sanjua.com" />}
         {data && data.image && <meta name="twitter:image" content={`${api.space}f_auto,c_fill,g_faces,h_630,w_1200/v${data.image.url}`} />}
       </Helmet>
       <div className="archives post post1 page-article">
