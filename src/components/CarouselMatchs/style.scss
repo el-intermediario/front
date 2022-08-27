@@ -24,8 +24,9 @@
 
     .row-status {
       background-color: #e0f29a;
+      border-radius: 6px;
       color: #000;
-      padding: 2px 5px;
+      padding: 4px 10px 4px 20px;
       font-size: 12px;
 
       &.finished {
@@ -62,6 +63,8 @@
   }
 
   @media screen and (max-width: $mobile_layout) {
-    
+    .swiper-slide {
+      background: inherit;
+    }
   }
 }
