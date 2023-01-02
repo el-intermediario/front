@@ -4,12 +4,13 @@ import AdsPage from '../AdPage/ads';
 import SectionsPage from '../SectionPage/sections';
 import PrivateRoute from '../_PrivateRoute';
 import PublicRoute from '../_PublicRoute';
+import ArticlePage from '../ArticlePage';
 
 const NotFoundPage = React.lazy(() => import('../NotFoundPage'));
 const HomePage = React.lazy(() => import('../HomePage'));
 const LoginPage = React.lazy(() => import('../Admin/LoginPage'));
 const RegisterPage = React.lazy(() => import('../RegisterPage'));
-const ArticlePage = React.lazy(() => import('../ArticlePage'));
+// const ArticlePage = React.lazy(() => import('../ArticlePage'));
 const SectionPage = React.lazy(() => import('../SectionPage'));
 const ArticlesPage = React.lazy(() => import('../ArticlePage/articles'));
 const CategoryPage = React.lazy(() => import('../CategoryPage'));
@@ -50,7 +51,7 @@ const Routes = () => {
           home_style={3}
           path="/register"
           parentClass="theme-3"
-          component={RegisterPage} />  
+          component={RegisterPage} />
         <PrivateRoute
           exact
           home_style={3}
@@ -110,7 +111,7 @@ const Routes = () => {
           home_style={3}
           path="/admin/ad/:id/edit"
           parentClass="theme-3"
-          component={FormAdsPage} />  
+          component={FormAdsPage} />
         <PrivateRoute
           exact
           home_style={3}
@@ -134,7 +135,7 @@ const Routes = () => {
           home_style={3}
           path="/admin/sections"
           parentClass="theme-3"
-          component={SectionsPage} />  
+          component={SectionsPage} />
         <PrivateRoute
           exact
           home_style={3}
@@ -156,7 +157,7 @@ const Routes = () => {
           exact
           path="/seccion/:path"
           parentClass="theme-1"
-          component={SectionPage} />    
+          component={SectionPage} />
         <PublicRoute
           exact
           path="/categoria/:path"
@@ -171,7 +172,7 @@ const Routes = () => {
           exact
           path="/categoria/:path/:path2/:path3"
           parentClass="theme-1"
-          component={CategoryPage} />  
+          component={CategoryPage} />
         <PrivateRoute
           exact
           path="/404"

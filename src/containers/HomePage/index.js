@@ -11,8 +11,8 @@ import RadioPlayer from '../../components/RadioPlayer';
 import Ad from '../../components/Ad';
 import TrendingNews from '../../components/TrendingNews';
 import MostView from '../../components/MostView';
+import Mam from '../../components/Mam/mam';
 
-const Mam = lazy(() => import('../../components/Mam/mam'));
 const OneItemFeatured = lazy(() => import('../../components/OneItemFeatured'));
 const TwoItemsFeatured = lazy(() => import('../../components/TwoItemsFeatured'));
 const ThreeItemsFeatured = lazy(() => import('../../components/ThreeItemsFeatured'));
