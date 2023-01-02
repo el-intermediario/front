@@ -48,7 +48,7 @@ const VideoPost = ({ className, dark }) => {
   };
 
   const onErrorImage = () => {
-    setFirstVideo({...firstVideo, thumbnail: videoPlaceholder});
+    setFirstVideo({ ...firstVideo, thumbnail: videoPlaceholder });
   }
 
   return (
@@ -69,8 +69,8 @@ const VideoPost = ({ className, dark }) => {
                 <div className="post_img">
                   <div className="img_wrap" onClick={() => setvModal(true)}>
                     <Link to="/" className="play_btn">
-                      <img 
-                        src={firstVideo ? firstVideo.thumbnail : video1} 
+                      <img
+                        src={firstVideo ? firstVideo.thumbnail : video1}
                         onError={onErrorImage}
                         alt="video"
                       />
@@ -97,18 +97,18 @@ const VideoPost = ({ className, dark }) => {
         </div>
       </div>
       {firstVideo ? firstVideo.type === 'custom' ? (
-        <ModalVideo 
-          channel={firstVideo && firstVideo.type} 
-          url={firstVideo && `${api.spaceVideo}v${firstVideo.customVideo.url}`} 
+        <ModalVideo
+          channel={firstVideo && firstVideo.type}
+          url={firstVideo && `${api.spaceVideo}v${firstVideo.customVideo.url}`}
           isOpen={vModal}
-          onClose={() => setvModal(false)} 
+          onClose={() => setvModal(false)}
         />
       ) : firstVideo.type === 'youtube' ? (
-        <ModalVideo 
-          channel={firstVideo && firstVideo.type} 
+        <ModalVideo
+          channel={firstVideo && firstVideo.type}
           isOpen={vModal}
           videoId={firstVideo && firstVideo.content}
-          onClose={() => setvModal(false)} 
+          onClose={() => setvModal(false)}
         />
       ) : null : null}
     </div>

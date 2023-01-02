@@ -2,7 +2,7 @@ import React, { useEffect, useState, lazy } from 'react';
 import "./styles.scss";
 
 import api from '../../utils/api';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import { useWindowSize } from 'react-hanger';
 import useScrollPosition from '../../hooks/useScrollPosition';
 import GridNews from '../../components/GridNews';
@@ -27,21 +27,21 @@ const HomePage = () => {
   const [ads, setAds] = useState([]);
   const [articlesOffset, setArticlesOffset] = useState([]);
   const [articlesOffset2, setArticlesOffset2] = useState([]);
-  const [showBottomPage, setShowBottomPage] = useState(false);
+  const [showBottomPage, setShowBottomPage] = useState(true);
   const [firstImage, setFirstImage] = useState(null);
 
   const blocks = [
-    {label: 'Politica', key: 'politica', qty: 4},
-    {label: 'Interes general', key: 'interes_general', qty: 4},
-    {label: 'Deportes', key: 'deportes', qty: 4},
-    {label: 'El Mundo', key: 'el_mundo', qty: 4},
-    {label: 'Trending', key: 'trending', qty: 4},
-    {label: 'Lifestyle', key: 'lifestye', qty: 4},
-    {label: 'Genero', key: 'genero', qty: 4},
+    { label: 'Politica', key: 'politica', qty: 4 },
+    { label: 'Interes general', key: 'interes_general', qty: 4 },
+    { label: 'Deportes', key: 'deportes', qty: 4 },
+    { label: 'El Mundo', key: 'el_mundo', qty: 4 },
+    { label: 'Trending', key: 'trending', qty: 4 },
+    { label: 'Lifestyle', key: 'lifestye', qty: 4 },
+    { label: 'Genero', key: 'genero', qty: 4 },
   ];
 
   useEffect(() => {
-    if (!showBottomPage && scrollPosition > 1500) {
+    if (!showBottomPage && scrollPosition > 1200) {
       setShowBottomPage(true);
     }
   }, [scrollPosition])
@@ -56,7 +56,7 @@ const HomePage = () => {
       const response = await api.cover.get({},
         { headers: { 'Content-Type': 'application/json' } }
       );
-        
+
       if (response.data) {
         setLayout(response.data.layout);
         setFirstImage(`${api.space}f_auto,c_fill,g_face,h_720,q_84,w_1024/v${response.data.layout[0].children[0].children[0].data.image.url}`)
@@ -73,7 +73,7 @@ const HomePage = () => {
       const response = await api.ad.getAds(params,
         { headers: { 'Content-Type': 'application/json' } }
       );
-        
+
       if (response.data) {
         setAds(response.data);
       }
@@ -86,7 +86,7 @@ const HomePage = () => {
     const rowId = row.id.split('_');
     switch (rowId[0]) {
       case 'ad':
-        return <Ad 
+        return <Ad
           imageUrl={`f_auto/v${row.children[0].children[0].data.image.url}`}
           url={row.children[0].children[0].data.url}
           title={row.children[0].children[0].data.name}
@@ -95,7 +95,7 @@ const HomePage = () => {
         // Bloque con notas de un tema especifica ej: 'elecciones'
         break;
       case 'topic':
-        return <TopicArticles data={row}/>;
+        return <TopicArticles data={row} />;
       case 'videos':
         return <VideoPost key="videos" className="pt30 half_bg60" />
       case 'article':
@@ -111,9 +111,12 @@ const HomePage = () => {
           return <ThreeItemsFeatured data={row.children} />
         } else {
           return <FourItemsFeatured news={row.children} />
-        }  
+        }
     }
   }
+
+
+  console.log(scrollPosition);
 
   return (
     <div className={width < 640 ? 'page-home mobile' : 'page-home'}>
@@ -133,10 +136,10 @@ const HomePage = () => {
         {/* <meta property="og:image" content={`${api.space}f_auto,c_fill,g_faces,h_630,w_1200`} /> */}
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="es_ES" />
-        {layout.length && 
-          <link 
-            rel="preload" 
-            href={firstImage} 
+        {layout.length &&
+          <link
+            rel="preload"
+            href={firstImage}
             as="image"
             imagesrcset={
               `${firstImage} 1200w,
@@ -144,8 +147,8 @@ const HomePage = () => {
                ${firstImage}?w=400 400w, 
                ${firstImage}?w=800 800w, 
                ${firstImage}?w=1024 1024w`
-              }
-        />}
+            }
+          />}
       </Helmet>
       {/* <PostCarousel className="fifth_bg"/> */}
       {layout.map((row, ki) => {
@@ -170,13 +173,13 @@ const HomePage = () => {
 
                 <RadioPlayer title="Radio Online" />
                 <div>
-                {ads.map((ad, k) => {
-                  if (ad.type === 'normal' && k === 1) {
-                    return <Ad key={`row-ads-${k}`} imageUrl={`f_auto/v${ad.image.url}`} url={ad.url} title={ad.name} height="250px" />
-                  }
-                })}
-                <div className="space-20" />
-              </div>
+                  {ads.map((ad, k) => {
+                    if (ad.type === 'normal' && k === 1) {
+                      return <Ad key={`row-ads-${k}`} imageUrl={`f_auto/v${ad.image.url}`} url={ad.url} title={ad.name} height="250px" />
+                    }
+                  })}
+                  <div className="space-20" />
+                </div>
                 {/* <FollowUs title="Follow Us" /> */}
                 <MostView title="Lo mas visto" />
               </div>
@@ -186,11 +189,11 @@ const HomePage = () => {
           <div className="space-30" />
           {blocks?.map((block, i) => <GridNews
             key={`row-blocks-${i}`}
-            title={block.label} 
-            gridColumns={block.qty} 
-            qty={block.qty} 
-            category={block.key} 
-            offset={articlesOffset2} 
+            title={block.label}
+            gridColumns={block.qty}
+            qty={block.qty}
+            category={block.key}
+            offset={articlesOffset2}
           />)}
           <div className="space-70" />
         </>
