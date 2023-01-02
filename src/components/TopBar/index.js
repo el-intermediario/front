@@ -31,7 +31,7 @@ const TopBar = ({ className, dark }) => {
       <div className="container">
         <div className="row">
           <div className="col-md-9 align-self-center">
-            <img src={logoFooter} width="300px" height="auto" alt="logo"/>
+            <img src={logoFooter} width="300px" height="auto" alt="logo" />
             {/* <div className={`trancarousel_area ${dark ? 'white' : ''}`}>
               <p className="trand">Tendencias</p>
               <div className="nav_style1">

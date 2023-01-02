@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
-import logo from '../../doc/img/logo/logo.png';
+import logo from '../../doc/img/logo/logo.jpg';
 import tempIcon from "../../doc/img/icon/temp.png";
 
 const LogoAreaTwo = () => {
