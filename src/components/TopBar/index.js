@@ -4,7 +4,7 @@ import Swiper from 'react-id-swiper';
 import FontAwesome from "../uiStyle/FontAwesome";
 import Moment from 'react-moment';
 import 'moment/locale/es';
-import logoFooter from '../../doc/img/logo.png';
+import logo from '../../doc/img/logo.jpg';
 
 const TopBar = ({ className, dark }) => {
   const [swiper, setSwiper] = useState(null);
@@ -31,7 +31,7 @@ const TopBar = ({ className, dark }) => {
       <div className="container">
         <div className="row">
           <div className="col-md-9 align-self-center">
-            <img src={logoFooter} width="300px" height="auto" alt="logo" />
+            <img src={logo} width="300px" height="auto" alt="logo" />
             {/* <div className={`trancarousel_area ${dark ? 'white' : ''}`}>
               <p className="trand">Tendencias</p>
               <div className="nav_style1">
