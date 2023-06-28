@@ -1,15 +1,15 @@
 import axios from 'axios';
 
 const localUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
-const remoteUrl = 'https://api.elintermediario.com.ar';
+const remoteUrl = 'https://api-production-c70d.up.railway.app';
 const baseUrl = remoteUrl;
 const space = 'https://res.cloudinary.com/el-intermediario/image/upload/';
 const spaceVideo = 'https://res.cloudinary.com/el-intermediario/video/upload/';
 const version = 'api/v1';
-const frontUrl = 'https://elintermediario.com.ar';
+const frontUrl = 'https://front-wine.vercel.app/';
 
 const ad = {
-  add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers),
+  add: (dataModel, headers) => axios.post(`${baseUrl}/${version}/ads`, dataModel, headers),
   get: (data, headers) => axios.get(`${baseUrl}/${version}/ads/${data.id}`, headers),
   put: (data, headers) => axios.put(`${baseUrl}/${version}/ads/${data.id}`, data.data, headers),
   getAds: (params, headers) => axios.get(`${baseUrl}/${version}/ads${params}`, headers),
@@ -37,22 +37,22 @@ const cover = {
 
 const category = {
   get: (data, headers) => axios.get(`${baseUrl}/${version}/categories?type=${data.type}`, headers),
-  put: (data, headers) => axios.put(`${baseUrl}/${version}/categories`, data, headers)  
+  put: (data, headers) => axios.put(`${baseUrl}/${version}/categories`, data, headers)
 }
 
 const contact = {
-  add:(data, headers) => axios.post(`${baseUrl}/${version}/contacts`, data, headers) 
+  add: (data, headers) => axios.post(`${baseUrl}/${version}/contacts`, data, headers)
 }
 
 const page = {
   getPages: (params, headers) => axios.get(`${baseUrl}/${version}/pages${params}`, headers),
-  add:(data, headers) => axios.post(`${baseUrl}/${version}/pages`, data, headers),
+  add: (data, headers) => axios.post(`${baseUrl}/${version}/pages`, data, headers),
   get: (data, headers) => axios.get(`${baseUrl}/${version}/pages/${data.id}?by=${data.by}`, headers),
   put: (data, headers) => axios.put(`${baseUrl}/${version}/pages/${data.id}`, data, headers),
 }
 
 const tag = {
-  add:(dataModel, headers) => axios.post(`${baseUrl}/${version}/tags`, dataModel, headers) 
+  add: (dataModel, headers) => axios.post(`${baseUrl}/${version}/tags`, dataModel, headers)
 }
 
 const upload = {
@@ -85,7 +85,7 @@ export default {
   tag,
   upload,
   uploadVideo,
-  video, 
+  video,
   frontUrl,
   fixtures
 }
