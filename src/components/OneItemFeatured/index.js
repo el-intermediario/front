@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Moment from 'react-moment';
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from 'reactstrap';
@@ -16,6 +16,8 @@ const OneItemFeatured = ({ className, dark, data }) => {
   });
 
   if (isMobile < 1200) {
+    const item = data[0].children[0];
+    if (!item?.data) { return <></> }
     return (
       <OneItemFeaturedMobile item={data[0].children[0]} />
     )
@@ -26,7 +28,7 @@ const OneItemFeatured = ({ className, dark, data }) => {
           <div className="column column-1 col-12">
             <div className="single_mix_carousel nav_style3">
               {data[0].children.map((item, i) => (
-                  <div key={i} className="single_post post_type9">
+                <div key={i} className="single_post post_type9">
                   <div className="post_img gradient1">
                     <div className="img_wrap">
                       <img src={`${api.space}f_auto,c_fill,g_face,h_720,q_84,w_1024/v${item.data.image.url}`} alt={item.data.title} />
@@ -49,7 +51,8 @@ const OneItemFeatured = ({ className, dark, data }) => {
   }
 }
 
-function OneItemFeaturedMobile({item}) {
+function OneItemFeaturedMobile({ item }) {
+
   return (
     <>
       <Container className="trending-head">
@@ -57,7 +60,7 @@ function OneItemFeaturedMobile({item}) {
           <Col className="single_post post_type3">
             <div className="post_img">
               <div className="img_wrap">
-                {item.data.image ? ( 
+                {item.data.image ? (
                   <img src={`${api.space}f_auto,c_fill,g_face,h_300,q_84,w_800/v${item.data.image.url}`} alt={item.data.title} />
                 ) : (
                   <Placeholder />
