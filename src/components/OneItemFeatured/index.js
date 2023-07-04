@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'reactstrap';
 import api from '../../utils/api';
 import Placeholder from '../Placeholder';
 import './style.scss';
+import OneArticleFeatured from '../theme-1/OneArticleFeatured';
 
 const OneItemFeatured = ({ className, dark, data }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth);
@@ -19,7 +20,7 @@ const OneItemFeatured = ({ className, dark, data }) => {
     const item = data[0].children[0];
     if (!item?.data) { return <></> }
     return (
-      <OneItemFeaturedMobile item={data[0].children[0]} />
+      <OneArticleFeatured article={data[0].children[0].data} />
     )
   } else {
     return (
@@ -49,38 +50,6 @@ const OneItemFeatured = ({ className, dark, data }) => {
       </div>
     )
   }
-}
-
-function OneItemFeaturedMobile({ item }) {
-
-  return (
-    <>
-      <Container className="trending-head">
-        <Row className="carousel_post2_type3 nav_style1">
-          <Col className="single_post post_type3">
-            <div className="post_img">
-              <div className="img_wrap">
-                {item.data.image ? (
-                  <img src={`${api.space}f_auto,c_fill,g_face,h_300,q_84,w_800/v${item.data.image.url}`} alt={item.data.title} />
-                ) : (
-                  <Placeholder />
-                )}
-              </div>
-            </div>
-            <div className="single_post_text">
-              <Row xs="auto" className="meta3">
-                <Col>{item.data.copete}</Col>
-                <Col><Moment format="D  MMM" locale="es" unix>{item.data.created}</Moment></Col>
-              </Row>
-              <h4><Link to={`/articulo/${item.data.slug}`}>{item.data.title}</Link></h4>
-              <div className="space-10" />
-              <p className="post-p">{item.data.body}</p>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </>
-  );
 }
 
 export default OneItemFeatured;
