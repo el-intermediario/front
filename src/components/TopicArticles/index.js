@@ -1,8 +1,9 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useWindowSize } from 'react-hanger';
 import { Link } from 'react-router-dom';
 import api from '../../utils/api';
 import "./styles.scss";
+import ArticleSimple from '../theme-1/ArticleSimple';
 
 const TopicArticles = ({ dark, data }) => {
   const { width } = useWindowSize();
@@ -36,7 +37,7 @@ const TopicArticles = ({ dark, data }) => {
   }
 
   const bg = {
-    backgroundImage: image ? `url("${api.space}f_auto,c_fill,g_faces,${width < 640 ? 'h_360,w_640' :  'h_320,w_1400'}/v${image}")` : `url("./default/bg.jpg")`,
+    backgroundImage: image ? `url("${api.space}f_auto,c_fill,g_faces,${width < 640 ? 'h_360,w_640' : 'h_320,w_1400'}/v${image}")` : `url("./default/bg.jpg")`,
     backgroundSize: '100%',
     backgroundRepeat: 'no-repeat',
     marginBottom: '20px',
@@ -59,20 +60,22 @@ const TopicArticles = ({ dark, data }) => {
         </div>
         <div className="row">
           {articles.map((item, k) => (
-            <div className={`mb-4 ${isMobile < 1200 ? 'col-12' : 'col-3'}`} key={k}>
-              <div className="single_post" style={{backgroundImage: `url(${api.space}f_auto,c_fill,g_face,h_280,w_280/v${item.image.url})`}}>
-                <div className="single_post_text">
-                  <div className="field-title">
-                    <Link to={`/articulo/${item.slug}`}>{item.title}</Link>
+            <div className={`${isMobile < 1200 ? 'col-12' : 'col-3 mb-4'}`} key={k}>
+              {isMobile < 1200 ? (<ArticleSimple article={item} />) : (
+                <div className="single_post" style={{ backgroundImage: `url(${api.space}f_auto,c_fill,g_face,h_280,w_280/v${item.image.url})` }}>
+                  <div className="single_post_text">
+                    <div className="field-title">
+                      <Link to={`/articulo/${item.slug}`}>{item.title}</Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>
         <div className="space-30" />
-      </div>    
-    </div>
+      </div>
+    </div >
   );
 };
 

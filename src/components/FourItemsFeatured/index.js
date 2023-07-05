@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Swiper from 'react-id-swiper';
 import { Link } from "react-router-dom";
 
@@ -6,10 +6,18 @@ import './style.scss';
 import LazyImage from '../LazyImage';
 import Heading from '../uiStyle/Heading';
 import FontAwesome from '../uiStyle/FontAwesome';
+import OneArticle from '../theme-1/OneArticle';
 
 
 const FourItemsFeatured = ({ className, news }) => {
   const [swiper, setSwiper] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth);
+    }, false);
+  });
 
   const goNext = () => {
     if (swiper !== null) {
@@ -49,36 +57,40 @@ const FourItemsFeatured = ({ className, news }) => {
     <div className={`feature_carousel_area four-items mb10 ${className ? className : ''}`}>
       <div className="container">
         <div className="row">
-              <div className="col-12">
-                  <Heading title="Notas destacadas"/>
-              </div>
+          <div className="col-12">
+            <Heading title="Notas destacadas" />
           </div>
+        </div>
         <div className="row">
           <div className="col-12">
             {/*CAROUSEL START*/}
             <div className="feature_carousel nav_style1">
               <Swiper getSwiper={setSwiper} {...params}>
                 {news.map((item, i) => (
-                  <div key={i} className="single_post post_type6 post_type7">
-                    <div className="post_img gradient1">
-                      <Link to={`/articulo/${item.children[0].data.slug}`}>
-                        <LazyImage 
-                          src={`f_auto,c_fill,g_face,h_280,w_280/v${item.children[0].data.image.url}`} 
-                          alt={item.children[0].data.title}
-                        />
-                      </Link>
-                    </div>
-                    <div className="single_post_text">
-                      <div className="field-title">
-                        <Link to={`/articulo/${item.children[0].data.slug}`}>{item.children[0].data.title}</Link>
-                      </div>
-                    </div>
-                  </div>
+                  <React.Fragment>
+                    {isMobile < 1200 ? (<OneArticle article={item.children[0].data} key={i} />) : (
+                      <div key={i} className="single_post post_type6 post_type7">
+                        <div className="post_img gradient1">
+                          <Link to={`/articulo/${item.children[0].data.slug
+                            }`}>
+                            <LazyImage
+                              src={`f_auto, c_fill, g_face, h_280, w_280 / v${item.children[0].data.image.url}`}
+                              alt={item.children[0].data.title}
+                            />
+                          </Link>
+                        </div>
+                        <div className="single_post_text">
+                          <div className="field-title">
+                            <Link to={`/ articulo / ${item.children[0].data.slug}`}>{item.children[0].data.title}</Link>
+                          </div>
+                        </div>
+                      </div>)}
+                  </React.Fragment>
                 ))}
               </Swiper>
               <div className="navBtns">
-                  <div onClick={goPrev} className="navBtn prevtBtn"><FontAwesome name="angle-left"/></div>
-                  <div onClick={goNext} className="navBtn nextBtn"><FontAwesome name="angle-right"/></div>
+                <div onClick={goPrev} className="navBtn prevtBtn"><FontAwesome name="angle-left" /></div>
+                <div onClick={goNext} className="navBtn nextBtn"><FontAwesome name="angle-right" /></div>
               </div>
             </div>
             {/*CAROUSEL END*/}
