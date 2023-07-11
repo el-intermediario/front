@@ -4,6 +4,7 @@ import api from '../../utils/api';
 import "./styles.scss";
 import LazyImage from '../LazyImage';
 import Placeholder from '../Placeholder';
+import OneArticle from '../theme-1/OneArticle';
 
 const backgrounds = {
   politica: `${api.space}f_auto,c_fill,g_faces,h_390,w_1400/v1653863864/intermediario/cover/blockBg/bg_trending_agipv6.jpg`,
@@ -12,6 +13,13 @@ const backgrounds = {
 
 const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
   const [articles, setArticles] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth);
+    }, false);
+  });
 
   useEffect(() => {
     if (offset.length > 0) {
@@ -35,7 +43,7 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
     backgroundSize: `cover`,
     backgroundRepeat: 'no-repeat',
   };
-  
+
   return (
     <Fragment>
       {articles.length > 0 ? (
@@ -54,40 +62,44 @@ const GridNews = ({ title, gridColumns = 6, qty = 4, category, offset }) => {
                   <div>
                     <div className="row justify-content-center">
                       {articles.map((item, i) => (
-                        <div key={i} className={`col-lg-${12 / articles.length}`}>
-                          <div className="single_post post_type3 mb30">
-                            <div className="post_img">
-                              <div className="img_wrap">
-                              {item.image ? (
-                                <Link to={`/articulo/${item.slug}`}>
-                                  <LazyImage 
-                                    src={`f_auto,c_fill,g_face,h_200,w_245/v${item.image.url}`} 
-                                    width={245}
-                                    height={200}
-                                    alt={item.title} 
-                                  />
-                                </Link>
-                              ) : (
-                                <Link to={`/articulo/${item.slug}`}>
-                                  <Placeholder />
-                                </Link>
-                              )}
-                              </div>
-                            </div>
-                            <div className="single_post_text">
-                              {/* {!['deportes'].includes(category) ? (
+                        <Fragment key={i}>
+                          {isMobile < 1200 ? (<OneArticle article={item} />) : (
+                            <div className={`col-lg-${12 / articles.length}`}>
+                              <div className="single_post post_type3 mb30">
+                                <div className="post_img">
+                                  <div className="img_wrap">
+                                    {item.image ? (
+                                      <Link to={`/articulo/${item.slug}`}>
+                                        <LazyImage
+                                          src={`f_auto,c_fill,g_face,h_200,w_245/v${item.image.url}`}
+                                          width={245}
+                                          height={200}
+                                          alt={item.title}
+                                        />
+                                      </Link>
+                                    ) : (
+                                      <Link to={`/articulo/${item.slug}`}>
+                                        <Placeholder />
+                                      </Link>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="single_post_text">
+                                  {/* {!['deportes'].includes(category) ? (
                                 <div className="meta3"><Link to="#">{item.copete}</Link>
                                   <Link to="#">
                                     <Moment format="ll" locale="es" unix>{item.created}</Moment>
                                   </Link>
                                 </div>
                               ) : null} */}
-                              <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
-                              <div className="space-10" />
-                              <p className="post-p">{item.body}</p>
+                                  <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
+                                  <div className="space-10" />
+                                  <p className="post-p">{item.body}</p>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
+                          )}
+                        </Fragment>
                       ))}
                     </div>
                   </div>

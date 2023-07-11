@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import LazyImage from '../LazyImage';
 import { useWindowSize } from 'react-hanger';
 import api from '../../utils/api';
+import Placeholder from '../Placeholder';
 
 const ArticleSimple = ({ article }) => {
   const { width } = useWindowSize();
@@ -14,11 +14,15 @@ const ArticleSimple = ({ article }) => {
     <Container>
       <Figure>
         <Link to={`/articulo/${article.slug}`}>
-          <Img
-            src={`${api.space}f_auto,c_fill,h_120,w_120/v${article.image.url}`}
-            width={'100%'}
-            height={'100%'}
-          />
+          {article.image ? (
+            <Img
+              src={`${api.space}f_auto,c_fill,h_120,w_120/v${article.image.url}`}
+              width={'100%'}
+              height={'100%'}
+            />
+          ) : (
+            <Placeholder />
+          )}
         </Link>
       </Figure>
       <Content>
@@ -52,12 +56,10 @@ const Content = styled.div`
   margin-right: 130px;
 `;
 
-const Img = styled.img`
-  border-radius: 10px;
-`;
+const Img = styled.img``;
 
 const Title = styled.h3`
-  font: 700 16px/19px 'Lato', sans-serif;
+  font: 700 14px 'Lato', sans-serif;
   color: black;
   margin: 0;
 `;

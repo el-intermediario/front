@@ -67,9 +67,9 @@ const FourItemsFeatured = ({ className, news }) => {
             <div className="feature_carousel nav_style1">
               <Swiper getSwiper={setSwiper} {...params}>
                 {news.map((item, i) => (
-                  <React.Fragment>
-                    {isMobile < 1200 ? (<OneArticle article={item.children[0].data} key={i} />) : (
-                      <div key={i} className="single_post post_type6 post_type7">
+                  <React.Fragment key={i}>
+                    {isMobile < 1200 ? (<OneArticle article={item.children[0].data} />) : (
+                      <div className="single_post post_type6 post_type7">
                         <div className="post_img gradient1">
                           <Link to={`/articulo/${item.children[0].data.slug
                             }`}>

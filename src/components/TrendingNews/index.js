@@ -8,10 +8,18 @@ import api from '../../utils/api';
 import LazyImage from '../LazyImage';
 import './styles.scss';
 import Placeholder from '../Placeholder';
+import ArticleSimple from '../theme-1/ArticleSimple';
 
 const TrendingNews = ({ dark, offset, handleOffset }) => {
   const [headArticles, setHeadArticles] = useState([]);
   const [bodyArticles, setBodyArticles] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth);
+    }, false);
+  });
 
   useEffect(() => {
     if (offset.length > 0) {
@@ -45,72 +53,80 @@ const TrendingNews = ({ dark, offset, handleOffset }) => {
         <div className="col-lg-6">
           {bodyArticles.slice(0, 3).map((item, i) => (
             <Fragment key={i}>
-              <div className="single_post widgets_small">
-                <div className="post_img">
-                  <div className="img_wrap">
-                    <Link to={`/articulo/${item.slug}`}>
-                      {item.image ? <LazyImage 
-                          src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} 
-                          alt={item.title}
-                          width={100}
-                          height={77} 
-                        />
-                       : <Placeholder /> }
-                    </Link>
+              {isMobile < 1200 ? (<ArticleSimple article={item} />) : (
+                <Fragment>
+                  <div className="single_post widgets_small">
+                    <div className="post_img">
+                      <div className="img_wrap">
+                        <Link to={`/articulo/${item.slug}`}>
+                          {item.image ? <LazyImage
+                            src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`}
+                            alt={item.title}
+                            width={100}
+                            height={77}
+                          />
+                            : <Placeholder />}
+                        </Link>
+                      </div>
+                      <span className="tranding">
+                        <FontAwesome name="bolt" />
+                      </span>
+                    </div>
+                    <div className="single_post_text">
+                      <div className="meta2">
+                        <Link to="#">{item.copete}</Link>
+                        <Link to="#">
+                          <Moment format="ll" locale="es" unix>{item.created}</Moment>
+                        </Link>
+                      </div>
+                      <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
+                    </div>
                   </div>
-                  <span className="tranding">
-                    <FontAwesome name="bolt" />
-                  </span>
-                </div>
-                <div className="single_post_text">
-                  <div className="meta2">
-                    <Link to="#">{item.copete}</Link>
-                    <Link to="#">
-                      <Moment format="ll" locale="es" unix>{item.created}</Moment>
-                    </Link>
-                  </div>
-                  <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
-                </div>
-              </div>
-              <div className="space-15" />
-              {dark ? <div className="border_white" /> : <div className="border_black" />}
-              <div className="space-15" />
+                  <div className="space-15" />
+                  {dark ? <div className="border_white" /> : <div className="border_black" />}
+                  <div className="space-15" />
+                </Fragment>
+              )}
             </Fragment>
           ))}
         </div>
         <div className="col-lg-6">
           {bodyArticles.slice(3, 6).map((item, i) => (
             <Fragment key={i}>
-              <div className="single_post widgets_small">
-                <div className="post_img">
-                  <div className="img_wrap">
-                    <Link to={`/articulo/${item.slug}`}>
-                      {item.image ? <LazyImage 
-                          src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`} 
-                          alt={item.title}
-                          width={100}
-                          height={77}
-                        />
-                       : <Placeholder />}
-                    </Link>  
+              {isMobile < 1200 ? (<ArticleSimple article={item} />) : (
+                <Fragment>
+                  <div className="single_post widgets_small">
+                    <div className="post_img">
+                      <div className="img_wrap">
+                        <Link to={`/articulo/${item.slug}`}>
+                          {item.image ? <LazyImage
+                            src={`f_auto,c_fill,g_face,h_77,q_84,w_100/v${item.image.url}`}
+                            alt={item.title}
+                            width={100}
+                            height={77}
+                          />
+                            : <Placeholder />}
+                        </Link>
+                      </div>
+                      <span className="tranding">
+                        <FontAwesome name="bolt" />
+                      </span>
+                    </div>
+                    <div className="single_post_text">
+                      <div className="meta2">
+                        <Link to="#">{item.copete}</Link>
+                        <Link to="#">
+                          <Moment format="ll" locale="es" unix>{item.created}</Moment>
+                        </Link>
+                      </div>
+                      <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
+                    </div>
                   </div>
-                  <span className="tranding">
-                    <FontAwesome name="bolt" />
-                  </span>
-                </div>
-                <div className="single_post_text">
-                  <div className="meta2">
-                    <Link to="#">{item.copete}</Link>
-                    <Link to="#">
-                      <Moment format="ll" locale="es" unix>{item.created}</Moment>
-                    </Link>
-                  </div>
-                  <h4><Link to={`/articulo/${item.slug}`}>{item.title}</Link></h4>
-                </div>
-              </div>
-              <div className="space-15" />
-              {dark ? <div className="border_white" /> : <div className="border_black" />}
-              <div className="space-15" />
+                  <div className="space-15" />
+                  {dark ? <div className="border_white" /> : <div className="border_black" />}
+                  <div className="space-15" />
+                </Fragment>
+              )}
             </Fragment>
           ))}
         </div>

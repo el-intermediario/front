@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Moment from 'react-moment';
 import { Link } from "react-router-dom";
@@ -20,9 +20,9 @@ const TrendingNewsSlider = ({ articles }) => {
     <Container className="trending-head">
       <Row className="carousel_post2_type3 nav_style1">
         {articles && articles.map((item, i) => (
-          <>
+          <Fragment key={i}>
             {isMobile < 1200 ? (<OneArticleFeatured article={item} />) : (
-              <Col key={i} className="single_post post_type3">
+              <Col className="single_post post_type3">
                 <div className="post_img">
                   <div className="img_wrap">
                     <Link to={`/articulo/${item.slug}`}>
@@ -49,7 +49,7 @@ const TrendingNewsSlider = ({ articles }) => {
                 </div>
               </Col>
             )}
-          </>
+          </Fragment>
         ))}
       </Row>
     </Container>

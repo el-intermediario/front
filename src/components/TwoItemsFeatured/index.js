@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useWindowSize } from 'react-hanger';
 import { Link } from "react-router-dom";
 import LazyImage from '../LazyImage';
@@ -20,9 +20,9 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
       <div className="row">
         <div className="column column-1 col-6">
           <div className="single_mix_carousel nav_style3">
-            {data[0].children.map((item, i) => (<>
+            {data[0].children.map((item, i) => (<Fragment key={i}>
               {isMobile < 1200 ? (<OneArticle article={item.data} />) : (
-                <div key={i} className="single_post post_type6 post_type9">
+                <div className="single_post post_type6 post_type9">
                   <div className="post_img gradient1">
                     <div className="img_wrap">
                       <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
@@ -41,14 +41,14 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                   </div>
                 </div>
               )}
-            </>))}
+            </Fragment>))}
           </div>
         </div>
         <div className="column column-2 col-6">
           <div className="single_mix_carousel nav_style3">
-            {data[1].children.map((item, i) => (<>
+            {data[1].children.map((item, i) => (<Fragment key={`${i}-two`}>
               {isMobile < 1200 ? (<OneArticle article={item.data} />) : (
-                <div key={i} className="single_post post_type6 post_type9">
+                <div className="single_post post_type6 post_type9">
                   <div className="post_img gradient1">
                     <div className="img_wrap">
                       <Link className="play_btn" to={`/articulo/${item.data.slug}`}>
@@ -67,7 +67,7 @@ const TwoItemsFeatured = ({ className, dark, data }) => {
                   </div>
                 </div>
               )}
-            </>
+            </Fragment>
             ))}
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import LazyImage from '../LazyImage';
 import { useWindowSize } from 'react-hanger';
+import Placeholder from '../Placeholder';
 
 const OneArticle = ({ article }) => {
   const { width } = useWindowSize();
@@ -13,14 +14,18 @@ const OneArticle = ({ article }) => {
     <Container>
       <Figure>
         <Link className="play_btn" to={`/articulo/${article.slug}`}>
-          <LazyImage
-            src={`f_auto,c_fill,g_face,h_${width < 426 ? 240 : 400},w_${
-              width < 426 ? 425 : 600
-            }/v${article.image.url}`}
-            width={width < 426 ? 425 : 600}
-            height={width < 426 ? 240 : 400}
-            alt={article.title}
-          />
+          {article.image ? (
+            <LazyImage
+              src={`f_auto,c_fill,g_face,h_${width < 426 ? 240 : 400},w_${
+                width < 426 ? 425 : 600
+              }/v${article.image.url}`}
+              width={width < 426 ? 425 : 600}
+              height={width < 426 ? 240 : 400}
+              alt={article.title}
+            />
+          ) : (
+            <Placeholder />
+          )}
         </Link>
       </Figure>
       <Content>
@@ -39,6 +44,7 @@ const Container = styled.div`
   margin: 20px auto;
   box-shadow: 4px 4px 10px #00000066;
   border-radius: 10px;
+  background: white;
 `;
 
 const Figure = styled.div``;

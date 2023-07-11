@@ -75,7 +75,7 @@ const CoverModal = ({ previewShow, setPreviewShow, layout }) => {
                 if (row.id === 'videos') {
                   return handleRow(row);
                 } else {
-                return <div className="row">
+                  return <div className="row">
                     <div className="container">{handleRow(row)}</div>
                   </div>
                 }
