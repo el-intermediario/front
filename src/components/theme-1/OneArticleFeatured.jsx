@@ -14,13 +14,15 @@ const OneArticleFeatured = ({ article }) => {
     <Container>
       <Figure>
         <Link to={`/articulo/${article.slug}`}>
-          <Img
-            src={`${api.space}f_auto,c_fill,g_face,h_${
-              width < 426 ? 425 : 400
-            },w_${width < 426 ? 425 : 600}/v${article.image.url}`}
-            width={'100%'}
-            height={'100%'}
-          />
+          {article?.image && (
+            <Img
+              src={`${api.space}f_auto,c_fill,g_face,h_${
+                width < 426 ? 425 : 400
+              },w_${width < 426 ? 425 : 600}/v${article?.image?.url}`}
+              width={'100%'}
+              height={'100%'}
+            />
+          )}
         </Link>
       </Figure>
       <Content>
